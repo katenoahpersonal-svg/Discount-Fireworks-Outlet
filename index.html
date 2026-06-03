@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Discount Fireworks Outlet | Iowa Fireworks Demos & Locations</title>
+  <meta name="description" content="Discount Fireworks Outlet offers four fully stocked Iowa fireworks locations with easy directions and firework demo videos." />
+  <meta property="og:title" content="Discount Fireworks Outlet" />
+  <meta property="og:description" content="Watch demo videos, find an Iowa location, and build your backyard finale." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
+  <div class="sky-glow" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Discount Fireworks Outlet home">
+      <span class="brand-mark">dfo</span>
+      <span class="brand-text"><strong>Discount</strong><em>Fireworks Outlet</em></span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" data-nav-toggle>
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav id="primaryNav" class="primary-nav" data-nav>
+      <a href="#videos">Videos</a>
+      <a href="#locations">Locations</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="#locations">Get Directions</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span> Happy 250th Birthday, America</p>
+        <h1>Your Backyard Finale Starts Here</h1>
+        <p class="hero-lede">Four fully stocked Iowa locations. Real demo videos. Big-show fireworks for families, parties, and Fourth of July legends.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#videos">Watch Demo Videos</a>
+          <a class="btn btn-secondary" href="#locations">Find a Location</a>
+        </div>
+      </div>
+
+      <aside class="control-deck reveal" aria-label="Fireworks quick access panel">
+        <div class="deck-topline">
+          <span class="live-dot"></span>
+          Grand Finale Control Deck
+        </div>
+        <div class="launch-grid">
+          <a href="#videos" class="launch-card">
+            <span class="launch-number">01</span>
+            <strong>Demo Theater</strong>
+            <small>Preview the sparks before you shop.</small>
+          </a>
+          <a href="#locations" class="launch-card">
+            <span class="launch-number">02</span>
+            <strong>4 Iowa Locations</strong>
+            <small>Directions in one clean click.</small>
+          </a>
+          <a href="#contact" class="launch-card">
+            <span class="launch-number">03</span>
+            <strong>Build Your Show</strong>
+            <small>Ask us what to grab for your night.</small>
+          </a>
+        </div>
+        <div class="signal-strip" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </aside>
+    </section>
+
+    <section class="marquee" aria-label="Site highlights">
+      <div class="marquee-track">
+        <span>Watch the show before you buy</span>
+        <span>Four Iowa launch stops</span>
+        <span>Family favorites</span>
+        <span>Grand finale energy</span>
+        <span>Easy directions</span>
+        <span>Backyard legends welcome</span>
+      </div>
+    </section>
+
+    <section id="videos" class="section-shell video-section">
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> Firework Demo Theater</p>
+        <h2>Pick your sparks before you pull into the lot.</h2>
+        <p>Use this section as your video wall. Swap the YouTube links inside <code>script.js</code> when you’re ready to connect every product demo.</p>
+      </div>
+
+      <div class="theater reveal">
+        <div class="featured-video">
+          <div class="video-frame">
+            <iframe id="featuredVideo" src="https://www.youtube.com/embed/R3mAzPDToPQ" title="Featured fireworks demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+          <div class="featured-copy">
+            <p class="mini-label">Now Playing</p>
+            <h3 id="featuredTitle">Snow Cone Jr</h3>
+            <p id="featuredDescription">A family-friendly burst of color that feels like the warm-up act before the finale.</p>
+          </div>
+        </div>
+
+        <div class="video-grid" aria-label="Firework demo video choices">
+          <button class="demo-card active" type="button" data-video="https://www.youtube.com/embed/R3mAzPDToPQ" data-title="Snow Cone Jr" data-description="A family-friendly burst of color that feels like the warm-up act before the finale.">
+            <span class="spark-thumb"><i></i></span>
+            <span class="card-meta">Family Favorite</span>
+            <strong>Snow Cone Jr</strong>
+            <small>Watch Demo</small>
+          </button>
+
+          <button class="demo-card" type="button" data-video="https://www.youtube.com/embed/R3mAzPDToPQ" data-title="Crackling Balls" data-description="Small but mighty crackle energy for quick hits, giggles, and driveway sparkle.">
+            <span class="spark-thumb crackle"><i></i></span>
+            <span class="card-meta">Crackle</span>
+            <strong>Crackling Balls</strong>
+            <small>Replace video link</small>
+          </button>
+
+          <button class="demo-card" type="button" data-video="https://www.youtube.com/embed/R3mAzPDToPQ" data-title="Backyard Finale Pack" data-description="A bigger-show option for the family that wants the neighborhood to look up.">
+            <span class="spark-thumb finale"><i></i></span>
+            <span class="card-meta">Finale</span>
+            <strong>Backyard Finale Pack</strong>
+            <small>Replace video link</small>
+          </button>
+
+          <button class="demo-card" type="button" data-video="https://www.youtube.com/embed/R3mAzPDToPQ" data-title="Aerial Showstopper" data-description="High color, big height, and a classic Fourth of July wow moment.">
+            <span class="spark-thumb aerial"><i></i></span>
+            <span class="card-meta">Aerial</span>
+            <strong>Aerial Showstopper</strong>
+            <small>Replace video link</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="locations" class="section-shell locations-section">
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> Choose Your Launch Site</p>
+        <h2>Four fully stocked Iowa outlets. One very easy decision.</h2>
+        <p>Tap a location for directions and head straight for the good stuff.</p>
+      </div>
+
+      <div class="locations-grid">
+        <article class="location-card reveal">
+          <div class="pin-orbit"><span></span></div>
+          <p class="mini-label">Spirit Lake</p>
+          <h3>Vick’s Corner</h3>
+          <p>NW corner of HWY 9 &amp; 86<br>Spirit Lake, Iowa 51360</p>
+          <a class="btn btn-location" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Vick%27s%20Corner%20HWY%209%20and%2086%20Spirit%20Lake%20Iowa%2051360">Get Directions</a>
+        </article>
+
+        <article class="location-card reveal">
+          <div class="pin-orbit"><span></span></div>
+          <p class="mini-label">Milford</p>
+          <h3>Okoboji Gas Parking Lot</h3>
+          <p>2098 IA-86 at Okoboji Gas Company<br>Milford, Iowa 51351</p>
+          <a class="btn btn-location" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=2098%20IA-86%20Milford%20Iowa%2051351">Get Directions</a>
+        </article>
+
+        <article class="location-card reveal">
+          <div class="pin-orbit"><span></span></div>
+          <p class="mini-label">Spencer</p>
+          <h3>Spencer Mall Lot</h3>
+          <p>901 11th Street SW, South Park Mall<br>Spencer, Iowa 51360</p>
+          <a class="btn btn-location" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=901%2011th%20Street%20SW%20Spencer%20Iowa%2051360">Get Directions</a>
+        </article>
+
+        <article class="location-card reveal">
+          <div class="pin-orbit"><span></span></div>
+          <p class="mini-label">Armstrong</p>
+          <h3>Armstrong</h3>
+          <p>101 6th ST HWY 15<br>Armstrong, Iowa 51351</p>
+          <a class="btn btn-location" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=101%206th%20ST%20HWY%2015%20Armstrong%20Iowa">Get Directions</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section-shell contact-section">
+      <div class="contact-card reveal">
+        <div class="contact-copy">
+          <p class="eyebrow"><span></span> Need Help Building Your Show?</p>
+          <h2>Tell us what kind of night you’re planning.</h2>
+          <p>Backyard party, family tradition, or full grand finale — send a note and we’ll help point you toward the right fireworks.</p>
+          <div class="contact-badge">Let’s Light It Up</div>
+        </div>
+
+        <form class="contact-form" action="mailto:info@discountfireworksoutlet.com" method="post" enctype="text/plain">
+          <label>First Name
+            <input name="First Name" type="text" autocomplete="given-name" required>
+          </label>
+          <label>Last Name
+            <input name="Last Name" type="text" autocomplete="family-name" required>
+          </label>
+          <label>Email
+            <input name="Email" type="email" autocomplete="email" required>
+          </label>
+          <label>Phone
+            <input name="Phone" type="tel" autocomplete="tel">
+          </label>
+          <label class="full">Message
+            <textarea name="Message" rows="5" placeholder="Tell us your budget, location, and the kind of show you want..."></textarea>
+          </label>
+          <button class="btn btn-primary full" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#top" aria-label="Discount Fireworks Outlet home">
+      <span class="brand-mark">dfo</span>
+      <span class="brand-text"><strong>Discount</strong><em>Fireworks Outlet</em></span>
+    </a>
+    <p>Four Iowa locations. Real demo videos. Big sparks, easy clicks.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
