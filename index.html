@@ -23,8 +23,8 @@
   --deep:#050816;
   --line:rgba(255,111,46,.76);
   --line-soft:rgba(255,111,46,.28);
-  --card-w:min(520px,31vw);
-  --card-h:clamp(500px,55vh,575px);
+  --card-w:clamp(440px,34vw,520px);
+  --card-h:clamp(485px,55vh,550px);
   --side-x:min(24vw,392px);
   --far-x:min(43vw,680px);
   --font-head:"Bebas Neue",Impact,sans-serif;
@@ -140,7 +140,7 @@ button{cursor:pointer}
   z-index:2;
   pointer-events:none;
 }
-.d1{left:10%;bottom:122px}.d2{left:31%;bottom:88px}.d3{right:29%;bottom:92px}.d4{right:10%;bottom:126px}
+.d1{left:10%;bottom:146px}.d2{left:31%;bottom:108px}.d3{right:29%;bottom:112px}.d4{right:10%;bottom:150px}
 
 /* ===== HEADER ===== */
 .header{
@@ -225,7 +225,7 @@ button{cursor:pointer}
   content:"";
   position:absolute;
   left:0;
-  top:18%;
+  top:50.6%;
   width:1px;
   height:64%;
   background:rgba(255,111,46,.25);
@@ -276,7 +276,7 @@ button{cursor:pointer}
   z-index:10;
   overflow:hidden;
   perspective:1500px;
-  perspective-origin:50% 64%;
+  perspective-origin:50% 58%;
 }
 .carousel{
   position:absolute;
@@ -288,15 +288,15 @@ button{cursor:pointer}
 .card{
   position:absolute;
   left:50%;
-  top:61.8%;
+  top:50.6%;
   width:var(--card-w);
   height:var(--card-h);
   min-width:420px;
   min-height:500px;
   max-width:540px;
   max-height:610px;
-  margin-left:calc(var(--card-w) / -2);
-  margin-top:calc(var(--card-h) / -2);
+  margin-left:0;
+  margin-top:0;
   border-radius:24px;
   border:1.5px solid var(--line);
   background:
@@ -464,6 +464,8 @@ button{cursor:pointer}
 .card:not(.is-center) .card-copy p{font-size:.82rem}
 .card:not(.is-center) .card-title{font-size:2.7rem}
 
+.card:not(.is-center) .card-media{max-height:170px}
+.card.is-center .card-media{min-height:230px}
 /* ===== PHOTO-LIKE CSS SCENES ===== */
 .scene-build{
   background:
@@ -742,10 +744,10 @@ button{cursor:pointer}
 .bottom-countdown{
   position:fixed;
   left:50%;
-  bottom:74px;
+  bottom:76px;
   transform:translateX(-50%);
-  width:min(300px,66vw);
-  height:62px;
+  width:min(285px,64vw);
+  height:54px;
   z-index:18;
   display:grid;
   place-items:center;
@@ -784,23 +786,23 @@ button{cursor:pointer}
 }
 .bottom-row span{
   display:grid;
-  min-width:38px;
+  min-width:34px;
 }
 .bottom-row b{
   font-family:var(--font-head);
-  font-size:1.34rem;
+  font-size:1.22rem;
   line-height:1;
   color:white;
 }
 .bottom-row small{
   color:var(--dim);
-  font-size:.38rem;
+  font-size:.34rem;
   margin-top:3px;
 }
 .bottom-row i{
   font-family:var(--font-head);
   color:var(--orange);
-  font-size:1.25rem;
+  font-size:1.05rem;
   font-style:normal;
   line-height:1.05;
   opacity:.72;
@@ -1289,6 +1291,7 @@ button{cursor:pointer}
   </div>
 </div>
 
+<!-- QA: V13 removes negative margin double-centering; carousel cards use transform centering only. -->
 <script>
 const targetDate = new Date("2026-07-04T09:00:00");
 function pad(v){ return String(v).padStart(2,"0"); }

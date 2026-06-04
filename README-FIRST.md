@@ -1,15 +1,20 @@
-# DFO Lock Spec V12 — Lowered Cards + Countdown
+# DFO Lock Spec V13 — Real Anchor Fix
 
 Upload:
 - index.html
 - .nojekyll
 
-Changes from V11:
-- Card carousel moved down aggressively: top is now 61.8%
-- Perspective moved down so cards sit closer to the glowing floor
-- Bottom countdown ring moved down to sit just above footer
-- Bottom countdown ring made smaller so it does not overlap the floor rings
-- Demo card keeps the real YouTube thumbnail wall
-- Exactly 5 cards
+What was actually broken:
+Earlier versions double-centered the carousel cards using both negative margins and translate(-50%, -50%).
+That made top/position changes behave unpredictably and caused cards to look like they were floating/cut off.
+
+V13 fixes:
+- Removed negative margin centering from cards
+- Uses transform centering only
+- Repositioned carousel to 50.6% with correct math
+- Moved large floor rings up
+- Moved the small bottom countdown down and made it smaller
+- Kept exactly 5 cards
+- Demo Videos starts centered
 - No canvas fireworks
 - No giant center DFO block
