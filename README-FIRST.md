@@ -1,10 +1,10 @@
-# DFO Carousel Gradient Showpiece V3
+# DFO Carousel Glow Showpiece V4
 
-A code-built version of the approved mockup direction without using the mockup as a flat background.
-
-## Includes
-- 3D carousel row
-- glow/firework background system
-- central mortar shell countdown
+This version adds the missing glow architecture:
+- stronger orange rim lights
+- reflective wet floor
+- glowing orbit rings
+- bloom effects
+- spark points
+- deeper photo-style panel visuals
 - red line location icons with no background
-- detail sections for demos, locations, and contact
