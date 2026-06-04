@@ -1,1 +1,1 @@
-Add real tent/showroom/firework visuals here.
+Drop real DFO logo/photos here later.
