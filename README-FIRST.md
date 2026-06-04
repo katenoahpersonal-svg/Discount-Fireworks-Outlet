@@ -1,27 +1,27 @@
-# Discount Fireworks Outlet – Grand Finale Event V10
+# Discount Fireworks Outlet – Grand Finale Event V10.1
 
-This is a GitHub-ready static website build.
+GitHub-ready static website build.
+
+## What changed in V10.1
+
+- Fixed overlap by moving the planning CTA into natural page flow.
+- Added location pin icons to each location.
+- Added 8 auto-selected YouTube demo videos as clickable demo cards.
+- Kept the V10 base, color palette, header, countdown, and structure.
 
 ## Files included
 
-- `index.html`
-- `styles.css`
-- `script.js`
-- `.nojekyll`
-- `assets/`
+- index.html
+- styles.css
+- script.js
+- .nojekyll
+- assets/
 
-## How to upload to GitHub
+## Upload to GitHub
 
-1. Open this folder.
-2. Upload the folder contents to the root of your GitHub repository.
-3. Make sure `index.html`, `styles.css`, `script.js`, `.nojekyll`, and the `assets` folder are all in the root.
-4. Go to Settings → Pages.
-5. Set Pages source to your main branch/root.
-6. Save and wait for GitHub Pages to publish.
+Upload the contents of this folder to the root of the repository:
+`index.html`, `styles.css`, `script.js`, `.nojekyll`, `README-FIRST.md`, and `assets/`.
 
-## Notes
+## Video notes
 
-- Replace the DFO text logo with the real logo later if desired.
-- The featured demo screen is currently a placeholder.
-- You can embed a YouTube iframe in the `.video-frame` area.
-- Location buttons already point to Google Maps searches.
+The demo videos are public YouTube embeds. Replace any video ID in `index.html` with your preferred DFO/product demos later.

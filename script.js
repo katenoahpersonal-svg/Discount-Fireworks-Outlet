@@ -29,9 +29,22 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-document.querySelectorAll(".demo-selector button").forEach((button) => {
+const featuredVideo = document.getElementById("featured-video");
+const featuredLabel = document.getElementById("featured-label");
+
+document.querySelectorAll(".demo-card").forEach((button, index) => {
+  if (index === 0) button.classList.add("active");
+
   button.addEventListener("click", () => {
-    document.querySelectorAll(".demo-selector button").forEach((item) => item.classList.remove("active"));
+    document.querySelectorAll(".demo-card").forEach((item) => item.classList.remove("active"));
     button.classList.add("active");
+
+    const videoId = button.dataset.video;
+    const title = button.dataset.title;
+    const label = button.dataset.label;
+
+    featuredVideo.src = `https://www.youtube.com/embed/${videoId}`;
+    featuredVideo.title = `${title} firework demo`;
+    featuredLabel.textContent = label;
   });
 });
