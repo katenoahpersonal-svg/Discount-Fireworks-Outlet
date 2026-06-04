@@ -1,35 +1,17 @@
-# Discount Fireworks Outlet — Grand Finale Burst V6
+# Discount Fireworks Outlet — Grand Finale Show V7
 
-This version resets back toward the stronger V1 direction, keeps the electric blue DFO energy, and rebuilds the homepage as an immersive firework-burst launch deck instead of stacked sections.
+Upload the contents of this folder to the root of your GitHub Pages repository:
 
-## Files to upload to GitHub Pages
+- index.html
+- styles.css
+- script.js
+- .nojekyll
+- assets folder
 
-Upload these files/folders into the root of your GitHub repository:
+This version is built as one immersive fireworks-show environment with the demo video screen as the centerpiece, integrated locations, contact CTA, and a horizontal America 250 countdown in the header.
 
-- `index.html`
-- `styles.css`
-- `script.js`
-- `.nojekyll`
-- `README-FIRST.md`
-- `assets/`
-
-Do not upload only the ZIP file. GitHub Pages needs the actual files in the repo root.
-
-## What changed in V6
-
-- Everything except the video theater is combined into one immersive top experience.
-- The background returns to the stronger electric blue/fireworks direction.
-- The page now feels like everything is radiating out of one firework launch core.
-- Locations, directions, hero copy, 250 mention, and contact CTA live together.
-- The video section is separate and uses the stronger original demo-theater concept.
-- America 250 lives in the header as a horizontal countdown clock.
-
-## Editing demo videos
-
-Open `index.html` and find the `.demo-card` buttons.
-Replace each `data-video` URL with the correct YouTube embed URL.
+## Video swaps
+In `index.html`, replace the YouTube video IDs in the `data-video` attributes with the actual demo IDs.
 
 Example:
-`https://www.youtube.com/embed/YOUTUBE_VIDEO_ID`
-
-The first featured video is inside the iframe with ID `featuredVideo`.
+`data-video="R3mAzPDToPQ"`
