@@ -24,7 +24,7 @@
   --line:rgba(255,111,46,.76);
   --line-soft:rgba(255,111,46,.28);
   --card-w:min(520px,31vw);
-  --card-h:min(590px,calc(100vh - 286px));
+  --card-h:clamp(500px,58vh,610px);
   --side-x:min(24vw,392px);
   --far-x:min(43vw,680px);
   --font-head:"Bebas Neue",Impact,sans-serif;
@@ -78,7 +78,7 @@ button{cursor:pointer}
 .bloom-right{width:58vw;height:30vw;right:-20vw;top:25vh;background:rgba(255,76,45,.23)}
 .horizon{
   position:fixed;
-  left:0;right:0;bottom:143px;
+  left:0;right:0;bottom:154px;
   z-index:2;
   height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,196,105,.85),transparent);
@@ -103,16 +103,16 @@ button{cursor:pointer}
   pointer-events:none;
 }
 .orbit-back{
-  bottom:107px;
-  width:min(1450px,86vw);
-  height:178px;
+  bottom:132px;
+  width:min(1420px,84vw);
+  height:172px;
   border:1px solid rgba(255,111,46,.42);
   box-shadow:0 0 24px rgba(255,111,46,.34);
 }
 .orbit-front{
-  bottom:54px;
-  width:min(1320px,80vw);
-  height:158px;
+  bottom:78px;
+  width:min(1260px,76vw);
+  height:145px;
   border:1.5px solid rgba(255,111,46,.82);
   box-shadow:
     0 0 16px rgba(255,111,46,.86),
@@ -127,7 +127,20 @@ button{cursor:pointer}
   background:var(--orange);
   box-shadow:0 0 20px 7px rgba(255,111,46,.72);
 }
-.d1{left:10%;bottom:107px}.d2{left:31%;bottom:74px}.d3{right:29%;bottom:80px}.d4{right:10%;bottom:112px}
+.carousel-seat-glow{
+  position:fixed;
+  left:50%;
+  bottom:120px;
+  width:min(980px,68vw);
+  height:170px;
+  transform:translateX(-50%) perspective(700px) rotateX(72deg);
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,111,46,.18),rgba(255,111,46,.06) 38%,transparent 70%);
+  filter:blur(10px);
+  z-index:2;
+  pointer-events:none;
+}
+.d1{left:10%;bottom:132px}.d2{left:31%;bottom:96px}.d3{right:29%;bottom:100px}.d4{right:10%;bottom:136px}
 
 /* ===== HEADER ===== */
 .header{
@@ -252,7 +265,7 @@ button{cursor:pointer}
   z-index:10;
   overflow:hidden;
   perspective:1500px;
-  perspective-origin:50% 52%;
+  perspective-origin:50% 58%;
 }
 .carousel{
   position:absolute;
@@ -264,7 +277,7 @@ button{cursor:pointer}
 .card{
   position:absolute;
   left:50%;
-  top:45.3%;
+  top:54.5%;
   width:var(--card-w);
   height:var(--card-h);
   min-width:420px;
@@ -313,6 +326,18 @@ button{cursor:pointer}
   mix-blend-mode:screen;
   background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
   background-size:8px 8px;
+}
+.card .ground-glow{
+  position:absolute;
+  left:12%;
+  right:12%;
+  bottom:-14px;
+  height:28px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(255,111,46,.55),transparent 68%);
+  filter:blur(8px);
+  opacity:.72;
+  z-index:0;
 }
 .card-eyebrow{
   position:relative;
@@ -612,10 +637,10 @@ button{cursor:pointer}
 .bottom-countdown{
   position:fixed;
   left:50%;
-  bottom:78px;
+  bottom:84px;
   transform:translateX(-50%);
-  width:min(390px,72vw);
-  height:92px;
+  width:min(330px,68vw);
+  height:78px;
   z-index:18;
   display:grid;
   place-items:center;
@@ -654,11 +679,11 @@ button{cursor:pointer}
 }
 .bottom-row span{
   display:grid;
-  min-width:48px;
+  min-width:42px;
 }
 .bottom-row b{
   font-family:var(--font-head);
-  font-size:1.75rem;
+  font-size:1.55rem;
   line-height:1;
   color:white;
 }
@@ -957,6 +982,7 @@ button{cursor:pointer}
 <span class="floor-dot d2"></span>
 <span class="floor-dot d3"></span>
 <span class="floor-dot d4"></span>
+<span class="carousel-seat-glow" aria-hidden="true"></span>
 
 <header class="header">
   <a class="logo" href="#" data-rotate="videos" aria-label="Discount Fireworks Outlet Home">
@@ -985,7 +1011,7 @@ button{cursor:pointer}
 <main class="stage">
   <section class="carousel" aria-label="Discount Fireworks Outlet Carousel">
 
-    <article class="card" data-card="build">
+    <article class="card" data-card="build"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">Plan Like a Pro</p>
       <h2 class="card-title">Build Your Show</h2>
       <div class="card-media scene-build"><span class="table"></span></div>
@@ -995,7 +1021,7 @@ button{cursor:pointer}
       </div>
     </article>
 
-    <article class="card" data-card="locations">
+    <article class="card" data-card="locations"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">4 Great Spots</p>
       <h2 class="card-title">Locations</h2>
       <div class="locations-card-inner">
@@ -1022,7 +1048,7 @@ button{cursor:pointer}
       </div>
     </article>
 
-    <article class="card" data-card="videos">
+    <article class="card" data-card="videos"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">Demo Videos</p>
       <h1 class="card-title">Preview the Boom Before You Buy</h1>
       <div class="card-media scene-tent">
@@ -1039,7 +1065,7 @@ button{cursor:pointer}
       </div>
     </article>
 
-    <article class="card" data-card="directions">
+    <article class="card" data-card="directions"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">Easy to Find</p>
       <h2 class="card-title">Get Directions</h2>
       <div class="card-media scene-road">
@@ -1053,7 +1079,7 @@ button{cursor:pointer}
       </div>
     </article>
 
-    <article class="card" data-card="contact">
+    <article class="card" data-card="contact"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">We’re Here to Help</p>
       <h2 class="card-title">Contact Us</h2>
       <div class="card-media scene-contact">

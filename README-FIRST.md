@@ -1,15 +1,15 @@
-# DFO Lock Spec V9
+# DFO Lock Spec V10 — Anchored Carousel
 
-Upload these two files to your GitHub repo root:
+Upload these two files:
 - index.html
 - .nojekyll
 
-This version follows the lock spec:
-- exactly 5 carousel cards
-- Demo Videos starts centered
-- no giant DFO center object
-- no extra sixth card
+Fix from V9:
+- carousel card row moved down so cards do not float under the header
+- glowing floor rings moved up to visually anchor the cards
+- bottom countdown ring tightened smaller
+- added subtle seat glow under carousel
+- kept exactly 5 cards
 - no canvas fireworks
-- small bottom countdown ring only
-- filled location details and modal actions
-- CSS and JS embedded in index.html
+- no giant center DFO block
+- Demo Videos still starts centered
