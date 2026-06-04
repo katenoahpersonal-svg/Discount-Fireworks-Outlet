@@ -1,16 +1,15 @@
-# DFO – Walk the Fireworks Tent
+# DFO – Immersive Tent Showroom
 
-GitHub-ready immersive scroll-snap concept.
+GitHub-ready fake-3D showroom concept.
 
-## Concept
-A luxury fireworks tent/showroom walkthrough:
+## Scenes
 1. Tent Entrance
 2. Demo Wall
-3. Launch Counter / Locations
-4. Finale Desk / Contact
+3. Launch Counter
+4. Finale Desk
 
 ## Upload
-Upload everything inside this folder to the root of your GitHub repository:
+Upload all contents to GitHub repo root:
 - index.html
 - styles.css
 - script.js
@@ -18,5 +17,5 @@ Upload everything inside this folder to the root of your GitHub repository:
 - README-FIRST.md
 - assets/
 
-## Notes
-The backgrounds are CSS atmospheric placeholders so it works immediately on GitHub. Add real firework/tent photography or video loops into the assets folder later for a more realistic final result.
+## Note
+This version uses CSS perspective geometry to fake a room/walkthrough experience. Add real photo/video backgrounds later inside assets for an even more realistic showroom.

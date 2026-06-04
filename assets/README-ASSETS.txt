@@ -1,1 +1,1 @@
-Add tent entrance, demo wall, location counter, and finale desk imagery/video here.
+Add real tent/showroom/firework visuals here.
