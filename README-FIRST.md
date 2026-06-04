@@ -1,11 +1,20 @@
-# DFO Electric Carousel Showpiece V2
+# DFO Mockup-Identical Hero Build
 
-Closer to the approved mockup:
-- wider luxury carousel layout
-- smaller, cleaner header
-- central hero panel with tent/showroom visual
-- side cards visible in a curved 3D row
-- red line location icons with no background container
-- rotating arrows and drag interaction
+This version uses the approved mockup image as the fullscreen hero so the first screen matches the visual direction as closely as possible.
 
-Upload all folder contents to GitHub root.
+## Files included
+- index.html
+- styles.css
+- script.js
+- .nojekyll
+- README-FIRST.md
+- assets/dfo-approved-mockup.png
+
+## Upload
+Upload all contents to the root of your GitHub repository.
+
+## Notes
+- The hero uses the mockup image as a background/artboard.
+- Transparent hotspots are layered over the navigation and buttons.
+- Live countdown numbers are layered over the countdown areas.
+- Functional demo, location, and contact sections are below the hero.
