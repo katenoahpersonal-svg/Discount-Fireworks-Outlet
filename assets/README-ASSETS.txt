@@ -1,1 +1,1 @@
-Add real DFO logo/firework/tent images here later.
+Add real DFO logo/photo assets here later.
