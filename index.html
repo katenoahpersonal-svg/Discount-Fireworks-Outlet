@@ -24,7 +24,7 @@
   --line:rgba(255,111,46,.76);
   --line-soft:rgba(255,111,46,.28);
   --card-w:min(520px,31vw);
-  --card-h:clamp(520px,58vh,600px);
+  --card-h:clamp(500px,55vh,575px);
   --side-x:min(24vw,392px);
   --far-x:min(43vw,680px);
   --font-head:"Bebas Neue",Impact,sans-serif;
@@ -130,9 +130,9 @@ button{cursor:pointer}
 .carousel-seat-glow{
   position:fixed;
   left:50%;
-  bottom:120px;
-  width:min(980px,68vw);
-  height:170px;
+  bottom:112px;
+  width:min(900px,64vw);
+  height:140px;
   transform:translateX(-50%) perspective(700px) rotateX(72deg);
   border-radius:50%;
   background:radial-gradient(ellipse,rgba(255,111,46,.18),rgba(255,111,46,.06) 38%,transparent 70%);
@@ -140,7 +140,7 @@ button{cursor:pointer}
   z-index:2;
   pointer-events:none;
 }
-.d1{left:10%;bottom:132px}.d2{left:31%;bottom:96px}.d3{right:29%;bottom:100px}.d4{right:10%;bottom:136px}
+.d1{left:10%;bottom:122px}.d2{left:31%;bottom:88px}.d3{right:29%;bottom:92px}.d4{right:10%;bottom:126px}
 
 /* ===== HEADER ===== */
 .header{
@@ -168,7 +168,7 @@ button{cursor:pointer}
 .logo-dfo{
   position:relative;
   font-family:var(--font-head);
-  font-size:4.35rem;
+  font-size:4.05rem;
   line-height:.78;
   letter-spacing:-.01em;
   color:var(--red);
@@ -194,8 +194,8 @@ button{cursor:pointer}
   pointer-events:none;
 }
 .logo-sub{
-  font-size:1.03rem;
-  line-height:.96;
+  font-size:1.02rem;
+  line-height:.94;
   font-weight:900;
   letter-spacing:.045em;
   color:rgba(255,255,255,.92);
@@ -276,7 +276,7 @@ button{cursor:pointer}
   z-index:10;
   overflow:hidden;
   perspective:1500px;
-  perspective-origin:50% 58%;
+  perspective-origin:50% 64%;
 }
 .carousel{
   position:absolute;
@@ -288,7 +288,7 @@ button{cursor:pointer}
 .card{
   position:absolute;
   left:50%;
-  top:50.8%;
+  top:61.8%;
   width:var(--card-w);
   height:var(--card-h);
   min-width:420px;
@@ -484,7 +484,7 @@ button{cursor:pointer}
   position:absolute;
   left:18%;right:18%;bottom:18px;
   height:45px;
-  border-radius:9px;
+  border-radius:10px;
   background:linear-gradient(90deg,#ff4f38,#0b34a0,#ff4f38);
   box-shadow:0 0 22px rgba(255,80,50,.32);
   z-index:2;
@@ -600,7 +600,7 @@ button{cursor:pointer}
 /* ===== REAL DEMO VIDEO PREVIEW WALL ON CENTER CARD ===== */
 .video-preview-scene{
   display:grid;
-  grid-template-rows:1fr 62px;
+  grid-template-rows:1fr 70px;
   gap:10px;
   padding:12px;
   background:
@@ -637,6 +637,7 @@ button{cursor:pointer}
   box-shadow:0 0 30px rgba(255,111,46,.22), inset 0 -70px 90px rgba(0,0,0,.5);
   border:1px solid rgba(255,255,255,.12);
 }
+.swap-note{position:absolute;right:14px;bottom:12px;color:rgba(255,255,255,.78);font-size:.56rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;z-index:3}
 .video-feature::before{
   content:"";
   position:absolute;
@@ -674,11 +675,11 @@ button{cursor:pointer}
   z-index:12;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:9px;
+  gap:10px;
 }
 .video-thumbs span{
   display:block;
-  border-radius:9px;
+  border-radius:10px;
   background-image:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45)),var(--thumb);
   background-size:cover;
   background-position:center;
@@ -741,10 +742,10 @@ button{cursor:pointer}
 .bottom-countdown{
   position:fixed;
   left:50%;
-  bottom:84px;
+  bottom:74px;
   transform:translateX(-50%);
-  width:min(330px,68vw);
-  height:78px;
+  width:min(300px,66vw);
+  height:62px;
   z-index:18;
   display:grid;
   place-items:center;
@@ -783,17 +784,17 @@ button{cursor:pointer}
 }
 .bottom-row span{
   display:grid;
-  min-width:42px;
+  min-width:38px;
 }
 .bottom-row b{
   font-family:var(--font-head);
-  font-size:1.55rem;
+  font-size:1.34rem;
   line-height:1;
   color:white;
 }
 .bottom-row small{
   color:var(--dim);
-  font-size:.45rem;
+  font-size:.38rem;
   margin-top:3px;
 }
 .bottom-row i{
@@ -1158,7 +1159,7 @@ button{cursor:pointer}
       <div class="card-media video-preview-scene">
         <div class="video-feature" style="--thumb:url('https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg')">
           <span class="play-orb">▶</span>
-          <span class="video-tag">Featured Demo</span>
+          <span class="video-tag">Featured Demo</span><span class="swap-note">Click Watch Videos for all 6 demos</span>
         </div>
         <div class="video-thumbs" aria-hidden="true">
           <span style="--thumb:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>

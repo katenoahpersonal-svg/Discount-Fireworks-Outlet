@@ -1,15 +1,15 @@
-# DFO Lock Spec V11 — Video Wall + Logo Fix
+# DFO Lock Spec V12 — Lowered Cards + Countdown
 
 Upload:
 - index.html
 - .nojekyll
 
-Fixes from V10:
-- Replaced fake ugly video graphic with actual YouTube thumbnail preview wall on the center card
-- Restored the earlier demo video IDs in the modal
-- Removed bad placeholder video
-- Adjusted the DFO logo lockup closer to the reference
-- Kept exactly 5 cards
+Changes from V11:
+- Card carousel moved down aggressively: top is now 61.8%
+- Perspective moved down so cards sit closer to the glowing floor
+- Bottom countdown ring moved down to sit just above footer
+- Bottom countdown ring made smaller so it does not overlap the floor rings
+- Demo card keeps the real YouTube thumbnail wall
+- Exactly 5 cards
 - No canvas fireworks
-- No giant center DFO object
-- Demo Videos starts centered
+- No giant center DFO block
