@@ -4,19 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Discount Fireworks Outlet — America's 250th</title>
+<meta name="description" content="Discount Fireworks Outlet: four Iowa locations, firework demo videos, directions, and Fourth of July show planning.">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#03050d;
   --ink:#ffffff;
-  --muted:rgba(255,255,255,.62);
-  --dim:rgba(255,255,255,.38);
+  --muted:rgba(255,255,255,.66);
+  --dim:rgba(255,255,255,.42);
   --red:#f03424;
   --orange:#ff6f2e;
   --amber:#ffbe63;
   --gold:#ffd56a;
   --navy:#061849;
-  --line:rgba(255,111,46,.72);
+  --line:rgba(255,111,46,.74);
   --line-soft:rgba(255,111,46,.28);
   --glow:rgba(255,88,30,.55);
   --font-head:"Bebas Neue", Impact, sans-serif;
@@ -27,14 +28,14 @@ html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--fo
 button,a{font-family:inherit}
 #c{position:fixed;inset:0;z-index:0;width:100%;height:100%}
 
-/* fixed cinematic atmosphere */
+/* atmosphere */
 .sky-grade{
   position:fixed;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(circle at 50% 22%,rgba(255,99,39,.22),transparent 18%),
-    radial-gradient(circle at 12% 48%,rgba(21,76,205,.32),transparent 34%),
+    radial-gradient(circle at 50% 20%,rgba(255,99,39,.24),transparent 18%),
+    radial-gradient(circle at 12% 48%,rgba(21,76,205,.36),transparent 34%),
     radial-gradient(circle at 88% 48%,rgba(66,34,125,.34),transparent 31%),
-    linear-gradient(180deg,rgba(1,2,8,.45),rgba(2,4,14,.15) 36%,rgba(1,2,8,.72) 100%);
+    linear-gradient(180deg,rgba(1,2,8,.45),rgba(2,4,14,.12) 36%,rgba(1,2,8,.76) 100%);
 }
 .star-noise{
   position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.16;
@@ -42,9 +43,9 @@ button,a{font-family:inherit}
   background-size:88px 88px;
 }
 .floor-fade{
-  position:fixed;left:0;right:0;bottom:0;height:38vh;z-index:3;pointer-events:none;
+  position:fixed;left:0;right:0;bottom:0;height:39vh;z-index:3;pointer-events:none;
   background:
-    radial-gradient(ellipse at 50% 0%,rgba(255,105,46,.14),transparent 48%),
+    radial-gradient(ellipse at 50% 0%,rgba(255,105,46,.15),transparent 48%),
     linear-gradient(180deg,transparent,rgba(2,3,10,.9));
 }
 .horizon-line{
@@ -67,7 +68,7 @@ button,a{font-family:inherit}
   position:fixed;top:0;left:0;right:0;z-index:100;height:88px;
   display:grid;grid-template-columns:280px 1fr 520px;align-items:center;gap:18px;
   padding:0 28px;
-  background:rgba(2,4,13,.86);backdrop-filter:blur(14px);
+  background:rgba(2,4,13,.88);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(255,111,46,.19);
 }
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:white;text-transform:uppercase}
@@ -86,7 +87,7 @@ button,a{font-family:inherit}
 .hc-lab{font-size:.54rem;color:var(--orange);letter-spacing:.25em;margin-top:3px;font-weight:700}
 .hdr-nav{display:flex;align-items:center;justify-content:flex-end;gap:28px;text-transform:uppercase}
 .hdr-nav a,.hdr-nav button{
-  color:rgba(255,255,255,.7);text-decoration:none;background:none;border:0;cursor:pointer;
+  color:rgba(255,255,255,.72);text-decoration:none;background:none;border:0;cursor:pointer;
   letter-spacing:.22em;font-size:.72rem;font-weight:700;
 }
 .hdr-nav a:hover,.hdr-nav button:hover{color:white}
@@ -95,7 +96,7 @@ button,a{font-family:inherit}
   box-shadow:0 0 26px rgba(255,111,46,.3), inset 0 0 18px rgba(255,111,46,.07);
 }
 
-/* main carousel stage */
+/* stage */
 .stage{
   position:fixed;left:0;right:0;top:88px;bottom:74px;z-index:20;
   perspective:1260px;perspective-origin:50% 57%;
@@ -106,7 +107,7 @@ button,a{font-family:inherit}
 }
 .carousel.dragging{cursor:grabbing}
 
-/* cards */
+/* Cards: all cards always exist around circle; JS positions them */
 .card{
   position:absolute;left:50%;top:49.5%;transform-origin:center center;
   width:318px;height:470px;margin-left:-159px;margin-top:-235px;
@@ -135,12 +136,12 @@ button,a{font-family:inherit}
   background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
   background-size:8px 8px;opacity:.12;mix-blend-mode:screen;z-index:1;
 }
-.card.center{
+.card.center-size{
   width:430px;height:570px;margin-left:-215px;margin-top:-285px;border-radius:22px;
 }
 .c-label{position:relative;z-index:3;padding:22px 22px 0;color:var(--orange);font-size:.67rem;letter-spacing:.36em;text-transform:uppercase;font-weight:700}
 .c-title{position:relative;z-index:3;font-family:var(--font-head);font-size:2.12rem;line-height:.98;letter-spacing:.02em;padding:8px 22px 0;text-transform:uppercase;text-shadow:0 7px 22px rgba(0,0,0,.8)}
-.card.center .c-title{font-size:3.05rem;text-align:center;padding-left:26px;padding-right:26px}
+.card.center-size .c-title{font-size:3.05rem;text-align:center;padding-left:26px;padding-right:26px}
 .c-img{
   position:relative;z-index:2;flex:1;margin:16px 16px 0;border-radius:11px;overflow:hidden;min-height:0;
   border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 -80px 90px rgba(0,0,0,.72),0 0 34px rgba(255,111,46,.14);
@@ -150,7 +151,7 @@ button,a{font-family:inherit}
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,transparent 45%,rgba(3,4,13,.82));
 }
-.card.center .c-img{margin:18px 18px 0;border-radius:15px}
+.card.center-size .c-img{margin:18px 18px 0;border-radius:15px}
 .c-body{position:relative;z-index:3;padding:15px 22px 20px;text-align:center}
 .c-desc{font-size:.84rem;letter-spacing:.17em;line-height:1.46;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:15px}
 .c-btn{
@@ -160,7 +161,7 @@ button,a{font-family:inherit}
 }
 .c-btn.fill,.c-btn:hover{background:rgba(255,111,46,.95);color:white}
 
-/* mini scenes in cards */
+/* card interior scenes */
 .scene-tent{
   background:
     radial-gradient(circle at 50% 48%,rgba(255,85,50,.62),transparent 13%),
@@ -181,8 +182,10 @@ button,a{font-family:inherit}
 .scene-road .line.one{top:46%}.scene-road .line.two{top:55%;opacity:.55}
 .scene-booth{background:radial-gradient(circle at 50% 45%,rgba(255,98,48,.55),transparent 21%),linear-gradient(145deg,#071f69,#110512)}
 .scene-booth .booth-logo{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-family:var(--font-head);font-size:3rem;color:var(--red);text-shadow:0 0 18px rgba(255,63,47,.6);z-index:2}
+.scene-social{background:radial-gradient(circle at 48% 42%,rgba(255,98,48,.42),transparent 21%),linear-gradient(145deg,#091c63,#08030d)}
+.scene-social::before{content:"#DFO";position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font-family:var(--font-head);font-size:3.2rem;color:var(--red);text-shadow:0 0 20px rgba(255,63,47,.5);z-index:2}
 
-/* location icons: NO background boxes */
+/* location icons: no background boxes */
 .loc-pins{
   position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:28px 18px;margin:28px 22px 18px;flex:1;align-content:center;
 }
@@ -240,7 +243,7 @@ button,a{font-family:inherit}
 .ftr{
   position:fixed;bottom:0;left:0;right:0;z-index:100;height:74px;
   display:grid;grid-template-columns:300px 1fr 300px;align-items:center;padding:0 28px;
-  background:rgba(3,5,12,.86);backdrop-filter:blur(12px);border-top:1px solid rgba(255,111,46,.14)
+  background:rgba(3,5,12,.88);backdrop-filter:blur(12px);border-top:1px solid rgba(255,111,46,.14)
 }
 .ftr-promise{text-transform:uppercase;font-size:.68rem;letter-spacing:.16em;line-height:1.55}.ftr-promise b{display:block;color:var(--orange)}
 .drag-hint{display:flex;align-items:center;justify-content:center;gap:10px;text-transform:uppercase;color:var(--dim);letter-spacing:.28em;font-size:.62rem}
@@ -254,13 +257,13 @@ button,a{font-family:inherit}
   50%{filter:brightness(1.25);transform:translateX(-50%) scale(1.025)}
 }
 
-/* Hidden accessible sections for links / future expansion */
+/* modals */
 .modal-layer{
   position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);
 }
 .modal-layer.open{display:flex}
 .modal{
-  width:min(980px,92vw);max-height:84vh;overflow:auto;background:rgba(5,8,23,.96);border:1px solid rgba(255,111,46,.4);border-radius:18px;padding:28px;box-shadow:0 0 80px rgba(255,80,30,.22)
+  width:min(980px,92vw);max-height:84vh;overflow:auto;background:rgba(5,8,23,.97);border:1px solid rgba(255,111,46,.42);border-radius:18px;padding:28px;box-shadow:0 0 80px rgba(255,80,30,.22)
 }
 .modal h2{font-family:var(--font-head);font-size:3rem;text-transform:uppercase;margin-bottom:16px}
 .modal-close{position:absolute;top:24px;right:28px;background:none;border:1px solid rgba(255,111,46,.55);color:var(--orange);width:42px;height:42px;border-radius:50%;font-size:1.5rem;cursor:pointer}
@@ -270,6 +273,8 @@ button,a{font-family:inherit}
 .location-list a{display:inline-block;margin-top:12px;color:var(--gold);text-transform:uppercase;text-decoration:none;font-weight:700;letter-spacing:.12em}
 .video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .video-grid iframe{width:100%;height:260px;border:0;border-radius:14px;background:#000}
+.social-feed{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feed-card{min-height:170px;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px;background:radial-gradient(circle at 50% 30%,rgba(255,111,46,.2),transparent 28%),rgba(255,255,255,.04)}
 .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .contact-form label{display:grid;gap:8px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);font-weight:700}
 .contact-form input,.contact-form textarea{width:100%;min-height:54px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);border-radius:10px;color:white;padding:0 14px;font:inherit}
@@ -282,9 +287,9 @@ button,a{font-family:inherit}
   .hdr-nav,.social{justify-content:flex-start;flex-wrap:wrap}
   .stage{position:relative;top:auto;bottom:auto;min-height:auto;overflow:visible;padding:30px 16px;perspective:none}
   .carousel{position:relative;display:grid;gap:18px;transform-style:flat}
-  .card,.card.center{position:relative;left:auto;top:auto;margin:0;width:100%;height:auto;transform:none!important;opacity:1!important;filter:none!important}
+  .card,.card.center-size{position:relative;left:auto;top:auto;margin:0;width:100%;height:auto;transform:none!important;opacity:1!important;filter:none!important}
   .rocket-wrap,.arr,.orbit-ring{display:none}
-  .location-list,.video-grid,.contact-form{grid-template-columns:1fr}
+  .location-list,.video-grid,.contact-form,.social-feed{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -328,7 +333,7 @@ button,a{font-family:inherit}
       <div class="c-title">Build Your Show</div>
       <div class="c-img scene-build"></div>
       <div class="c-body">
-        <div class="c-desc">Get ideas. Build the perfect backyard show.</div>
+        <div class="c-desc">Tell us your budget, crowd size, and finale goals.</div>
         <button class="c-btn" data-modal="contactModal">Start Planning</button>
       </div>
     </article>
@@ -355,12 +360,12 @@ button,a{font-family:inherit}
 </svg><span>Armstrong</span></div>
       </div>
       <div class="c-body">
-        <div class="c-desc">Find a location near you.</div>
+        <div class="c-desc">Four Iowa launch points for Fourth of July season.</div>
         <button class="c-btn" data-modal="locationsModal">View Locations</button>
       </div>
     </article>
 
-    <article class="card center" data-idx="2">
+    <article class="card center-size" data-idx="2">
       <div class="c-label">Demo Videos</div>
       <div class="c-title">Preview the Boom Before You Buy</div>
       <div class="c-img scene-tent">
@@ -377,7 +382,7 @@ button,a{font-family:inherit}
       <div class="c-title">Get Directions</div>
       <div class="c-img scene-road"><span class="line one"></span><span class="line two"></span></div>
       <div class="c-body">
-        <div class="c-desc">Fast routes. Clear directions.</div>
+        <div class="c-desc">Open the nearest Iowa location in Google Maps.</div>
         <button class="c-btn" data-modal="locationsModal">Get Directions</button>
       </div>
     </article>
@@ -387,8 +392,18 @@ button,a{font-family:inherit}
       <div class="c-title">Contact Us</div>
       <div class="c-img scene-booth"><span class="booth-logo">DFO</span></div>
       <div class="c-body">
-        <div class="c-desc">Have questions? We’d love to hear from you.</div>
+        <div class="c-desc">Questions about inventory, shows, or locations?</div>
         <button class="c-btn" data-modal="contactModal">Send a Message</button>
+      </div>
+    </article>
+
+    <article class="card" data-idx="5">
+      <div class="c-label">Follow the Finale</div>
+      <div class="c-title">Social Feed</div>
+      <div class="c-img scene-social"></div>
+      <div class="c-body">
+        <div class="c-desc">Watch new demo drops and Fourth of July updates.</div>
+        <button class="c-btn" data-modal="socialModal">View Socials</button>
       </div>
     </article>
 
@@ -451,10 +466,10 @@ button,a{font-family:inherit}
     <p class="c-label">Choose Your Launch Site</p>
     <h2>Four Iowa Locations</h2>
     <div class="location-list">
-      <article><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank">Get Directions</a></article>
-      <article><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank">Get Directions</a></article>
-      <article><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank">Get Directions</a></article>
-      <article><h3>Armstrong</h3><p>101 6th St · HWY 15</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank">Get Directions</a></article>
+      <article><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86<br>Spirit Lake, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank">Get Directions</a></article>
+      <article><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86<br>Milford, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank">Get Directions</a></article>
+      <article><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW<br>Spencer, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank">Get Directions</a></article>
+      <article><h3>Armstrong</h3><p>101 6th St · HWY 15<br>Armstrong, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank">Get Directions</a></article>
     </div>
   </div>
 </div>
@@ -467,9 +482,22 @@ button,a{font-family:inherit}
     <form class="contact-form">
       <label>Name<input type="text" placeholder="Your name"></label>
       <label>Email<input type="email" placeholder="you@email.com"></label>
-      <label>Message<textarea placeholder="Tell us what kind of show you’re planning."></textarea></label>
+      <label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label>
       <button type="submit">Send Message</button>
     </form>
+  </div>
+</div>
+
+<div class="modal-layer" id="socialModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="c-label">Social Feed</p>
+    <h2>Follow the Finale</h2>
+    <div class="social-feed">
+      <div class="feed-card"><h3>Facebook</h3><p>Season updates, location reminders, and family-friendly posts.</p></div>
+      <div class="feed-card"><h3>Instagram</h3><p>Product shots, tent updates, and behind-the-scenes launch energy.</p></div>
+      <div class="feed-card"><h3>YouTube</h3><p>Firework demo videos and featured finale previews.</p></div>
+    </div>
   </div>
 </div>
 
@@ -488,7 +516,7 @@ function tick(){
 }
 tick(); setInterval(tick,1000);
 
-/* ===== cinematic canvas fireworks ===== */
+/* Fireworks engine */
 const canvas=document.getElementById("c"), ctx=canvas.getContext("2d");
 let W=0,H=0;
 function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
@@ -592,61 +620,120 @@ requestAnimationFrame(frame);
 setTimeout(()=>{for(let i=0;i<4;i++)setTimeout(()=>rockets.push(new Rocket()),i*260);},600);
 setTimeout(()=>{burst(W*.5,H*.22,[[255,200,80],[255,240,160],[255,255,255]],"chrys",1.9,.95);burst(W*.5+rand(-60,60),H*.28,pick(SCHEMES),"ring",1.3,.85);},2000);
 
-/* ===== 3D carousel engine ===== */
+/* PRODUCTION CAROUSEL: no blank scene, starts on Videos, cards always fill all 5 positions */
 const carousel=document.getElementById("carousel");
 const cards=[...carousel.querySelectorAll(".card")];
+const N=cards.length;
 const SPACING=28;
-const BASE=cards.map((_,i)=>(i-2)*SPACING);
-let offset=0,isDrag=false,dragX=0,startOff=0,vel=0,animId=null;
 const R=560;
+let active=2; // videos starts centered
+let offset=0;
+let targetOffset=0;
+let isDrag=false, dragStartX=0, dragStartOffset=0, anim=null;
 
-function applyTransforms(off){
+function mod(n,m){return ((n%m)+m)%m}
+function shortestDelta(from,to){
+  let d=to-from;
+  while(d>180)d-=360;
+  while(d<-180)d+=360;
+  return d;
+}
+function cardBaseAngle(i){
+  return (i-active)*SPACING;
+}
+function applyTransforms(extraOffset=0){
   cards.forEach((card,i)=>{
-    let ang=BASE[i]+off;
-    while(ang>180)ang-=360; while(ang<-180)ang+=360;
+    let ang=(i-active)*SPACING + extraOffset;
+    while(ang>180)ang-=360;
+    while(ang<-180)ang+=360;
     const rad=ang*Math.PI/180;
     const tx=Math.sin(rad)*R;
     const tz=(Math.cos(rad)-1)*R;
     const ry=-ang;
     const front=Math.max(0,Math.cos(rad));
     const sc=0.64+front*0.36;
-    const op=Math.abs(ang)<110?Math.max(.16,(1-Math.abs(ang)/112)):0.14;
+    const op=Math.abs(ang)<115?Math.max(.22,(1-Math.abs(ang)/120)):0.18;
     const zi=Math.round(front*100);
+    card.classList.toggle("center-size", i===active && Math.abs(extraOffset)<SPACING/2);
     card.style.transform=`translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${sc})`;
     card.style.opacity=op;
     card.style.zIndex=zi;
     card.style.pointerEvents=front>.38?"auto":"none";
-    card.style.filter=`brightness(${.43+front*.68}) saturate(${.75+front*.4})`;
+    card.style.filter=`brightness(${.46+front*.66}) saturate(${.78+front*.36})`;
   });
 }
-function snapTo(target,cb){
-  clearTimeout(animId);
-  const step=()=>{
-    const d=target-offset;
-    if(Math.abs(d)<.12){offset=target;applyTransforms(offset);cb&&cb();return;}
-    offset+=d*.13; applyTransforms(offset); animId=setTimeout(step,16);
-  };
+function setActive(newActive){
+  active=mod(newActive,N);
+  offset=0;
+  applyTransforms(0);
+}
+function animateToActive(newActive){
+  const oldActive=active;
+  let stepCount = mod(newActive-oldActive,N);
+  if(stepCount>N/2) stepCount-=N;
+  const start=0;
+  const end=-stepCount*SPACING;
+  let current=start;
+  clearTimeout(anim);
+  function step(){
+    const d=end-current;
+    if(Math.abs(d)<.18){
+      active=mod(newActive,N);
+      offset=0;
+      applyTransforms(0);
+      return;
+    }
+    current += d*.16;
+    applyTransforms(current);
+    anim=setTimeout(step,16);
+  }
   step();
 }
-function snapNearest(){snapTo(Math.round(offset/SPACING)*SPACING)}
 applyTransforms(0);
 
-const stage=document.getElementById("stage");
-stage.addEventListener("mousedown",e=>{isDrag=true;dragX=e.clientX;startOff=offset;vel=0;clearTimeout(animId);carousel.classList.add("dragging");});
-window.addEventListener("mousemove",e=>{if(!isDrag)return;const dx=e.clientX-dragX;dragX=e.clientX;vel=dx*.1;offset=startOff-dx*.12;applyTransforms(offset);});
-window.addEventListener("mouseup",()=>{if(!isDrag)return;isDrag=false;carousel.classList.remove("dragging");offset+=vel*5;applyTransforms(offset);setTimeout(snapNearest,60);});
-stage.addEventListener("touchstart",e=>{const t=e.touches[0];isDrag=true;dragX=t.clientX;startOff=offset;vel=0;clearTimeout(animId);},{passive:true});
-window.addEventListener("touchmove",e=>{if(!isDrag)return;const t=e.touches[0];const dx=t.clientX-dragX;dragX=t.clientX;vel=dx*.1;offset=startOff-dx*.12;applyTransforms(offset);},{passive:true});
-window.addEventListener("touchend",()=>{if(!isDrag)return;isDrag=false;offset+=vel*5;applyTransforms(offset);setTimeout(snapNearest,60);});
-document.getElementById("arrL").addEventListener("click",()=>snapTo(Math.round((offset-SPACING)/SPACING)*SPACING));
-document.getElementById("arrR").addEventListener("click",()=>snapTo(Math.round((offset+SPACING)/SPACING)*SPACING));
-document.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")document.getElementById("arrL").click();if(e.key==="ArrowRight")document.getElementById("arrR").click();});
+document.getElementById("arrR").addEventListener("click",()=>animateToActive(active+1));
+document.getElementById("arrL").addEventListener("click",()=>animateToActive(active-1));
+document.addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight")animateToActive(active+1);
+  if(e.key==="ArrowLeft")animateToActive(active-1);
+});
 
-const SEC_CARD={build:0,locations:1,videos:2,directions:3,contact:4};
+const stage=document.getElementById("stage");
+stage.addEventListener("mousedown",e=>{
+  isDrag=true;dragStartX=e.clientX;dragStartOffset=offset;clearTimeout(anim);carousel.classList.add("dragging");
+});
+window.addEventListener("mousemove",e=>{
+  if(!isDrag)return;
+  const dx=e.clientX-dragStartX;
+  offset=dragStartOffset+dx*.13;
+  applyTransforms(offset);
+});
+window.addEventListener("mouseup",()=>{
+  if(!isDrag)return;
+  isDrag=false;carousel.classList.remove("dragging");
+  if(offset>SPACING*.45) animateToActive(active-1);
+  else if(offset<-SPACING*.45) animateToActive(active+1);
+  else {offset=0;applyTransforms(0);}
+});
+stage.addEventListener("touchstart",e=>{
+  const t=e.touches[0];isDrag=true;dragStartX=t.clientX;dragStartOffset=offset;clearTimeout(anim);
+},{passive:true});
+window.addEventListener("touchmove",e=>{
+  if(!isDrag)return;const t=e.touches[0];const dx=t.clientX-dragStartX;offset=dragStartOffset+dx*.13;applyTransforms(offset);
+},{passive:true});
+window.addEventListener("touchend",()=>{
+  if(!isDrag)return;
+  isDrag=false;
+  if(offset>SPACING*.45) animateToActive(active-1);
+  else if(offset<-SPACING*.45) animateToActive(active+1);
+  else {offset=0;applyTransforms(0);}
+});
+
+const SEC_CARD={build:0,locations:1,videos:2,directions:3,contact:4,social:5};
 document.querySelectorAll("[data-sec]").forEach(el=>el.addEventListener("click",e=>{
   e.preventDefault();
   const idx=SEC_CARD[el.dataset.sec];
-  if(idx!=null){snapTo((idx-2)*SPACING);}
+  if(idx!=null) animateToActive(idx);
 }));
 
 /* modal logic */
@@ -660,6 +747,9 @@ document.querySelectorAll(".modal-close,.modal-layer").forEach(el=>el.addEventLi
     document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
   }
 }));
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape") document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
+});
 </script>
 </body>
 </html>
