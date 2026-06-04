@@ -1,199 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Discount Fireworks Outlet | Electric Carousel Showpiece V2</title>
-  <meta name="description" content="Discount Fireworks Outlet immersive electric carousel with demos, locations, directions, and contact." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
+name: Deploy to GitHub Pages
 
-<body>
-  <div class="night-sky" aria-hidden="true">
-    <span class="photo-firework main-firework"></span>
-    <span class="photo-firework left-firework"></span>
-    <span class="photo-firework right-firework"></span>
-    <span class="horizon-lights"></span>
-    <span class="sky-haze blue-haze"></span>
-    <span class="sky-haze red-haze"></span>
-    <span class="falling-spark spark-one"></span>
-    <span class="falling-spark spark-two"></span>
-    <span class="falling-spark spark-three"></span>
-  </div>
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
 
-  <header class="top-shell">
-    <a href="#" class="brand-mark">
-      <strong>DFO</strong>
-      <span>Discount<br>Fireworks<br>Outlet</span>
-    </a>
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-    <div class="birthday-clock">
-      <p>✦✦✦ Happy 250th Birthday, America ✦✦✦</p>
-      <div>
-        <span><b id="days">29</b>Days</span>
-        <span><b id="hours">07</b>Hours</span>
-        <span><b id="minutes">41</b>Minutes</span>
-        <span><b id="seconds">21</b>Seconds</span>
-      </div>
-    </div>
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
-    <nav>
-      <a href="#videos">Videos</a>
-      <a href="#locations">Locations</a>
-      <a href="#contact">Contact</a>
-      <a class="direction-btn" href="#locations-detail">Get Directions</a>
-    </nav>
-  </header>
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  <main class="hero-stage">
-    <button class="stage-arrow arrow-left" type="button" aria-label="Previous">‹</button>
-    <button class="stage-arrow arrow-right" type="button" aria-label="Next">›</button>
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-    <section class="carousel-stage" aria-label="DFO carousel">
-      <article class="show-card card-1 slim-card" data-card="build">
-        <p class="kicker">Plan like a pro</p>
-        <h2>Build<br>Your Show</h2>
-        <div class="card-image tent-mini"></div>
-        <p>Get ideas. Build the perfect backyard show.</p>
-        <a href="#contact">Start Planning</a>
-      </article>
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
 
-      <article id="locations" class="show-card card-2 side-card" data-card="locations">
-        <p class="kicker">4 Great Spots</p>
-        <h2>Locations</h2>
-
-        <div class="location-orbit-grid">
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Spirit Lake</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Milford</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Spencer</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Armstrong</span></div>
-        </div>
-
-        <p>Find a location near you.</p>
-        <a href="#locations-detail">View Locations</a>
-      </article>
-
-      <article id="videos" class="show-card card-3 hero-card active" data-card="videos">
-        <p class="kicker">Demo Videos</p>
-        <h1>Preview the Boom<br>Before You Buy</h1>
-
-        <div class="hero-tent-image">
-          <div class="tent-ceiling"></div>
-          <div class="tent-aisle"></div>
-          <div class="shelf shelf-left"></div>
-          <div class="shelf shelf-right"></div>
-          <div class="demo-screen">Watch Real Demos</div>
-        </div>
-
-        <p>Watch real demos. Choose your finale.</p>
-        <a href="#demo-wall">Watch Videos</a>
-      </article>
-
-      <article class="show-card card-4 side-card" data-card="directions">
-        <p class="kicker">Easy to Find</p>
-        <h2>Get<br>Directions</h2>
-        <div class="card-image road-mini"></div>
-        <p>Fast routes. Clear directions.</p>
-        <a href="#locations-detail">Get Directions</a>
-      </article>
-
-      <article id="contact" class="show-card card-5 slim-card" data-card="contact">
-        <p class="kicker">We’re here to help</p>
-        <h2>Contact<br>Us</h2>
-        <div class="card-image booth-mini"></div>
-        <p>Questions? We’d love to hear from you.</p>
-        <a href="#contact-form">Send a Message</a>
-      </article>
-    </section>
-
-    <section class="mortar-countdown" aria-label="Countdown shell">
-      <div class="shell">
-        <strong>DFO</strong>
-        <span>Discount<br>Fireworks<br>Outlet</span>
-      </div>
-      <div class="shell-clock">
-        <p>The show starts in</p>
-        <div>
-          <span><b id="days2">29</b>Days</span>
-          <span><b id="hours2">07</b>Hours</span>
-          <span><b id="minutes2">41</b>Minutes</span>
-          <span><b id="seconds2">21</b>Seconds</span>
-        </div>
-      </div>
-    </section>
-
-    <p class="drag-copy">Click and drag to rotate</p>
-  </main>
-
-  <section id="demo-wall" class="detail-section">
-    <div class="detail-heading">
-      <p class="kicker">Demo Wall</p>
-      <h2>Featured Firework Demos</h2>
-    </div>
-    <div class="demo-layout">
-      <iframe id="featured-video" src="https://www.youtube.com/embed/6kFtvmGDYSI" title="Featured firework demo video" allowfullscreen></iframe>
-      <div class="demo-list">
-        <button data-video="6kFtvmGDYSI">Top 500g Cakes</button>
-        <button data-video="kw6inOPzmOk">Aerials</button>
-        <button data-video="Qp3cQ-c910g">Loud & Proud</button>
-        <button data-video="ZXwSRSY1s44">Patriotic</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="locations-detail" class="detail-section">
-    <div class="detail-heading">
-      <p class="kicker">Locations</p>
-      <h2>Choose Your Launch Site</h2>
-    </div>
-    <div class="location-detail-grid">
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg></span><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg></span><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg></span><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.55"/>
-</svg></span><h3>Armstrong</h3><p>101 6th St · HWY 15</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-    </div>
-  </section>
-
-  <section id="contact-form" class="detail-section contact-detail">
-    <div class="detail-heading">
-      <p class="kicker">Finale Desk</p>
-      <h2>Build the Night, Then Light the Sky</h2>
-    </div>
-    <form class="contact-form">
-      <label>Name<input type="text" placeholder="Your name"></label>
-      <label>Email<input type="email" placeholder="you@email.com"></label>
-      <label>Message<textarea placeholder="Tell us what kind of show you’re planning."></textarea></label>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
