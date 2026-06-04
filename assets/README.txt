@@ -1,1 +1,1 @@
-Place the real DFO logo, location photos, demo thumbnails, and any brand assets here.
+Drop real Discount Fireworks Outlet brand assets, photos, product thumbnails, or logo files here.

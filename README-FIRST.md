@@ -1,53 +1,52 @@
-# Discount Fireworks Outlet — Grand Finale Control Deck V2
+# Discount Fireworks Outlet — Fireworks Tent V4
 
-This folder is ready to upload to GitHub Pages.
+This version is built to feel like customers are stepping inside an immersive fireworks tent/theater while keeping the page much shorter.
 
-## What changed in V2
-- Added an elevated America’s 250th countdown section inspired by the Claude screenshot, but rebuilt to match the DFO site direction.
-- Added a refined black/gold editorial moment without losing the red/blue DFO energy.
-- Added a cleaner hero, stronger “Control Deck” panel, and a simple show-builder section.
-- Kept demo videos and location directions extremely easy to access.
+## What changed in V4
 
-## Files
-- `index.html` — page structure, copy, links, and video cards
-- `styles.css` — all design styling
-- `script.js` — navigation, reveal animations, countdown, and fireworks canvas
-- `.nojekyll` — helps GitHub Pages serve the site cleanly
-- `assets/` — place real logo/photos here later
+- The top experience is now one wide “fireworks tent” room instead of a long stacked page.
+- Demo videos live on the left wall.
+- The headline and main calls-to-action sit in the center aisle.
+- Locations live on the right wall with direct Google Maps links.
+- The countdown is now a legitimate horizontal timeclock.
+- The 250 Years of Independence moment is separated into its own big premium section.
+- Overall scrolling is dramatically reduced.
 
-## GitHub Pages upload steps
-1. Open your GitHub repository.
-2. Click **Add file** → **Upload files**.
-3. Drag the CONTENTS of this folder into GitHub, not the zip itself.
-4. Commit the changes.
-5. Go to **Settings** → **Pages**.
-6. Set source to `main` branch and `/root`.
-7. Wait a minute and refresh the GitHub Pages link.
+## GitHub upload steps
+
+Upload the contents of this folder to the root of your GitHub repository:
+
+- index.html
+- styles.css
+- script.js
+- .nojekyll
+- README-FIRST.md
+- assets folder
+
+Do not upload only the zip file.
 
 ## Easy edits
-### Replace demo videos
-In `index.html`, find each `.demo-card` button and replace the `data-video` value with the YouTube embed URL.
 
-Example:
-`https://www.youtube.com/embed/YOUR_VIDEO_ID`
+### Demo videos
 
-Also update:
-- `data-title`
-- `data-description`
-- the visible firework name inside the card
+In `index.html`, search for `data-video=` and replace the YouTube embed links with the real firework demo embed links.
 
-### Change the countdown date
-In `index.html`, find:
-`data-countdown="2026-07-04T00:00:00"`
+Example embed format:
 
-### Change contact email
-In `index.html`, find:
-`mailto:info@discountfireworksoutlet.com`
+https://www.youtube.com/embed/VIDEO_ID
 
-Replace with the correct email address.
+### Contact email
 
-### Add the real logo
-Place the logo in `/assets`, then replace the text logo markup in the header/footer if desired.
+In `index.html`, search for:
 
+info@discountfireworksoutlet.com
 
-V3 note: the America 250th section was rebuilt into a wider desktop layout with less vertical scrolling and a cleaner countdown/show-poster composition.
+Replace it with the correct email address.
+
+### Countdown date
+
+In `index.html`, search for:
+
+data-countdown="2026-07-04T00:00:00"
+
+Change the date/time if needed.
