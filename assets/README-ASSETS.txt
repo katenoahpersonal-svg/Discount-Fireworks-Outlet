@@ -1,1 +1,1 @@
-Drop real DFO logo/photos here later.
+Add real DFO logo/firework/tent images here later.

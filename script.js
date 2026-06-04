@@ -8,31 +8,29 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
-const positions=["panel-far-left","panel-left","panel-main","panel-right","panel-far-right"];
-const panels=[...document.querySelectorAll(".carousel .panel")];
+const positions=["card-1","card-2","card-3","card-4","card-5"];
+const cards=[...document.querySelectorAll(".carousel-stage .show-card")];
 let active=2;
 
 function render(){
-  panels.forEach((panel,i)=>{
-    panel.classList.remove("panel-far-left","panel-left","panel-main","panel-right","panel-far-right","active");
-    const offset=(i-active+panels.length)%panels.length;
+  cards.forEach((card,i)=>{
+    card.classList.remove("card-1","card-2","card-3","card-4","card-5","hero-card","side-card","slim-card","active");
+    const offset=(i-active+cards.length)%cards.length;
     const mapped=offset===0?2:offset===1?3:offset===2?4:offset===3?0:1;
-    panel.classList.add(positions[mapped]);
-    if(mapped===2) panel.classList.add("active");
+    card.classList.add(positions[mapped]);
+    if(mapped===2){card.classList.add("hero-card","active")}
+    else if(mapped===1 || mapped===3){card.classList.add("side-card")}
+    else{card.classList.add("slim-card")}
   });
 }
-document.querySelector(".arrow-right").addEventListener("click",()=>{active=(active+1)%panels.length;render();});
-document.querySelector(".arrow-left").addEventListener("click",()=>{active=(active-1+panels.length)%panels.length;render();});
-
+document.querySelector(".arrow-right").addEventListener("click",()=>{active=(active+1)%cards.length;render();});
+document.querySelector(".arrow-left").addEventListener("click",()=>{active=(active-1+cards.length)%cards.length;render();});
 let startX=null;
-document.querySelector(".carousel").addEventListener("pointerdown",e=>{startX=e.clientX;});
-document.querySelector(".carousel").addEventListener("pointerup",e=>{
+document.querySelector(".carousel-stage").addEventListener("pointerdown",e=>{startX=e.clientX});
+document.querySelector(".carousel-stage").addEventListener("pointerup",e=>{
   if(startX===null)return;
   const diff=e.clientX-startX;
-  if(Math.abs(diff)>40){
-    active=diff<0?(active+1)%panels.length:(active-1+panels.length)%panels.length;
-    render();
-  }
+  if(Math.abs(diff)>40){active=diff<0?(active+1)%cards.length:(active-1+cards.length)%cards.length;render();}
   startX=null;
 });
 render();

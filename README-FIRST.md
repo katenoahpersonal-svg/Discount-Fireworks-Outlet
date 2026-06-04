@@ -1,16 +1,11 @@
-# DFO – Electric Carousel Showpiece
+# DFO Electric Carousel Showpiece V2
 
-GitHub-ready rotating carousel concept inspired by the approved mockup.
+Closer to the approved mockup:
+- wider luxury carousel layout
+- smaller, cleaner header
+- central hero panel with tent/showroom visual
+- side cards visible in a curved 3D row
+- red line location icons with no background container
+- rotating arrows and drag interaction
 
-## Includes
-- index.html
-- styles.css
-- script.js
-- .nojekyll
-- README-FIRST.md
-- assets/
-
-## Notes
-- Location icons are red line vector icons with no background container.
-- Carousel panels rotate with arrows or click-drag.
-- Detail sections below provide accessible videos, locations, and contact content.
+Upload all folder contents to GitHub root.
