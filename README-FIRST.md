@@ -1,20 +1,15 @@
-# DFO Lock Spec V13 — Real Anchor Fix
+# DFO V14 — Turntable + Firecracker
 
-Upload:
+Upload these to GitHub Pages:
 - index.html
 - .nojekyll
 
-What was actually broken:
-Earlier versions double-centered the carousel cards using both negative margins and translate(-50%, -50%).
-That made top/position changes behave unpredictably and caused cards to look like they were floating/cut off.
-
-V13 fixes:
-- Removed negative margin centering from cards
-- Uses transform centering only
-- Repositioned carousel to 50.6% with correct math
-- Moved large floor rings up
-- Moved the small bottom countdown down and made it smaller
-- Kept exactly 5 cards
+Changes:
+- Exactly 5 cards: Build Your Show, Locations, Videos, Finale Favorites, Social Feed
 - Demo Videos starts centered
+- Cards lock into a circular turntable arrangement
+- Bottom countdown uses a small DFO firecracker pedestal
+- Flame is the only part intended to visually touch the lower edge of the carousel
 - No canvas fireworks
-- No giant center DFO block
+- No giant center object blocking content
+- Demos, locations, contact, social, and favorites modals included
