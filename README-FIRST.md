@@ -48,3 +48,6 @@ Replace with the correct email address.
 
 ### Add the real logo
 Place the logo in `/assets`, then replace the text logo markup in the header/footer if desired.
+
+
+V3 note: the America 250th section was rebuilt into a wider desktop layout with less vertical scrolling and a cleaner countdown/show-poster composition.
