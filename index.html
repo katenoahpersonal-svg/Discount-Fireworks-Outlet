@@ -1,219 +1,878 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Discount Fireworks Outlet | Glow Carousel Showpiece V4</title>
-  <meta name="description" content="Discount Fireworks Outlet electric glowing carousel with demos, locations, directions, and contact." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Discount Fireworks Outlet | Pixel Stage V5</title>
+<meta name="description" content="DFO Pixel Stage V5 electric carousel showpiece." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#ff3527;
+  --orange:#ff7a3b;
+  --gold:#ffd66b;
+  --white:#ffffff;
+  --blue:#082d9b;
+  --deep:#02030a;
+  --soft:rgba(255,255,255,.78);
+  --line:rgba(255,111,58,.72);
+  --card:rgba(5,8,25,.82);
+  --font-head:"Anton",Impact,sans-serif;
+  --font-body:"Inter",system-ui,sans-serif;
 
+  --stage-w: min(1920px, 100vw);
+  --hero-card-w: 520px;
+  --hero-card-h: 612px;
+  --side-card-w: 330px;
+  --side-card-h: 492px;
+  --far-card-w: 230px;
+  --far-card-h: 435px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:white;
+  background:#02030a;
+  overflow-x:hidden;
+}
+a{color:inherit}
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 14%,rgba(255,108,48,.32),transparent 16%),
+    radial-gradient(circle at 14% 40%,rgba(18,64,188,.58),transparent 35%),
+    radial-gradient(circle at 86% 42%,rgba(20,55,170,.42),transparent 32%),
+    linear-gradient(180deg,#02030a 0%,#06154d 45%,#02030a 100%);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+    radial-gradient(rgba(255,106,55,.22) 1px,transparent 1px);
+  background-size:78px 78px,113px 113px;
+  opacity:.16;
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.2),transparent 32%,rgba(0,0,0,.7)),
+    radial-gradient(ellipse at 50% 83%,rgba(255,92,43,.18),transparent 42%);
+  pointer-events:none;
+}
+.firework{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle,rgba(255,255,255,.95) 0 1px,transparent 3px),
+    repeating-conic-gradient(from 8deg,rgba(255,135,67,.95) 0 2.5deg,transparent 2.5deg 8.5deg);
+  filter:drop-shadow(0 0 25px rgba(255,106,55,.85));
+  opacity:.8;
+  animation:fireworkPulse 5s ease-in-out infinite alternate;
+}
+.firework.big{
+  width:760px;height:760px;
+  left:calc(50% - 380px);
+  top:-150px;
+}
+.firework.left{
+  width:300px;height:300px;
+  left:8%;
+  top:310px;
+  opacity:.27;
+}
+.firework.right{
+  width:370px;height:370px;
+  right:8%;
+  top:260px;
+  opacity:.32;
+}
+.bloom{
+  position:absolute;
+  pointer-events:none;
+  border-radius:50%;
+  filter:blur(70px);
+  mix-blend-mode:screen;
+}
+.bloom.center{width:560px;height:320px;left:calc(50% - 280px);top:105px;background:rgba(255,104,51,.44)}
+.bloom.left{width:70vw;height:30vw;left:-22vw;top:30vh;background:rgba(12,72,255,.38)}
+.bloom.right{width:60vw;height:30vw;right:-22vw;top:26vh;background:rgba(255,75,45,.28)}
+.horizon{
+  position:absolute;
+  left:0;right:0;bottom:162px;
+  height:2px;
+  background:linear-gradient(90deg,transparent,rgba(255,212,115,.78),transparent);
+  box-shadow:0 0 24px rgba(255,212,115,.75);
+}
+.floor{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:41vh;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(255,103,50,.16),transparent 45%),
+    linear-gradient(180deg,transparent,rgba(255,103,50,.08),rgba(0,0,0,.76));
+  box-shadow:inset 0 75px 140px rgba(255,103,50,.06);
+}
+.orbit{
+  position:absolute;
+  left:50%;
+  border:2px solid rgba(255,108,55,.78);
+  border-radius:50%;
+  transform:translateX(-50%) perspective(850px) rotateX(75deg);
+  pointer-events:none;
+}
+.orbit.back{
+  bottom:145px;
+  width:min(1450px,84vw);
+  height:185px;
+  opacity:.55;
+  box-shadow:0 0 25px rgba(255,108,55,.42);
+}
+.orbit.front{
+  bottom:84px;
+  width:min(1320px,78vw);
+  height:160px;
+  box-shadow:0 0 38px rgba(255,108,55,.65), inset 0 0 34px rgba(255,108,55,.2);
+}
+.floor-dot{
+  position:absolute;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--orange);
+  box-shadow:0 0 18px 6px rgba(255,108,55,.8);
+}
+.d1{left:10%;bottom:126px}.d2{left:31%;bottom:90px}.d3{right:30%;bottom:95px}.d4{right:10%;bottom:135px}
+
+.header{
+  position:absolute;
+  z-index:20;
+  left:0;right:0;top:0;
+  height:118px;
+  display:grid;
+  grid-template-columns:300px 1fr 510px;
+  gap:20px;
+  align-items:start;
+  padding:28px 48px 0;
+}
+.logo{
+  display:flex;
+  text-decoration:none;
+  color:white;
+  text-transform:uppercase;
+  align-items:flex-start;
+  gap:12px;
+}
+.logo-dfo{
+  font-family:var(--font-head);
+  color:var(--red);
+  font-size:4.8rem;
+  line-height:.78;
+  letter-spacing:.02em;
+  text-shadow:0 0 18px rgba(255,53,39,.55);
+}
+.logo-text{
+  font-weight:950;
+  font-size:1.13rem;
+  line-height:1;
+  letter-spacing:.05em;
+}
+.top-count{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+}
+.top-count p{
+  margin:0 0 10px;
+  font-size:.78rem;
+  font-weight:950;
+}
+.top-count .numbers{
+  display:flex;
+  justify-content:center;
+  gap:38px;
+}
+.top-count span{
+  display:grid;
+  color:var(--red);
+  font-size:.61rem;
+  font-weight:950;
+}
+.top-count b{
+  color:white;
+  font-size:2.05rem;
+  line-height:1;
+}
+.nav{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:25px;
+}
+.nav a{
+  color:white;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:.79rem;
+  font-weight:950;
+  letter-spacing:.08em;
+}
+.nav .button{
+  padding:15px 22px;
+  border:1px solid var(--orange);
+  border-radius:10px;
+  box-shadow:0 0 30px rgba(255,108,55,.38), inset 0 0 18px rgba(255,108,55,.08);
+}
+
+.stage{
+  position:relative;
+  z-index:5;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:126px 40px 135px;
+}
+.carousel{
+  position:relative;
+  width:min(1720px,96vw);
+  height:650px;
+  perspective:1900px;
+  transform-style:preserve-3d;
+}
+.card{
+  position:absolute;
+  top:50%;left:50%;
+  border-radius:28px;
+  border:1px solid rgba(255,108,55,.78);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,120,62,.18),transparent 33%),
+    linear-gradient(180deg,rgba(10,14,38,.82),rgba(3,4,16,.92));
+  box-shadow:
+    0 38px 150px rgba(0,0,0,.68),
+    0 0 40px rgba(255,84,47,.24),
+    inset 0 0 48px rgba(255,105,55,.08);
+  backdrop-filter:blur(12px);
+  text-align:center;
+  padding:30px;
+  overflow:hidden;
+  transition:transform .6s ease, opacity .6s ease, filter .6s ease;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:
+    linear-gradient(180deg,rgba(255,139,80,.38),transparent 18%,transparent 78%,rgba(255,83,45,.26)),
+    radial-gradient(circle at 50% 102%,rgba(255,107,55,.18),transparent 45%);
+  pointer-events:none;
+}
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 20%,rgba(0,0,0,.22));
+  pointer-events:none;
+}
+.main-card{
+  width:var(--hero-card-w);
+  height:var(--hero-card-h);
+  z-index:8;
+  transform:translate(-50%,-50%) translateZ(250px);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12),
+    0 0 55px rgba(255,108,55,.85),
+    0 0 135px rgba(255,108,55,.26),
+    0 38px 150px rgba(0,0,0,.68);
+}
+.side-left{
+  width:var(--side-card-w);
+  height:var(--side-card-h);
+  z-index:6;
+  opacity:.96;
+  transform:translate(-161%,-50%) rotateY(23deg) translateZ(-55px);
+}
+.side-right{
+  width:var(--side-card-w);
+  height:var(--side-card-h);
+  z-index:6;
+  opacity:.96;
+  transform:translate(61%,-50%) rotateY(-23deg) translateZ(-55px);
+}
+.far-left{
+  width:var(--far-card-w);
+  height:var(--far-card-h);
+  z-index:4;
+  opacity:.78;
+  filter:saturate(.9) brightness(.86);
+  transform:translate(-286%,-50%) rotateY(44deg) translateZ(-280px);
+}
+.far-right{
+  width:var(--far-card-w);
+  height:var(--far-card-h);
+  z-index:4;
+  opacity:.78;
+  filter:saturate(.9) brightness(.86);
+  transform:translate(186%,-50%) rotateY(-44deg) translateZ(-280px);
+}
+.kicker{
+  position:relative;
+  z-index:2;
+  color:var(--red);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:950;
+  font-size:.68rem;
+  margin:0 0 14px;
+}
+.card h1,.card h2{
+  position:relative;
+  z-index:2;
+  font-family:var(--font-head);
+  text-transform:uppercase;
+  line-height:.92;
+  margin:0;
+  text-shadow:0 9px 28px rgba(0,0,0,.72);
+}
+.card h1{font-size:3rem}
+.card h2{font-size:2.35rem}
+.card p{
+  position:relative;
+  z-index:2;
+  color:var(--soft);
+  font-size:.84rem;
+  line-height:1.45;
+}
+.card a{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:0 18px;
+  border-radius:8px;
+  border:1px solid var(--orange);
+  color:white;
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:.72rem;
+  font-weight:950;
+  letter-spacing:.06em;
+  box-shadow:0 0 26px rgba(255,108,55,.36);
+}
+.visual{
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.14);
+  margin:18px 0;
+  height:160px;
+  background:#05091a;
+  box-shadow:inset 0 -65px 85px rgba(0,0,0,.62),0 0 34px rgba(255,108,55,.17);
+}
+.main-card .visual{
+  height:260px;
+}
+.noise{
+  position:absolute;
+  inset:0;
+  opacity:.13;
+  background-image:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1px);
+  background-size:9px 9px;
+  mix-blend-mode:screen;
+}
+.tent-scene{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(255,99,54,.58),transparent 13%),
+    linear-gradient(180deg,rgba(255,255,255,.1),transparent 24%),
+    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px),
+    linear-gradient(145deg,#0b256b,#050812 60%,#17050d);
+  background-size:auto,auto,72px 72px,auto;
+}
+.tent-roof{
+  position:absolute;
+  left:8%;right:8%;top:-32%;height:56%;
+  background:
+    repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 2px,transparent 2px 38px),
+    linear-gradient(180deg,rgba(255,116,57,.34),transparent);
+  transform:perspective(520px) rotateX(68deg);
+  transform-origin:bottom;
+}
+.tent-floor{
+  position:absolute;
+  left:25%;right:25%;bottom:-16%;height:56%;
+  clip-path:polygon(28% 0,72% 0,100% 100%,0 100%);
+  background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(0,0,0,.6));
+}
+.product{
+  position:absolute;
+  bottom:20px;
+  width:80px;height:92px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#ff5038,#08267b);
+  box-shadow:0 0 22px rgba(255,80,50,.3);
+}
+.product.left{left:24px}
+.product.right{right:24px}
+.screen-spark{
+  position:absolute;
+  left:50%;top:41%;
+  width:62px;height:62px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(from 0deg,rgba(255,92,50,.95) 0 8deg,transparent 8deg 20deg);
+  filter:drop-shadow(0 0 20px rgba(255,92,50,.78));
+}
+.video-cta{
+  position:absolute;
+  left:50%;top:64%;
+  transform:translate(-50%,-50%);
+  width:64%;
+  padding:14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.44);
+  border:1px solid rgba(255,255,255,.18);
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:.72rem;
+}
+.build-scene{
+  background:
+    radial-gradient(circle at 50% 42%,rgba(255,214,107,.48),transparent 18%),
+    linear-gradient(145deg,#0a2b8d,#0a0714);
+}
+.road-scene{
+  background:
+    radial-gradient(circle at 70% 28%,rgba(255,220,130,.36),transparent 12%),
+    linear-gradient(145deg,#09185d,#050511);
+}
+.road-line{
+  position:absolute;
+  width:170%;
+  height:6px;
+  left:-30%;
+  background:var(--orange);
+  transform:rotate(-63deg);
+  box-shadow:0 0 18px rgba(255,105,50,.75);
+}
+.road-line.one{top:46%}
+.road-line.two{top:55%;opacity:.55}
+.booth-scene{
+  background:
+    radial-gradient(circle at 50% 45%,rgba(255,98,48,.52),transparent 21%),
+    linear-gradient(145deg,#071f69,#110512);
+}
+.booth-sign{
+  position:absolute;
+  left:50%;top:48%;
+  transform:translate(-50%,-50%);
+  font-family:var(--font-head);
+  color:var(--red);
+  font-size:2.9rem;
+}
+.location-icons{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px 18px;
+  margin:34px 0;
+}
+.location-icons div{
+  display:grid;
+  place-items:center;
+  gap:8px;
+}
+.pin-line{
+  width:50px;
+  height:50px;
+  fill:none;
+  stroke:var(--red);
+  stroke-width:1.55;
+  filter:drop-shadow(0 0 11px rgba(255,63,47,.78));
+}
+.pin-line circle{
+  fill:var(--red);
+  stroke:none;
+}
+.location-icons span{
+  text-transform:uppercase;
+  font-weight:950;
+  font-size:.7rem;
+}
+.shell-wrap{
+  position:absolute;
+  z-index:10;
+  left:50%;bottom:33px;
+  transform:translateX(-50%);
+  text-align:center;
+}
+.fuse{
+  position:absolute;
+  left:50%;top:-20px;
+  width:15px;height:15px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 20px 8px rgba(255,214,107,.86),0 0 44px rgba(255,80,46,.78);
+  transform:translateX(-50%);
+}
+.shell{
+  width:116px;height:150px;
+  margin:0 auto -8px;
+  border-radius:50px 50px 18px 18px;
+  background:linear-gradient(180deg,#1d1d1d,#050507);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 0 45px rgba(255,80,46,.5);
+  display:grid;
+  place-items:center;
+  padding:17px 10px;
+  text-transform:uppercase;
+}
+.shell strong{
+  font-family:var(--font-head);
+  color:var(--red);
+  font-size:2.45rem;
+  line-height:.8;
+}
+.shell span{
+  font-weight:950;
+  font-size:.62rem;
+  line-height:1;
+}
+.shell-clock{
+  width:365px;
+  padding:13px 18px;
+  border:1px solid rgba(255,105,50,.76);
+  border-radius:999px;
+  background:rgba(0,0,0,.45);
+  box-shadow:0 0 36px rgba(255,105,50,.48);
+}
+.shell-clock p{
+  margin:0 0 4px;
+  color:var(--soft);
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.62rem;
+}
+.shell-clock div{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+.shell-clock span{
+  display:grid;
+  color:rgba(255,255,255,.66);
+  text-transform:uppercase;
+  font-size:.56rem;
+}
+.shell-clock b{
+  color:white;
+  font-size:1.36rem;
+}
+.arrow{
+  position:absolute;
+  top:54%;
+  z-index:12;
+  width:58px;height:58px;
+  border-radius:50%;
+  border:1px solid var(--orange);
+  background:rgba(3,6,20,.52);
+  color:var(--orange);
+  font-size:3rem;
+  line-height:1;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  box-shadow:0 0 30px rgba(255,105,50,.4),inset 0 0 14px rgba(255,105,50,.1);
+}
+.left-arrow{left:40px}
+.right-arrow{right:40px}
+.hint{
+  position:absolute;
+  left:50%;bottom:10px;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.58);
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.7rem;
+}
+
+.detail{
+  width:min(1500px,92vw);
+  margin:80px auto;
+  padding:42px;
+  border-radius:30px;
+  background:rgba(3,8,26,.88);
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 38px 150px rgba(0,0,0,.66);
+}
+.detail h2{
+  font-family:var(--font-head);
+  text-transform:uppercase;
+  font-size:clamp(2.6rem,5vw,5.5rem);
+  line-height:.92;
+  margin:0 0 24px;
+}
+.demo-layout{
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  gap:18px;
+}
+.demo-layout iframe{
+  width:100%;
+  height:460px;
+  border:0;
+  border-radius:22px;
+  background:#000;
+}
+.demo-list{
+  display:grid;
+  gap:12px;
+}
+.demo-list button{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:white;
+  border-radius:18px;
+  font-weight:950;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  cursor:pointer;
+}
+.location-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.location-detail-grid article{
+  padding:22px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.05);
+}
+.location-detail-grid a{
+  color:var(--gold);
+  font-weight:950;
+  text-transform:uppercase;
+  text-decoration:none;
+}
+.contact-form{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.contact-form label{
+  display:grid;
+  gap:9px;
+  color:rgba(255,255,255,.75);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:.74rem;
+  font-weight:950;
+}
+.contact-form input,.contact-form textarea{
+  width:100%;
+  height:66px;
+  min-height:66px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  background:rgba(255,255,255,.08);
+  color:white;
+  padding:0 18px;
+  font:inherit;
+  resize:none;
+}
+.contact-form textarea{padding-top:20px}
+.contact-form button{
+  grid-column:1/-1;
+  justify-self:center;
+  width:min(460px,100%);
+  height:66px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--red),var(--orange));
+  color:white;
+  text-transform:uppercase;
+  font-weight:950;
+  letter-spacing:.05em;
+  box-shadow:0 20px 48px rgba(255,67,46,.36);
+}
+@keyframes fireworkPulse{from{transform:scale(.96);opacity:.45}to{transform:scale(1.04);opacity:.84}}
+@media(max-width:1180px){
+  .header{position:relative;grid-template-columns:1fr;padding:18px}
+  .nav,.top-count .numbers{flex-wrap:wrap}
+  .stage{padding-top:40px;min-height:auto;overflow:visible}
+  .carousel{height:auto;display:grid;gap:18px;perspective:none}
+  .card,.main-card,.side-left,.side-right,.far-left,.far-right{
+    position:relative;top:auto;left:auto;width:100%;height:auto;transform:none!important;opacity:1;
+  }
+  .shell-wrap,.arrow,.orbit{display:none}
+  .demo-layout,.location-detail-grid,.contact-form{grid-template-columns:1fr}
+}
+</style>
+</head>
 <body>
-  <div class="world" aria-hidden="true">
-    <span class="starfield"></span>
-    <span class="firework firework-main"></span>
-    <span class="firework firework-left"></span>
-    <span class="firework firework-right"></span>
-    <span class="bloom bloom-center"></span>
-    <span class="bloom bloom-blue"></span>
-    <span class="bloom bloom-red"></span>
-    <span class="light-string"></span>
-    <span class="wet-floor"></span>
-    <span class="floor-ring ring-back"></span>
-    <span class="floor-ring ring-front"></span>
-    <span class="floor-spark s1"></span>
-    <span class="floor-spark s2"></span>
-    <span class="floor-spark s3"></span>
-    <span class="floor-spark s4"></span>
-  </div>
+<section class="hero">
+  <span class="firework big"></span><span class="firework left"></span><span class="firework right"></span>
+  <span class="bloom center"></span><span class="bloom left"></span><span class="bloom right"></span>
+  <span class="horizon"></span><span class="floor"></span><span class="orbit back"></span><span class="orbit front"></span>
+  <span class="floor-dot d1"></span><span class="floor-dot d2"></span><span class="floor-dot d3"></span><span class="floor-dot d4"></span>
 
   <header class="header">
-    <a class="logo" href="#">
-      <span class="logo-dfo">DFO</span>
-      <span class="logo-text">Discount<br>Fireworks<br>Outlet</span>
-    </a>
-
-    <div class="countdown-main">
+    <a class="logo" href="#"><span class="logo-dfo">DFO</span><span class="logo-text">Discount<br>Fireworks<br>Outlet</span></a>
+    <div class="top-count">
       <p>✦✦✦ Happy 250th Birthday, America ✦✦✦</p>
-      <div>
-        <span><b id="days">29</b>Days</span>
-        <span><b id="hours">10</b>Hours</span>
-        <span><b id="minutes">10</b>Minutes</span>
-        <span><b id="seconds">43</b>Seconds</span>
-      </div>
+      <div class="numbers"><span><b id="days">29</b>Days</span><span><b id="hours">10</b>Hours</span><span><b id="minutes">10</b>Minutes</span><span><b id="seconds">43</b>Seconds</span></div>
     </div>
-
-    <nav>
-      <a href="#demo-wall">Videos</a>
-      <a href="#locations-detail">Locations</a>
-      <a href="#contact-form">Contact</a>
-      <a class="dir-btn" href="#locations-detail">Get Directions</a>
-    </nav>
+    <nav class="nav"><a href="#demo-wall">Videos</a><a href="#locations">Locations</a><a href="#contact">Contact</a><a class="button" href="#locations">Get Directions</a></nav>
   </header>
 
   <main class="stage">
-    <button class="arrow arrow-left" type="button" aria-label="Previous">‹</button>
-    <button class="arrow arrow-right" type="button" aria-label="Next">›</button>
+    <button class="arrow left-arrow" type="button" aria-label="Previous">‹</button>
+    <button class="arrow right-arrow" type="button" aria-label="Next">›</button>
 
-    <section class="carousel" aria-label="Rotating fireworks carousel">
-      <article class="panel build-panel">
-        <p class="kicker">Plan like a pro</p>
-        <h2>Build<br>Your Show</h2>
-        <div class="panel-visual tent-visual">
-          <span class="photo-noise"></span>
-          <span class="string-lights"></span>
-          <span class="tent-glow"></span>
-          <span class="product-silhouettes"></span>
-        </div>
-        <p>Get ideas. Build the perfect backyard show.</p>
-        <a href="#contact-form">Start Planning</a>
+    <section class="carousel" aria-label="DFO carousel">
+      <article class="card far-left">
+        <p class="kicker">Plan like a pro</p><h2>Build<br>Your Show</h2>
+        <div class="visual build-scene"><span class="noise"></span></div>
+        <p>Get ideas. Build the perfect backyard show.</p><a href="#contact">Start Planning</a>
       </article>
 
-      <article class="panel locations-panel" id="locations">
-        <p class="kicker">4 Great Spots</p>
-        <h2>Locations</h2>
-        <div class="location-icons">
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+      <article class="card side-left">
+        <p class="kicker">4 Great Spots</p><h2>Locations</h2>
+        <div class="location-icons"><div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Spirit Lake</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+</svg><span>Spirit Lake</span></div><div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Milford</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+</svg><span>Milford</span></div><div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Spencer</span></div>
-          <div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+</svg><span>Spencer</span></div><div><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
-</svg><span>Armstrong</span></div>
-        </div>
-        <p>Find a location near you.</p>
-        <a href="#locations-detail">View Locations</a>
+</svg><span>Armstrong</span></div></div>
+        <p>Find a location near you.</p><a href="#locations">View Locations</a>
       </article>
 
-      <article class="panel hero-panel" id="videos">
-        <p class="kicker">Demo Videos</p>
-        <h1>Preview the Boom<br>Before You Buy</h1>
-        <div class="hero-visual">
-          <span class="photo-noise"></span>
-          <span class="ceiling-glow"></span>
-          <span class="aisle-reflection"></span>
-          <span class="product-row left"></span>
-          <span class="product-row right"></span>
-          <span class="screen-firework"></span>
-          <span class="video-wall">Watch Real Demos</span>
-        </div>
-        <p>Watch real demos. Choose your finale.</p>
-        <a href="#demo-wall">Watch Videos</a>
+      <article class="card main-card">
+        <p class="kicker">Demo Videos</p><h1>Preview the Boom<br>Before You Buy</h1>
+        <div class="visual tent-scene"><span class="noise"></span><span class="tent-roof"></span><span class="tent-floor"></span><span class="product left"></span><span class="product right"></span><span class="screen-spark"></span><span class="video-cta">Watch Real Demos</span></div>
+        <p>Watch real demos. Choose your finale.</p><a href="#demo-wall">Watch Videos</a>
       </article>
 
-      <article class="panel directions-panel">
-        <p class="kicker">Easy to Find</p>
-        <h2>Get<br>Directions</h2>
-        <div class="panel-visual road-visual">
-          <span class="photo-noise"></span>
-          <span class="road-lights"></span>
-          <span class="road-line one"></span>
-          <span class="road-line two"></span>
-          <span class="tiny-fireworks"></span>
-        </div>
-        <p>Fast routes. Clear directions.</p>
-        <a href="#locations-detail">Get Directions</a>
+      <article class="card side-right">
+        <p class="kicker">Easy to Find</p><h2>Get<br>Directions</h2>
+        <div class="visual road-scene"><span class="noise"></span><span class="road-line one"></span><span class="road-line two"></span></div>
+        <p>Fast routes. Clear directions.</p><a href="#locations">Get Directions</a>
       </article>
 
-      <article class="panel contact-panel" id="contact">
-        <p class="kicker">We’re here to help</p>
-        <h2>Contact<br>Us</h2>
-        <div class="panel-visual booth-visual">
-          <span class="photo-noise"></span>
-          <span class="booth-lights"></span>
-          <span class="booth-sign">DFO</span>
-        </div>
-        <p>Questions? We’d love to hear from you.</p>
-        <a href="#contact-form">Send a Message</a>
+      <article class="card far-right">
+        <p class="kicker">We’re here to help</p><h2>Contact<br>Us</h2>
+        <div class="visual booth-scene"><span class="noise"></span><span class="booth-sign">DFO</span></div>
+        <p>Questions? We’d love to hear from you.</p><a href="#contact">Send a Message</a>
       </article>
     </section>
 
-    <section class="shell-countdown" aria-label="Countdown shell">
-      <span class="fuse-spark"></span>
-      <div class="mortar">
-        <strong>DFO</strong>
-        <span>Discount<br>Fireworks<br>Outlet</span>
-      </div>
-      <div class="shell-clock">
-        <p>The show starts in</p>
-        <div>
-          <span><b id="days2">29</b>Days</span>
-          <span><b id="hours2">10</b>Hours</span>
-          <span><b id="minutes2">10</b>Minutes</span>
-          <span><b id="seconds2">43</b>Seconds</span>
-        </div>
-      </div>
+    <section class="shell-wrap">
+      <span class="fuse"></span>
+      <div class="shell"><strong>DFO</strong><span>Discount<br>Fireworks<br>Outlet</span></div>
+      <div class="shell-clock"><p>The show starts in</p><div><span><b id="days2">29</b>Days</span><span><b id="hours2">10</b>Hours</span><span><b id="minutes2">10</b>Minutes</span><span><b id="seconds2">43</b>Seconds</span></div></div>
     </section>
-
-    <p class="drag-hint">Click and drag to rotate</p>
+    <p class="hint">Click and drag to rotate</p>
   </main>
+</section>
 
-  <section id="demo-wall" class="detail-section">
-    <div class="detail-heading">
-      <p class="kicker">Demo Wall</p>
-      <h2>Featured Firework Demos</h2>
-    </div>
-    <div class="demo-layout">
-      <iframe id="featured-video" src="https://www.youtube.com/embed/6kFtvmGDYSI" title="Featured firework demo video" allowfullscreen></iframe>
-      <div class="demo-list">
-        <button data-video="6kFtvmGDYSI">Top 500g Cakes</button>
-        <button data-video="kw6inOPzmOk">Aerials</button>
-        <button data-video="Qp3cQ-c910g">Loud & Proud</button>
-        <button data-video="ZXwSRSY1s44">Patriotic</button>
-      </div>
-    </div>
-  </section>
+<section id="demo-wall" class="detail"><p class="kicker">Demo Wall</p><h2>Featured Firework Demos</h2><div class="demo-layout"><iframe id="featured-video" src="https://www.youtube.com/embed/6kFtvmGDYSI" title="Featured firework demo video" allowfullscreen></iframe><div class="demo-list"><button data-video="6kFtvmGDYSI">Top 500g Cakes</button><button data-video="kw6inOPzmOk">Aerials</button><button data-video="Qp3cQ-c910g">Loud & Proud</button><button data-video="ZXwSRSY1s44">Patriotic</button></div></div></section>
 
-  <section id="locations-detail" class="detail-section">
-    <div class="detail-heading">
-      <p class="kicker">Locations</p>
-      <h2>Choose Your Launch Site</h2>
-    </div>
-    <div class="location-detail-grid">
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+<section id="locations" class="detail"><p class="kicker">Locations</p><h2>Choose Your Launch Site</h2><div class="location-detail-grid">
+<article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
 </svg></span><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+<article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
 </svg></span><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+<article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
 </svg></span><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
+<article><span><svg viewBox="0 0 24 24" class="pin-line" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.55"/>
 </svg></span><h3>Armstrong</h3><p>101 6th St · HWY 15</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-    </div>
-  </section>
+</div></section>
 
-  <section id="contact-form" class="detail-section">
-    <div class="detail-heading">
-      <p class="kicker">Finale Desk</p>
-      <h2>Build the Night, Then Light the Sky</h2>
-    </div>
-    <form class="contact-form">
-      <label>Name<input type="text" placeholder="Your name"></label>
-      <label>Email<input type="email" placeholder="you@email.com"></label>
-      <label>Message<textarea placeholder="Tell us what kind of show you’re planning."></textarea></label>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+<section id="contact" class="detail"><p class="kicker">Finale Desk</p><h2>Build the Night, Then Light the Sky</h2><form class="contact-form"><label>Name<input type="text" placeholder="Your name"></label><label>Email<input type="email" placeholder="you@email.com"></label><label>Message<textarea placeholder="Tell us what kind of show you’re planning."></textarea></label><button type="submit">Send Message</button></form></section>
 
-  <script src="script.js"></script>
+<script>
+const targetDate = new Date("July 4, 2026 00:00:00").getTime();
+const ids = ["days","hours","minutes","seconds","days2","hours2","minutes2","seconds2"].reduce((a,id)=>{a[id]=document.getElementById(id); return a;},{});
+function pad(v){ return String(v).padStart(2,"0"); }
+function updateCountdown(){
+  const d = Math.max(targetDate - new Date().getTime(), 0);
+  const vals = {
+    days: Math.floor(d/(1000*60*60*24)),
+    hours: pad(Math.floor(d/(1000*60*60)%24)),
+    minutes: pad(Math.floor(d/(1000*60)%60)),
+    seconds: pad(Math.floor(d/1000%60))
+  };
+  ["","2"].forEach(s=>{
+    ids["days"+s].textContent = vals.days;
+    ids["hours"+s].textContent = vals.hours;
+    ids["minutes"+s].textContent = vals.minutes;
+    ids["seconds"+s].textContent = vals.seconds;
+  });
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+const cards = [...document.querySelectorAll(".carousel .card")];
+const classes = ["far-left","side-left","main-card","side-right","far-right"];
+let active = 2;
+
+function render(){
+  cards.forEach((card,i)=>{
+    card.classList.remove(...classes);
+    const offset = (i - active + cards.length) % cards.length;
+    const mapped = offset===0 ? 2 : offset===1 ? 3 : offset===2 ? 4 : offset===3 ? 0 : 1;
+    card.classList.add(classes[mapped]);
+  });
+}
+document.querySelector(".right-arrow").addEventListener("click",()=>{active=(active+1)%cards.length;render();});
+document.querySelector(".left-arrow").addEventListener("click",()=>{active=(active-1+cards.length)%cards.length;render();});
+
+let startX = null;
+document.querySelector(".carousel").addEventListener("pointerdown", e => { startX = e.clientX; });
+document.querySelector(".carousel").addEventListener("pointerup", e => {
+  if(startX === null) return;
+  const diff = e.clientX - startX;
+  if(Math.abs(diff) > 40){
+    active = diff < 0 ? (active+1)%cards.length : (active-1+cards.length)%cards.length;
+    render();
+  }
+  startX = null;
+});
+render();
+
+const video = document.getElementById("featured-video");
+document.querySelectorAll(".demo-list button").forEach(btn=>{
+  btn.addEventListener("click",()=>{ video.src = `https://www.youtube.com/embed/${btn.dataset.video}`; });
+});
+</script>
 </body>
 </html>
