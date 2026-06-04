@@ -1,17 +1,13 @@
-# Discount Fireworks Outlet — Grand Finale Show V7
+# Discount Fireworks Outlet — Fourth Finale V9
 
-Upload the contents of this folder to the root of your GitHub Pages repository:
+Upload the contents of this folder to your GitHub Pages repository root:
 
 - index.html
 - styles.css
 - script.js
 - .nojekyll
-- assets folder
+- assets/
 
-This version is built as one immersive fireworks-show environment with the demo video screen as the centerpiece, integrated locations, contact CTA, and a horizontal America 250 countdown in the header.
+This version returns to the original patriotic DFO banner energy: electric blue, big fireworks, centered logo, glowing nav, horizontal America 250 clock, integrated locations/contact, and a separate demo video theater.
 
-## Video swaps
-In `index.html`, replace the YouTube video IDs in the `data-video` attributes with the actual demo IDs.
-
-Example:
-`data-video="R3mAzPDToPQ"`
+To add real demo videos, replace the placeholder `.thumb` areas in `index.html` with YouTube embeds or linked thumbnails.

@@ -1,56 +1,35 @@
 const target = new Date('2026-07-04T00:00:00');
-const pad = n => String(Math.max(0, n)).padStart(2, '0');
+const ids = ['days','hours','minutes','seconds'];
 function tick(){
-  const diff = target - new Date();
-  const sec = Math.max(0, Math.floor(diff / 1000));
-  const d = Math.floor(sec / 86400);
-  const h = Math.floor((sec % 86400) / 3600);
-  const m = Math.floor((sec % 3600) / 60);
-  const s = sec % 60;
-  document.getElementById('days').textContent = pad(d);
-  document.getElementById('hours').textContent = pad(h);
-  document.getElementById('minutes').textContent = pad(m);
-  document.getElementById('seconds').textContent = pad(s);
+  const now = new Date();
+  let diff = Math.max(0, target - now);
+  const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+  const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+  const m = Math.floor(diff / 60000); diff -= m * 60000;
+  const s = Math.floor(diff / 1000);
+  [d,h,m,s].forEach((v,i)=>{ const el=document.getElementById(ids[i]); if(el) el.textContent=String(v).padStart(2,'0'); });
 }
-tick(); setInterval(tick, 1000);
+tick(); setInterval(tick,1000);
 
-const iframe = document.getElementById('featuredVideo');
-const title = document.getElementById('featuredTitle');
-document.querySelectorAll('.shell').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.shell').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    title.textContent = btn.dataset.title;
-    iframe.src = `https://www.youtube.com/embed/${btn.dataset.video}?autoplay=1`;
-  });
-});
-
-const canvas = document.getElementById('fireworks');
+const canvas = document.getElementById('sparkCanvas');
 const ctx = canvas.getContext('2d');
-let w, h, particles = [];
-function resize(){ w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+let sparks = [];
+function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
 addEventListener('resize', resize); resize();
-function burst(){
-  const x = Math.random() * w;
-  const y = Math.random() * h * .45 + 60;
-  const colors = ['#fff8ea','#ffd56b','#ff3b25','#3f68ff'];
-  for(let i=0;i<46;i++){
-    const a = Math.PI * 2 * i / 46;
-    const speed = 1.6 + Math.random()*3.2;
-    particles.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,life:70+Math.random()*25,color:colors[Math.floor(Math.random()*colors.length)]});
-  }
+function spawn(){
+  const x = Math.random()*canvas.width;
+  const y = Math.random()*canvas.height*.72;
+  for(let i=0;i<26;i++) sparks.push({x,y,a:Math.random()*Math.PI*2,v:1+Math.random()*3,l:22+Math.random()*32,life:1,color:Math.random()>.45?'255,216,108':(Math.random()>.5?'255,63,38':'255,255,255')});
 }
-setInterval(burst, 1700); burst();
-function animate(){
-  ctx.clearRect(0,0,w,h);
-  ctx.globalCompositeOperation='lighter';
-  particles = particles.filter(p => p.life-- > 0);
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy; p.vy += .025;
-    ctx.globalAlpha = Math.max(0, p.life / 90);
-    ctx.fillStyle = p.color;
-    ctx.beginPath(); ctx.arc(p.x,p.y,1.6,0,Math.PI*2); ctx.fill();
+setInterval(spawn, 1450); spawn();
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  sparks = sparks.filter(p=>p.life>0);
+  sparks.forEach(p=>{
+    const nx=p.x+Math.cos(p.a)*p.l*p.life, ny=p.y+Math.sin(p.a)*p.l*p.life;
+    ctx.strokeStyle=`rgba(${p.color},${p.life})`; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(nx,ny); ctx.stroke();
+    p.x += Math.cos(p.a)*p.v; p.y += Math.sin(p.a)*p.v + .16; p.life -= .018;
   });
-  requestAnimationFrame(animate);
+  requestAnimationFrame(draw);
 }
-animate();
+draw();
