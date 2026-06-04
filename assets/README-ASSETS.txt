@@ -1,1 +1,1 @@
-Drop DFO logo, firework photos, and demo thumbnails here.
+Add tent entrance, demo wall, location counter, and finale desk imagery/video here.

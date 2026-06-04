@@ -3,159 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Discount Fireworks Outlet | Electric Constellation</title>
-  <meta name="description" content="Watch firework demo videos, find Discount Fireworks Outlet locations, and plan your Fourth of July show." />
+  <title>Discount Fireworks Outlet | Walk the Tent</title>
+  <meta name="description" content="Walk through Discount Fireworks Outlet: watch demo videos, find Iowa locations, and plan your Fourth of July fireworks show." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="atmosphere" aria-hidden="true">
-    <span class="sky-glow sky-glow-one"></span>
-    <span class="sky-glow sky-glow-two"></span>
-    <span class="smoke smoke-one"></span>
-    <span class="smoke smoke-two"></span>
-    <span class="ember ember-one"></span>
-    <span class="ember ember-two"></span>
-    <span class="ember ember-three"></span>
-    <span class="ember ember-four"></span>
+  <div class="ambient" aria-hidden="true">
+    <span class="fog fog-a"></span>
+    <span class="fog fog-b"></span>
+    <span class="spark spark-a"></span>
+    <span class="spark spark-b"></span>
+    <span class="spark spark-c"></span>
   </div>
 
-  <header class="site-header">
-    <div class="countdown-bar">
-      <span class="birthday">Happy 250th Birthday, America</span>
-      <span class="countdown">
-        <strong id="days">29</strong> Days
-        <strong id="hours">10</strong> Hours
-        <strong id="minutes">10</strong> Minutes
-        <strong id="seconds">43</strong> Seconds
-      </span>
+  <header class="topbar">
+    <div class="birthday">
+      <span>Happy 250th Birthday, America</span>
+      <span class="clock"><strong id="days">29</strong> Days · <strong id="hours">10</strong> Hours · <strong id="minutes">10</strong> Minutes · <strong id="seconds">43</strong> Seconds</span>
     </div>
-
-    <nav class="nav-shell" aria-label="Main navigation">
-      <a href="#videos">Videos</a>
+    <nav>
+      <a href="#entrance">Entrance</a>
+      <a href="#demos">Videos</a>
+      <a class="brand" href="#entrance"><b>DFO</b><small>Discount Fireworks Outlet</small></a>
       <a href="#locations">Locations</a>
-      <a href="#top" class="brand" aria-label="Discount Fireworks Outlet home">
-        <span class="brand-mark">DFO</span>
-        <span class="brand-text">Discount Fireworks Outlet</span>
-      </a>
       <a href="#contact">Contact</a>
-      <a href="#locations" class="nav-cta">Get Directions</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="constellation-hero" aria-labelledby="hero-title">
-      <div class="firework-burst" aria-hidden="true">
-        <span class="core"></span>
-        <span class="ring ring-one"></span>
-        <span class="ring ring-two"></span>
-        <span class="ray ray-one"></span>
-        <span class="ray ray-two"></span>
-        <span class="ray ray-three"></span>
-        <span class="ray ray-four"></span>
-        <span class="ray ray-five"></span>
-        <span class="ray ray-six"></span>
-      </div>
-
-      <div class="hero-copy">
-        <p class="eyebrow">Electric Fourth of July show builder</p>
-        <h1 id="hero-title">The show starts before the first spark.</h1>
-        <p>Preview real demo videos, pick your closest Iowa location, and build a backyard finale from the sky down.</p>
-        <div class="hero-actions">
-          <a href="#videos" class="primary-btn">Watch Demos</a>
-          <a href="#locations" class="ghost-btn">Choose Location</a>
+  <main class="snap">
+    <section id="entrance" class="room entrance-room">
+      <div class="room-bg tent-entry"></div>
+      <div class="room-frame">
+        <div class="scene-label">Scene 01 · Tent Entrance</div>
+        <div class="entrance-content float-card">
+          <p class="eyebrow">Walk into the show</p>
+          <h1>Your backyard finale starts at the tent.</h1>
+          <p>Step into DFO like it’s opening night: glowing aisles, demo screens, four Iowa launch points, and fireworks waiting to be chosen.</p>
+          <div class="actions">
+            <a class="primary" href="#demos">Watch Demo Wall</a>
+            <a class="secondary" href="#locations">Find a Location</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <section id="videos" class="video-portal" aria-labelledby="video-title">
-        <div class="portal-top">
-          <span id="featured-label">Featured Demo</span>
-          <span>Launch Portal</span>
+    <section id="demos" class="room demo-room">
+      <div class="room-bg demo-wall-bg"></div>
+      <div class="room-frame demo-layout">
+        <div class="demo-copy">
+          <div class="scene-label">Scene 02 · Demo Wall</div>
+          <p class="eyebrow">Preview before you buy</p>
+          <h2>See the boom before it leaves the shelf.</h2>
+          <p>Choose a demo and the wall lights up. This section is the star — because nobody wants to guess what the finale looks like.</p>
         </div>
-        <div class="featured-screen">
+
+        <section class="theater" aria-label="Firework demo theater">
+          <div class="screen-bar"><span id="featured-label">Featured Demo</span><span>Launch Preview</span></div>
           <iframe id="featured-video" src="https://www.youtube.com/embed/6kFtvmGDYSI" title="Featured firework demo video" allowfullscreen></iframe>
-        </div>
-        <div class="spark-grid" aria-label="Demo video selections">
-          <button class="spark-card" type="button" data-video="6kFtvmGDYSI" data-title="2025 Top 500g Cakes" data-label="Finales">
+          <div class="demo-grid">
+          <button class="demo-tile" type="button" data-video="6kFtvmGDYSI" data-title="2025 Top 500g Cakes" data-label="Finales">
             <img src="https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg" alt="2025 Top 500g Cakes demo thumbnail">
             <span>Finales</span>
             <strong>2025 Top 500g Cakes</strong>
           </button>
-          <button class="spark-card" type="button" data-video="kw6inOPzmOk" data-title="Top 10 500g Cakes" data-label="Aerials">
+          <button class="demo-tile" type="button" data-video="kw6inOPzmOk" data-title="Top 10 500g Cakes" data-label="Aerials">
             <img src="https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg" alt="Top 10 500g Cakes demo thumbnail">
             <span>Aerials</span>
             <strong>Top 10 500g Cakes</strong>
           </button>
-          <button class="spark-card" type="button" data-video="Qp3cQ-c910g" data-title="Heavyweight 500g Cakes" data-label="Loud & Proud">
+          <button class="demo-tile" type="button" data-video="Qp3cQ-c910g" data-title="Heavyweight 500g Cakes" data-label="Loud & Proud">
             <img src="https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg" alt="Heavyweight 500g Cakes demo thumbnail">
             <span>Loud & Proud</span>
             <strong>Heavyweight 500g Cakes</strong>
           </button>
-          <button class="spark-card" type="button" data-video="ZXwSRSY1s44" data-title="Back the Blue" data-label="Patriotic">
+          <button class="demo-tile" type="button" data-video="ZXwSRSY1s44" data-title="Back the Blue" data-label="Patriotic">
             <img src="https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg" alt="Back the Blue demo thumbnail">
             <span>Patriotic</span>
             <strong>Back the Blue</strong>
           </button>
-          <button class="spark-card" type="button" data-video="DuvlnNx66_Y" data-title="Backyard Buzzsaw" data-label="Aerials">
+          <button class="demo-tile" type="button" data-video="DuvlnNx66_Y" data-title="Backyard Buzzsaw" data-label="Aerials">
             <img src="https://img.youtube.com/vi/DuvlnNx66_Y/hqdefault.jpg" alt="Backyard Buzzsaw demo thumbnail">
             <span>Aerials</span>
             <strong>Backyard Buzzsaw</strong>
           </button>
-          <button class="spark-card" type="button" data-video="SljEYHowgNg" data-title="2 Minute Warning" data-label="Finale">
+          <button class="demo-tile" type="button" data-video="SljEYHowgNg" data-title="2 Minute Warning" data-label="Finale">
             <img src="https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg" alt="2 Minute Warning demo thumbnail">
             <span>Finale</span>
             <strong>2 Minute Warning</strong>
           </button>
-          <button class="spark-card" type="button" data-video="Eo5TXYcQS-Y" data-title="Grand Finale Cake" data-label="Finale">
-            <img src="https://img.youtube.com/vi/Eo5TXYcQS-Y/hqdefault.jpg" alt="Grand Finale Cake demo thumbnail">
-            <span>Finale</span>
-            <strong>Grand Finale Cake</strong>
-          </button>
-          <button class="spark-card" type="button" data-video="gGifrozMWi4" data-title="Phone Home" data-label="Family Favorite">
-            <img src="https://img.youtube.com/vi/gGifrozMWi4/hqdefault.jpg" alt="Phone Home demo thumbnail">
-            <span>Family Favorite</span>
-            <strong>Phone Home</strong>
-          </button>
-        </div>
-      </section>
-
-      <aside id="locations" class="location-orbit" aria-labelledby="locations-title">
-        <p class="eyebrow">Choose your launch site</p>
-        <h2 id="locations-title">Four Iowa Outlets</h2>
-        <div class="location-stack">
-          <article class="location-point"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/>
-              </svg></span><div><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></div></article>
-          <article class="location-point"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/>
-              </svg></span><div><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></div></article>
-          <article class="location-point"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/>
-              </svg></span><div><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></div></article>
-          <article class="location-point"><span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/>
-              </svg></span><div><h3>Armstrong</h3><p>101 6th St · HWY 15</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></div></article>
-        </div>
-      </aside>
+          </div>
+        </section>
+      </div>
     </section>
 
-    <section id="contact" class="final-invite" aria-labelledby="contact-title">
-      <div>
-        <p class="eyebrow">Final invitation</p>
-        <h2 id="contact-title">Build the night, then light the sky.</h2>
+    <section id="locations" class="room location-room">
+      <div class="room-bg location-counter-bg"></div>
+      <div class="room-frame location-layout">
+        <div class="location-copy">
+          <div class="scene-label">Scene 03 · Launch Counter</div>
+          <p class="eyebrow">Choose your launch site</p>
+          <h2>Four Iowa outlets. One big night.</h2>
+        </div>
+
+        <div class="location-board">
+          <article class="location-sign">
+            <span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/></svg></span>
+            <div><h3>Spirit Lake</h3><p>Vick’s Corner · NW corner of HWY 9 & 86</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></div>
+          </article>
+          <article class="location-sign">
+            <span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/></svg></span>
+            <div><h3>Milford</h3><p>Okoboji Gas Parking Lot · 2098 IA-86</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></div>
+          </article>
+          <article class="location-sign">
+            <span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/></svg></span>
+            <div><h3>Spencer</h3><p>Spencer Mall Lot · 901 11th Street SW</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></div>
+          </article>
+          <article class="location-sign">
+            <span class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C7.8 2 4.4 5.2 4.4 9.2c0 5.6 7.6 12.8 7.6 12.8s7.6-7.2 7.6-12.8C19.6 5.2 16.2 2 12 2Zm0 10.6a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z"/></svg></span>
+            <div><h3>Armstrong</h3><p>101 6th St · HWY 15</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></div>
+          </article>
+        </div>
       </div>
-      <form class="contact-form">
-        <label>Name<input type="text" name="name" placeholder="Your name" /></label>
-        <label>Email<input type="email" name="email" placeholder="you@email.com" /></label>
-        <label>Message<textarea name="message" placeholder="Tell us what kind of show you’re planning."></textarea></label>
-        <button type="submit">Send Message</button>
-      </form>
+    </section>
+
+    <section id="contact" class="room contact-room">
+      <div class="room-bg finale-desk-bg"></div>
+      <div class="room-frame contact-layout">
+        <div>
+          <div class="scene-label">Scene 04 · Finale Desk</div>
+          <p class="eyebrow">Final invitation</p>
+          <h2>Build the night, then light the sky.</h2>
+        </div>
+        <form class="contact-form">
+          <label>Name<input type="text" name="name" placeholder="Your name"></label>
+          <label>Email<input type="email" name="email" placeholder="you@email.com"></label>
+          <label>Message<textarea name="message" placeholder="Tell us what kind of show you’re planning."></textarea></label>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer"><p>© Discount Fireworks Outlet · Electric Constellation Concept</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
