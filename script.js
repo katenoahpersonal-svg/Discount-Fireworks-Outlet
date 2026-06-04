@@ -1,13 +1,13 @@
-// Discount Fireworks Outlet — Fireworks Tent V4
+// Discount Fireworks Outlet — V5 Fireworks Tent / Demo Theater
 // Quick edits:
-// 1) Replace demo-chip data-video URLs in index.html with real YouTube embed links.
+// 1) Replace demo-card data-video URLs in index.html with real YouTube embed links.
 // 2) Replace the mailto address in index.html with the correct DFO email.
-// 3) The horizontal timeclock target is in index.html: data-countdown="2026-07-04T00:00:00".
+// 3) Countdown target is in index.html: data-countdown="2026-07-04T00:00:00".
 
 const header = document.querySelector('[data-header]');
 const navToggle = document.querySelector('[data-nav-toggle]');
 const nav = document.querySelector('[data-nav]');
-const demoChips = document.querySelectorAll('.demo-chip');
+const demoCards = document.querySelectorAll('.demo-card');
 const featuredVideo = document.getElementById('featuredVideo');
 const featuredTitle = document.getElementById('featuredTitle');
 const featuredDescription = document.getElementById('featuredDescription');
@@ -29,13 +29,13 @@ nav?.querySelectorAll('a').forEach((link) => {
   });
 });
 
-demoChips.forEach((chip) => {
-  chip.addEventListener('click', () => {
-    demoChips.forEach((item) => item.classList.remove('active'));
-    chip.classList.add('active');
-    if (featuredVideo && chip.dataset.video) featuredVideo.src = chip.dataset.video;
-    if (featuredTitle && chip.dataset.title) featuredTitle.textContent = chip.dataset.title;
-    if (featuredDescription && chip.dataset.description) featuredDescription.textContent = chip.dataset.description;
+demoCards.forEach((card) => {
+  card.addEventListener('click', () => {
+    demoCards.forEach((item) => item.classList.remove('active'));
+    card.classList.add('active');
+    if (featuredVideo && card.dataset.video) featuredVideo.src = card.dataset.video;
+    if (featuredTitle && card.dataset.title) featuredTitle.textContent = card.dataset.title;
+    if (featuredDescription && card.dataset.description) featuredDescription.textContent = card.dataset.description;
   });
 });
 
@@ -50,16 +50,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// Glare follows the mouse slightly on the tent cards.
-document.querySelectorAll('.room-wall, .center-aisle').forEach((panel) => {
-  panel.addEventListener('pointermove', (event) => {
-    const rect = panel.getBoundingClientRect();
-    panel.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
-    panel.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
-  });
-});
-
-// Horizontal countdown timer.
+// Horizontal header countdown timer.
 const countdown = document.querySelector('[data-countdown]');
 const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
@@ -99,7 +90,7 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// Fireworks canvas — lightweight, no outside libraries.
+// Fireworks canvas — restrained, not chaotic. No outside libraries.
 const canvas = document.getElementById('fireworksCanvas');
 const ctx = canvas?.getContext('2d');
 let width = 0;
@@ -109,7 +100,7 @@ let particles = [];
 let stars = [];
 let tick = 0;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const colors = ['#fff8ee', '#ff3b25', '#f3d27c', '#5ee8ff', '#ffffff', '#2b46ff'];
+const colors = ['#fff8ee', '#ff3b25', '#f5d47b', '#5ee8ff', '#ffffff', '#2b46ff'];
 
 function random(min, max) {
   return Math.random() * (max - min) + min;
@@ -125,27 +116,27 @@ function resizeCanvas() {
   canvas.style.width = width + 'px';
   canvas.style.height = height + 'px';
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  stars = Array.from({ length: Math.min(95, Math.floor(width / 15)) }, () => ({
+  stars = Array.from({ length: Math.min(78, Math.floor(width / 18)) }, () => ({
     x: random(0, width),
-    y: random(0, height * .9),
-    r: random(.45, 1.4),
-    a: random(.16, .72),
+    y: random(0, height * .86),
+    r: random(.35, 1.15),
+    a: random(.12, .58),
   }));
 }
 
 class Firework {
   constructor() {
-    this.x = random(width * .07, width * .93);
-    this.y = height + 20;
-    this.targetY = random(height * .1, height * .46);
-    this.speed = random(7.2, 10.4);
+    this.x = random(width * .12, width * .88);
+    this.y = height + 18;
+    this.targetY = random(height * .1, height * .36);
+    this.speed = random(6.8, 9.2);
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.trail = [];
-    this.sway = random(-.9, .9);
+    this.sway = random(-.55, .55);
   }
   update() {
     this.trail.push({ x: this.x, y: this.y });
-    if (this.trail.length > 12) this.trail.shift();
+    if (this.trail.length > 10) this.trail.shift();
     this.x += Math.sin(this.y * .012) * this.sway;
     this.y -= this.speed;
     if (this.y <= this.targetY) {
@@ -164,14 +155,14 @@ class Firework {
       else ctx.lineTo(point.x, point.y);
     });
     ctx.strokeStyle = this.color;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1.8;
     ctx.stroke();
     ctx.globalAlpha = 1;
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 2.8, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 2.4, 0, Math.PI * 2);
     ctx.fillStyle = this.color;
     ctx.shadowColor = this.color;
-    ctx.shadowBlur = 22;
+    ctx.shadowBlur = 18;
     ctx.fill();
     ctx.restore();
   }
@@ -180,20 +171,20 @@ class Firework {
 class Particle {
   constructor(x, y, color, ring = false) {
     const angle = random(0, Math.PI * 2);
-    const speed = ring ? random(3, 7.2) : random(1.3, 6.2);
+    const speed = ring ? random(2.5, 6.4) : random(1.1, 5.2);
     this.x = x;
     this.y = y;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
-    this.life = random(42, 88);
+    this.life = random(34, 72);
     this.age = 0;
     this.color = color;
-    this.size = random(1, 2.8);
+    this.size = random(.9, 2.4);
   }
   update() {
     this.vx *= .985;
     this.vy *= .985;
-    this.vy += .036;
+    this.vy += .034;
     this.x += this.vx;
     this.y += this.vy;
     this.age++;
@@ -208,18 +199,18 @@ class Particle {
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fillStyle = this.color;
     ctx.shadowColor = this.color;
-    ctx.shadowBlur = 16;
+    ctx.shadowBlur = 13;
     ctx.fill();
     ctx.restore();
   }
 }
 
 function explode(x, y, color) {
-  const ring = Math.random() > .52;
-  const amount = ring ? 80 : 54;
+  const ring = Math.random() > .58;
+  const amount = ring ? 62 : 42;
   for (let i = 0; i < amount; i++) particles.push(new Particle(x, y, color, ring));
-  if (Math.random() > .7) {
-    for (let i = 0; i < 34; i++) particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)], false));
+  if (Math.random() > .78) {
+    for (let i = 0; i < 22; i++) particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)], false));
   }
 }
 
@@ -240,7 +231,7 @@ function animate() {
   ctx.clearRect(0, 0, width, height);
   drawStars();
   tick++;
-  if (tick % 48 === 0 || Math.random() < .007) fireworks.push(new Firework());
+  if (tick % 72 === 0 || Math.random() < .0045) fireworks.push(new Firework());
   fireworks = fireworks.filter((firework) => {
     const alive = firework.update();
     firework.draw();
