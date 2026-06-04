@@ -1,14 +1,15 @@
-# DFO Clean Production Carousel V8
+# DFO Lock Spec V9
 
-Upload:
+Upload these two files to your GitHub repo root:
 - index.html
 - .nojekyll
 
-Changes:
-- Removed central black DFO mortar entirely
-- Header countdown only
-- Larger centered card with breathing room
-- Six filled carousel cards, no empty/blank scene
-- Locations filled in-card and in modal
-- Demo, directions, contact, social modals included
-- CSS + JS embedded in index.html
+This version follows the lock spec:
+- exactly 5 carousel cards
+- Demo Videos starts centered
+- no giant DFO center object
+- no extra sixth card
+- no canvas fireworks
+- small bottom countdown ring only
+- filled location details and modal actions
+- CSS and JS embedded in index.html
