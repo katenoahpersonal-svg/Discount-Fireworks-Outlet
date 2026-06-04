@@ -1,15 +1,15 @@
-# DFO Lock Spec V10 — Anchored Carousel
+# DFO Lock Spec V11 — Video Wall + Logo Fix
 
-Upload these two files:
+Upload:
 - index.html
 - .nojekyll
 
-Fix from V9:
-- carousel card row moved down so cards do not float under the header
-- glowing floor rings moved up to visually anchor the cards
-- bottom countdown ring tightened smaller
-- added subtle seat glow under carousel
-- kept exactly 5 cards
-- no canvas fireworks
-- no giant center DFO block
-- Demo Videos still starts centered
+Fixes from V10:
+- Replaced fake ugly video graphic with actual YouTube thumbnail preview wall on the center card
+- Restored the earlier demo video IDs in the modal
+- Removed bad placeholder video
+- Adjusted the DFO logo lockup closer to the reference
+- Kept exactly 5 cards
+- No canvas fireworks
+- No giant center DFO object
+- Demo Videos starts centered

@@ -24,7 +24,7 @@
   --line:rgba(255,111,46,.76);
   --line-soft:rgba(255,111,46,.28);
   --card-w:min(520px,31vw);
-  --card-h:clamp(500px,58vh,610px);
+  --card-h:clamp(520px,58vh,600px);
   --side-x:min(24vw,392px);
   --far-x:min(43vw,680px);
   --font-head:"Bebas Neue",Impact,sans-serif;
@@ -150,7 +150,7 @@ button{cursor:pointer}
   height:88px;
   padding:0 28px;
   display:grid;
-  grid-template-columns:280px 1fr 520px;
+  grid-template-columns:330px 1fr 520px;
   gap:20px;
   align-items:center;
   background:rgba(2,4,13,.9);
@@ -168,26 +168,37 @@ button{cursor:pointer}
 .logo-dfo{
   position:relative;
   font-family:var(--font-head);
-  font-size:3.85rem;
+  font-size:4.35rem;
   line-height:.78;
-  letter-spacing:.03em;
+  letter-spacing:-.01em;
   color:var(--red);
-  text-shadow:0 0 24px rgba(240,56,41,.58);
+  text-shadow:0 0 22px rgba(240,56,41,.62), 0 4px 0 rgba(0,0,0,.42);
 }
 .logo-dfo::after{
   content:"★";
   position:absolute;
-  right:7px;
-  top:6px;
+  right:10px;
+  top:8px;
   font-size:.72rem;
-  color:#cf211f;
+  color:#7d1715;
+  text-shadow:none;
+}
+.logo-dfo::before{
+  content:"";
+  position:absolute;
+  inset:4px 1px 7px 1px;
+  opacity:.20;
+  mix-blend-mode:multiply;
+  background-image:radial-gradient(#05050a 1px,transparent 1.7px);
+  background-size:8px 8px;
+  pointer-events:none;
 }
 .logo-sub{
-  font-size:.78rem;
-  line-height:1.35;
-  font-weight:800;
-  letter-spacing:.28em;
-  color:rgba(255,255,255,.78);
+  font-size:1.03rem;
+  line-height:.96;
+  font-weight:900;
+  letter-spacing:.045em;
+  color:rgba(255,255,255,.92);
 }
 .header-count{
   text-align:center;
@@ -277,7 +288,7 @@ button{cursor:pointer}
 .card{
   position:absolute;
   left:50%;
-  top:54.5%;
+  top:50.8%;
   width:var(--card-w);
   height:var(--card-h);
   min-width:420px;
@@ -583,6 +594,99 @@ button{cursor:pointer}
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
   box-shadow:0 0 18px var(--gold);
   z-index:3;
+}
+
+
+/* ===== REAL DEMO VIDEO PREVIEW WALL ON CENTER CARD ===== */
+.video-preview-scene{
+  display:grid;
+  grid-template-rows:1fr 62px;
+  gap:10px;
+  padding:12px;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(255,214,108,.20),transparent 20%),
+    linear-gradient(180deg,rgba(255,140,70,.12),transparent 24%),
+    linear-gradient(145deg,#09266f,#050711 58%,#170609);
+}
+.video-preview-scene::before{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:14px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.065) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:58px 58px;
+  opacity:.75;
+  z-index:1;
+  pointer-events:none;
+}
+.video-preview-scene::after{
+  opacity:.38;
+}
+.video-feature{
+  position:relative;
+  z-index:12;
+  border-radius:13px;
+  overflow:hidden;
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.52)),
+    var(--thumb);
+  background-size:cover;
+  background-position:center;
+  box-shadow:0 0 30px rgba(255,111,46,.22), inset 0 -70px 90px rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.12);
+}
+.video-feature::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 50% 50%,transparent 0 22%,rgba(0,0,0,.28) 60%,rgba(0,0,0,.58));
+}
+.play-orb{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:58px;
+  height:58px;
+  transform:translate(-50%,-50%);
+  display:grid;
+  place-items:center;
+  padding-left:3px;
+  border-radius:50%;
+  color:white;
+  background:rgba(255,75,39,.95);
+  box-shadow:0 0 30px rgba(255,75,39,.7);
+  font-size:1.4rem;
+}
+.video-tag{
+  position:absolute;
+  left:14px;
+  bottom:12px;
+  color:var(--gold);
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.video-thumbs{
+  position:relative;
+  z-index:12;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+}
+.video-thumbs span{
+  display:block;
+  border-radius:9px;
+  background-image:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45)),var(--thumb);
+  background-size:cover;
+  background-position:center;
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 0 18px rgba(255,111,46,.12);
+}
+.card.is-center .video-preview-scene{
+  min-height:260px;
 }
 
 /* location card content */
@@ -1051,13 +1155,17 @@ button{cursor:pointer}
     <article class="card" data-card="videos"><span class="ground-glow" aria-hidden="true"></span>
       <p class="card-eyebrow">Demo Videos</p>
       <h1 class="card-title">Preview the Boom Before You Buy</h1>
-      <div class="card-media scene-tent">
-        <span class="roof"></span>
-        <span class="aisle"></span>
-        <span class="shelf l"></span>
-        <span class="shelf r"></span>
-        <span class="screen"></span>
-        <span class="light-string"></span>
+      <div class="card-media video-preview-scene">
+        <div class="video-feature" style="--thumb:url('https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg')">
+          <span class="play-orb">▶</span>
+          <span class="video-tag">Featured Demo</span>
+        </div>
+        <div class="video-thumbs" aria-hidden="true">
+          <span style="--thumb:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg')"></span>
+        </div>
       </div>
       <div class="card-copy">
         <p>Watch real demos, compare effects, and choose your finale before you buy.</p>
@@ -1129,9 +1237,9 @@ button{cursor:pointer}
       <div class="video-card"><iframe src="https://www.youtube.com/embed/6kFtvmGDYSI" title="500 Gram Cakes" allowfullscreen></iframe><p>500 Gram Cakes</p></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/kw6inOPzmOk" title="Aerials" allowfullscreen></iframe><p>Aerials</p></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" title="Loud and Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud and Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
     </div>
   </div>
 </div>
