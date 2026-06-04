@@ -1,2 +1,1 @@
-Drop real DFO logo files, product thumbnails, video stills, and location images here.
-This concept currently uses CSS/text branding so it works immediately on GitHub Pages.
+Drop real DFO logo files, product images, demo thumbnails, or tent/firework photos here later.

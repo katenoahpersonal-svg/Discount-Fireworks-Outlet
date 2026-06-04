@@ -1,10 +1,10 @@
-# Discount Fireworks Outlet — Fireworks Tent V5
+# Discount Fireworks Outlet — Grand Finale Burst V6
 
-This is a GitHub Pages-ready static website concept.
+This version resets back toward the stronger V1 direction, keeps the electric blue DFO energy, and rebuilds the homepage as an immersive firework-burst launch deck instead of stacked sections.
 
-## Upload to GitHub
+## Files to upload to GitHub Pages
 
-Upload these files into the root of your repository:
+Upload these files/folders into the root of your GitHub repository:
 
 - `index.html`
 - `styles.css`
@@ -13,39 +13,23 @@ Upload these files into the root of your repository:
 - `README-FIRST.md`
 - `assets/`
 
-Do not upload only the zip file. GitHub Pages needs the actual files in the repository root.
+Do not upload only the ZIP file. GitHub Pages needs the actual files in the repo root.
 
-## Edit demo videos
+## What changed in V6
 
-Open `index.html` and find the buttons with `class="demo-card"`.
-Replace each `data-video` value with the real YouTube embed URL.
+- Everything except the video theater is combined into one immersive top experience.
+- The background returns to the stronger electric blue/fireworks direction.
+- The page now feels like everything is radiating out of one firework launch core.
+- Locations, directions, hero copy, 250 mention, and contact CTA live together.
+- The video section is separate and uses the stronger original demo-theater concept.
+- America 250 lives in the header as a horizontal countdown clock.
+
+## Editing demo videos
+
+Open `index.html` and find the `.demo-card` buttons.
+Replace each `data-video` URL with the correct YouTube embed URL.
 
 Example:
+`https://www.youtube.com/embed/YOUTUBE_VIDEO_ID`
 
-`https://www.youtube.com/embed/YOUR_VIDEO_ID`
-
-## Edit countdown
-
-In `index.html`, find:
-
-`data-countdown="2026-07-04T00:00:00"`
-
-Change it if needed.
-
-## Edit contact email
-
-In `index.html`, find:
-
-`mailto:info@discountfireworksoutlet.com`
-
-Replace with the correct email address.
-
-## What changed in V5
-
-- Removed the separate 250 Years section.
-- Added the 250 message into the header/hero instead.
-- Made the countdown a real horizontal clock in the header.
-- Split the demo videos into their own dedicated section again.
-- Combined hero + locations into a wider tent-entry scene.
-- Reduced overall scrolling.
-- Replaced the heavy/tacky background with a cleaner dark tent interior.
+The first featured video is inside the iframe with ID `featuredVideo`.

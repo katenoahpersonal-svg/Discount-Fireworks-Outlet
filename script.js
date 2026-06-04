@@ -1,8 +1,8 @@
-// Discount Fireworks Outlet — V5 Fireworks Tent / Demo Theater
+// Discount Fireworks Outlet — Grand Finale Burst V6
 // Quick edits:
-// 1) Replace demo-card data-video URLs in index.html with real YouTube embed links.
-// 2) Replace the mailto address in index.html with the correct DFO email.
-// 3) Countdown target is in index.html: data-countdown="2026-07-04T00:00:00".
+// 1) Replace video URLs in the .demo-card data-video attributes in index.html.
+// 2) Update the email address in the contact mailto link if needed.
+// 3) Drop the real logo into /assets and replace the text logo in index.html when ready.
 
 const header = document.querySelector('[data-header]');
 const navToggle = document.querySelector('[data-nav-toggle]');
@@ -11,6 +11,10 @@ const demoCards = document.querySelectorAll('.demo-card');
 const featuredVideo = document.getElementById('featuredVideo');
 const featuredTitle = document.getElementById('featuredTitle');
 const featuredDescription = document.getElementById('featuredDescription');
+const daysEl = document.querySelector('[data-days]');
+const hoursEl = document.querySelector('[data-hours]');
+const minutesEl = document.querySelector('[data-minutes]');
+const secondsEl = document.querySelector('[data-seconds]');
 
 window.addEventListener('scroll', () => {
   header?.classList.toggle('scrolled', window.scrollY > 18);
@@ -29,13 +33,32 @@ nav?.querySelectorAll('a').forEach((link) => {
   });
 });
 
+function updateCountdown() {
+  const target = new Date('2026-07-04T00:00:00');
+  const now = new Date();
+  const remaining = Math.max(0, target - now);
+
+  const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+  const seconds = Math.floor((remaining / 1000) % 60);
+
+  daysEl.textContent = String(days).padStart(2, '0');
+  hoursEl.textContent = String(hours).padStart(2, '0');
+  minutesEl.textContent = String(minutes).padStart(2, '0');
+  secondsEl.textContent = String(seconds).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
 demoCards.forEach((card) => {
   card.addEventListener('click', () => {
     demoCards.forEach((item) => item.classList.remove('active'));
     card.classList.add('active');
-    if (featuredVideo && card.dataset.video) featuredVideo.src = card.dataset.video;
-    if (featuredTitle && card.dataset.title) featuredTitle.textContent = card.dataset.title;
-    if (featuredDescription && card.dataset.description) featuredDescription.textContent = card.dataset.description;
+
+    featuredVideo.src = card.dataset.video;
+    featuredTitle.textContent = card.dataset.title;
+    featuredDescription.textContent = card.dataset.description;
   });
 });
 
@@ -50,150 +73,102 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-// Horizontal header countdown timer.
-const countdown = document.querySelector('[data-countdown]');
-const daysEl = document.querySelector('[data-days]');
-const hoursEl = document.querySelector('[data-hours]');
-const minutesEl = document.querySelector('[data-minutes]');
-const secondsEl = document.querySelector('[data-seconds]');
-
-function pad(value, length = 2) {
-  return String(value).padStart(length, '0');
-}
-
-function updateCountdown() {
-  if (!countdown || !daysEl || !hoursEl || !minutesEl || !secondsEl) return;
-
-  const target = new Date(countdown.dataset.countdown).getTime();
-  const distance = target - Date.now();
-  if (Number.isNaN(target)) return;
-
-  if (distance <= 0) {
-    daysEl.textContent = '000';
-    hoursEl.textContent = '00';
-    minutesEl.textContent = '00';
-    secondsEl.textContent = '00';
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  daysEl.textContent = pad(days, 3);
-  hoursEl.textContent = pad(hours);
-  minutesEl.textContent = pad(minutes);
-  secondsEl.textContent = pad(seconds);
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-// Fireworks canvas — restrained, not chaotic. No outside libraries.
+// Firework canvas: made to feel like the page is radiating from a single firework core.
 const canvas = document.getElementById('fireworksCanvas');
-const ctx = canvas?.getContext('2d');
-let width = 0;
-let height = 0;
+const ctx = canvas.getContext('2d');
+let width;
+let height;
 let fireworks = [];
 let particles = [];
-let stars = [];
+let fountain = [];
 let tick = 0;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const colors = ['#fff8ee', '#ff3b25', '#f5d47b', '#5ee8ff', '#ffffff', '#2b46ff'];
 
-function random(min, max) {
-  return Math.random() * (max - min) + min;
-}
+const colors = ['#ffffff', '#fff0b5', '#ffd76a', '#ff3727', '#72d8ff', '#9eb7ff'];
 
 function resizeCanvas() {
-  if (!canvas || !ctx) return;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   width = window.innerWidth;
   height = window.innerHeight;
   canvas.width = width * dpr;
   canvas.height = height * dpr;
-  canvas.style.width = width + 'px';
-  canvas.style.height = height + 'px';
+  canvas.style.width = `${width}px`;
+  canvas.style.height = `${height}px`;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  stars = Array.from({ length: Math.min(78, Math.floor(width / 18)) }, () => ({
-    x: random(0, width),
-    y: random(0, height * .86),
-    r: random(.35, 1.15),
-    a: random(.12, .58),
-  }));
+}
+
+function random(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 class Firework {
-  constructor() {
-    this.x = random(width * .12, width * .88);
-    this.y = height + 18;
-    this.targetY = random(height * .1, height * .36);
-    this.speed = random(6.8, 9.2);
+  constructor(x = random(width * 0.14, width * 0.86), targetY = random(height * 0.12, height * 0.46)) {
+    this.x = x;
+    this.y = height + 20;
+    this.targetY = targetY;
+    this.speed = random(7.4, 10.6);
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.trail = [];
-    this.sway = random(-.55, .55);
   }
+
   update() {
     this.trail.push({ x: this.x, y: this.y });
-    if (this.trail.length > 10) this.trail.shift();
-    this.x += Math.sin(this.y * .012) * this.sway;
+    if (this.trail.length > 12) this.trail.shift();
     this.y -= this.speed;
     if (this.y <= this.targetY) {
-      explode(this.x, this.y, this.color);
+      explode(this.x, this.y, this.color, random(38, 78));
       return false;
     }
     return true;
   }
+
   draw() {
-    if (!ctx) return;
-    ctx.save();
     ctx.beginPath();
     this.trail.forEach((point, index) => {
       ctx.globalAlpha = index / this.trail.length;
-      if (index === 0) ctx.moveTo(point.x, point.y);
-      else ctx.lineTo(point.x, point.y);
+      ctx.lineTo(point.x, point.y);
     });
     ctx.strokeStyle = this.color;
-    ctx.lineWidth = 1.8;
+    ctx.lineWidth = 2.2;
     ctx.stroke();
     ctx.globalAlpha = 1;
+
     ctx.beginPath();
-    ctx.arc(this.x, this.y, 2.4, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, 3.1, 0, Math.PI * 2);
     ctx.fillStyle = this.color;
     ctx.shadowColor = this.color;
-    ctx.shadowBlur = 18;
+    ctx.shadowBlur = 20;
     ctx.fill();
-    ctx.restore();
+    ctx.shadowBlur = 0;
   }
 }
 
 class Particle {
-  constructor(x, y, color, ring = false) {
+  constructor(x, y, color, power = 1) {
     const angle = random(0, Math.PI * 2);
-    const speed = ring ? random(2.5, 6.4) : random(1.1, 5.2);
+    const speed = random(1.2, 6.6) * power;
     this.x = x;
     this.y = y;
     this.vx = Math.cos(angle) * speed;
     this.vy = Math.sin(angle) * speed;
-    this.life = random(34, 72);
+    this.life = random(48, 92);
     this.age = 0;
     this.color = color;
-    this.size = random(.9, 2.4);
+    this.size = random(1, 2.8);
   }
+
   update() {
-    this.vx *= .985;
-    this.vy *= .985;
-    this.vy += .034;
+    this.vx *= 0.984;
+    this.vy *= 0.984;
+    this.vy += 0.033;
     this.x += this.vx;
     this.y += this.vy;
-    this.age++;
+    this.age += 1;
     return this.age < this.life;
   }
+
   draw() {
-    if (!ctx) return;
     const alpha = 1 - this.age / this.life;
-    ctx.save();
     ctx.globalAlpha = alpha;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -201,50 +176,97 @@ class Particle {
     ctx.shadowColor = this.color;
     ctx.shadowBlur = 13;
     ctx.fill();
-    ctx.restore();
+    ctx.shadowBlur = 0;
+    ctx.globalAlpha = 1;
   }
 }
 
-function explode(x, y, color) {
-  const ring = Math.random() > .58;
-  const amount = ring ? 62 : 42;
-  for (let i = 0; i < amount; i++) particles.push(new Particle(x, y, color, ring));
-  if (Math.random() > .78) {
-    for (let i = 0; i < 22; i++) particles.push(new Particle(x, y, colors[Math.floor(Math.random() * colors.length)], false));
+class FountainSpark {
+  constructor() {
+    this.x = random(width * 0.47, width * 0.53);
+    this.y = random(height * 0.67, height * 0.82);
+    const angle = random(-Math.PI * 0.88, -Math.PI * 0.12);
+    const speed = random(1.5, 4.2);
+    this.vx = Math.cos(angle) * speed;
+    this.vy = Math.sin(angle) * speed;
+    this.life = random(30, 74);
+    this.age = 0;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.size = random(.8, 2.1);
   }
-}
 
-function drawStars() {
-  if (!ctx) return;
-  stars.forEach((star) => {
-    ctx.globalAlpha = star.a;
+  update() {
+    this.vx *= 0.988;
+    this.vy += 0.055;
+    this.x += this.vx;
+    this.y += this.vy;
+    this.age += 1;
+    return this.age < this.life;
+  }
+
+  draw() {
+    const alpha = 1 - this.age / this.life;
+    ctx.globalAlpha = alpha * .72;
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-    ctx.fillStyle = '#fff8ee';
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.shadowColor = this.color;
+    ctx.shadowBlur = 10;
     ctx.fill();
-  });
-  ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
+    ctx.globalAlpha = 1;
+  }
+}
+
+function explode(x, y, color, count = 58) {
+  for (let i = 0; i < count; i += 1) {
+    particles.push(new Particle(x, y, color, random(.9, 1.25)));
+  }
+}
+
+function drawRadialBlueWash() {
+  const gradient = ctx.createRadialGradient(width * 0.5, height * 0.66, 0, width * 0.5, height * 0.66, Math.max(width, height) * 0.72);
+  gradient.addColorStop(0, 'rgba(5, 23, 214, 0.20)');
+  gradient.addColorStop(.38, 'rgba(3, 10, 80, 0.08)');
+  gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.globalCompositeOperation = 'lighter';
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
 }
 
 function animate() {
-  if (!ctx || reduceMotion) return;
-  ctx.clearRect(0, 0, width, height);
-  drawStars();
-  tick++;
-  if (tick % 72 === 0 || Math.random() < .0045) fireworks.push(new Firework());
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.fillStyle = 'rgba(2, 4, 18, 0.20)';
+  ctx.fillRect(0, 0, width, height);
+  drawRadialBlueWash();
+  ctx.globalCompositeOperation = 'lighter';
+
+  tick += 1;
+
+  if (!reduceMotion) {
+    if (tick % 52 === 0 && fireworks.length < 5) fireworks.push(new Firework());
+    if (tick % 210 === 0) explode(width * 0.5, height * 0.64, colors[Math.floor(Math.random() * colors.length)], 92);
+    if (tick % 3 === 0 && fountain.length < 120) fountain.push(new FountainSpark());
+  }
+
   fireworks = fireworks.filter((firework) => {
-    const alive = firework.update();
     firework.draw();
-    return alive;
+    return firework.update();
   });
+
   particles = particles.filter((particle) => {
-    const alive = particle.update();
     particle.draw();
-    return alive;
+    return particle.update();
   });
+
+  fountain = fountain.filter((spark) => {
+    spark.draw();
+    return spark.update();
+  });
+
   requestAnimationFrame(animate);
 }
 
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
-if (!reduceMotion) animate();
+animate();
