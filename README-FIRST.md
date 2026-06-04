@@ -1,13 +1,27 @@
-# Discount Fireworks Outlet — Fourth Finale V9
+# Discount Fireworks Outlet – Grand Finale Event V10
 
-Upload the contents of this folder to your GitHub Pages repository root:
+This is a GitHub-ready static website build.
 
-- index.html
-- styles.css
-- script.js
-- .nojekyll
-- assets/
+## Files included
 
-This version returns to the original patriotic DFO banner energy: electric blue, big fireworks, centered logo, glowing nav, horizontal America 250 clock, integrated locations/contact, and a separate demo video theater.
+- `index.html`
+- `styles.css`
+- `script.js`
+- `.nojekyll`
+- `assets/`
 
-To add real demo videos, replace the placeholder `.thumb` areas in `index.html` with YouTube embeds or linked thumbnails.
+## How to upload to GitHub
+
+1. Open this folder.
+2. Upload the folder contents to the root of your GitHub repository.
+3. Make sure `index.html`, `styles.css`, `script.js`, `.nojekyll`, and the `assets` folder are all in the root.
+4. Go to Settings → Pages.
+5. Set Pages source to your main branch/root.
+6. Save and wait for GitHub Pages to publish.
+
+## Notes
+
+- Replace the DFO text logo with the real logo later if desired.
+- The featured demo screen is currently a placeholder.
+- You can embed a YouTube iframe in the `.video-frame` area.
+- Location buttons already point to Google Maps searches.

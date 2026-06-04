@@ -1,0 +1,1 @@
+Drop DFO logo, firework photos, and demo thumbnails here.
