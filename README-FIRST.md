@@ -1,13 +1,15 @@
-# Discount Fireworks Outlet – Grand Finale Event V10.1
+# Discount Fireworks Outlet – Grand Finale Event V10.2
 
 GitHub-ready static website build.
 
-## What changed in V10.1
+## What changed in V10.2
 
-- Fixed overlap by moving the planning CTA into natural page flow.
-- Added location pin icons to each location.
-- Added 8 auto-selected YouTube demo videos as clickable demo cards.
-- Kept the V10 base, color palette, header, countdown, and structure.
+- Reworked the left headline so it no longer stacks awkwardly.
+- Replaced emoji location pins with clean red vector-style SVG location icons.
+- Kept the video/demo layout the user liked.
+- Kept the location layout the user liked.
+- Made contact input boxes equal height and width.
+- Kept the V10/V10.1 base direction.
 
 ## Files included
 
@@ -21,7 +23,3 @@ GitHub-ready static website build.
 
 Upload the contents of this folder to the root of the repository:
 `index.html`, `styles.css`, `script.js`, `.nojekyll`, `README-FIRST.md`, and `assets/`.
-
-## Video notes
-
-The demo videos are public YouTube embeds. Replace any video ID in `index.html` with your preferred DFO/product demos later.

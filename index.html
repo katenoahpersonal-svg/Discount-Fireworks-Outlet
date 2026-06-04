@@ -53,9 +53,13 @@
     <section class="grandstand-experience" aria-labelledby="main-title">
       <div class="experience-copy">
         <p class="eyebrow">Iowa’s Fourth of July launch point</p>
-        <h1 id="main-title">Arrive at the show before it starts.</h1>
+        <h1 id="main-title">
+          <span>Preview the</span>
+          <span>boom before</span>
+          <span>you buy.</span>
+        </h1>
         <p class="lead">
-          Watch real firework demos, choose your closest DFO location, and build a backyard finale that feels bigger than the driveway.
+          Watch real demo videos, choose your closest DFO location, and build a backyard finale that makes the whole block look up.
         </p>
 
         <div class="quick-actions">
@@ -74,7 +78,7 @@
           <iframe id="featured-video" src="https://www.youtube.com/embed/6kFtvmGDYSI" title="Featured firework demo video" allowfullscreen></iframe>
         </div>
 
-        <div class="demo-selector" aria-label="Demo categories">
+        <div class="demo-selector" aria-label="Demo videos">
           <button class="demo-card" type="button" data-video="6kFtvmGDYSI" data-title="2025 Top 500g Cakes" data-label="Finales">
             <img src="https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg" alt="2025 Top 500g Cakes firework demo thumbnail">
             <span>Finales</span>
@@ -124,7 +128,11 @@
 
         <div class="location-list">
           <article class="location-marker">
-            <span class="pin" aria-hidden="true">📍</span>
+            <span class="pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="pin-svg">
+                <path d="M12 2.5c-4.05 0-7.25 3.12-7.25 7.05 0 5.3 7.25 11.95 7.25 11.95s7.25-6.65 7.25-11.95c0-3.93-3.2-7.05-7.25-7.05Zm0 9.7a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5Z"/>
+              </svg>
+            </span>
             <div>
               <h3>Spirit Lake</h3>
               <p>Vick’s Corner · NW corner of HWY 9 & 86</p>
@@ -133,7 +141,11 @@
           </article>
 
           <article class="location-marker">
-            <span class="pin" aria-hidden="true">📍</span>
+            <span class="pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="pin-svg">
+                <path d="M12 2.5c-4.05 0-7.25 3.12-7.25 7.05 0 5.3 7.25 11.95 7.25 11.95s7.25-6.65 7.25-11.95c0-3.93-3.2-7.05-7.25-7.05Zm0 9.7a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5Z"/>
+              </svg>
+            </span>
             <div>
               <h3>Milford</h3>
               <p>Okoboji Gas Parking Lot · 2098 IA-86</p>
@@ -142,7 +154,11 @@
           </article>
 
           <article class="location-marker">
-            <span class="pin" aria-hidden="true">📍</span>
+            <span class="pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="pin-svg">
+                <path d="M12 2.5c-4.05 0-7.25 3.12-7.25 7.05 0 5.3 7.25 11.95 7.25 11.95s7.25-6.65 7.25-11.95c0-3.93-3.2-7.05-7.25-7.05Zm0 9.7a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5Z"/>
+              </svg>
+            </span>
             <div>
               <h3>Spencer</h3>
               <p>Spencer Mall Lot · 901 11th Street SW</p>
@@ -151,7 +167,11 @@
           </article>
 
           <article class="location-marker">
-            <span class="pin" aria-hidden="true">📍</span>
+            <span class="pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="pin-svg">
+                <path d="M12 2.5c-4.05 0-7.25 3.12-7.25 7.05 0 5.3 7.25 11.95 7.25 11.95s7.25-6.65 7.25-11.95c0-3.93-3.2-7.05-7.25-7.05Zm0 9.7a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5Z"/>
+              </svg>
+            </span>
             <div>
               <h3>Armstrong</h3>
               <p>101 6th St · HWY 15</p>
@@ -184,7 +204,7 @@
         </label>
         <label>
           Message
-          <textarea name="message" rows="3" placeholder="Tell us what kind of show you’re planning."></textarea>
+          <textarea name="message" placeholder="Tell us what kind of show you’re planning."></textarea>
         </label>
         <button type="submit">Send Message</button>
       </form>
