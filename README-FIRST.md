@@ -1,4 +1,4 @@
-# Discount Fireworks Outlet — V29 Visual Reset
+# Discount Fireworks Outlet — V30 Final Ready Code
 
 Upload these to the root of your GitHub Pages repository:
 
@@ -6,23 +6,17 @@ Upload these to the root of your GitHub Pages repository:
 - .nojekyll
 - assets/
 
-This version is a hard visual reset from the previous final:
-- cards are substantially smaller
-- center card is lower and no longer cut by the header
-- all five cards are designed to remain visible across the arc
-- carousel wall rotation is corrected:
-  - left cards rotate negative
-  - right cards rotate positive
-  - far cards rotate farther
-- background is scaled to feel larger
-- firecracker and bottom countdown are smaller/lower
-- footer is thinner
-
-Interaction:
-- arrows rotate
-- keyboard arrows rotate
-- clicking side cards rotates them into center
-- drag rotates
+This version fixes the architecture:
+- DFO firecracker is baked into the background scene and does not move.
+- Background is rebuilt with a dark reflective water surface instead of stone.
+- Large carousel ring and smaller front circle are separated.
+- Bottom countdown sits below the small front circle.
+- Carousel uses real circular wall math with sin/cos-style positioning.
+- Cards face outward based on their position like wallpaper around a circular wall.
+- Exactly 5 cards.
+- Demo Videos starts centered.
+- Facebook Page Plugin embed uses https://www.facebook.com/DFOBoji/
+- Arrows, side-card click, keyboard arrows, and drag all rotate the carousel.
 
 Notes:
 - Instagram and YouTube links are placeholders until final URLs are supplied.
