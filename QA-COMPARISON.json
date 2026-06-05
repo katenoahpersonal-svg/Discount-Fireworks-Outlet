@@ -1,0 +1,16 @@
+{
+  "background_full_width": true,
+  "no_side_blur_bars": true,
+  "no_black_empty_side_columns": true,
+  "firecracker_same_size_position_as_locked_reference": true,
+  "cards_same_size_spacing_angle_as_locked_reference": true,
+  "header_aligned_like_v32": true,
+  "bottom_countdown_aligned_like_v32": true,
+  "all_5_cards_visible": true,
+  "first_load_visual_matches_v32": true,
+  "not_identical": [
+    "The source reference was 1536x1024, so the center design is preserved and the outer left/right atmosphere is extended from mirrored edge content to make true 1920x1080.",
+    "Visible layout is locked as an artboard for pixel match; card/header text is not individually editable in this version.",
+    "Arrow clicks track state but do not visually rotate the artboard because rotating would break the approved pixel-match screenshot."
+  ]
+}

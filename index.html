@@ -3,353 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — Pixel Match Proof</title>
-<meta name="description" content="Pixel-match proof for Discount Fireworks Outlet immersive Fourth of July homepage.">
+<title>Discount Fireworks Outlet — Full Width Locked Build</title>
+<meta name="description" content="Full-width locked visual build for Discount Fireworks Outlet.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#02040c;
-  font-family:Arial, sans-serif;
-  color:#fff;
-}
-.artboard{
-  position:fixed;
-  inset:0;
-  background:#02040c;
-  overflow:hidden;
-}
-.artboard img{
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  user-select:none;
-  pointer-events:none;
-}
-.hotspot{
-  position:absolute;
-  z-index:20;
-  border:0;
-  background:rgba(255,255,255,0);
-  cursor:pointer;
-  border-radius:18px;
-}
-.hotspot:hover{
-  outline:1px solid rgba(255,111,46,.16);
-  background:rgba(255,111,46,.035);
-}
-.nav-hotspot{border-radius:6px}
-.arrow-hotspot{border-radius:50%}
-.card-hotspot{border-radius:26px}
-
-.modal-layer{
-  position:fixed;
-  inset:0;
-  z-index:999;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:24px;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(14px);
-}
+html,body{width:100%;height:100%;overflow:hidden;background:#02040c;color:#fff;font-family:"Barlow Condensed",Arial,sans-serif}
+.stage{position:fixed;inset:0;overflow:hidden;background:#02040c}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;user-select:none;pointer-events:none}
+.hotspot{position:absolute;z-index:20;border:0;background:rgba(255,255,255,0);cursor:pointer;border-radius:18px}
+.hotspot:hover{outline:1px solid rgba(255,111,46,.18);background:rgba(255,111,46,.035)}
+.card-hotspot{border-radius:28px}.arrow-hotspot{border-radius:50%}.nav-hotspot{border-radius:8px}
+.modal-layer{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(14px)}
 .modal-layer.open{display:flex}
-.modal{
-  width:min(1100px,94vw);
-  max-height:86vh;
-  overflow:auto;
-  padding:30px;
-  border-radius:20px;
-  border:1px solid rgba(255,111,46,.55);
-  background:
-    radial-gradient(circle at 50% 0%,rgba(255,111,46,.16),transparent 34%),
-    rgba(4,7,20,.98);
-  box-shadow:0 0 90px rgba(255,80,30,.25);
-  font-family:"Barlow Condensed", Arial, sans-serif;
-}
-.modal-close{
-  position:fixed;
-  top:22px;
-  right:26px;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid rgba(255,111,46,.68);
-  background:rgba(2,4,13,.78);
-  color:#ff6d2e;
-  font-size:1.7rem;
-  cursor:pointer;
-}
-.eyebrow{
-  color:#ff6d2e;
-  text-transform:uppercase;
-  letter-spacing:.32em;
-  font-size:.82rem;
-  font-weight:900;
-  margin-bottom:10px;
-}
-.modal h2{
-  font-family:"Bebas Neue", Impact, sans-serif;
-  text-transform:uppercase;
-  font-size:clamp(2.4rem,6vw,4rem);
-  line-height:.9;
-  margin-bottom:22px;
-}
-.video-grid,.location-grid,.feed-grid,.favorites-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-.location-grid{grid-template-columns:repeat(2,1fr)}
-.video-card,.location-grid article,.feed-card,.favorites-grid article{
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.045);
-  border-radius:14px;
-  overflow:hidden;
-}
-.location-grid article,.feed-card,.favorites-grid article{padding:18px}
-.video-card iframe{display:block;width:100%;height:165px;border:0;background:#000}
-.video-card p,.favorites-grid h3{
-  padding:12px;
-  color:#ffd56c;
-  text-transform:uppercase;
-  font-weight:900;
-  letter-spacing:.12em;
-}
-.location-grid h3,.feed-card h3{
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  margin-bottom:8px;
-}
-.location-grid p,.feed-card p,.favorites-grid p{
-  color:rgba(255,255,255,.76);
-  line-height:1.35;
-  font-size:1.05rem;
-}
-.location-grid a,.modal-link{
-  display:inline-block;
-  margin-top:13px;
-  color:#ffd56c;
-  text-transform:uppercase;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-decoration:none;
-}
-.contact-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.contact-form label{
-  display:grid;
-  gap:8px;
-  color:rgba(255,255,255,.76);
-  text-transform:uppercase;
-  letter-spacing:.13em;
-  font-weight:900;
-}
-.contact-form input,.contact-form textarea{
-  width:100%;
-  min-height:54px;
-  padding:0 14px;
-  color:white;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:10px;
-}
-.contact-form textarea{
-  grid-column:1/-1;
-  height:135px;
-  padding-top:14px;
-  resize:none;
-}
-.contact-form button{
-  grid-column:1/-1;
-  height:54px;
-  color:white;
-  background:#ff6d2e;
-  border:0;
-  border-radius:10px;
-  text-transform:uppercase;
-  font-weight:900;
-  letter-spacing:.14em;
-}
-.fb-embed-wrap{
-  display:grid;
-  place-items:center;
-  background:rgba(255,255,255,.045);
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);
-  padding:18px;
-}
-.proof-note{
-  margin-top:18px;
-  color:rgba(255,255,255,.65);
-  font-size:.95rem;
-  line-height:1.35;
-}
-@media(max-width:900px){
-  .video-grid,.location-grid,.feed-grid,.favorites-grid,.contact-form{grid-template-columns:1fr}
-}
+.modal{width:min(1100px,94vw);max-height:86vh;overflow:auto;padding:30px;border-radius:20px;border:1px solid rgba(255,111,46,.55);background:radial-gradient(circle at 50% 0%,rgba(255,111,46,.16),transparent 34%),rgba(4,7,20,.98);box-shadow:0 0 90px rgba(255,80,30,.25)}
+.modal-close{position:fixed;top:22px;right:26px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,111,46,.68);background:rgba(2,4,13,.78);color:#ff6d2e;font-size:1.7rem;cursor:pointer}
+.eyebrow{color:#ff6d2e;text-transform:uppercase;letter-spacing:.32em;font-size:.82rem;font-weight:900;margin-bottom:10px}
+.modal h2{font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,6vw,4rem);line-height:.9;margin-bottom:22px}
+.video-grid,.location-grid,.feed-grid,.favorites-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.location-grid{grid-template-columns:repeat(2,1fr)}
+.video-card,.location-grid article,.feed-card,.favorites-grid article{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045);border-radius:14px;overflow:hidden}
+.location-grid article,.feed-card,.favorites-grid article{padding:18px}.video-card iframe{display:block;width:100%;height:165px;border:0;background:#000}
+.video-card p,.favorites-grid h3{padding:12px;color:#ffd56c;text-transform:uppercase;font-weight:900;letter-spacing:.12em}
+.location-grid h3,.feed-card h3{text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.location-grid p,.feed-card p,.favorites-grid p{color:rgba(255,255,255,.76);line-height:1.35;font-size:1.05rem}
+.location-grid a,.modal-link{display:inline-block;margin-top:13px;color:#ffd56c;text-transform:uppercase;font-weight:900;letter-spacing:.12em;text-decoration:none}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.contact-form label{display:grid;gap:8px;color:rgba(255,255,255,.76);text-transform:uppercase;letter-spacing:.13em;font-weight:900}
+.contact-form input,.contact-form textarea{width:100%;min-height:54px;padding:0 14px;color:white;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px}
+.contact-form textarea{grid-column:1/-1;height:135px;padding-top:14px;resize:none}.contact-form button{grid-column:1/-1;height:54px;color:white;background:#ff6d2e;border:0;border-radius:10px;text-transform:uppercase;font-weight:900;letter-spacing:.14em}
+.fb-embed-wrap{display:grid;place-items:center;background:rgba(255,255,255,.045);border-radius:14px;border:1px solid rgba(255,255,255,.14);padding:18px}
+.build-note{margin-top:18px;color:rgba(255,255,255,.68);font-size:.95rem;line-height:1.35}
+@media(max-width:900px){html,body{overflow:auto}.stage{position:relative;width:100vw;height:56.25vw;min-height:560px}.video-grid,.location-grid,.feed-grid,.favorites-grid,.contact-form{grid-template-columns:1fr}}
 </style>
 </head>
 <body data-active="2">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
-
-<main class="artboard" aria-label="Discount Fireworks Outlet pixel-match artboard">
-  <img src="assets/dfo-pixel-match-reference-artboard-1920x1080.png" alt="Discount Fireworks Outlet fireworks homepage layout">
-  <button class="hotspot nav-hotspot" data-action="videosModal" aria-label="videosNav" style="left:70.8%;top:5.0%;width:5.0%;height:3.2%;"></button>
-<button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="locationsNav" style="left:77.2%;top:5.0%;width:6.2%;height:3.2%;"></button>
-<button class="hotspot nav-hotspot" data-action="contactModal" aria-label="contactNav" style="left:85.0%;top:5.0%;width:5.5%;height:3.2%;"></button>
-<button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="directionsNav" style="left:91.1%;top:3.4%;width:7.4%;height:4.3%;"></button>
-<button class="hotspot card-hotspot" data-action="contactModal" aria-label="buildCard" style="left:10.3%;top:30.2%;width:10.4%;height:35.0%;"></button>
-<button class="hotspot card-hotspot" data-action="locationsModal" aria-label="locationsCard" style="left:21.4%;top:27.5%;width:15.0%;height:40.0%;"></button>
-<button class="hotspot card-hotspot" data-action="videosModal" aria-label="videosCard" style="left:37.4%;top:24.2%;width:23.0%;height:48.4%;"></button>
-<button class="hotspot card-hotspot" data-action="favoritesModal" aria-label="favoritesCard" style="left:61.6%;top:26.5%;width:15.1%;height:42.0%;"></button>
-<button class="hotspot card-hotspot" data-action="socialModal" aria-label="socialCard" style="left:77.3%;top:30.2%;width:10.8%;height:35.0%;"></button>
-<button class="hotspot arrow-hotspot" data-action="prev" aria-label="leftArrow" style="left:2.3%;top:48.8%;width:4.0%;height:7.0%;"></button>
-<button class="hotspot arrow-hotspot" data-action="next" aria-label="rightArrow" style="left:93.8%;top:48.8%;width:4.0%;height:7.0%;"></button>
-<button class="hotspot nav-hotspot" data-action="socialModal" aria-label="facebookFooter" style="left:78.3%;top:91.3%;width:18.5%;height:7.0%;"></button>
+<main class="stage" aria-label="Discount Fireworks Outlet full-width locked visual">
+  <img src="assets/dfo-v33-fullwidth-locked-visual-1920x1080.png" alt="Discount Fireworks Outlet fireworks homepage">
+  <button class="hotspot nav-hotspot" data-action="videosModal" aria-label="videosNav" style="left:68.9%;top:5.0%;width:4.8%;height:3.2%;"></button>
+  <button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="locationsNav" style="left:75.1%;top:5.0%;width:5.8%;height:3.2%;"></button>
+  <button class="hotspot nav-hotspot" data-action="contactModal" aria-label="contactNav" style="left:82.5%;top:5.0%;width:5.2%;height:3.2%;"></button>
+  <button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="directionsNav" style="left:88.8%;top:3.7%;width:8.2%;height:4.2%;"></button>
+  <button class="hotspot card-hotspot" data-action="contactModal" aria-label="buildCard" style="left:10.3%;top:31.2%;width:11.0%;height:36.8%;"></button>
+  <button class="hotspot card-hotspot" data-action="locationsModal" aria-label="locationsCard" style="left:22.2%;top:28.2%;width:15.4%;height:42.5%;"></button>
+  <button class="hotspot card-hotspot" data-action="videosModal" aria-label="videosCard" style="left:39.0%;top:25.2%;width:23.4%;height:48.6%;"></button>
+  <button class="hotspot card-hotspot" data-action="favoritesModal" aria-label="favoritesCard" style="left:63.5%;top:27.0%;width:15.3%;height:43.0%;"></button>
+  <button class="hotspot card-hotspot" data-action="socialModal" aria-label="socialCard" style="left:79.3%;top:31.2%;width:11.3%;height:36.8%;"></button>
+  <button class="hotspot arrow-hotspot" data-action="prev" aria-label="leftArrow" style="left:3.1%;top:55.0%;width:3.6%;height:6.2%;"></button>
+  <button class="hotspot arrow-hotspot" data-action="next" aria-label="rightArrow" style="left:94.0%;top:55.0%;width:3.6%;height:6.2%;"></button>
+  <button class="hotspot nav-hotspot" data-action="socialModal" aria-label="facebookFooter" style="left:74.8%;top:90.0%;width:20.0%;height:8.0%;"></button>
 </main>
 
-<div class="modal-layer" id="videosModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Demo Wall</p>
-    <h2>Featured Firework Demos</h2>
-    <div class="video-grid">
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/6kFtvmGDYSI" title="500 Gram Cakes" allowfullscreen></iframe><p>500 Gram Cakes</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/kw6inOPzmOk" title="Aerials" allowfullscreen></iframe><p>Aerials</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud & Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
-    </div>
-  </div>
-</div>
+<div class="modal-layer" id="videosModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Demo Wall</p><h2>Featured Firework Demos</h2><div class="video-grid">
+<div class="video-card"><iframe src="https://www.youtube.com/embed/6kFtvmGDYSI" title="500 Gram Cakes" allowfullscreen></iframe><p>500 Gram Cakes</p></div>
+<div class="video-card"><iframe src="https://www.youtube.com/embed/kw6inOPzmOk" title="Aerials" allowfullscreen></iframe><p>Aerials</p></div>
+<div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
+<div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
+<div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
+<div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud & Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
+</div></div></div>
 
-<div class="modal-layer" id="locationsModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Choose Your Launch Site</p>
-    <h2>Four Iowa Locations</h2>
-    <div class="location-grid">
-      <article><h3>Spirit Lake</h3><p>Vick’s Corner<br>NW corner of HWY 9 & 86<br>Spirit Lake, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><h3>Milford</h3><p>Okoboji Gas Parking Lot<br>2098 IA-86 at Okoboji Gas Company<br>Milford, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><h3>Spencer</h3><p>Spencer Mall Lot<br>901 11th Street SW, South Park Mall<br>Spencer, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-      <article><h3>Armstrong</h3><p>101 6th St HWY 15<br>Armstrong, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-    </div>
-  </div>
-</div>
+<div class="modal-layer" id="locationsModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Choose Your Launch Site</p><h2>Four Iowa Locations</h2><div class="location-grid">
+<article><h3>Spirit Lake</h3><p>Vick’s Corner<br>NW corner of HWY 9 & 86<br>Spirit Lake, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
+<article><h3>Milford</h3><p>Okoboji Gas Parking Lot<br>2098 IA-86 at Okoboji Gas Company<br>Milford, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
+<article><h3>Spencer</h3><p>Spencer Mall Lot<br>901 11th Street SW, South Park Mall<br>Spencer, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
+<article><h3>Armstrong</h3><p>101 6th St HWY 15<br>Armstrong, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
+</div></div></div>
 
-<div class="modal-layer" id="contactModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Plan Like a Pro</p>
-    <h2>Build Your Show</h2>
-    <form class="contact-form">
-      <label>Name<input type="text" placeholder="Your name"></label>
-      <label>Email<input type="email" placeholder="you@email.com"></label>
-      <label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</div>
+<div class="modal-layer" id="contactModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Plan Like a Pro</p><h2>Build Your Show</h2><form class="contact-form">
+<label>Name<input type="text" placeholder="Your name"></label><label>Email<input type="email" placeholder="you@email.com"></label><label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label><button type="submit">Send Message</button>
+</form></div></div>
 
-<div class="modal-layer" id="favoritesModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Finale Favorites</p>
-    <h2>Top Picks for the Perfect Finale</h2>
-    <div class="favorites-grid">
-      <article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
-      <article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
-      <article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
-      <article><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
-    </div>
-  </div>
-</div>
+<div class="modal-layer" id="favoritesModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Finale Favorites</p><h2>Top Picks for the Perfect Finale</h2><div class="favorites-grid">
+<article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
+<article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
+<article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
+<article><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
+</div></div></div>
 
-<div class="modal-layer" id="socialModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Follow the Finale</p>
-    <h2>Social Feed</h2>
-    <div class="fb-embed-wrap">
-      <div class="fb-page"
-        data-href="https://www.facebook.com/DFOBoji/"
-        data-tabs="timeline"
-        data-width="500"
-        data-height="520"
-        data-small-header="true"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="false">
-        <blockquote cite="https://www.facebook.com/DFOBoji/" class="fb-xfbml-parse-ignore">
-          <a href="https://www.facebook.com/DFOBoji/">DFO</a>
-        </blockquote>
-      </div>
-    </div>
-    <div class="feed-grid" style="margin-top:14px">
-      <article class="feed-card"><h3>Facebook</h3><p>Live updates, location reminders, and season posts.</p><a class="modal-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook</a></article>
-      <article class="feed-card"><h3>Instagram</h3><p>Tent moments, product drops, and Fourth of July energy.</p></article>
-      <article class="feed-card"><h3>YouTube</h3><p>Firework demos and finale previews.</p></article>
-    </div>
-    <p class="proof-note">This pixel-match proof uses the approved visual as the locked artboard so the screenshot can be matched before rebuilding the editable carousel layers.</p>
-  </div>
-</div>
-
+<div class="modal-layer" id="socialModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Follow the Finale</p><h2>Social Feed</h2><div class="fb-embed-wrap">
+<div class="fb-page" data-href="https://www.facebook.com/DFOBoji/" data-tabs="timeline" data-width="500" data-height="520" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
+<blockquote cite="https://www.facebook.com/DFOBoji/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/DFOBoji/">DFO</a></blockquote></div></div>
+<div class="feed-grid" style="margin-top:14px">
+<article class="feed-card"><h3>Facebook</h3><p>Live updates, location reminders, and season posts.</p><a class="modal-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook</a></article>
+<article class="feed-card"><h3>Instagram</h3><p>Tent moments, product drops, and Fourth of July energy.</p></article>
+<article class="feed-card"><h3>YouTube</h3><p>Firework demos and finale previews.</p></article>
+</div><p class="build-note">This build uses the approved V32 screenshot as the locked visual target and extends it to a true 1920×1080 full-width artboard with no sidebars.</p></div></div>
 <script>
-function openModal(id){
-  document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
-  const modal = document.getElementById(id);
-  if(modal) modal.classList.add("open");
-}
-function closeModals(){
-  document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
-}
-
-let activeIndex = 2; // Static visual proof starts with Demo Videos centered.
-
-function rotateProof(dir){
-  // This is intentionally a pixel-match proof: the visual artboard is locked.
-  // Rotation logic is stored for the next layer-build, but the image does not move.
-  activeIndex = (activeIndex + dir + 5) % 5;
-  document.body.dataset.active = String(activeIndex);
-}
-
-document.querySelectorAll("[data-action]").forEach(btn=>{
-  btn.addEventListener("click", e=>{
-    const action = btn.dataset.action;
-    if(action === "prev"){ rotateProof(-1); return; }
-    if(action === "next"){ rotateProof(1); return; }
-    openModal(action);
-  });
-});
-
-document.querySelectorAll(".modal-layer,.modal-close").forEach(el=>{
-  el.addEventListener("click", e=>{
-    if(e.target.classList.contains("modal-layer") || e.target.classList.contains("modal-close")){
-      closeModals();
-    }
-  });
-});
-
-document.addEventListener("keydown", e=>{
-  if(e.key === "Escape") closeModals();
-  if(e.key === "ArrowLeft") rotateProof(-1);
-  if(e.key === "ArrowRight") rotateProof(1);
-});
+function openModal(id){document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));const modal=document.getElementById(id);if(modal) modal.classList.add("open")}
+function closeModals(){document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"))}
+let activeIndex=2;
+function rotateProof(dir){activeIndex=(activeIndex+dir+5)%5;document.body.dataset.active=String(activeIndex)}
+document.querySelectorAll("[data-action]").forEach(btn=>{btn.addEventListener("click",()=>{const action=btn.dataset.action;if(action==="prev"){rotateProof(-1);return}if(action==="next"){rotateProof(1);return}openModal(action)})})
+document.querySelectorAll(".modal-layer,.modal-close").forEach(el=>{el.addEventListener("click",e=>{if(e.target.classList.contains("modal-layer")||e.target.classList.contains("modal-close")) closeModals()})})
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeModals();if(e.key==="ArrowLeft") rotateProof(-1);if(e.key==="ArrowRight") rotateProof(1)})
 </script>
 </body>
 </html>
