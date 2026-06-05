@@ -1,14 +1,16 @@
-# DFO V17 — Finished Turntable
+# DFO V18 — Cinematic Scene Rebuild
 
-Upload these two files to your GitHub Pages repo root:
+Upload these files to the root of your GitHub Pages repo:
 - index.html
 - .nojekyll
 
-What this version locks:
-- Exactly 5 cards: Build Your Show, Locations, Videos, Finale Favorites, Social Feed
+Locked decisions:
+- Exactly 5 cards: Videos, Locations, Build Your Show, Social Feed, Finale Favorites
 - Videos starts centered
+- Main homepage is one-screen and immersive
 - No canvas fireworks
-- No giant blocking center object
-- Firecracker pedestal is below the card content and not covering the CTA
-- Card interiors are redesigned/tightened for readability
-- Header, countdown, modals, locations, videos, and footer are all included in one index.html
+- No giant object covering the center card
+- Card copy is shorter; full details live in modals
+- Pedestal/firecracker is smaller and separated from card content
+- CSS and JS are embedded directly in index.html
+- YouTube demo embeds and location details are included
