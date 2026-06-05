@@ -1085,7 +1085,7 @@ a{color:inherit}
 }
 </style>
 </head>
-<body data-build="v36-true-production-no-screenshot-artboard">
+<body data-build="v37-working-production-js-fixed">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -1247,7 +1247,7 @@ const PIN_SVG = `<svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
   <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
   <circle cx="12" cy="9.7" r="2.35"/>
 </svg>`;
-const https://www.facebook.com/DFOBoji/ = "https://www.facebook.com/DFOBoji/";
+const FACEBOOK_URL = "https://www.facebook.com/DFOBoji/";
 
 const cards = [
   {
@@ -1311,7 +1311,7 @@ const cards = [
     title:"Social Feed",
     media:`<div class="card-media">
       <div class="social-icons-row">
-        <a class="social-big fb" href="${https://www.facebook.com/DFOBoji/}" target="_blank" rel="noopener">f</a>
+        <a class="social-big fb" href="${FACEBOOK_URL}" target="_blank" rel="noopener">f</a>
         <a class="social-big ig" href="#" aria-label="Instagram">◎</a>
         <a class="social-big yt" href="#" aria-label="YouTube">▶</a>
       </div>
@@ -1446,7 +1446,7 @@ window.addEventListener("pointerup", e => {
 renderCards();
 updateCountdown();
 setInterval(updateCountdown, 1000);
-console.log("DFO V36 true production build loaded — no screenshot artboard background.");
+console.log("DFO V37 working production build loaded — JS syntax fixed; cards/countdowns active.");
 </script>
 </body>
 </html>

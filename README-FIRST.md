@@ -1,26 +1,20 @@
-# DFO V36 — TRUE Production Build
+# DFO V37 — Working Production Build
 
-This is not the screenshot/artboard proof.
+This fixes the V36 JavaScript syntax error that stopped the cards and countdowns from rendering.
 
-Upload only these files/folders to GitHub Pages:
+What was wrong in V36:
+- The script accidentally contained this invalid JavaScript:
+  const https://www.facebook.com/DFOBoji/ = "https://www.facebook.com/DFOBoji/";
+- That killed the entire JS file.
+- Result: no cards rendered and countdowns stayed as --.
 
-- index.html
-- .nojekyll
-- assets/
-
-Critical:
-Delete/replace the old index.html before uploading this.
-If you still see duplicated side cards or duplicated logos, the browser/GitHub is serving the OLD V33 screenshot-artboard build.
-
-This build includes:
+What V37 includes:
 - clean responsive background only, no cards/header/countdown baked in
-- desktop background: dfo-v36-bg-desktop-clean-1920x1080.png
-- tablet background: dfo-v36-bg-tablet-clean-1536x2048.png
-- mobile background: dfo-v36-bg-mobile-clean-1080x1920.png
+- desktop/tablet/mobile backgrounds
 - coded header
-- coded top countdown
+- coded countdowns
 - coded five-card fixed-slot carousel
-- card swapping between fixed slots
+- coded cards
 - coded DFO firecracker object fixed to stage
 - coded small front ring
 - coded bottom countdown
@@ -29,7 +23,10 @@ This build includes:
 - working modals
 - Facebook Page Plugin embed for https://www.facebook.com/DFOBoji/
 
-QA:
-- No asset named dfo-v33-fullwidth-locked-visual-1920x1080.png is included.
-- No screenshot-artboard background is included.
-- Cards are real HTML/CSS, not baked into the background.
+Upload:
+- index.html
+- .nojekyll
+- assets/
+
+Important:
+Delete/replace the old index.html in GitHub Pages. If you still see no cards/countdowns, refresh with Ctrl+F5 or add ?v=37 to the URL once.
