@@ -3,27 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — Formatted Background + Wide Carousel</title>
-<meta name="description" content="Discount Fireworks Outlet interactive Fourth of July landing page with 16:9 formatted background, coded header, countdowns, and wider rotating carousel cards.">
+<title>Discount Fireworks Outlet — Circular Wall Carousel</title>
+<meta name="description" content="Discount Fireworks Outlet interactive Fourth of July landing page with a coded circular wall carousel, header, and countdowns.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root {
   --orange:#ff6d2e;
-  --red:#f03829;
+  --orange-soft:rgba(255,109,46,.72);
+  --red:#f03b2b;
   --gold:#ffd56c;
-  --white:#fff;
-  --dark:#03050d;
+  --white:#ffffff;
+  --navy:#03050d;
+  --panel:rgba(5,8,22,.82);
   --font-head:"Bebas Neue", Impact, sans-serif;
   --font-body:"Barlow Condensed", system-ui, sans-serif;
 }
+
 * {
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
-html,body {
+
+html,
+body {
   width:100%;
   height:100%;
   overflow:hidden;
@@ -32,14 +37,17 @@ html,body {
   font-family:var(--font-body);
   -webkit-font-smoothing:antialiased;
 }
-button,input,textarea {
+
+button,
+input,
+textarea {
   font-family:inherit;
 }
+
 button {
   cursor:pointer;
 }
 
-/* Full-bleed background — no boxed/margined artboard */
 .bg-wrap {
   position:fixed;
   inset:0;
@@ -47,6 +55,7 @@ button {
   overflow:hidden;
   background:#03050d;
 }
+
 .bg {
   position:absolute;
   inset:0;
@@ -55,54 +64,61 @@ button {
   object-fit:cover;
   object-position:center center;
   display:block;
-  user-select:none;
-  -webkit-user-drag:none;
   pointer-events:none;
+  user-select:none;
 }
+
 .bg-wrap::after {
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(0,0,0,.62) 0,rgba(0,0,0,.22) 12%,transparent 27%,transparent 78%,rgba(0,0,0,.66) 100%),
-    radial-gradient(circle at 50% 15%,rgba(255,111,46,.08),transparent 22%);
+    linear-gradient(180deg,rgba(0,0,0,.72) 0,rgba(0,0,0,.28) 13%,rgba(0,0,0,.02) 30%,rgba(0,0,0,.08) 72%,rgba(0,0,0,.82) 100%),
+    radial-gradient(circle at 50% 36%,rgba(255,111,46,.08),transparent 35%),
+    radial-gradient(circle at 50% 90%,rgba(0,0,0,.28),transparent 20%);
 }
 
-/* Header coded back in */
-.site-header {
+/* =========================
+   CODED HEADER
+========================= */
+
+.header {
   position:fixed;
   top:0;
   left:0;
   right:0;
-  height:98px;
-  z-index:90;
-  padding:0 32px;
+  z-index:80;
+  height:96px;
   display:grid;
-  grid-template-columns:330px 1fr 520px;
-  gap:22px;
+  grid-template-columns:320px 1fr 520px;
   align-items:center;
-  background:rgba(2,4,13,.92);
+  gap:22px;
+  padding:0 32px;
+  background:rgba(2,4,13,.90);
+  border-bottom:1px solid rgba(255,109,46,.25);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,111,46,.26);
 }
+
 .logo {
   display:flex;
   align-items:center;
   gap:13px;
-  text-transform:uppercase;
   color:#fff;
   text-decoration:none;
+  text-transform:uppercase;
 }
+
 .logo-mark {
   position:relative;
-  color:var(--red);
   font-family:var(--font-head);
-  font-size:4.2rem;
+  font-size:4.15rem;
   line-height:.78;
-  letter-spacing:-.01em;
-  text-shadow:0 0 22px rgba(240,56,41,.62),0 4px 0 rgba(0,0,0,.42);
+  letter-spacing:-.012em;
+  color:var(--red);
+  text-shadow:0 0 22px rgba(240,59,43,.62),0 4px 0 rgba(0,0,0,.42);
 }
+
 .logo-mark::before {
   content:"";
   position:absolute;
@@ -112,24 +128,28 @@ button {
   background-image:radial-gradient(#05050a 1px,transparent 1.7px);
   background-size:8px 8px;
 }
+
 .logo-mark::after {
   content:"★";
   position:absolute;
   right:10px;
   top:8px;
   font-size:.72rem;
-  color:#711813;
+  color:#741813;
 }
+
 .logo-text {
-  font-size:1.06rem;
+  font-size:1.03rem;
   line-height:.92;
   font-weight:900;
   letter-spacing:.045em;
 }
+
 .header-clock {
   text-align:center;
   text-transform:uppercase;
 }
+
 .header-title {
   color:var(--orange);
   font-size:.72rem;
@@ -137,16 +157,19 @@ button {
   letter-spacing:.22em;
   margin-bottom:5px;
 }
+
 .clock-row {
   display:flex;
   justify-content:center;
   align-items:flex-end;
 }
+
 .clock-unit {
   position:relative;
   min-width:82px;
   text-align:center;
 }
+
 .clock-unit + .clock-unit::before {
   content:"";
   position:absolute;
@@ -154,14 +177,16 @@ button {
   top:18%;
   width:1px;
   height:64%;
-  background:rgba(255,111,46,.28);
+  background:rgba(255,109,46,.28);
 }
+
 .clock-num {
   font-family:var(--font-head);
-  font-size:2.08rem;
+  font-size:2.05rem;
   line-height:1;
   color:#fff;
 }
+
 .clock-lab {
   color:var(--orange);
   font-size:.54rem;
@@ -169,13 +194,15 @@ button {
   font-weight:900;
   margin-top:4px;
 }
+
 .nav {
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  gap:28px;
+  gap:27px;
   text-transform:uppercase;
 }
+
 .nav button {
   color:rgba(255,255,255,.78);
   background:transparent;
@@ -184,9 +211,11 @@ button {
   font-size:.72rem;
   font-weight:900;
 }
+
 .nav button:hover {
   color:#fff;
 }
+
 .nav .directions {
   color:var(--orange);
   border:1.5px solid var(--orange);
@@ -194,40 +223,61 @@ button {
   box-shadow:0 0 26px rgba(255,111,46,.28),inset 0 0 18px rgba(255,111,46,.07);
 }
 
-/* Carousel stage */
+/* =========================
+   PERFECT CIRCULAR WALL CAROUSEL
+========================= */
+
 .stage {
   position:fixed;
-  inset:112px 0 86px;
+  inset:96px 0 128px;
   z-index:20;
-  perspective:1500px;
-  perspective-origin:50% 52%;
   overflow:hidden;
+  perspective:1500px;
+  perspective-origin:50% 44%;
 }
-.card-stage {
+
+.carousel {
   position:absolute;
   inset:0;
   transform-style:preserve-3d;
   cursor:grab;
 }
-.card-stage.dragging {
+
+.carousel.dragging {
   cursor:grabbing;
 }
+
 .card {
+  --x:0px;
+  --y:0px;
+  --z:0px;
+  --ry:0deg;
+  --scale:1;
+  --opacity:1;
+  --bright:1;
   position:absolute;
   left:50%;
-  top:50%;
-  width:min(435px,28.4vw);
-  height:min(438px,49.5vh);
+  top:48%;
+  width:430px;
+  height:435px;
+  transform:
+    translate(-50%,-50%)
+    translate3d(var(--x), var(--y), var(--z))
+    rotateY(var(--ry))
+    scale(var(--scale));
+  opacity:var(--opacity);
+  filter:brightness(var(--bright)) saturate(.98);
   transform-style:preserve-3d;
+  transform-origin:center center;
   border-radius:24px;
-  border:1.4px solid rgba(255,111,46,.72);
+  border:1.35px solid rgba(255,111,46,.78);
   background:
-    radial-gradient(circle at 50% -8%,rgba(255,111,46,.16),transparent 33%),
-    linear-gradient(180deg,rgba(9,13,31,.80),rgba(3,5,15,.93));
+    radial-gradient(circle at 50% -8%,rgba(255,111,46,.17),transparent 33%),
+    linear-gradient(180deg,rgba(8,11,29,.80),rgba(2,4,14,.92));
   box-shadow:
-    0 0 15px rgba(255,111,46,.62),
-    0 0 44px rgba(255,77,29,.26),
-    inset 0 0 38px rgba(255,75,24,.065);
+    0 0 14px rgba(255,111,46,.64),
+    0 0 44px rgba(255,77,29,.27),
+    inset 0 0 38px rgba(255,75,24,.07);
   overflow:hidden;
   display:flex;
   flex-direction:column;
@@ -237,16 +287,18 @@ button {
     opacity .72s cubic-bezier(.2,.72,.22,1),
     filter .72s cubic-bezier(.2,.72,.22,1);
 }
+
 .card::before {
   content:"";
   position:absolute;
   inset:0;
-  pointer-events:none;
   z-index:1;
+  pointer-events:none;
   background:
-    linear-gradient(180deg,rgba(255,143,82,.21),transparent 17%,transparent 75%,rgba(255,89,35,.18)),
-    radial-gradient(circle at 50% 105%,rgba(255,111,46,.22),transparent 47%);
+    linear-gradient(180deg,rgba(255,143,82,.23),transparent 18%,transparent 74%,rgba(255,89,35,.18)),
+    radial-gradient(circle at 50% 105%,rgba(255,111,46,.23),transparent 47%);
 }
+
 .card::after {
   content:"";
   position:absolute;
@@ -255,46 +307,67 @@ button {
   pointer-events:none;
   opacity:.11;
   mix-blend-mode:screen;
-  background-image:radial-gradient(rgba(255,255,255,.20) 1px,transparent 1px);
+  background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
   background-size:8px 8px;
 }
+
+.card.is-center {
+  --bright:1.08;
+}
+
+.card:not(.is-center) {
+  pointer-events:auto;
+}
+
 .card-eyebrow {
   position:relative;
   z-index:2;
   color:var(--orange);
-  padding:24px 28px 0;
+  padding:23px 27px 0;
   font-size:.72rem;
   font-weight:900;
   letter-spacing:.34em;
   text-transform:uppercase;
 }
+
 .card-title {
   position:relative;
   z-index:2;
-  padding:9px 28px 0;
+  padding:9px 27px 0;
   font-family:var(--font-head);
-  font-size:2.52rem;
+  font-size:2.38rem;
   line-height:.92;
   text-transform:uppercase;
   letter-spacing:.02em;
   text-shadow:0 8px 26px rgba(0,0,0,.82);
 }
+
 .card.is-center .card-title {
   text-align:center;
-  font-size:3.05rem;
+  font-size:2.95rem;
   padding-inline:30px;
 }
+
+.card:not(.is-center) .card-title {
+  font-size:1.95rem;
+}
+
 .card-media {
   position:relative;
   z-index:2;
   flex:1 1 auto;
   min-height:0;
-  margin:16px 22px 0;
+  margin:16px 21px 0;
   border-radius:16px;
   border:1px solid rgba(255,255,255,.13);
   overflow:hidden;
   box-shadow:inset 0 -70px 90px rgba(0,0,0,.74),0 0 34px rgba(255,111,46,.16);
 }
+
+.card:not(.is-center) .card-media {
+  max-height:34%;
+}
+
 .card-media::after {
   content:"";
   position:absolute;
@@ -303,20 +376,27 @@ button {
   pointer-events:none;
   background:linear-gradient(180deg,transparent 40%,rgba(3,4,13,.86));
 }
+
 .card-copy {
   position:relative;
   z-index:2;
-  padding:14px 28px 22px;
+  padding:14px 27px 22px;
   text-align:center;
 }
+
 .card-copy p {
-  color:rgba(255,255,255,.78);
-  font-size:.82rem;
+  color:rgba(255,255,255,.80);
+  font-size:.80rem;
   line-height:1.28;
   letter-spacing:.13em;
   text-transform:uppercase;
   margin-bottom:13px;
 }
+
+.card:not(.is-center) .card-copy p {
+  font-size:.68rem;
+}
+
 .card-btn {
   width:100%;
   height:42px;
@@ -327,53 +407,20 @@ button {
   background:rgba(5,4,12,.25);
   border:1.5px solid rgba(255,111,46,.78);
   border-radius:8px;
-  font-size:.74rem;
+  font-size:.73rem;
   font-weight:900;
   letter-spacing:.22em;
   text-transform:uppercase;
   box-shadow:0 0 20px rgba(255,111,46,.22);
 }
-.card-btn.primary,.card:hover .card-btn {
-  background:rgba(255,111,46,.95);
+
+.card-btn.primary,
+.card:hover .card-btn {
   color:#fff;
+  background:rgba(255,111,46,.95);
 }
 
-/* real 5-card spin positions */
-.pos-center {
-  z-index:30;
-  opacity:1;
-  filter:brightness(1.06) saturate(1.08);
-  transform:translate(-50%,-50%) translateX(0) translateY(-3.8%) translateZ(210px) rotateY(0deg) scale(.98);
-}
-.pos-left {
-  z-index:23;
-  opacity:.92;
-  filter:brightness(.84) saturate(.96);
-  transform:translate(-50%,-50%) translateX(-440px) translateY(2.2%) translateZ(-140px) rotateY(25deg) scale(.80);
-}
-.pos-right {
-  z-index:23;
-  opacity:.92;
-  filter:brightness(.84) saturate(.96);
-  transform:translate(-50%,-50%) translateX(440px) translateY(2.2%) translateZ(-140px) rotateY(-25deg) scale(.80);
-}
-.pos-far-left {
-  z-index:14;
-  opacity:.76;
-  filter:brightness(.64) saturate(.86);
-  transform:translate(-50%,-50%) translateX(-735px) translateY(7.4%) translateZ(-360px) rotateY(47deg) scale(.55);
-}
-.pos-far-right {
-  z-index:14;
-  opacity:.76;
-  filter:brightness(.64) saturate(.86);
-  transform:translate(-50%,-50%) translateX(735px) translateY(7.4%) translateZ(-360px) rotateY(-47deg) scale(.55);
-}
-.card:not(.is-center) .card-title {font-size:2.05rem}
-.card:not(.is-center) .card-copy p {font-size:.70rem}
-.card:not(.is-center) .card-media {max-height:34%}
-
-/* card interiors */
+/* Coded image/visual areas */
 .video-preview {
   display:grid;
   grid-template-rows:1fr 58px;
@@ -384,6 +431,7 @@ button {
     linear-gradient(180deg,rgba(255,140,70,.12),transparent 24%),
     linear-gradient(145deg,#09266f,#050711 58%,#170609);
 }
+
 .video-preview::before {
   content:"";
   position:absolute;
@@ -396,7 +444,11 @@ button {
   opacity:.75;
   z-index:1;
 }
-.video-preview::after {opacity:.38}
+
+.video-preview::after {
+  opacity:.38;
+}
+
 .video-feature {
   position:relative;
   z-index:12;
@@ -408,16 +460,20 @@ button {
   border:1px solid rgba(255,255,255,.12);
   box-shadow:0 0 30px rgba(255,111,46,.22),inset 0 -70px 90px rgba(0,0,0,.5);
 }
+
 .video-feature::before {
   content:"";
   position:absolute;
   inset:0;
   background:radial-gradient(circle at 50% 50%,transparent 0 22%,rgba(0,0,0,.28) 60%,rgba(0,0,0,.58));
 }
+
 .play {
   position:absolute;
-  left:50%;top:50%;
-  width:58px;height:58px;
+  left:50%;
+  top:50%;
+  width:58px;
+  height:58px;
   transform:translate(-50%,-50%);
   display:grid;
   place-items:center;
@@ -427,6 +483,7 @@ button {
   background:rgba(255,75,39,.95);
   box-shadow:0 0 30px rgba(255,75,39,.72);
 }
+
 .video-label {
   position:absolute;
   left:14px;
@@ -437,6 +494,7 @@ button {
   letter-spacing:.22em;
   text-transform:uppercase;
 }
+
 .video-thumbs {
   position:relative;
   z-index:12;
@@ -444,6 +502,7 @@ button {
   grid-template-columns:repeat(4,1fr);
   gap:8px;
 }
+
 .video-thumbs span {
   border-radius:9px;
   background-image:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.48)),var(--thumb);
@@ -451,14 +510,16 @@ button {
   background-position:center;
   border:1px solid rgba(255,255,255,.13);
 }
+
 .location-list {
   position:relative;
   z-index:2;
-  margin:22px 28px 0;
+  margin:22px 27px 0;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:20px 22px;
 }
+
 .loc {
   display:grid;
   grid-template-columns:42px 1fr;
@@ -467,6 +528,7 @@ button {
   text-align:left;
   min-height:64px;
 }
+
 .pin {
   width:38px;
   height:38px;
@@ -475,14 +537,20 @@ button {
   stroke-width:1.55;
   filter:drop-shadow(0 0 12px rgba(240,56,41,.95));
 }
-.pin circle {fill:var(--red);stroke:none}
+
+.pin circle {
+  fill:var(--red);
+  stroke:none;
+}
+
 .loc strong {
   display:block;
-  font-size:.8rem;
+  font-size:.80rem;
   font-weight:900;
   letter-spacing:.12em;
   text-transform:uppercase;
 }
+
 .loc span {
   display:block;
   color:rgba(255,255,255,.64);
@@ -492,36 +560,50 @@ button {
   text-transform:uppercase;
   margin-top:2px;
 }
+
 .art-build {
   background:
     radial-gradient(circle at 50% 36%,rgba(255,214,105,.44),transparent 17%),
     linear-gradient(180deg,rgba(255,210,120,.10),transparent 32%),
     linear-gradient(145deg,#0b3195,#070714 70%);
 }
+
 .art-build::before {
   content:"";
   position:absolute;
-  left:12%;right:12%;top:23%;height:2px;
+  left:12%;
+  right:12%;
+  top:23%;
+  height:2px;
   z-index:2;
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
   box-shadow:0 0 18px var(--gold);
 }
+
 .art-build .counter {
   position:absolute;
-  left:17%;right:17%;bottom:13%;height:20%;
+  left:17%;
+  right:17%;
+  bottom:13%;
+  height:20%;
   border-radius:10px;
   z-index:2;
   background:linear-gradient(90deg,#ff4f38,#0b34a0,#ff4f38);
   box-shadow:0 0 22px rgba(255,80,50,.32);
 }
+
 .art-build .shelf {
   position:absolute;
-  left:9%;right:9%;bottom:38%;height:15%;
+  left:9%;
+  right:9%;
+  bottom:38%;
+  height:15%;
   border-radius:10px;
   z-index:2;
   background:linear-gradient(90deg,rgba(255,111,46,.24),rgba(255,213,108,.12),rgba(255,111,46,.24));
   border:1px solid rgba(255,255,255,.10);
 }
+
 .art-social {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -531,6 +613,7 @@ button {
     radial-gradient(circle at 50% 32%,rgba(255,99,39,.24),transparent 28%),
     linear-gradient(145deg,#09266f,#060711 70%);
 }
+
 .social-tile {
   position:relative;
   z-index:5;
@@ -548,11 +631,13 @@ button {
   letter-spacing:.12em;
   font-size:.68rem;
 }
+
 .art-favorites {
   background:
     radial-gradient(circle at 50% 38%,rgba(255,214,108,.32),transparent 18%),
     linear-gradient(145deg,#061d62,#080713 70%);
 }
+
 .favorite-grid {
   position:absolute;
   z-index:6;
@@ -561,6 +646,7 @@ button {
   grid-template-columns:1fr 1fr;
   gap:10px;
 }
+
 .favorite-grid span {
   border-radius:12px;
   border:1px solid rgba(255,255,255,.13);
@@ -576,10 +662,10 @@ button {
   font-size:.68rem;
 }
 
-/* Visible arrow buttons above background */
+/* Arrows */
 .arrow {
   position:fixed;
-  z-index:65;
+  z-index:70;
   top:52%;
   width:58px;
   height:58px;
@@ -595,55 +681,70 @@ button {
     0 0 26px rgba(255,111,46,.28),
     inset 0 0 16px rgba(255,111,46,.08);
 }
-.arrow.left {left:28px}
-.arrow.right {right:28px}
-.arrow:hover {background:rgba(255,111,46,.14)}
 
-/* Bottom coded countdown, back in */
+.arrow.left {
+  left:28px;
+}
+
+.arrow.right {
+  right:28px;
+}
+
+.arrow:hover {
+  background:rgba(255,111,46,.14);
+}
+
+/* Countdown goes UNDER the front/bottom circle — not on top of the firecracker */
 .bottom-count {
   position:fixed;
   left:50%;
-  bottom:70px;
+  bottom:54px;
   transform:translateX(-50%);
-  z-index:35;
+  z-index:36;
   text-align:center;
   text-transform:uppercase;
   pointer-events:none;
-  text-shadow:0 2px 12px rgba(0,0,0,.78);
+  text-shadow:0 2px 12px rgba(0,0,0,.82);
 }
+
 .bottom-count p {
   color:rgba(255,255,255,.72);
-  font-size:.54rem;
+  font-size:.52rem;
   font-weight:900;
   letter-spacing:.28em;
   margin-bottom:3px;
 }
+
 .bottom-row {
   display:flex;
   align-items:flex-end;
   justify-content:center;
   gap:7px;
 }
+
 .bottom-row span {
   min-width:36px;
   display:grid;
 }
+
 .bottom-row b {
   font-family:var(--font-head);
   color:rgba(255,255,255,.88);
-  font-size:1.32rem;
+  font-size:1.30rem;
   line-height:1;
 }
+
 .bottom-row small {
-  color:rgba(255,255,255,.46);
-  font-size:.36rem;
+  color:rgba(255,255,255,.44);
+  font-size:.34rem;
   letter-spacing:.2em;
 }
+
 .bottom-row i {
   font-family:var(--font-head);
   color:rgba(255,111,46,.86);
   font-style:normal;
-  font-size:1.1rem;
+  font-size:1rem;
 }
 
 /* Footer */
@@ -652,26 +753,29 @@ button {
   left:0;
   right:0;
   bottom:0;
-  z-index:80;
-  height:86px;
+  z-index:78;
+  height:52px;
   padding:0 32px;
   display:grid;
   grid-template-columns:330px 1fr 330px;
   align-items:center;
-  background:rgba(3,5,12,.94);
+  background:rgba(3,5,12,.86);
   backdrop-filter:blur(12px);
-  border-top:1px solid rgba(255,111,46,.14);
+  border-top:1px solid rgba(255,111,46,.12);
 }
+
 .promise {
   text-transform:uppercase;
   letter-spacing:.16em;
-  line-height:1.55;
-  font-size:.68rem;
+  line-height:1.35;
+  font-size:.60rem;
 }
+
 .promise b {
   display:block;
   color:var(--orange);
 }
+
 .drag-note {
   display:flex;
   align-items:center;
@@ -680,21 +784,26 @@ button {
   color:rgba(255,255,255,.38);
   text-transform:uppercase;
   letter-spacing:.28em;
-  font-size:.62rem;
+  font-size:.58rem;
 }
-.drag-note::before,.drag-note::after {
+
+.drag-note::before,
+.drag-note::after {
   content:"";
   width:28px;
   height:1px;
   background:rgba(255,111,46,.4);
 }
+
 .socials {
   display:flex;
   justify-content:flex-end;
   gap:14px;
 }
+
 .socials a {
-  width:36px;height:36px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   border:1px solid rgba(255,255,255,.22);
   display:grid;
@@ -703,7 +812,7 @@ button {
   text-decoration:none;
 }
 
-/* Modal layer */
+/* Modals */
 .modal-layer {
   position:fixed;
   inset:0;
@@ -715,7 +824,11 @@ button {
   background:rgba(0,0,0,.72);
   backdrop-filter:blur(12px);
 }
-.modal-layer.open {display:flex}
+
+.modal-layer.open {
+  display:flex;
+}
+
 .modal {
   position:relative;
   width:min(1080px,94vw);
@@ -729,16 +842,20 @@ button {
     rgba(5,8,23,.98);
   box-shadow:0 0 80px rgba(255,80,30,.25);
 }
+
 .modal-close {
   position:fixed;
-  top:22px;right:26px;
-  width:42px;height:42px;
+  top:22px;
+  right:26px;
+  width:42px;
+  height:42px;
   border-radius:50%;
   border:1px solid rgba(255,111,46,.55);
   background:rgba(2,4,13,.72);
   color:var(--orange);
   font-size:1.5rem;
 }
+
 .eyebrow {
   color:var(--orange);
   text-transform:uppercase;
@@ -747,6 +864,7 @@ button {
   font-weight:900;
   margin-bottom:10px;
 }
+
 .modal h2 {
   font-family:var(--font-head);
   text-transform:uppercase;
@@ -754,19 +872,36 @@ button {
   line-height:.95;
   margin-bottom:20px;
 }
-.video-grid,.location-grid,.feed-grid,.favorites-modal-grid {
+
+.video-grid,
+.location-grid,
+.feed-grid,
+.favorites-modal-grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
-.location-grid {grid-template-columns:repeat(2,1fr)}
-.video-card,.location-grid article,.feed-card,.favorites-modal-grid article {
+
+.location-grid {
+  grid-template-columns:repeat(2,1fr);
+}
+
+.video-card,
+.location-grid article,
+.feed-card,
+.favorites-modal-grid article {
   border:1px solid rgba(255,255,255,.13);
   background:rgba(255,255,255,.04);
   border-radius:14px;
   overflow:hidden;
 }
-.location-grid article,.feed-card,.favorites-modal-grid article {padding:18px}
+
+.location-grid article,
+.feed-card,
+.favorites-modal-grid article {
+  padding:18px;
+}
+
 .video-card iframe {
   display:block;
   width:100%;
@@ -774,23 +909,31 @@ button {
   border:0;
   background:#000;
 }
-.video-card p,.favorites-modal-grid h3 {
+
+.video-card p,
+.favorites-modal-grid h3 {
   padding:12px;
   color:var(--gold);
   text-transform:uppercase;
   font-weight:900;
   letter-spacing:.12em;
 }
-.location-grid h3,.feed-card h3 {
+
+.location-grid h3,
+.feed-card h3 {
   text-transform:uppercase;
   letter-spacing:.12em;
   margin-bottom:8px;
 }
-.location-grid p,.feed-card p,.favorites-modal-grid p {
+
+.location-grid p,
+.feed-card p,
+.favorites-modal-grid p {
   color:rgba(255,255,255,.72);
   line-height:1.35;
   font-size:1.05rem;
 }
+
 .location-grid a {
   display:inline-block;
   margin-top:13px;
@@ -800,11 +943,13 @@ button {
   letter-spacing:.12em;
   text-decoration:none;
 }
+
 .contact-form {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
+
 .contact-form label {
   display:grid;
   gap:8px;
@@ -813,7 +958,9 @@ button {
   letter-spacing:.13em;
   font-weight:900;
 }
-.contact-form input,.contact-form textarea {
+
+.contact-form input,
+.contact-form textarea {
   width:100%;
   min-height:54px;
   padding:0 14px;
@@ -823,12 +970,14 @@ button {
   border-radius:10px;
   font:inherit;
 }
+
 .contact-form textarea {
   grid-column:1/-1;
   height:135px;
   padding-top:14px;
   resize:none;
 }
+
 .contact-form button {
   grid-column:1/-1;
   height:54px;
@@ -841,32 +990,33 @@ button {
   letter-spacing:.14em;
 }
 
-
-@media(min-width:1500px){
-  .pos-left{transform:translate(-50%,-50%) translateX(-475px) translateY(2.2%) translateZ(-140px) rotateY(25deg) scale(.80)}
-  .pos-right{transform:translate(-50%,-50%) translateX(475px) translateY(2.2%) translateZ(-140px) rotateY(-25deg) scale(.80)}
-  .pos-far-left{transform:translate(-50%,-50%) translateX(-800px) translateY(7.4%) translateZ(-360px) rotateY(47deg) scale(.55)}
-  .pos-far-right{transform:translate(-50%,-50%) translateX(800px) translateY(7.4%) translateZ(-360px) rotateY(-47deg) scale(.55)}
+@media (min-width:1500px) {
+  .card {
+    width:455px;
+    height:455px;
+  }
 }
 
-@media(max-width:1120px) {
+@media (max-width:1180px) {
   html,body {
     overflow:auto;
   }
-  .site-header,.footer {
+
+  .header,
+  .footer {
     position:relative;
     height:auto;
     grid-template-columns:1fr;
     padding:16px;
     gap:14px;
   }
-  .nav,.socials {
+
+  .nav,
+  .socials {
     justify-content:flex-start;
     flex-wrap:wrap;
   }
-  .bg-wrap {
-    position:fixed;
-  }
+
   .stage {
     position:relative;
     inset:auto;
@@ -875,15 +1025,19 @@ button {
     min-height:auto;
     perspective:none;
   }
-  .card-stage {
+
+  .carousel {
     position:relative;
     display:grid;
     gap:18px;
     transform-style:flat;
   }
-  .card,.card.is-center {
+
+  .card,
+  .card.is-center {
     position:relative;
-    left:auto;top:auto;
+    left:auto;
+    top:auto;
     width:100%;
     height:auto;
     min-height:430px;
@@ -891,10 +1045,17 @@ button {
     opacity:1!important;
     filter:none!important;
   }
-  .arrow,.bottom-count {
+
+  .arrow,
+  .bottom-count {
     display:none;
   }
-  .video-grid,.location-grid,.feed-grid,.favorites-modal-grid,.contact-form {
+
+  .video-grid,
+  .location-grid,
+  .feed-grid,
+  .favorites-modal-grid,
+  .contact-form {
     grid-template-columns:1fr;
   }
 }
@@ -902,10 +1063,10 @@ button {
 </head>
 <body>
 <div class="bg-wrap" aria-hidden="true">
-  <img class="bg" src="assets/dfo-clean-background-wide-16x9.png" alt="">
+  <img class="bg" src="assets/dfo-clean-stage-with-firecracker.png" alt="">
 </div>
 
-<header class="site-header">
+<header class="header">
   <a class="logo" href="#" data-rotate="videos" aria-label="Discount Fireworks Outlet home">
     <span class="logo-mark">DFO</span>
     <span class="logo-text">Discount<br>Fireworks<br>Outlet</span>
@@ -929,15 +1090,26 @@ button {
   </nav>
 </header>
 
-<main class="stage" aria-label="DFO interactive carousel">
-  <section class="card-stage">
-    <article class="card" data-card="build" data-modal="contactModal">
-      <p class="card-eyebrow">Plan Like a Pro</p>
-      <h2 class="card-title">Build Your Show</h2>
-      <div class="card-media art-build"><span class="shelf"></span><span class="counter"></span></div>
+<main class="stage" aria-label="DFO circular wall carousel">
+  <section class="carousel">
+    <article class="card" data-card="videos" data-modal="videosModal">
+      <p class="card-eyebrow">Demo Videos</p>
+      <h1 class="card-title">Preview the Boom Before You Buy</h1>
+      <div class="card-media video-preview">
+        <div class="video-feature" style="--thumb:url('https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg')">
+          <span class="play">▶</span>
+          <span class="video-label">Featured Demo</span>
+        </div>
+        <div class="video-thumbs" aria-hidden="true">
+          <span style="--thumb:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg')"></span>
+          <span style="--thumb:url('https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg')"></span>
+        </div>
+      </div>
       <div class="card-copy">
-        <p>Tell us your budget, crowd size, location, and finale goals.</p>
-        <button class="card-btn" data-modal="contactModal">Start Planning</button>
+        <p>Watch real demos, compare effects, and choose your finale.</p>
+        <button class="card-btn primary" data-modal="videosModal">▷ Watch Videos</button>
       </div>
     </article>
 
@@ -968,24 +1140,27 @@ button {
       </div>
     </article>
 
-    <article class="card" data-card="videos" data-modal="videosModal">
-      <p class="card-eyebrow">Demo Videos</p>
-      <h1 class="card-title">Preview the Boom Before You Buy</h1>
-      <div class="card-media video-preview">
-        <div class="video-feature" style="--thumb:url('https://img.youtube.com/vi/6kFtvmGDYSI/hqdefault.jpg')">
-          <span class="play">▶</span>
-          <span class="video-label">Featured Demo</span>
-        </div>
-        <div class="video-thumbs" aria-hidden="true">
-          <span style="--thumb:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>
-          <span style="--thumb:url('https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg')"></span>
-          <span style="--thumb:url('https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg')"></span>
-          <span style="--thumb:url('https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg')"></span>
-        </div>
+    <article class="card" data-card="build" data-modal="contactModal">
+      <p class="card-eyebrow">Plan Like a Pro</p>
+      <h2 class="card-title">Build Your Show</h2>
+      <div class="card-media art-build"><span class="shelf"></span><span class="counter"></span></div>
+      <div class="card-copy">
+        <p>Tell us your budget, crowd size, location, and finale goals.</p>
+        <button class="card-btn" data-modal="contactModal">Start Planning</button>
+      </div>
+    </article>
+
+    <article class="card" data-card="social" data-modal="socialModal">
+      <p class="card-eyebrow">Follow the Finale</p>
+      <h2 class="card-title">Social Feed</h2>
+      <div class="card-media art-social">
+        <span class="social-tile">Facebook<br>Updates</span>
+        <span class="social-tile">Instagram<br>Scenes</span>
+        <span class="social-tile">YouTube<br>Demos</span>
       </div>
       <div class="card-copy">
-        <p>Watch real demos, compare effects, and choose your finale.</p>
-        <button class="card-btn primary" data-modal="videosModal">▷ Watch Videos</button>
+        <p>Catch demo drops, tent updates, location reminders, and season posts.</p>
+        <button class="card-btn" data-modal="socialModal">View Socials</button>
       </div>
     </article>
 
@@ -1003,20 +1178,6 @@ button {
       <div class="card-copy">
         <p>Shop the effects everyone asks for: color, crackle, height, and boom.</p>
         <button class="card-btn" data-modal="favoritesModal">See Favorites</button>
-      </div>
-    </article>
-
-    <article class="card" data-card="social" data-modal="socialModal">
-      <p class="card-eyebrow">Follow the Finale</p>
-      <h2 class="card-title">Social Feed</h2>
-      <div class="card-media art-social">
-        <span class="social-tile">Facebook<br>Updates</span>
-        <span class="social-tile">Instagram<br>Scenes</span>
-        <span class="social-tile">YouTube<br>Demos</span>
-      </div>
-      <div class="card-copy">
-        <p>Catch demo drops, tent updates, location reminders, and season posts.</p>
-        <button class="card-btn" data-modal="socialModal">View Socials</button>
       </div>
     </article>
   </section>
@@ -1089,6 +1250,19 @@ button {
   </div>
 </div>
 
+<div class="modal-layer" id="socialModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Follow the Finale</p>
+    <h2>Social Media Feed</h2>
+    <div class="feed-grid">
+      <article class="feed-card"><h3>Facebook</h3><p>Season updates, location reminders, hours, and family-friendly Fourth of July posts.</p></article>
+      <article class="feed-card"><h3>Instagram</h3><p>Tent shots, product moments, behind-the-scenes updates, and local summer energy.</p></article>
+      <article class="feed-card"><h3>YouTube</h3><p>Firework demos, effects previews, and featured finale videos.</p></article>
+    </div>
+  </div>
+</div>
+
 <div class="modal-layer" id="favoritesModal">
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
@@ -1101,19 +1275,6 @@ button {
       <article><h3>Family Favorites</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
       <article><h3>Loud & Proud</h3><p>For customers who want boom, crackle, and attention-grabbing energy.</p></article>
       <article><h3>Patriotic Picks</h3><p>Red, white, and blue moments for America’s 250th celebration.</p></article>
-    </div>
-  </div>
-</div>
-
-<div class="modal-layer" id="socialModal">
-  <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
-    <p class="eyebrow">Follow the Finale</p>
-    <h2>Social Media Feed</h2>
-    <div class="feed-grid">
-      <article class="feed-card"><h3>Facebook</h3><p>Season updates, location reminders, hours, and family-friendly Fourth of July posts.</p></article>
-      <article class="feed-card"><h3>Instagram</h3><p>Tent shots, product moments, behind-the-scenes updates, and local summer energy.</p></article>
-      <article class="feed-card"><h3>YouTube</h3><p>Firework demos, effects previews, and featured finale videos.</p></article>
     </div>
   </div>
 </div>
@@ -1136,23 +1297,40 @@ function updateCountdown(){
     if(el) el.textContent = pad(vals[i % 4]);
   });
 }
+
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 const cards = Array.from(document.querySelectorAll("[data-card]"));
-const positions = ["pos-far-left","pos-left","pos-center","pos-right","pos-far-right"];
-let active = 2; // Videos starts centered.
+let active = 0; // Demo Videos starts centered because cards array is ordered with videos first.
+
+const slots = [
+  { name:"center", x:0, y:-16, z:260, ry:0, scale:1.00, opacity:1.00, bright:1.08 },
+  { name:"right", x:420, y:18, z:-30, ry:-30, scale:.82, opacity:.92, bright:.88 },
+  { name:"far-right", x:705, y:55, z:-360, ry:-55, scale:.56, opacity:.72, bright:.66 },
+  { name:"far-left", x:-705, y:55, z:-360, ry:55, scale:.56, opacity:.72, bright:.66 },
+  { name:"left", x:-420, y:18, z:-30, ry:30, scale:.82, opacity:.92, bright:.88 }
+];
 
 function mod(n,m){ return ((n % m) + m) % m; }
 
+function applySlot(card, slot){
+  card.style.setProperty("--x", `${slot.x}px`);
+  card.style.setProperty("--y", `${slot.y}px`);
+  card.style.setProperty("--z", `${slot.z}px`);
+  card.style.setProperty("--ry", `${slot.ry}deg`);
+  card.style.setProperty("--scale", slot.scale);
+  card.style.setProperty("--opacity", slot.opacity);
+  card.style.setProperty("--bright", slot.bright);
+  card.style.zIndex = slot.name === "center" ? 40 : (slot.name.includes("far") ? 16 : 27);
+  card.classList.toggle("is-center", slot.name === "center");
+  card.setAttribute("aria-hidden", slot.name === "center" ? "false" : "true");
+}
+
 function render(){
-  cards.forEach((card,i)=>{
-    card.classList.remove(...positions,"is-center");
+  cards.forEach((card, i) => {
     const rel = mod(i - active, cards.length);
-    const posIndex = rel === 0 ? 2 : rel === 1 ? 3 : rel === 2 ? 4 : rel === 3 ? 0 : 1;
-    card.classList.add(positions[posIndex]);
-    if(posIndex === 2) card.classList.add("is-center");
-    card.setAttribute("aria-hidden", posIndex === 2 ? "false" : "true");
+    applySlot(card, slots[rel]);
   });
 }
 
@@ -1160,6 +1338,9 @@ function rotateTo(index){
   active = mod(index, cards.length);
   render();
 }
+
+function rotateNext(){ rotateTo(active + 1); }
+function rotatePrev(){ rotateTo(active - 1); }
 
 function openModal(id){
   document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
@@ -1171,12 +1352,20 @@ function closeModals(){
   document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
 }
 
-document.getElementById("next").addEventListener("click",()=>rotateTo(active+1));
-document.getElementById("prev").addEventListener("click",()=>rotateTo(active-1));
+document.getElementById("next").addEventListener("click", rotateNext);
+document.getElementById("prev").addEventListener("click", rotatePrev);
 
-const rotateMap = {videos:2, locations:1, contact:0, build:0, favorites:3, social:4};
+const rotateMap = {
+  videos:0,
+  locations:1,
+  contact:2,
+  build:2,
+  social:3,
+  favorites:4
+};
+
 document.querySelectorAll("[data-rotate]").forEach(el=>{
-  el.addEventListener("click",e=>{
+  el.addEventListener("click", e => {
     e.preventDefault();
     const target = el.dataset.rotate;
     if(target in rotateMap) rotateTo(rotateMap[target]);
@@ -1184,46 +1373,54 @@ document.querySelectorAll("[data-rotate]").forEach(el=>{
 });
 
 document.querySelectorAll("[data-modal]").forEach(el=>{
-  el.addEventListener("click",e=>{
+  el.addEventListener("click", e => {
     e.preventDefault();
     e.stopPropagation();
     openModal(el.dataset.modal);
   });
 });
 
-cards.forEach(card=>{
-  card.addEventListener("click",e=>{
+cards.forEach((card, i) => {
+  card.addEventListener("click", e => {
     if(e.target.closest("button")) return;
-    const id = card.dataset.modal;
-    if(id) openModal(id);
+    if(i !== active){
+      rotateTo(i);
+      return;
+    }
+    const modalId = card.dataset.modal;
+    if(modalId) openModal(modalId);
   });
 });
 
 document.querySelectorAll(".modal-layer,.modal-close").forEach(el=>{
-  el.addEventListener("click",e=>{
+  el.addEventListener("click", e => {
     if(e.target.classList.contains("modal-layer") || e.target.classList.contains("modal-close")){
       closeModals();
     }
   });
 });
 
-document.addEventListener("keydown",e=>{
+document.addEventListener("keydown", e => {
   if(e.key === "Escape") closeModals();
-  if(e.key === "ArrowRight") rotateTo(active+1);
-  if(e.key === "ArrowLeft") rotateTo(active-1);
+  if(e.key === "ArrowRight") rotateNext();
+  if(e.key === "ArrowLeft") rotatePrev();
 });
 
 let startX = null;
-const stage = document.querySelector(".card-stage");
-stage.addEventListener("pointerdown", e => {
+const carousel = document.querySelector(".carousel");
+
+carousel.addEventListener("pointerdown", e => {
   startX = e.clientX;
-  stage.classList.add("dragging");
+  carousel.classList.add("dragging");
 });
+
 window.addEventListener("pointerup", e => {
   if(startX === null) return;
   const diff = e.clientX - startX;
-  stage.classList.remove("dragging");
-  if(Math.abs(diff) > 45) rotateTo(diff < 0 ? active + 1 : active - 1);
+  carousel.classList.remove("dragging");
+  if(Math.abs(diff) > 45) {
+    diff < 0 ? rotateNext() : rotatePrev();
+  }
   startX = null;
 });
 

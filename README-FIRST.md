@@ -1,22 +1,28 @@
-# DFO V25 — Formatted 16:9 Background + Wider Carousel
+# DFO V26 — Circular Wall Carousel
 
 Upload everything in this folder to your GitHub Pages repo root:
 
 - index.html
 - .nojekyll
-- assets/dfo-clean-background-wide-16x9.png
+- assets/dfo-clean-stage-with-firecracker.png
 
-What changed from V24:
-- Background is now exported as a true 16:9 1920x1080 asset so it formats better on desktop.
-- Carousel side cards are pushed farther outward like the reference image.
-- Center card is slightly smaller and raised so it has breathing room.
-- Bottom countdown is smaller/lower so it does not collide as badly with the middle firecracker/logo.
-- Header and top countdown remain coded.
-- Bottom countdown remains coded.
-- Carousel rotation still works with arrows, keyboard arrows, nav buttons, and drag.
-- Exactly 5 cards.
-- Videos starts centered.
+What this version does:
+- Uses the clean generated background with the small DFO firecracker and rings.
+- Adds a fully coded header.
+- Adds coded top countdown.
+- Adds exactly 5 carousel cards.
+- Demo Videos starts centered.
+- Cards are arranged like a wall around a circle:
+  - center card faces front
+  - side cards face outward/tangent to the circular turntable
+  - far cards sit farther back and angled more deeply
+- Click side cards to rotate them into focus.
+- Left/right arrows rotate the carousel.
+- Keyboard left/right rotates the carousel.
+- Drag left/right rotates the carousel.
+- Bottom countdown is placed UNDER the front/bottom circle area.
+- Modals are included for videos, locations, contact, social, and favorites.
+- YouTube demo embeds and real location details are included.
+- No canvas fireworks.
 
-Keyboard:
-- Left/right arrows rotate carousel.
-- Escape closes modals.
+Background image dimensions: 1536 x 1024.
