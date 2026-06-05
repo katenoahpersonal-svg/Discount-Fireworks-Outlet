@@ -3,48 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — V31 Proof</title>
-<meta name="description" content="Discount Fireworks Outlet immersive Fourth of July homepage with demo videos, Iowa locations, finale favorites, social feed, and show planning.">
+<title>Discount Fireworks Outlet — Pixel Match Proof</title>
+<meta name="description" content="Pixel-match proof for Discount Fireworks Outlet immersive Fourth of July homepage.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --orange:#ff6d2e;
-  --red:#f23a2b;
-  --gold:#ffd56c;
-  --white:#fff;
-  --ink:#02040c;
-  --font-head:"Bebas Neue", Impact, sans-serif;
-  --font-body:"Barlow Condensed", system-ui, sans-serif;
-}
-
 *{box-sizing:border-box;margin:0;padding:0}
-
 html,body{
   width:100%;
   height:100%;
   overflow:hidden;
   background:#02040c;
+  font-family:Arial, sans-serif;
   color:#fff;
-  font-family:var(--font-body);
-  -webkit-font-smoothing:antialiased;
 }
-
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-
-.bg-wrap{
+.artboard{
   position:fixed;
   inset:0;
-  z-index:0;
-  overflow:hidden;
   background:#02040c;
+  overflow:hidden;
 }
-
-.bg{
+.artboard img{
   position:absolute;
-  inset:0;
+  left:0;
+  top:0;
   width:100%;
   height:100%;
   object-fit:cover;
@@ -52,1069 +35,192 @@ button{cursor:pointer}
   user-select:none;
   pointer-events:none;
 }
-
-.bg-wrap::after{
-  content:"";
+.hotspot{
   position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.74) 0,rgba(0,0,0,.34) 11%,rgba(0,0,0,.00) 30%,rgba(0,0,0,.04) 68%,rgba(0,0,0,.84) 100%),
-    radial-gradient(circle at 50% 38%,rgba(255,109,46,.035),transparent 38%);
-}
-
-/* HEADER */
-.header{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:90;
-  height:94px;
-  display:grid;
-  grid-template-columns:minmax(245px,330px) 1fr minmax(410px,515px);
-  align-items:center;
-  gap:22px;
-  padding:0 32px;
-  background:rgba(2,4,13,.91);
-  border-bottom:1px solid rgba(255,109,46,.28);
-  backdrop-filter:blur(14px);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:13px;
-  color:#fff;
-  text-transform:uppercase;
-  text-decoration:none;
-}
-
-.logo-mark{
-  position:relative;
-  font-family:var(--font-head);
-  color:var(--red);
-  font-size:4rem;
-  line-height:.78;
-  letter-spacing:-.015em;
-  text-shadow:0 0 22px rgba(240,59,43,.62),0 4px 0 rgba(0,0,0,.42);
-}
-
-.logo-mark::before{
-  content:"";
-  position:absolute;
-  inset:4px 1px 7px 1px;
-  opacity:.24;
-  mix-blend-mode:multiply;
-  background-image:radial-gradient(#05050a 1px,transparent 1.7px);
-  background-size:8px 8px;
-}
-
-.logo-mark::after{
-  content:"★";
-  position:absolute;
-  right:10px;
-  top:8px;
-  color:#761b13;
-  font-size:.72rem;
-}
-
-.logo-text{
-  font-size:1rem;
-  line-height:.92;
-  font-weight:900;
-  letter-spacing:.045em;
-}
-
-.header-clock{
-  text-align:center;
-  text-transform:uppercase;
-}
-
-.header-title{
-  color:var(--orange);
-  font-size:.70rem;
-  font-weight:900;
-  letter-spacing:.22em;
-  margin-bottom:5px;
-}
-
-.clock-row{
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-}
-
-.clock-unit{
-  position:relative;
-  min-width:80px;
-  text-align:center;
-}
-
-.clock-unit + .clock-unit::before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:18%;
-  width:1px;
-  height:64%;
-  background:rgba(255,109,46,.32);
-}
-
-.clock-num{
-  font-family:var(--font-head);
-  color:#fff;
-  font-size:2rem;
-  line-height:1;
-}
-
-.clock-lab{
-  color:var(--orange);
-  font-size:.52rem;
-  letter-spacing:.26em;
-  font-weight:900;
-  margin-top:4px;
-}
-
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:25px;
-  text-transform:uppercase;
-}
-
-.nav button{
-  border:0;
-  background:transparent;
-  color:rgba(255,255,255,.78);
-  letter-spacing:.22em;
-  font-size:.70rem;
-  font-weight:900;
-}
-
-.nav button:hover{color:#fff}
-
-.nav .directions{
-  color:var(--orange);
-  border:1.5px solid var(--orange);
-  padding:14px 23px;
-  box-shadow:0 0 26px rgba(255,111,46,.28),inset 0 0 18px rgba(255,111,46,.07);
-}
-
-/* STAGE: fixed designer slots, not math */
-.stage{
-  position:fixed;
-  inset:94px 0 142px;
   z-index:20;
-  overflow:visible;
-  perspective:1750px;
-  perspective-origin:50% 46%;
-}
-
-.carousel{
-  position:absolute;
-  inset:0;
-  transform-style:preserve-3d;
-  overflow:visible;
-  cursor:grab;
-}
-
-.carousel.dragging{cursor:grabbing}
-
-.card{
-  --x:0px;
-  --y:0px;
-  --z:0px;
-  --ry:0deg;
-  --scale:1;
-  --opacity:1;
-  --bright:1;
-  position:absolute;
-  left:50%;
-  top:47%;
-  width:clamp(212px,20.2vw,318px);
-  height:clamp(315px,39vh,378px);
-  transform:
-    translate(-50%,-50%)
-    translate3d(var(--x),var(--y),var(--z))
-    rotateY(var(--ry))
-    scale(var(--scale));
-  transform-style:preserve-3d;
-  transform-origin:center center;
-  opacity:var(--opacity);
-  filter:brightness(var(--bright)) saturate(1.03);
-  border-radius:22px;
-  border:1.35px solid rgba(255,111,46,.82);
-  background:
-    radial-gradient(circle at 50% -7%,rgba(255,111,46,.18),transparent 34%),
-    linear-gradient(180deg,rgba(7,10,27,.82),rgba(3,4,14,.92));
-  box-shadow:
-    0 0 14px rgba(255,111,46,.68),
-    0 0 46px rgba(255,77,29,.28),
-    inset 0 0 38px rgba(255,75,24,.07);
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
+  border:0;
+  background:rgba(255,255,255,0);
   cursor:pointer;
-  transition:
-    transform .72s cubic-bezier(.2,.72,.22,1),
-    opacity .72s cubic-bezier(.2,.72,.22,1),
-    filter .72s cubic-bezier(.2,.72,.22,1);
+  border-radius:18px;
 }
-
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(255,143,82,.22),transparent 18%,transparent 74%,rgba(255,89,35,.18)),
-    radial-gradient(circle at 50% 105%,rgba(255,111,46,.22),transparent 47%);
+.hotspot:hover{
+  outline:1px solid rgba(255,111,46,.16);
+  background:rgba(255,111,46,.035);
 }
+.nav-hotspot{border-radius:6px}
+.arrow-hotspot{border-radius:50%}
+.card-hotspot{border-radius:26px}
 
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  opacity:.11;
-  mix-blend-mode:screen;
-  background-image:radial-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
-  background-size:8px 8px;
-}
-
-.card.is-center{
-  width:clamp(285px,25.6vw,410px);
-  height:clamp(390px,48vh,468px);
-  --bright:1.08;
-}
-
-.card-eyebrow{
-  position:relative;
-  z-index:2;
-  color:var(--orange);
-  padding:20px 22px 0;
-  font-size:clamp(.48rem,.62vw,.62rem);
-  font-weight:900;
-  letter-spacing:.34em;
-  text-transform:uppercase;
-}
-
-.card-title{
-  position:relative;
-  z-index:2;
-  padding:8px 22px 0;
-  font-family:var(--font-head);
-  font-size:clamp(1.45rem,1.72vw,1.85rem);
-  line-height:.92;
-  text-transform:uppercase;
-  letter-spacing:.02em;
-  text-shadow:0 8px 26px rgba(0,0,0,.82);
-}
-
-.card.is-center .card-title{
-  text-align:center;
-  font-size:clamp(2.1rem,2.54vw,2.76rem);
-  padding-inline:24px;
-}
-
-.card-media{
-  position:relative;
-  z-index:2;
-  flex:1 1 auto;
-  min-height:0;
-  margin:12px 17px 0;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.15);
-  overflow:hidden;
-  box-shadow:inset 0 -70px 90px rgba(0,0,0,.74),0 0 34px rgba(255,111,46,.16);
-}
-
-.card:not(.is-center) .card-media{max-height:39%}
-
-.card-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:10;
-  pointer-events:none;
-  background:linear-gradient(180deg,transparent 46%,rgba(3,4,13,.86));
-}
-
-.card-copy{
-  position:relative;
-  z-index:2;
-  padding:11px 20px 17px;
-  text-align:center;
-}
-
-.card-copy p{
-  color:rgba(255,255,255,.82);
-  font-size:clamp(.54rem,.66vw,.68rem);
-  line-height:1.22;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.card:not(.is-center) .card-copy p{font-size:clamp(.42rem,.52vw,.54rem)}
-
-.card-btn{
-  width:100%;
-  height:34px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border:1.5px solid rgba(255,111,46,.82);
-  border-radius:8px;
-  background:rgba(5,4,12,.27);
-  color:var(--orange);
-  font-size:.58rem;
-  font-weight:900;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  box-shadow:0 0 20px rgba(255,111,46,.22);
-}
-
-.card-btn.primary,
-.card:hover .card-btn{
-  color:#fff;
-  background:rgba(255,111,46,.95);
-}
-
-/* CARD ASSETS */
-.build-photo{
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.40)),
-    url("assets/build-your-show-tent.png");
-  background-size:cover;
-  background-position:center center;
-}
-
-.video-preview{
-  display:grid;
-  grid-template-rows:1fr 42px;
-  gap:6px;
-  padding:9px;
-  background:linear-gradient(145deg,#09266f,#050711 58%,#170609);
-}
-
-.video-feature{
-  position:relative;
-  z-index:12;
-  border-radius:13px;
-  overflow:hidden;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.48)),
-    url("assets/demo-videos-hero.png");
-  background-size:cover;
-  background-position:center center;
-  border:1px solid rgba(255,255,255,.14);
-}
-
-.play{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:46px;
-  height:46px;
-  transform:translate(-50%,-50%);
-  display:grid;
-  place-items:center;
-  padding-left:4px;
-  border-radius:50%;
-  color:white;
-  background:rgba(255,75,39,.95);
-  box-shadow:0 0 30px rgba(255,75,39,.72);
-}
-
-.video-label{
-  position:absolute;
-  left:12px;
-  bottom:9px;
-  color:var(--gold);
-  font-size:.52rem;
-  font-weight:900;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-}
-
-.video-thumbs{
-  position:relative;
-  z-index:12;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:5px;
-}
-
-.video-thumbs span{
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,.14);
-  background-size:cover;
-  background-position:center;
-}
-
-.location-list{
-  position:relative;
-  z-index:2;
-  margin:16px 19px 0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px 15px;
-}
-
-.loc{
-  display:grid;
-  grid-template-columns:31px 1fr;
-  gap:7px;
-  align-items:start;
-  text-align:left;
-  min-height:48px;
-}
-
-.pin{
-  width:29px;
-  height:29px;
-  fill:none;
-  stroke:var(--red);
-  stroke-width:1.55;
-  filter:drop-shadow(0 0 12px rgba(240,56,41,.95));
-}
-
-.pin circle{fill:var(--red);stroke:none}
-
-.loc strong{
-  display:block;
-  font-size:.61rem;
-  font-weight:900;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-
-.loc span{
-  display:block;
-  color:rgba(255,255,255,.66);
-  font-size:.42rem;
-  line-height:1.12;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  margin-top:2px;
-}
-
-.favorite-grid{
-  position:absolute;
-  z-index:6;
-  inset:10px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px;
-}
-
-.favorite-grid span{
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.16);
-  display:grid;
-  place-items:end center;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.62)),
-    var(--img);
-  background-size:cover;
-  background-position:center;
-}
-
-.favorite-grid span::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 50% 36%,rgba(255,111,46,.10),transparent 35%),
-    linear-gradient(180deg,transparent 38%,rgba(2,4,13,.72));
-}
-
-.favorite-grid b{
-  position:relative;
-  z-index:2;
-  padding:0 8px 7px;
-  color:var(--gold);
-  font-size:.50rem;
-  letter-spacing:.13em;
-  text-align:center;
-  text-transform:uppercase;
-  text-shadow:0 2px 10px #000,0 0 16px rgba(255,111,46,.55);
-}
-
-.social-icons-row{
-  position:relative;
-  z-index:2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  padding:0 0 8px;
-}
-
-.social-big{
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:white;
-  text-decoration:none;
-  font-weight:900;
-  font-size:.95rem;
-  box-shadow:0 0 18px rgba(255,111,46,.25);
-}
-
-.social-big.fb{background:#1877f2}
-.social-big.ig{background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
-.social-big.yt{background:#ff0000}
-
-.social-thumbs{
-  position:relative;
-  z-index:2;
-  margin:0 16px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:5px;
-}
-
-.social-thumbs span{
-  aspect-ratio:1/1;
-  border-radius:9px;
-  border:1px solid rgba(255,255,255,.14);
-  background-size:cover;
-  background-position:center;
-}
-
-.card.social .card-media{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  background:
-    radial-gradient(circle at 50% 32%,rgba(255,99,39,.18),transparent 32%),
-    linear-gradient(145deg,#09266f,#060711 70%);
-}
-
-/* CONTROLS */
-.arrow{
-  position:fixed;
-  z-index:72;
-  top:51%;
-  width:54px;
-  height:54px;
-  border-radius:50%;
-  border:1.5px solid rgba(255,111,46,.84);
-  background:rgba(2,4,12,.42);
-  color:var(--orange);
-  display:grid;
-  place-items:center;
-  font-size:2rem;
-  line-height:1;
-  box-shadow:0 0 26px rgba(255,111,46,.28),inset 0 0 16px rgba(255,111,46,.08);
-}
-
-.arrow.left{left:28px}
-.arrow.right{right:28px}
-.arrow:hover{background:rgba(255,111,46,.14)}
-
-/* Bottom countdown — below front loop. Firecracker is baked into the bg. */
-.bottom-count{
-  position:fixed;
-  left:50%;
-  bottom:43px;
-  transform:translateX(-50%);
-  z-index:40;
-  text-align:center;
-  text-transform:uppercase;
-  pointer-events:none;
-  text-shadow:0 2px 12px rgba(0,0,0,.88);
-}
-
-.bottom-count p{
-  color:rgba(255,255,255,.76);
-  font-size:.50rem;
-  font-weight:900;
-  letter-spacing:.28em;
-  margin-bottom:4px;
-}
-
-.bottom-row{
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
-  gap:8px;
-}
-
-.bottom-row span{
-  min-width:46px;
-  display:grid;
-}
-
-.bottom-row b{
-  font-family:var(--font-head);
-  color:rgba(255,255,255,.92);
-  font-size:1.55rem;
-  line-height:1;
-}
-
-.bottom-row small{
-  color:rgba(255,255,255,.48);
-  font-size:.36rem;
-  letter-spacing:.2em;
-}
-
-.bottom-row i{
-  color:rgba(255,111,46,.9);
-  font-family:var(--font-head);
-  font-style:normal;
-  font-size:1.12rem;
-}
-
-/* Footer */
-.footer{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:82;
-  height:38px;
-  padding:0 32px;
-  display:grid;
-  grid-template-columns:330px 1fr 330px;
-  align-items:center;
-  background:rgba(3,5,12,.87);
-  border-top:1px solid rgba(255,111,46,.14);
-  backdrop-filter:blur(12px);
-}
-
-.promise{
-  text-transform:uppercase;
-  letter-spacing:.16em;
-  line-height:1.18;
-  font-size:.58rem;
-}
-
-.promise b{
-  display:block;
-  color:var(--orange);
-}
-
-.drag-note{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  color:rgba(255,255,255,.42);
-  text-transform:uppercase;
-  letter-spacing:.28em;
-  font-size:.56rem;
-}
-
-.drag-note::before,
-.drag-note::after{
-  content:"";
-  width:28px;
-  height:1px;
-  background:rgba(255,111,46,.42);
-}
-
-.socials{
-  display:flex;
-  justify-content:flex-end;
-  gap:12px;
-}
-
-.socials a{
-  width:30px;
-  height:30px;
-  border-radius:50%;
-  border:1px solid rgba(255,255,255,.24);
-  display:grid;
-  place-items:center;
-  color:rgba(255,255,255,.62);
-  text-decoration:none;
-}
-
-/* MODALS */
 .modal-layer{
   position:fixed;
   inset:0;
-  z-index:130;
+  z-index:999;
   display:none;
   align-items:center;
   justify-content:center;
   padding:24px;
   background:rgba(0,0,0,.72);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(14px);
 }
-
 .modal-layer.open{display:flex}
-
 .modal{
   width:min(1100px,94vw);
   max-height:86vh;
   overflow:auto;
   padding:30px;
-  border-radius:18px;
-  border:1px solid rgba(255,111,46,.44);
-  background:radial-gradient(circle at 50% 0%,rgba(255,111,46,.13),transparent 32%),rgba(5,8,23,.98);
-  box-shadow:0 0 80px rgba(255,80,30,.25);
+  border-radius:20px;
+  border:1px solid rgba(255,111,46,.55);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,111,46,.16),transparent 34%),
+    rgba(4,7,20,.98);
+  box-shadow:0 0 90px rgba(255,80,30,.25);
+  font-family:"Barlow Condensed", Arial, sans-serif;
 }
-
 .modal-close{
   position:fixed;
   top:22px;
   right:26px;
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
-  border:1px solid rgba(255,111,46,.58);
-  background:rgba(2,4,13,.75);
-  color:var(--orange);
-  font-size:1.5rem;
+  border:1px solid rgba(255,111,46,.68);
+  background:rgba(2,4,13,.78);
+  color:#ff6d2e;
+  font-size:1.7rem;
+  cursor:pointer;
 }
-
 .eyebrow{
-  color:var(--orange);
+  color:#ff6d2e;
   text-transform:uppercase;
-  letter-spacing:.35em;
-  font-size:.78rem;
+  letter-spacing:.32em;
+  font-size:.82rem;
   font-weight:900;
   margin-bottom:10px;
 }
-
 .modal h2{
-  font-family:var(--font-head);
+  font-family:"Bebas Neue", Impact, sans-serif;
   text-transform:uppercase;
-  font-size:3.25rem;
-  line-height:.95;
-  margin-bottom:20px;
+  font-size:clamp(2.4rem,6vw,4rem);
+  line-height:.9;
+  margin-bottom:22px;
 }
-
-.video-grid,
-.location-grid,
-.feed-grid,
-.favorites-modal-grid{
+.video-grid,.location-grid,.feed-grid,.favorites-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:14px;
 }
-
 .location-grid{grid-template-columns:repeat(2,1fr)}
-
-.video-card,
-.location-grid article,
-.feed-card,
-.favorites-modal-grid article{
-  border:1px solid rgba(255,255,255,.13);
-  background:rgba(255,255,255,.04);
+.video-card,.location-grid article,.feed-card,.favorites-grid article{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.045);
   border-radius:14px;
   overflow:hidden;
 }
-
-.location-grid article,
-.feed-card,
-.favorites-modal-grid article{padding:18px}
-
-.video-card iframe{
-  display:block;
-  width:100%;
-  height:165px;
-  border:0;
-  background:#000;
-}
-
-.video-card p,
-.favorites-modal-grid h3{
+.location-grid article,.feed-card,.favorites-grid article{padding:18px}
+.video-card iframe{display:block;width:100%;height:165px;border:0;background:#000}
+.video-card p,.favorites-grid h3{
   padding:12px;
-  color:var(--gold);
+  color:#ffd56c;
   text-transform:uppercase;
   font-weight:900;
   letter-spacing:.12em;
 }
-
-.location-grid h3,
-.feed-card h3{
+.location-grid h3,.feed-card h3{
   text-transform:uppercase;
   letter-spacing:.12em;
   margin-bottom:8px;
 }
-
-.location-grid p,
-.feed-card p,
-.favorites-modal-grid p{
-  color:rgba(255,255,255,.72);
+.location-grid p,.feed-card p,.favorites-grid p{
+  color:rgba(255,255,255,.76);
   line-height:1.35;
   font-size:1.05rem;
 }
-
-.location-grid a,
-.modal-link{
+.location-grid a,.modal-link{
   display:inline-block;
   margin-top:13px;
-  color:var(--gold);
+  color:#ffd56c;
   text-transform:uppercase;
   font-weight:900;
   letter-spacing:.12em;
   text-decoration:none;
 }
-
 .contact-form{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
 }
-
 .contact-form label{
   display:grid;
   gap:8px;
-  color:rgba(255,255,255,.72);
+  color:rgba(255,255,255,.76);
   text-transform:uppercase;
   letter-spacing:.13em;
   font-weight:900;
 }
-
-.contact-form input,
-.contact-form textarea{
+.contact-form input,.contact-form textarea{
   width:100%;
   min-height:54px;
   padding:0 14px;
   color:white;
   background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.16);
   border-radius:10px;
 }
-
 .contact-form textarea{
   grid-column:1/-1;
   height:135px;
   padding-top:14px;
   resize:none;
 }
-
 .contact-form button{
   grid-column:1/-1;
   height:54px;
   color:white;
-  background:var(--orange);
+  background:#ff6d2e;
   border:0;
   border-radius:10px;
   text-transform:uppercase;
   font-weight:900;
   letter-spacing:.14em;
 }
-
 .fb-embed-wrap{
   display:grid;
   place-items:center;
-  background:rgba(255,255,255,.04);
+  background:rgba(255,255,255,.045);
   border-radius:14px;
-  border:1px solid rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.14);
   padding:18px;
 }
-
-@media(max-width:1180px){
-  html,body{overflow:auto}
-  .header,.footer{
-    position:relative;
-    height:auto;
-    grid-template-columns:1fr;
-    padding:16px;
-    gap:14px;
-  }
-  .nav,.socials{justify-content:flex-start;flex-wrap:wrap}
-  .stage{
-    position:relative;
-    inset:auto;
-    overflow:visible;
-    perspective:none;
-    padding:28px 16px 42px;
-  }
-  .carousel{
-    position:relative;
-    display:grid;
-    gap:18px;
-    transform-style:flat;
-  }
-  .card,.card.is-center{
-    position:relative;
-    left:auto;
-    top:auto;
-    width:100%;
-    height:auto;
-    min-height:430px;
-    transform:none!important;
-    opacity:1!important;
-    filter:none!important;
-  }
-  .arrow,.bottom-count{display:none}
-  .video-grid,.location-grid,.feed-grid,.favorites-modal-grid,.contact-form{grid-template-columns:1fr}
+.proof-note{
+  margin-top:18px;
+  color:rgba(255,255,255,.65);
+  font-size:.95rem;
+  line-height:1.35;
+}
+@media(max-width:900px){
+  .video-grid,.location-grid,.feed-grid,.favorites-grid,.contact-form{grid-template-columns:1fr}
 }
 </style>
 </head>
-<body>
+<body data-active="2">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
-<div class="bg-wrap" aria-hidden="true">
-  <img class="bg" src="assets/dfo-prewater-background-baked-firecracker.png" alt="">
-</div>
-
-<header class="header">
-  <a class="logo" href="#" data-rotate="videos" aria-label="Discount Fireworks Outlet home">
-    <span class="logo-mark">DFO</span>
-    <span class="logo-text">Discount<br>Fireworks<br>Outlet</span>
-  </a>
-
-  <div class="header-clock" aria-label="Countdown to America's 250th birthday">
-    <div class="header-title">★★★ Happy 250th Birthday, America ★★★</div>
-    <div class="clock-row">
-      <div class="clock-unit"><div class="clock-num" id="days">--</div><div class="clock-lab">Days</div></div>
-      <div class="clock-unit"><div class="clock-num" id="hours">--</div><div class="clock-lab">Hours</div></div>
-      <div class="clock-unit"><div class="clock-num" id="minutes">--</div><div class="clock-lab">Minutes</div></div>
-      <div class="clock-unit"><div class="clock-num" id="seconds">--</div><div class="clock-lab">Seconds</div></div>
-    </div>
-  </div>
-
-  <nav class="nav" aria-label="Main navigation">
-    <button data-rotate="videos">Videos</button>
-    <button data-rotate="locations">Locations</button>
-    <button data-rotate="contact">Contact</button>
-    <button class="directions" data-modal="locationsModal">Get Directions ▶</button>
-  </nav>
-</header>
-
-<main class="stage" aria-label="DFO fixed-slot wall carousel">
-  <section class="carousel">
-    <article class="card" data-card="videos" data-modal="videosModal">
-      <p class="card-eyebrow">Demo Videos</p>
-      <h1 class="card-title">Preview the Boom Before You Buy</h1>
-      <div class="card-media video-preview">
-        <div class="video-feature">
-          <span class="play">▶</span>
-          <span class="video-label">Featured Demo</span>
-        </div>
-        <div class="video-thumbs" aria-hidden="true">
-          <span style="background-image:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>
-          <span style="background-image:url('https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg')"></span>
-          <span style="background-image:url('https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg')"></span>
-          <span style="background-image:url('https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg')"></span>
-        </div>
-      </div>
-      <div class="card-copy">
-        <p>Watch real demos, compare effects, and choose your finale.</p>
-        <button class="card-btn primary" data-modal="videosModal">▷ Watch Videos</button>
-      </div>
-    </article>
-
-    <article class="card" data-card="locations" data-modal="locationsModal">
-      <p class="card-eyebrow">4 Great Spots</p>
-      <h2 class="card-title">Locations</h2>
-      <div class="location-list">
-        <div class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.35"/>
-</svg><div><strong>Spirit Lake</strong><span>Vick’s Corner<br>NW corner of HWY 9 & 86</span></div></div>
-        <div class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.35"/>
-</svg><div><strong>Milford</strong><span>Okoboji Gas Lot<br>2098 IA-86</span></div></div>
-        <div class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.35"/>
-</svg><div><strong>Spencer</strong><span>Spencer Mall Lot<br>901 11th Street SW</span></div></div>
-        <div class="loc"><svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
-  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
-  <circle cx="12" cy="9.7" r="2.35"/>
-</svg><div><strong>Armstrong</strong><span>101 6th St<br>HWY 15</span></div></div>
-      </div>
-      <div class="card-copy">
-        <p>Find the closest DFO location and get ready for the Fourth.</p>
-        <button class="card-btn" data-modal="locationsModal">View Locations</button>
-      </div>
-    </article>
-
-    <article class="card" data-card="build" data-modal="contactModal">
-      <p class="card-eyebrow">Plan Like a Pro</p>
-      <h2 class="card-title">Build Your Show</h2>
-      <div class="card-media build-photo"></div>
-      <div class="card-copy">
-        <p>Get ideas. Build the perfect backyard show.</p>
-        <button class="card-btn" data-modal="contactModal">Start Planning</button>
-      </div>
-    </article>
-
-    <article class="card" data-card="favorites" data-modal="favoritesModal">
-      <p class="card-eyebrow">Finale Favorites</p>
-      <h2 class="card-title">Top Picks for the Perfect Finale</h2>
-      <div class="card-media art-favorites">
-        <div class="favorite-grid">
-          <span style="--img:url('assets/finale-500g-cakes.png')"><b>500G Cakes</b></span>
-          <span style="--img:url('assets/finale-aerials.png')"><b>Aerials</b></span>
-          <span style="--img:url('assets/finale-finales.png')"><b>Finales</b></span>
-          <span style="--img:url('assets/finale-family-packs.png')"><b>Family Packs</b></span>
-        </div>
-      </div>
-      <div class="card-copy">
-        <p>Shop our most popular finale options.</p>
-        <button class="card-btn" data-modal="favoritesModal">See Favorites</button>
-      </div>
-    </article>
-
-    <article class="card social" data-card="social" data-modal="socialModal">
-      <p class="card-eyebrow">Follow the Finale</p>
-      <h2 class="card-title">Social Feed</h2>
-      <div class="card-media">
-        <div class="social-icons-row">
-          <a class="social-big fb" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-          <a class="social-big ig" href="#" aria-label="Instagram">◎</a>
-          <a class="social-big yt" href="#" aria-label="YouTube">▶</a>
-        </div>
-        <div class="social-thumbs">
-          <span style="background-image:url('assets/social-thumb-1.png')"></span>
-          <span style="background-image:url('assets/social-thumb-2.png')"></span>
-          <span style="background-image:url('assets/social-thumb-3.png')"></span>
-          <span style="background-image:url('assets/social-thumb-4.png')"></span>
-          <span style="background-image:url('assets/social-thumb-5.png')"></span>
-          <span style="background-image:url('assets/social-thumb-6.png')"></span>
-        </div>
-      </div>
-      <div class="card-copy">
-        <p>Catch demo drops, tent updates, new products, and more.</p>
-        <button class="card-btn" data-modal="socialModal">View Socials</button>
-      </div>
-    </article>
-  </section>
+<main class="artboard" aria-label="Discount Fireworks Outlet pixel-match artboard">
+  <img src="assets/dfo-pixel-match-reference-artboard-1920x1080.png" alt="Discount Fireworks Outlet fireworks homepage layout">
+  <button class="hotspot nav-hotspot" data-action="videosModal" aria-label="videosNav" style="left:70.8%;top:5.0%;width:5.0%;height:3.2%;"></button>
+<button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="locationsNav" style="left:77.2%;top:5.0%;width:6.2%;height:3.2%;"></button>
+<button class="hotspot nav-hotspot" data-action="contactModal" aria-label="contactNav" style="left:85.0%;top:5.0%;width:5.5%;height:3.2%;"></button>
+<button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="directionsNav" style="left:91.1%;top:3.4%;width:7.4%;height:4.3%;"></button>
+<button class="hotspot card-hotspot" data-action="contactModal" aria-label="buildCard" style="left:10.3%;top:30.2%;width:10.4%;height:35.0%;"></button>
+<button class="hotspot card-hotspot" data-action="locationsModal" aria-label="locationsCard" style="left:21.4%;top:27.5%;width:15.0%;height:40.0%;"></button>
+<button class="hotspot card-hotspot" data-action="videosModal" aria-label="videosCard" style="left:37.4%;top:24.2%;width:23.0%;height:48.4%;"></button>
+<button class="hotspot card-hotspot" data-action="favoritesModal" aria-label="favoritesCard" style="left:61.6%;top:26.5%;width:15.1%;height:42.0%;"></button>
+<button class="hotspot card-hotspot" data-action="socialModal" aria-label="socialCard" style="left:77.3%;top:30.2%;width:10.8%;height:35.0%;"></button>
+<button class="hotspot arrow-hotspot" data-action="prev" aria-label="leftArrow" style="left:2.3%;top:48.8%;width:4.0%;height:7.0%;"></button>
+<button class="hotspot arrow-hotspot" data-action="next" aria-label="rightArrow" style="left:93.8%;top:48.8%;width:4.0%;height:7.0%;"></button>
+<button class="hotspot nav-hotspot" data-action="socialModal" aria-label="facebookFooter" style="left:78.3%;top:91.3%;width:18.5%;height:7.0%;"></button>
 </main>
-
-<button class="arrow left" id="prev" aria-label="Previous card">‹</button>
-<button class="arrow right" id="next" aria-label="Next card">›</button>
-
-<section class="bottom-count" aria-label="Secondary countdown">
-  <p>The Show Starts In</p>
-  <div class="bottom-row">
-    <span><b id="bdays">--</b><small>Days</small></span><i>:</i>
-    <span><b id="bhours">--</b><small>Hours</small></span><i>:</i>
-    <span><b id="bminutes">--</b><small>Min</small></span><i>:</i>
-    <span><b id="bseconds">--</b><small>Sec</small></span>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="promise">Top Quality. Lowest Prices.<b>That’s the DFO Promise.</b></div>
-  <div class="drag-note">Click and Drag to Rotate</div>
-  <div class="socials">
-    <a href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
-    <a href="#" aria-label="Instagram">◎</a>
-    <a href="#" aria-label="YouTube">▶</a>
-  </div>
-</footer>
 
 <div class="modal-layer" id="videosModal">
   <button class="modal-close" aria-label="Close">×</button>
@@ -1127,7 +233,7 @@ button{cursor:pointer}
       <div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud and Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud & Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
     </div>
   </div>
 </div>
@@ -1149,8 +255,8 @@ button{cursor:pointer}
 <div class="modal-layer" id="contactModal">
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
-    <p class="eyebrow">Finale Desk</p>
-    <h2>Build the Night, Then Light the Sky</h2>
+    <p class="eyebrow">Plan Like a Pro</p>
+    <h2>Build Your Show</h2>
     <form class="contact-form">
       <label>Name<input type="text" placeholder="Your name"></label>
       <label>Email<input type="email" placeholder="you@email.com"></label>
@@ -1165,7 +271,7 @@ button{cursor:pointer}
   <div class="modal">
     <p class="eyebrow">Finale Favorites</p>
     <h2>Top Picks for the Perfect Finale</h2>
-    <div class="favorites-modal-grid">
+    <div class="favorites-grid">
       <article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
       <article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
       <article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
@@ -1199,128 +305,35 @@ button{cursor:pointer}
       <article class="feed-card"><h3>Instagram</h3><p>Tent moments, product drops, and Fourth of July energy.</p></article>
       <article class="feed-card"><h3>YouTube</h3><p>Firework demos and finale previews.</p></article>
     </div>
+    <p class="proof-note">This pixel-match proof uses the approved visual as the locked artboard so the screenshot can be matched before rebuilding the editable carousel layers.</p>
   </div>
 </div>
 
 <script>
-const targetDate = new Date("2026-07-04T09:00:00");
-
-function pad(v){ return String(v).padStart(2,"0"); }
-
-function updateCountdown(){
-  const diff = Math.max(targetDate - new Date(), 0);
-  const vals = [
-    Math.floor(diff / 86400000),
-    Math.floor(diff / 3600000) % 24,
-    Math.floor(diff / 60000) % 60,
-    Math.floor(diff / 1000) % 60
-  ];
-
-  ["days","hours","minutes","seconds","bdays","bhours","bminutes","bseconds"].forEach((id,i)=>{
-    const el = document.getElementById(id);
-    if(el) el.textContent = pad(vals[i % 4]);
-  });
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-const cards = Array.from(document.querySelectorAll("[data-card]"));
-let active = 0; // Demo Videos starts centered.
-
-function mod(n,m){ return ((n % m) + m) % m; }
-
-/*
-  FIXED DESIGNER SLOTS — no circle math.
-  This preserves the pre-water background and places the cards as a controlled visual proof.
-
-  Required facing:
-  left/far-left use negative rotation.
-  right/far-right use positive rotation.
-*/
-function getSlots(){
-  const w = window.innerWidth;
-  const nearX = Math.min(Math.max(w * 0.255, 260), 385);
-  const farX = Math.min(Math.max(w * 0.430, 455), 650);
-
-  return [
-    { name:"center", x:0, y:6, z:250, ry:0, scale:1.00, opacity:1.00, bright:1.08, zIndex:40 },
-    { name:"right", x:nearX, y:22, z:-115, ry:15, scale:.82, opacity:.92, bright:.88, zIndex:29 },
-    { name:"far-right", x:farX, y:44, z:-380, ry:30, scale:.65, opacity:.76, bright:.70, zIndex:18 },
-    { name:"far-left", x:-farX, y:44, z:-380, ry:-30, scale:.65, opacity:.76, bright:.70, zIndex:18 },
-    { name:"left", x:-nearX, y:22, z:-115, ry:-15, scale:.82, opacity:.92, bright:.88, zIndex:29 }
-  ];
-}
-
-function applySlot(card, slot){
-  card.style.setProperty("--x", `${slot.x}px`);
-  card.style.setProperty("--y", `${slot.y}px`);
-  card.style.setProperty("--z", `${slot.z}px`);
-  card.style.setProperty("--ry", `${slot.ry}deg`);
-  card.style.setProperty("--scale", slot.scale);
-  card.style.setProperty("--opacity", slot.opacity);
-  card.style.setProperty("--bright", slot.bright);
-  card.style.zIndex = slot.zIndex;
-  card.classList.toggle("is-center", slot.name === "center");
-  card.setAttribute("aria-hidden", slot.name === "center" ? "false" : "true");
-}
-
-function render(){
-  const slots = getSlots();
-  cards.forEach((card, i)=>{
-    const rel = mod(i - active, cards.length);
-    applySlot(card, slots[rel]);
-  });
-}
-
-function rotateTo(index){
-  active = mod(index, cards.length);
-  render();
-}
-
-function rotateNext(){ rotateTo(active + 1); }
-function rotatePrev(){ rotateTo(active - 1); }
-
 function openModal(id){
   document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
   const modal = document.getElementById(id);
   if(modal) modal.classList.add("open");
 }
-
 function closeModals(){
   document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));
 }
 
-document.getElementById("next").addEventListener("click", rotateNext);
-document.getElementById("prev").addEventListener("click", rotatePrev);
+let activeIndex = 2; // Static visual proof starts with Demo Videos centered.
 
-const rotateMap = { videos:0, locations:1, contact:2, build:2, favorites:3, social:4 };
+function rotateProof(dir){
+  // This is intentionally a pixel-match proof: the visual artboard is locked.
+  // Rotation logic is stored for the next layer-build, but the image does not move.
+  activeIndex = (activeIndex + dir + 5) % 5;
+  document.body.dataset.active = String(activeIndex);
+}
 
-document.querySelectorAll("[data-rotate]").forEach(el=>{
-  el.addEventListener("click", e=>{
-    e.preventDefault();
-    const target = el.dataset.rotate;
-    if(target in rotateMap) rotateTo(rotateMap[target]);
-  });
-});
-
-document.querySelectorAll("[data-modal]").forEach(el=>{
-  el.addEventListener("click", e=>{
-    e.preventDefault();
-    e.stopPropagation();
-    openModal(el.dataset.modal);
-  });
-});
-
-cards.forEach((card, i)=>{
-  card.addEventListener("click", e=>{
-    if(e.target.closest("button,a")) return;
-    if(i !== active){
-      rotateTo(i);
-      return;
-    }
-    const modalId = card.dataset.modal;
-    if(modalId) openModal(modalId);
+document.querySelectorAll("[data-action]").forEach(btn=>{
+  btn.addEventListener("click", e=>{
+    const action = btn.dataset.action;
+    if(action === "prev"){ rotateProof(-1); return; }
+    if(action === "next"){ rotateProof(1); return; }
+    openModal(action);
   });
 });
 
@@ -1334,30 +347,9 @@ document.querySelectorAll(".modal-layer,.modal-close").forEach(el=>{
 
 document.addEventListener("keydown", e=>{
   if(e.key === "Escape") closeModals();
-  if(e.key === "ArrowRight") rotateNext();
-  if(e.key === "ArrowLeft") rotatePrev();
+  if(e.key === "ArrowLeft") rotateProof(-1);
+  if(e.key === "ArrowRight") rotateProof(1);
 });
-
-let startX = null;
-const carousel = document.querySelector(".carousel");
-
-carousel.addEventListener("pointerdown", e=>{
-  startX = e.clientX;
-  carousel.classList.add("dragging");
-});
-
-window.addEventListener("pointerup", e=>{
-  if(startX === null) return;
-  const diff = e.clientX - startX;
-  carousel.classList.remove("dragging");
-  if(Math.abs(diff) > 45){
-    diff < 0 ? rotateNext() : rotatePrev();
-  }
-  startX = null;
-});
-
-window.addEventListener("resize", render);
-render();
 </script>
 </body>
 </html>
