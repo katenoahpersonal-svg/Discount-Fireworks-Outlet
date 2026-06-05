@@ -1,32 +1,29 @@
-# DFO V27 — Filled Cards + Refined Rotation + More Ground
+# Discount Fireworks Outlet — V29 Visual Reset
 
-Upload everything in this folder to your GitHub Pages repo root:
+Upload these to the root of your GitHub Pages repository:
 
 - index.html
 - .nojekyll
-- assets/dfo-stage-full-height-ground-v27.png
-- assets/build-your-show-tent-scene.png
-- assets/favorite-500g-cakes.png
-- assets/favorite-aerials.png
-- assets/favorite-finales.png
-- assets/favorite-family-packs.png
+- assets/
 
-What changed from V26:
-- Facebook link was added: https://share.google/GzfOnXO5YoaE1cwlv
-- Build Your Show card now uses an image generated from the screenshot reference.
-- Finale Favorites card now has 4 generated image tiles:
-  - 500G Cakes
-  - Aerials
-  - Finales
-  - Family Packs
-- Card rotation was softened:
-  - left card: +15 degrees
-  - far-left card: +30 degrees
-  - right card: -15 degrees
-  - far-right card: -30 degrees
-- Background was reformatted to preserve more vertical ground/bottom breathing room.
-- Bottom countdown is larger and stays lower.
-- Footer is shorter to free up more bottom space.
-- Exactly 5 cards.
-- Demo Videos starts centered.
-- Carousel works by clicking side cards, arrows, keyboard arrows, and drag.
+This version is a hard visual reset from the previous final:
+- cards are substantially smaller
+- center card is lower and no longer cut by the header
+- all five cards are designed to remain visible across the arc
+- carousel wall rotation is corrected:
+  - left cards rotate negative
+  - right cards rotate positive
+  - far cards rotate farther
+- background is scaled to feel larger
+- firecracker and bottom countdown are smaller/lower
+- footer is thinner
+
+Interaction:
+- arrows rotate
+- keyboard arrows rotate
+- clicking side cards rotates them into center
+- drag rotates
+
+Notes:
+- Instagram and YouTube links are placeholders until final URLs are supplied.
+- Contact form is visual only until wired to a backend/form service.
