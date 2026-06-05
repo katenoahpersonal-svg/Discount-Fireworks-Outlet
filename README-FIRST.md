@@ -1,15 +1,14 @@
-# DFO V14 — Turntable + Firecracker
+# DFO V15 — 3D Firecracker Pedestal
 
-Upload these to GitHub Pages:
+Upload:
 - index.html
 - .nojekyll
 
-Changes:
-- Exactly 5 cards: Build Your Show, Locations, Videos, Finale Favorites, Social Feed
-- Demo Videos starts centered
-- Cards lock into a circular turntable arrangement
-- Bottom countdown uses a small DFO firecracker pedestal
-- Flame is the only part intended to visually touch the lower edge of the carousel
+Changes from V14:
+- Rebuilt the bottom object into a more 3D/photo-like DFO firecracker pedestal
+- Bigger rounded metallic body, cone cap, base lip, glow ring, and fuse spark
+- Flame is the intended contact point with the carousel/card area
+- Moved carousel slightly up so firecracker sits in front instead of covering card content
+- Kept exactly 5 cards
+- Videos starts centered
 - No canvas fireworks
-- No giant center object blocking content
-- Demos, locations, contact, social, and favorites modals included

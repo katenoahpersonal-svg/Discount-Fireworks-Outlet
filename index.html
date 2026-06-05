@@ -290,7 +290,7 @@ a{color:inherit}
 .card{
   position:absolute;
   left:50%;
-  top:45.5%;
+  top:43.8%;
   width:500px;
   height:560px;
   border-radius:24px;
@@ -393,7 +393,7 @@ a{color:inherit}
 .card-copy{
   position:relative;
   z-index:2;
-  padding:17px 28px 24px;
+  padding:16px 28px 26px;
   text-align:center;
 }
 .card-copy p{
@@ -682,15 +682,16 @@ a{color:inherit}
   font-size:.72rem;
 }
 
-/* ===== FIRECRACKER COUNTDOWN PEDESTAL ===== */
+
+/* ===== 3D FIRECRACKER COUNTDOWN PEDESTAL ===== */
 .firecracker-stage{
   position:fixed;
   left:50%;
-  bottom:74px;
-  width:min(420px,76vw);
-  height:178px;
+  bottom:68px;
+  width:min(520px,78vw);
+  height:214px;
   transform:translateX(-50%);
-  z-index:34;
+  z-index:28;
   pointer-events:none;
 }
 .pedestal-ring{
@@ -698,26 +699,49 @@ a{color:inherit}
   left:50%;
   bottom:0;
   width:100%;
-  height:84px;
-  transform:translateX(-50%) perspective(600px) rotateX(67deg);
+  height:108px;
+  transform:translateX(-50%) perspective(680px) rotateX(66deg);
   border-radius:50%;
-  border:1.5px solid rgba(255,111,46,.9);
+  border:1.7px solid rgba(255,111,46,.93);
+  background:
+    radial-gradient(ellipse at 50% 48%,rgba(255,111,46,.14),rgba(255,111,46,.045) 38%,transparent 70%),
+    radial-gradient(ellipse at 50% 58%,rgba(0,0,0,.72),transparent 62%);
   box-shadow:
-    0 0 13px rgba(255,111,46,.9),
-    0 0 38px rgba(255,75,20,.58),
-    0 0 90px rgba(255,50,10,.28);
+    0 0 12px rgba(255,111,46,.95),
+    0 0 38px rgba(255,75,20,.62),
+    0 0 100px rgba(255,50,10,.30),
+    inset 0 0 26px rgba(255,111,46,.22);
+}
+.pedestal-ring::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:47%;
+  width:72%;
+  height:55%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,0,0,.72),rgba(0,0,0,.08) 58%,transparent 68%);
+  filter:blur(2px);
 }
 .firecracker{
   position:absolute;
   left:50%;
-  bottom:38px;
-  width:82px;
-  height:100px;
+  bottom:54px;
+  width:106px;
+  height:130px;
   transform:translateX(-50%);
-  border-radius:38px 38px 12px 12px;
-  background:linear-gradient(180deg,#262330,#11101a);
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow:0 0 34px rgba(255,80,36,.42);
+  border-radius:46px 46px 14px 14px / 34px 34px 14px 14px;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.14),transparent 18%,transparent 72%,rgba(255,255,255,.08)),
+    radial-gradient(ellipse at 50% 5%,rgba(255,255,255,.18),transparent 45%),
+    linear-gradient(90deg,#12111b 0%,#282637 18%,#171620 48%,#332f3d 72%,#101019 100%);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:
+    0 21px 38px rgba(0,0,0,.58),
+    0 0 34px rgba(255,80,36,.42),
+    inset 10px 0 20px rgba(255,255,255,.055),
+    inset -16px 0 24px rgba(0,0,0,.44);
   display:grid;
   place-items:center;
   text-align:center;
@@ -727,86 +751,141 @@ a{color:inherit}
   content:"";
   position:absolute;
   left:50%;
-  top:-28px;
-  width:0;
-  height:0;
+  top:-32px;
+  width:74px;
+  height:42px;
   transform:translateX(-50%);
-  border-left:22px solid transparent;
-  border-right:22px solid transparent;
-  border-bottom:30px solid #252231;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.12),transparent 24%,rgba(0,0,0,.28) 78%),
+    linear-gradient(180deg,#302d3e,#14131d);
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  filter:drop-shadow(0 -2px 8px rgba(255,111,46,.15));
+}
+.firecracker::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-11px;
+  width:132px;
+  height:18px;
+  transform:translateX(-50%);
+  border-radius:0 0 9px 9px;
+  background:
+    linear-gradient(180deg,#1b1924,#090911),
+    linear-gradient(90deg,transparent,rgba(255,111,46,.24),transparent);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 10px 26px rgba(0,0,0,.65),0 0 18px rgba(255,111,46,.24);
 }
 .flame{
   position:absolute;
   left:50%;
-  top:-42px;
-  width:18px;
-  height:28px;
+  top:-52px;
+  width:22px;
+  height:38px;
   transform:translateX(-50%);
   border-radius:50% 50% 45% 45%;
   background:
-    radial-gradient(circle at 50% 62%,#fff6b0 0 18%,#ffd56c 20% 40%,#ff6e2e 42% 70%,transparent 72%);
-  filter:drop-shadow(0 0 13px rgba(255,214,108,.95)) drop-shadow(0 0 24px rgba(255,111,46,.8));
+    radial-gradient(circle at 50% 66%,#fff8bd 0 17%,#ffd56c 19% 38%,#ff6e2e 41% 70%,rgba(255,111,46,.0) 72%);
+  filter:
+    drop-shadow(0 0 11px rgba(255,244,180,.95))
+    drop-shadow(0 0 25px rgba(255,111,46,.88))
+    drop-shadow(0 0 42px rgba(255,55,18,.6));
+  animation:fuseFlicker 1.15s infinite ease-in-out;
+}
+.flame::before,
+.flame::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:60%;
+  width:58px;
+  height:2px;
+  transform:translate(-50%,-50%);
+  background:linear-gradient(90deg,transparent,rgba(255,213,108,.95),transparent);
+  box-shadow:0 0 14px rgba(255,111,46,.9);
+}
+.flame::after{
+  transform:translate(-50%,-50%) rotate(90deg);
+  width:42px;
 }
 .firecracker-logo{
   position:relative;
   z-index:3;
   font-family:var(--font-head);
   color:var(--red);
-  font-size:2rem;
+  font-size:2.55rem;
   line-height:.82;
-  text-shadow:0 0 15px rgba(240,56,41,.62);
+  letter-spacing:.03em;
+  text-shadow:0 0 15px rgba(240,56,41,.64),0 2px 0 rgba(0,0,0,.4);
+}
+.firecracker-logo::after{
+  content:"★";
+  font-size:.55rem;
+  position:absolute;
+  right:10px;
+  top:4px;
+  color:#6c1715;
 }
 .firecracker-sub{
   position:relative;
   z-index:3;
-  color:rgba(255,255,255,.62);
+  color:rgba(255,255,255,.70);
   font-weight:900;
   letter-spacing:.12em;
-  line-height:1.1;
-  font-size:.48rem;
-  margin-top:3px;
+  line-height:1.08;
+  font-size:.55rem;
+  margin-top:6px;
+  text-shadow:0 1px 0 rgba(0,0,0,.55);
 }
 .pedestal-count{
   position:absolute;
   left:50%;
-  bottom:8px;
+  bottom:16px;
   transform:translateX(-50%);
   text-align:center;
   text-transform:uppercase;
   letter-spacing:.2em;
+  z-index:4;
+  text-shadow:0 2px 10px rgba(0,0,0,.75);
 }
 .pedestal-count p{
-  color:var(--orange);
-  font-size:.53rem;
+  color:rgba(255,255,255,.78);
+  font-size:.58rem;
   font-weight:900;
-  margin-bottom:2px;
+  margin-bottom:4px;
+  letter-spacing:.28em;
 }
 .pedestal-row{
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  gap:4px;
+  gap:6px;
 }
 .pedestal-row span{
   display:grid;
-  min-width:34px;
+  min-width:43px;
 }
 .pedestal-row b{
   font-family:var(--font-head);
-  font-size:1.2rem;
+  font-size:1.78rem;
   line-height:1;
+  color:rgba(255,255,255,.86);
 }
 .pedestal-row small{
-  color:var(--dim);
-  font-size:.33rem;
+  color:rgba(255,255,255,.50);
+  font-size:.42rem;
 }
 .pedestal-row i{
   font-family:var(--font-head);
   font-style:normal;
-  color:var(--orange);
-  font-size:1rem;
+  color:rgba(255,111,46,.86);
+  font-size:1.35rem;
   line-height:1;
-  opacity:.75;
+}
+@keyframes fuseFlicker{
+  0%,100%{transform:translateX(-50%) scale(1);opacity:.95}
+  45%{transform:translateX(-50%) scale(1.12) rotate(-3deg);opacity:1}
+  72%{transform:translateX(-50%) scale(.92) rotate(3deg);opacity:.88}
 }
 
 /* arrows */
