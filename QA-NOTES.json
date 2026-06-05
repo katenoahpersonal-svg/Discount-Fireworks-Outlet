@@ -1,0 +1,25 @@
+{
+  "build": "v36-true-production-no-screenshot-artboard",
+  "no_screenshot_artboard_background": true,
+  "no_duplicated_side_cards_possible_from_background": true,
+  "backgrounds": {
+    "desktop": "dfo-v36-bg-desktop-clean-1920x1080.png",
+    "tablet": "dfo-v36-bg-tablet-clean-1536x2048.png",
+    "mobile": "dfo-v36-bg-mobile-clean-1080x1920.png"
+  },
+  "coded_layers": [
+    "header",
+    "top countdown",
+    "five fixed carousel slots",
+    "cards",
+    "small front ring",
+    "DFO firecracker",
+    "bottom countdown",
+    "footer",
+    "modals",
+    "Facebook embed"
+  ],
+  "initial_center_card": "videos",
+  "carousel_behavior": "swap card content between locked slots",
+  "if_user_sees_duplicate_side_cards": "They are still viewing/uploading old V33 screenshot-artboard files or browser cache."
+}

@@ -3,102 +3,1450 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — Full Width Locked Build</title>
-<meta name="description" content="Full-width locked visual build for Discount Fireworks Outlet.">
+<title>Discount Fireworks Outlet</title>
+<meta name="description" content="Discount Fireworks Outlet immersive Fourth of July homepage with demo videos, Iowa locations, finale favorites, social feed, and show planning.">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+:root{
+  --orange:#ff6d2e;
+  --hot:#ff3d1f;
+  --gold:#ffd56c;
+  --white:#fff;
+  --ink:#02040c;
+  --head:"Bebas Neue", Impact, sans-serif;
+  --body:"Barlow Condensed", Arial, sans-serif;
+}
+
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:#02040c;color:#fff;font-family:"Barlow Condensed",Arial,sans-serif}
-.stage{position:fixed;inset:0;overflow:hidden;background:#02040c}
-.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;user-select:none;pointer-events:none}
-.hotspot{position:absolute;z-index:20;border:0;background:rgba(255,255,255,0);cursor:pointer;border-radius:18px}
-.hotspot:hover{outline:1px solid rgba(255,111,46,.18);background:rgba(255,111,46,.035)}
-.card-hotspot{border-radius:28px}.arrow-hotspot{border-radius:50%}.nav-hotspot{border-radius:8px}
-.modal-layer{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(0,0,0,.72);backdrop-filter:blur(14px)}
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#02040c;
+  color:white;
+  font-family:var(--body);
+  -webkit-font-smoothing:antialiased;
+}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+
+.page{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  background-image:url("assets/dfo-v36-bg-desktop-clean-1920x1080.png?v=36");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+.page::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.76) 0,rgba(0,0,0,.38) 11%,rgba(0,0,0,.02) 25%,rgba(0,0,0,.00) 72%,rgba(0,0,0,.82) 100%),
+    radial-gradient(circle at 50% 42%,rgba(255,111,46,.03),transparent 42%);
+}
+
+/* HEADER */
+.header{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:10.6vh;
+  min-height:88px;
+  z-index:50;
+  display:grid;
+  grid-template-columns:25% 1fr 32%;
+  align-items:center;
+  padding:0 2.45vw;
+  background:rgba(2,4,13,.88);
+  border-bottom:1px solid rgba(255,109,46,.25);
+  backdrop-filter:blur(10px);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:.78vw;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+.logo-mark{
+  position:relative;
+  font-family:var(--head);
+  color:#f14333;
+  font-size:clamp(48px,4.08vw,76px);
+  line-height:.78;
+  letter-spacing:-.02em;
+  text-shadow:0 0 22px rgba(240,61,45,.62);
+}
+
+.logo-mark::before{
+  content:"";
+  position:absolute;
+  inset:4px 2px 7px;
+  opacity:.25;
+  mix-blend-mode:multiply;
+  background-image:radial-gradient(#05050a 1px,transparent 1.7px);
+  background-size:8px 8px;
+}
+
+.logo-mark::after{
+  content:"★";
+  position:absolute;
+  right:10px;
+  top:8px;
+  color:#721d15;
+  font-size:.70rem;
+}
+
+.logo-text{
+  font-weight:900;
+  font-size:clamp(14px,.95vw,18px);
+  line-height:.9;
+  letter-spacing:.045em;
+}
+
+.header-clock{text-align:center;text-transform:uppercase}
+.header-title{
+  color:var(--orange);
+  font-size:clamp(10px,.70vw,14px);
+  font-weight:900;
+  letter-spacing:.24em;
+  margin-bottom:.36vh;
+}
+
+.clock-row{display:flex;justify-content:center;align-items:flex-end}
+.clock-unit{min-width:clamp(58px,4.85vw,88px);position:relative;text-align:center}
+.clock-unit + .clock-unit::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:17%;
+  height:64%;
+  width:1px;
+  background:rgba(255,109,46,.38);
+}
+
+.clock-num{
+  font-family:var(--head);
+  font-size:clamp(28px,2.15vw,44px);
+  line-height:1;
+}
+.clock-lab{
+  color:var(--orange);
+  font-size:clamp(7px,.50vw,10px);
+  letter-spacing:.28em;
+  font-weight:900;
+  margin-top:3px;
+}
+
+.nav{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:clamp(16px,1.75vw,31px);
+  text-transform:uppercase;
+}
+
+.nav button{
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,.84);
+  font-size:clamp(10px,.72vw,14px);
+  letter-spacing:.20em;
+  font-weight:900;
+}
+
+.nav .directions{
+  color:#ff6d2e;
+  border:1.5px solid #ff6d2e;
+  padding:clamp(11px,1vw,17px) clamp(16px,1.7vw,30px);
+  box-shadow:0 0 25px rgba(255,109,46,.25),inset 0 0 18px rgba(255,109,46,.06);
+}
+
+/* FIXED SCENE LAYERS */
+.scene{
+  position:absolute;
+  z-index:10;
+  left:0;
+  right:0;
+  top:10.6vh;
+  bottom:9.2vh;
+  overflow:visible;
+  perspective:1450px;
+  perspective-origin:50% 46%;
+}
+
+.front-ring{
+  position:absolute;
+  z-index:24;
+  left:50%;
+  bottom:9.6vh;
+  width:min(31vw,590px);
+  height:min(8.8vw,168px);
+  transform:translateX(-50%);
+  border-radius:50%;
+  border:3px solid rgba(255,104,36,.92);
+  box-shadow:
+    0 0 16px rgba(255,94,31,.85),
+    0 0 42px rgba(255,94,31,.55),
+    0 0 82px rgba(255,94,31,.28),
+    inset 0 0 28px rgba(255,94,31,.35);
+  pointer-events:none;
+}
+
+.front-ring::before{
+  content:"";
+  position:absolute;
+  inset:18%;
+  border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.45),rgba(0,0,0,.05) 58%,transparent 72%);
+}
+
+.firecracker{
+  position:absolute;
+  z-index:34;
+  left:50%;
+  bottom:10.3vh;
+  width:min(7.1vw,136px);
+  height:min(10.4vw,198px);
+  min-width:90px;
+  min-height:132px;
+  transform:translateX(-50%);
+  pointer-events:none;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.75)) drop-shadow(0 0 24px rgba(255,92,34,.28));
+}
+
+.fire-body{
+  position:absolute;
+  left:14%;
+  right:14%;
+  bottom:0;
+  height:84%;
+  border-radius:42% 42% 12% 12% / 18% 18% 10% 10%;
+  background:
+    radial-gradient(circle at 54% 6%,rgba(255,255,255,.34),transparent 12%),
+    linear-gradient(100deg,rgba(255,255,255,.14),transparent 19%,rgba(0,0,0,.42) 52%,rgba(255,113,47,.14) 84%),
+    linear-gradient(180deg,#2a2936,#080911 58%,#030307);
+  border:1px solid rgba(255,116,47,.35);
+  box-shadow:
+    inset 9px 0 17px rgba(255,255,255,.08),
+    inset -12px 0 24px rgba(0,0,0,.7),
+    0 0 20px rgba(255,99,36,.2);
+}
+
+.fire-body::before{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:-7%;
+  height:14%;
+  border-radius:50%;
+  background:#05050a;
+  box-shadow:0 0 12px rgba(0,0,0,.9);
+}
+
+.fuse{
+  position:absolute;
+  left:50%;
+  top:-2%;
+  width:2px;
+  height:24%;
+  transform:translateX(-50%);
+  background:linear-gradient(#ffd66b,#ff6d2e,transparent);
+  box-shadow:0 0 12px rgba(255,190,80,.9);
+}
+
+.flame{
+  position:absolute;
+  left:50%;
+  top:-13%;
+  width:24%;
+  aspect-ratio:1;
+  transform:translateX(-50%) rotate(45deg);
+  border-radius:0 70% 50% 70%;
+  background:radial-gradient(circle at 45% 45%,#fff6b0 0 18%,#ffba3d 28%,#ff4d1f 62%,transparent 70%);
+  box-shadow:0 0 18px rgba(255,206,79,.95),0 0 46px rgba(255,77,31,.65);
+}
+
+.fire-logo{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  top:42%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  text-transform:uppercase;
+}
+
+.fire-logo b{
+  display:block;
+  font-family:var(--head);
+  font-size:clamp(28px,2.4vw,46px);
+  line-height:.8;
+  color:#f14031;
+  letter-spacing:.01em;
+  text-shadow:0 0 15px rgba(240,64,49,.55);
+}
+
+.fire-logo span{
+  display:block;
+  margin-top:5px;
+  font-weight:900;
+  font-size:clamp(7px,.55vw,11px);
+  line-height:.9;
+  letter-spacing:.08em;
+}
+
+/* CAROUSEL */
+.carousel{
+  position:absolute;
+  inset:0;
+  z-index:26;
+  transform-style:preserve-3d;
+}
+
+.card-slot{
+  position:absolute;
+  transform-style:preserve-3d;
+  transform-origin:center center;
+  transition:filter .45s ease, opacity .45s ease;
+}
+
+.slot-far-left{
+  left:16.2%;
+  top:51.5%;
+  width:10.6vw;
+  max-width:204px;
+  min-width:145px;
+  height:35.8vh;
+  min-height:260px;
+  transform:translate(-50%,-50%) rotateY(-18deg);
+  z-index:3;
+  opacity:.88;
+  filter:brightness(.84);
+}
+
+.slot-left{
+  left:28.1%;
+  top:49.7%;
+  width:15.0vw;
+  max-width:292px;
+  min-width:215px;
+  height:43.0vh;
+  min-height:330px;
+  transform:translate(-50%,-50%) rotateY(-10deg);
+  z-index:5;
+  opacity:.96;
+  filter:brightness(.94);
+}
+
+.slot-center{
+  left:50%;
+  top:47.6%;
+  width:22.1vw;
+  max-width:430px;
+  min-width:330px;
+  height:49.0vh;
+  min-height:420px;
+  transform:translate(-50%,-50%) rotateY(0);
+  z-index:9;
+  opacity:1;
+  filter:brightness(1.06);
+}
+
+.slot-right{
+  left:71.9%;
+  top:49.7%;
+  width:15.0vw;
+  max-width:292px;
+  min-width:215px;
+  height:43.0vh;
+  min-height:330px;
+  transform:translate(-50%,-50%) rotateY(10deg);
+  z-index:5;
+  opacity:.96;
+  filter:brightness(.94);
+}
+
+.slot-far-right{
+  left:83.8%;
+  top:51.5%;
+  width:10.6vw;
+  max-width:204px;
+  min-width:145px;
+  height:35.8vh;
+  min-height:260px;
+  transform:translate(-50%,-50%) rotateY(18deg);
+  z-index:3;
+  opacity:.88;
+  filter:brightness(.84);
+}
+
+.card{
+  position:relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border-radius:clamp(16px,1.35vw,26px);
+  border:1.4px solid rgba(255,109,46,.88);
+  background:
+    radial-gradient(circle at 50% -4%,rgba(255,109,46,.18),transparent 33%),
+    linear-gradient(180deg,rgba(6,8,22,.87),rgba(3,4,13,.95));
+  box-shadow:
+    0 0 16px rgba(255,109,46,.72),
+    0 0 46px rgba(255,76,29,.30),
+    inset 0 0 40px rgba(255,75,24,.08);
+  cursor:pointer;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(255,143,82,.18),transparent 18%,transparent 74%,rgba(255,89,35,.18)),
+    radial-gradient(circle at 50% 102%,rgba(255,111,46,.22),transparent 46%);
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.11;
+  mix-blend-mode:screen;
+  background-image:radial-gradient(rgba(255,255,255,.20) 1px,transparent 1px);
+  background-size:8px 8px;
+}
+
+.card-eyebrow{
+  position:relative;
+  z-index:2;
+  color:#ff6d2e;
+  text-transform:uppercase;
+  font-size:clamp(8px,.62vw,12px);
+  font-weight:900;
+  letter-spacing:.32em;
+  padding:clamp(13px,1.2vw,23px) clamp(14px,1.35vw,26px) 0;
+}
+
+.card-title{
+  position:relative;
+  z-index:2;
+  font-family:var(--head);
+  text-transform:uppercase;
+  font-size:clamp(25px,2.0vw,42px);
+  line-height:.92;
+  letter-spacing:.012em;
+  padding:.6vh clamp(14px,1.35vw,26px) 0;
+  text-shadow:0 8px 24px rgba(0,0,0,.84);
+}
+
+.slot-center .card-title{
+  text-align:center;
+  font-size:clamp(38px,2.72vw,56px);
+  padding-inline:clamp(18px,1.5vw,30px);
+}
+
+.card-media{
+  position:relative;
+  z-index:2;
+  flex:1 1 auto;
+  min-height:0;
+  margin:clamp(10px,1.05vw,18px) clamp(12px,1.15vw,22px) 0;
+  border-radius:clamp(10px,.9vw,16px);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 -70px 90px rgba(0,0,0,.72),0 0 34px rgba(255,111,46,.14);
+}
+
+.card-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none;
+  background:linear-gradient(180deg,transparent 50%,rgba(3,4,13,.88));
+}
+
+.slot-far-left .card-media,
+.slot-far-right .card-media{
+  max-height:42%;
+}
+
+.card-copy{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:clamp(9px,.95vw,16px) clamp(14px,1.25vw,24px) clamp(13px,1.15vw,20px);
+}
+
+.card-copy p{
+  color:rgba(255,255,255,.84);
+  text-transform:uppercase;
+  font-size:clamp(9px,.7vw,14px);
+  line-height:1.18;
+  letter-spacing:.12em;
+  margin-bottom:clamp(8px,.85vw,14px);
+}
+
+.slot-far-left .card-copy p,
+.slot-far-right .card-copy p{
+  font-size:clamp(7px,.52vw,10px);
+}
+
+.card-btn{
+  width:100%;
+  height:clamp(31px,2.9vh,43px);
+  border:1.4px solid rgba(255,109,46,.9);
+  border-radius:7px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-transform:uppercase;
+  color:#ff6d2e;
+  background:rgba(5,4,12,.28);
+  font-size:clamp(8px,.63vw,12px);
+  font-weight:900;
+  letter-spacing:.21em;
+}
+
+.card:hover .card-btn{
+  color:#fff;
+  background:rgba(255,109,46,.94);
+}
+
+.build-photo{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45)),
+    url("assets/build-your-show-tent.png?v=36");
+  background-size:cover;
+  background-position:center center;
+}
+
+.video-preview{
+  display:grid;
+  grid-template-rows:1fr 42px;
+  gap:7px;
+  padding:9px;
+  background:linear-gradient(145deg,#09266f,#050711 58%,#170609);
+}
+
+.video-feature{
+  position:relative;
+  z-index:12;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.15);
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.5)),
+    url("assets/demo-videos-hero.png?v=36");
+  background-size:cover;
+  background-position:center center;
+}
+
+.video-label{
+  position:absolute;
+  left:12px;
+  bottom:9px;
+  color:#ffd56c;
+  font-size:clamp(7px,.52vw,10px);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-weight:900;
+}
+
+.play{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:clamp(42px,3.7vw,66px);
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  padding-left:4px;
+  background:rgba(255,75,39,.95);
+  box-shadow:0 0 30px rgba(255,75,39,.72);
+}
+
+.video-thumbs{
+  position:relative;
+  z-index:12;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:5px;
+}
+
+.video-thumbs span{
+  border-radius:7px;
+  border:1px solid rgba(255,255,255,.15);
+  background-size:cover;
+  background-position:center center;
+}
+
+.location-list{
+  position:relative;
+  z-index:2;
+  margin:clamp(13px,1.1vw,20px) clamp(14px,1.25vw,24px) 0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(8px,.82vw,15px);
+}
+
+.loc{
+  display:grid;
+  grid-template-columns:clamp(26px,2.1vw,42px) 1fr;
+  gap:7px;
+  text-align:left;
+  align-items:start;
+}
+
+.pin{
+  width:clamp(25px,2vw,38px);
+  height:clamp(25px,2vw,38px);
+  fill:none;
+  stroke:#ff442e;
+  stroke-width:1.55;
+  filter:drop-shadow(0 0 12px rgba(240,56,41,.95));
+}
+
+.pin circle{fill:#ff442e;stroke:none}
+
+.loc strong{
+  display:block;
+  font-size:clamp(10px,.82vw,15px);
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.loc span{
+  display:block;
+  color:rgba(255,255,255,.68);
+  font-size:clamp(7px,.52vw,10px);
+  line-height:1.12;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-top:2px;
+}
+
+.favorite-grid{
+  position:absolute;
+  inset:9px;
+  z-index:6;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+}
+
+.favorite-grid span{
+  position:relative;
+  overflow:hidden;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.16);
+  display:grid;
+  place-items:end center;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.62)),
+    var(--img);
+  background-size:cover;
+  background-position:center center;
+}
+
+.favorite-grid span::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 36%,rgba(2,4,13,.75));
+}
+
+.favorite-grid b{
+  position:relative;
+  z-index:2;
+  padding:0 5px 7px;
+  color:#ffd56c;
+  text-transform:uppercase;
+  text-align:center;
+  font-size:clamp(7px,.52vw,10px);
+  letter-spacing:.11em;
+}
+
+.social-icons-row{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  padding:0 0 8px;
+}
+
+.social-big{
+  width:clamp(24px,2vw,38px);
+  aspect-ratio:1;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  color:white;
+  font-weight:900;
+  font-size:clamp(13px,1.1vw,22px);
+}
+
+.social-big.fb{background:#1877f2}
+.social-big.ig{background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)}
+.social-big.yt{background:#f00}
+
+.social-thumbs{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  margin:0 13px;
+}
+
+.social-thumbs span{
+  aspect-ratio:1;
+  border-radius:7px;
+  border:1px solid rgba(255,255,255,.14);
+  background-size:cover;
+  background-position:center center;
+}
+
+/* CONTROLS */
+.arrow{
+  position:absolute;
+  z-index:42;
+  top:56.1%;
+  width:clamp(48px,4.6vw,74px);
+  aspect-ratio:1;
+  border-radius:50%;
+  border:1.5px solid rgba(255,109,46,.86);
+  background:rgba(2,4,12,.38);
+  color:#ff6d2e;
+  font-size:clamp(30px,3vw,54px);
+  line-height:1;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 25px rgba(255,109,46,.28),inset 0 0 16px rgba(255,109,46,.08);
+}
+.arrow.prev{left:3.25vw}
+.arrow.next{right:3.25vw}
+
+.bottom-count{
+  position:absolute;
+  z-index:45;
+  left:50%;
+  bottom:4.4vh;
+  transform:translateX(-50%);
+  text-align:center;
+  text-transform:uppercase;
+  pointer-events:none;
+  text-shadow:0 2px 13px rgba(0,0,0,.9);
+}
+
+.bottom-count p{
+  font-size:clamp(10px,.72vw,14px);
+  letter-spacing:.27em;
+  font-weight:900;
+  color:rgba(255,255,255,.78);
+  margin-bottom:5px;
+}
+
+.bottom-row{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:clamp(8px,.75vw,14px);
+}
+
+.bottom-row span{
+  min-width:clamp(48px,4vw,76px);
+  display:grid;
+}
+
+.bottom-row b{
+  font-family:var(--head);
+  font-size:clamp(32px,2.55vw,52px);
+  line-height:1;
+}
+
+.bottom-row small{
+  color:#ff6d2e;
+  font-size:clamp(7px,.52vw,10px);
+  letter-spacing:.2em;
+  font-weight:900;
+}
+
+.bottom-row i{
+  color:#ff6d2e;
+  font-family:var(--head);
+  font-style:normal;
+  font-size:clamp(20px,1.8vw,34px);
+}
+
+.footer{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:55;
+  height:4.2vh;
+  min-height:36px;
+  display:grid;
+  grid-template-columns:28% 1fr 28%;
+  align-items:center;
+  padding:0 2.5vw;
+  background:rgba(3,5,12,.82);
+  border-top:1px solid rgba(255,109,46,.14);
+  backdrop-filter:blur(8px);
+}
+
+.promise{
+  text-transform:uppercase;
+  font-size:clamp(8px,.62vw,12px);
+  line-height:1.18;
+  letter-spacing:.16em;
+}
+.promise b{display:block;color:#ff6d2e}
+
+.drag-note{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  color:rgba(255,255,255,.46);
+  text-transform:uppercase;
+  letter-spacing:.27em;
+  font-size:clamp(8px,.58vw,11px);
+}
+.drag-note::before,.drag-note::after{
+  content:"";
+  width:30px;
+  height:1px;
+  background:rgba(255,109,46,.42);
+}
+
+.follow{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:12px;
+  text-transform:uppercase;
+}
+.follow .fb{
+  width:clamp(28px,2.3vw,44px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#1877f2;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:clamp(18px,1.5vw,28px);
+  text-decoration:none;
+  color:white;
+}
+.follow-text{
+  text-align:left;
+  font-size:clamp(9px,.72vw,14px);
+  line-height:1.18;
+  letter-spacing:.16em;
+  color:rgba(255,255,255,.82);
+}
+.follow-text small{
+  display:block;
+  text-transform:none;
+  letter-spacing:.02em;
+  color:rgba(255,255,255,.72);
+}
+
+/* MODALS */
+.modal-layer{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(14px);
+}
 .modal-layer.open{display:flex}
-.modal{width:min(1100px,94vw);max-height:86vh;overflow:auto;padding:30px;border-radius:20px;border:1px solid rgba(255,111,46,.55);background:radial-gradient(circle at 50% 0%,rgba(255,111,46,.16),transparent 34%),rgba(4,7,20,.98);box-shadow:0 0 90px rgba(255,80,30,.25)}
-.modal-close{position:fixed;top:22px;right:26px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,111,46,.68);background:rgba(2,4,13,.78);color:#ff6d2e;font-size:1.7rem;cursor:pointer}
-.eyebrow{color:#ff6d2e;text-transform:uppercase;letter-spacing:.32em;font-size:.82rem;font-weight:900;margin-bottom:10px}
-.modal h2{font-family:"Bebas Neue",Impact,sans-serif;text-transform:uppercase;font-size:clamp(2.4rem,6vw,4rem);line-height:.9;margin-bottom:22px}
-.video-grid,.location-grid,.feed-grid,.favorites-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.location-grid{grid-template-columns:repeat(2,1fr)}
-.video-card,.location-grid article,.feed-card,.favorites-grid article{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045);border-radius:14px;overflow:hidden}
-.location-grid article,.feed-card,.favorites-grid article{padding:18px}.video-card iframe{display:block;width:100%;height:165px;border:0;background:#000}
-.video-card p,.favorites-grid h3{padding:12px;color:#ffd56c;text-transform:uppercase;font-weight:900;letter-spacing:.12em}
+.modal{
+  width:min(1100px,94vw);
+  max-height:86vh;
+  overflow:auto;
+  padding:30px;
+  border-radius:20px;
+  border:1px solid rgba(255,111,46,.55);
+  background:radial-gradient(circle at 50% 0%,rgba(255,111,46,.16),transparent 34%),rgba(4,7,20,.98);
+  box-shadow:0 0 90px rgba(255,80,30,.25);
+}
+.modal-close{
+  position:fixed;
+  top:22px;
+  right:26px;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,111,46,.68);
+  background:rgba(2,4,13,.78);
+  color:#ff6d2e;
+  font-size:1.7rem;
+}
+.eyebrow{
+  color:#ff6d2e;
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.82rem;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.modal h2{
+  font-family:var(--head);
+  text-transform:uppercase;
+  font-size:clamp(2.4rem,6vw,4rem);
+  line-height:.9;
+  margin-bottom:22px;
+}
+.video-grid,.location-grid,.feed-grid,.favorites-modal-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.location-grid{grid-template-columns:repeat(2,1fr)}
+.video-card,.location-grid article,.feed-card,.favorites-modal-grid article{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.045);
+  border-radius:14px;
+  overflow:hidden;
+}
+.location-grid article,.feed-card,.favorites-modal-grid article{padding:18px}
+.video-card iframe{display:block;width:100%;height:165px;border:0;background:#000}
+.video-card p,.favorites-modal-grid h3{
+  padding:12px;
+  color:#ffd56c;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.12em;
+}
 .location-grid h3,.feed-card h3{text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
-.location-grid p,.feed-card p,.favorites-grid p{color:rgba(255,255,255,.76);line-height:1.35;font-size:1.05rem}
-.location-grid a,.modal-link{display:inline-block;margin-top:13px;color:#ffd56c;text-transform:uppercase;font-weight:900;letter-spacing:.12em;text-decoration:none}
-.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.contact-form label{display:grid;gap:8px;color:rgba(255,255,255,.76);text-transform:uppercase;letter-spacing:.13em;font-weight:900}
-.contact-form input,.contact-form textarea{width:100%;min-height:54px;padding:0 14px;color:white;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px}
-.contact-form textarea{grid-column:1/-1;height:135px;padding-top:14px;resize:none}.contact-form button{grid-column:1/-1;height:54px;color:white;background:#ff6d2e;border:0;border-radius:10px;text-transform:uppercase;font-weight:900;letter-spacing:.14em}
-.fb-embed-wrap{display:grid;place-items:center;background:rgba(255,255,255,.045);border-radius:14px;border:1px solid rgba(255,255,255,.14);padding:18px}
-.build-note{margin-top:18px;color:rgba(255,255,255,.68);font-size:.95rem;line-height:1.35}
-@media(max-width:900px){html,body{overflow:auto}.stage{position:relative;width:100vw;height:56.25vw;min-height:560px}.video-grid,.location-grid,.feed-grid,.favorites-grid,.contact-form{grid-template-columns:1fr}}
+.location-grid p,.feed-card p,.favorites-modal-grid p{color:rgba(255,255,255,.76);line-height:1.35;font-size:1.05rem}
+.location-grid a,.modal-link{
+  display:inline-block;
+  margin-top:13px;
+  color:#ffd56c;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-decoration:none;
+}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.contact-form label{
+  display:grid;
+  gap:8px;
+  color:rgba(255,255,255,.76);
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-weight:900;
+}
+.contact-form input,.contact-form textarea{
+  width:100%;
+  min-height:54px;
+  padding:0 14px;
+  color:white;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:10px;
+}
+.contact-form textarea{grid-column:1/-1;height:135px;padding-top:14px;resize:none}
+.contact-form button{
+  grid-column:1/-1;
+  height:54px;
+  color:white;
+  background:#ff6d2e;
+  border:0;
+  border-radius:10px;
+  text-transform:uppercase;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+.fb-embed-wrap{
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.045);
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  padding:18px;
+}
+
+/* TABLET/MOBILE */
+@media (max-width:1180px) and (orientation:portrait){
+  html,body{overflow:auto}
+  .page{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    background-image:url("assets/dfo-v36-bg-tablet-clean-1536x2048.png?v=36");
+    background-position:center center;
+  }
+  .header{
+    position:relative;
+    height:auto;
+    min-height:0;
+    grid-template-columns:1fr;
+    gap:14px;
+    padding:16px;
+  }
+  .logo{justify-content:center}
+  .nav{justify-content:center;flex-wrap:wrap}
+  .scene{
+    position:relative;
+    top:auto;
+    bottom:auto;
+    min-height:0;
+    padding:28px 16px 170px;
+    perspective:none;
+  }
+  .carousel{
+    position:relative;
+    display:grid;
+    gap:18px;
+  }
+  .card-slot{
+    position:relative;
+    left:auto!important;
+    top:auto!important;
+    width:min(92vw,560px)!important;
+    height:auto!important;
+    min-height:480px;
+    max-width:none;
+    transform:none!important;
+    margin:0 auto;
+    opacity:1!important;
+    filter:none!important;
+  }
+  .card{min-height:480px}
+  .front-ring,.firecracker,.arrow{display:none}
+  .bottom-count{
+    position:relative;
+    bottom:auto;
+    left:auto;
+    transform:none;
+    margin:22px auto 56px;
+  }
+  .footer{
+    position:relative;
+    grid-template-columns:1fr;
+    height:auto;
+    gap:12px;
+    padding:16px;
+    text-align:center;
+  }
+  .follow{justify-content:center}
+}
+
+@media (max-width:700px){
+  .page{
+    background-image:url("assets/dfo-v36-bg-mobile-clean-1080x1920.png?v=36");
+    background-position:center top;
+  }
+  .header{padding:14px;gap:13px}
+  .clock-unit{min-width:58px}
+  .nav{gap:14px}
+  .nav .directions{width:100%}
+  .scene{padding:22px 14px 140px}
+  .card-slot{width:min(92vw,430px)!important;min-height:460px}
+  .card-title,.slot-center .card-title{font-size:clamp(34px,11vw,50px)}
+  .video-grid,.location-grid,.feed-grid,.favorites-modal-grid,.contact-form{grid-template-columns:1fr}
+}
 </style>
 </head>
-<body data-active="2">
+<body data-build="v36-true-production-no-screenshot-artboard">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
-<main class="stage" aria-label="Discount Fireworks Outlet full-width locked visual">
-  <img src="assets/dfo-v33-fullwidth-locked-visual-1920x1080.png" alt="Discount Fireworks Outlet fireworks homepage">
-  <button class="hotspot nav-hotspot" data-action="videosModal" aria-label="videosNav" style="left:68.9%;top:5.0%;width:4.8%;height:3.2%;"></button>
-  <button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="locationsNav" style="left:75.1%;top:5.0%;width:5.8%;height:3.2%;"></button>
-  <button class="hotspot nav-hotspot" data-action="contactModal" aria-label="contactNav" style="left:82.5%;top:5.0%;width:5.2%;height:3.2%;"></button>
-  <button class="hotspot nav-hotspot" data-action="locationsModal" aria-label="directionsNav" style="left:88.8%;top:3.7%;width:8.2%;height:4.2%;"></button>
-  <button class="hotspot card-hotspot" data-action="contactModal" aria-label="buildCard" style="left:10.3%;top:31.2%;width:11.0%;height:36.8%;"></button>
-  <button class="hotspot card-hotspot" data-action="locationsModal" aria-label="locationsCard" style="left:22.2%;top:28.2%;width:15.4%;height:42.5%;"></button>
-  <button class="hotspot card-hotspot" data-action="videosModal" aria-label="videosCard" style="left:39.0%;top:25.2%;width:23.4%;height:48.6%;"></button>
-  <button class="hotspot card-hotspot" data-action="favoritesModal" aria-label="favoritesCard" style="left:63.5%;top:27.0%;width:15.3%;height:43.0%;"></button>
-  <button class="hotspot card-hotspot" data-action="socialModal" aria-label="socialCard" style="left:79.3%;top:31.2%;width:11.3%;height:36.8%;"></button>
-  <button class="hotspot arrow-hotspot" data-action="prev" aria-label="leftArrow" style="left:3.1%;top:55.0%;width:3.6%;height:6.2%;"></button>
-  <button class="hotspot arrow-hotspot" data-action="next" aria-label="rightArrow" style="left:94.0%;top:55.0%;width:3.6%;height:6.2%;"></button>
-  <button class="hotspot nav-hotspot" data-action="socialModal" aria-label="facebookFooter" style="left:74.8%;top:90.0%;width:20.0%;height:8.0%;"></button>
+
+<main class="page">
+  <header class="header">
+    <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
+      <span class="logo-mark">DFO</span>
+      <span class="logo-text">Discount<br>Fireworks<br>Outlet</span>
+    </a>
+    <section class="header-clock" aria-label="Countdown to America's 250th birthday">
+      <div class="header-title">★★★ Happy 250th Birthday, America ★★★</div>
+      <div class="clock-row">
+        <div class="clock-unit"><div class="clock-num" id="days">--</div><div class="clock-lab">Days</div></div>
+        <div class="clock-unit"><div class="clock-num" id="hours">--</div><div class="clock-lab">Hours</div></div>
+        <div class="clock-unit"><div class="clock-num" id="minutes">--</div><div class="clock-lab">Minutes</div></div>
+        <div class="clock-unit"><div class="clock-num" id="seconds">--</div><div class="clock-lab">Seconds</div></div>
+      </div>
+    </section>
+    <nav class="nav" aria-label="Main navigation">
+      <button data-go="videos">Videos</button>
+      <button data-go="locations">Locations</button>
+      <button data-go="build">Contact</button>
+      <button class="directions" data-modal="locationsModal">Get Directions ▶</button>
+    </nav>
+  </header>
+
+  <section class="scene" aria-label="DFO fireworks show carousel">
+    <div class="carousel" id="carousel">
+      <div class="card-slot slot-far-left"></div>
+      <div class="card-slot slot-left"></div>
+      <div class="card-slot slot-center"></div>
+      <div class="card-slot slot-right"></div>
+      <div class="card-slot slot-far-right"></div>
+    </div>
+
+    <div class="front-ring" aria-hidden="true"></div>
+    <div class="firecracker" aria-hidden="true">
+      <div class="flame"></div>
+      <div class="fuse"></div>
+      <div class="fire-body">
+        <div class="fire-logo"><b>DFO</b><span>Discount<br>Fireworks<br>Outlet</span></div>
+      </div>
+    </div>
+  </section>
+
+  <button class="arrow prev" id="prev" aria-label="Previous card">‹</button>
+  <button class="arrow next" id="next" aria-label="Next card">›</button>
+
+  <section class="bottom-count" aria-label="The show starts in countdown">
+    <p>The Show Starts In</p>
+    <div class="bottom-row">
+      <span><b id="bdays">--</b><small>Days</small></span><i>:</i>
+      <span><b id="bhours">--</b><small>Hours</small></span><i>:</i>
+      <span><b id="bminutes">--</b><small>Minutes</small></span><i>:</i>
+      <span><b id="bseconds">--</b><small>Seconds</small></span>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="promise">Top Quality. Lowest Prices.<b>That’s the DFO Promise.</b></div>
+    <div class="drag-note">Click and Drag to Rotate</div>
+    <div class="follow">
+      <a class="fb" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+      <div class="follow-text">Follow the Finale<small>facebook.com/DiscountFireworksOutlet</small></div>
+    </div>
+  </footer>
 </main>
 
-<div class="modal-layer" id="videosModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Demo Wall</p><h2>Featured Firework Demos</h2><div class="video-grid">
-<div class="video-card"><iframe src="https://www.youtube.com/embed/6kFtvmGDYSI" title="500 Gram Cakes" allowfullscreen></iframe><p>500 Gram Cakes</p></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/kw6inOPzmOk" title="Aerials" allowfullscreen></iframe><p>Aerials</p></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
-<div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud & Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
-</div></div></div>
+<div class="modal-layer" id="videosModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Demo Wall</p>
+    <h2>Featured Firework Demos</h2>
+    <div class="video-grid">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/6kFtvmGDYSI" title="500 Gram Cakes" allowfullscreen></iframe><p>500 Gram Cakes</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/kw6inOPzmOk" title="Aerials" allowfullscreen></iframe><p>Aerials</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/Qp3cQ-c910g" title="Finales" allowfullscreen></iframe><p>Finales</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/ZXwSRSY1s44" title="Patriotic Picks" allowfullscreen></iframe><p>Patriotic Picks</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/DuvlnNx66_Y" title="Family Favorites" allowfullscreen></iframe><p>Family Favorites</p></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/SljEYHowgNg" title="Loud & Proud" allowfullscreen></iframe><p>Loud & Proud</p></div>
+    </div>
+  </div>
+</div>
 
-<div class="modal-layer" id="locationsModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Choose Your Launch Site</p><h2>Four Iowa Locations</h2><div class="location-grid">
-<article><h3>Spirit Lake</h3><p>Vick’s Corner<br>NW corner of HWY 9 & 86<br>Spirit Lake, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-<article><h3>Milford</h3><p>Okoboji Gas Parking Lot<br>2098 IA-86 at Okoboji Gas Company<br>Milford, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-<article><h3>Spencer</h3><p>Spencer Mall Lot<br>901 11th Street SW, South Park Mall<br>Spencer, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
-<article><h3>Armstrong</h3><p>101 6th St HWY 15<br>Armstrong, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
-</div></div></div>
+<div class="modal-layer" id="locationsModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Choose Your Launch Site</p>
+    <h2>Four Iowa Locations</h2>
+    <div class="location-grid">
+      <article><h3>Spirit Lake</h3><p>Vick’s Corner<br>NW corner of HWY 9 & 86<br>Spirit Lake, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=NW+corner+of+HWY+9+and+86+Spirit+Lake+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
+      <article><h3>Milford</h3><p>Okoboji Gas Parking Lot<br>2098 IA-86 at Okoboji Gas Company<br>Milford, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=2098+IA-86+Milford+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
+      <article><h3>Spencer</h3><p>Spencer Mall Lot<br>901 11th Street SW, South Park Mall<br>Spencer, Iowa 51360</p><a href="https://www.google.com/maps/search/?api=1&query=901+11th+Street+SW+Spencer+IA+51360" target="_blank" rel="noopener">Get Directions</a></article>
+      <article><h3>Armstrong</h3><p>101 6th St HWY 15<br>Armstrong, Iowa 51351</p><a href="https://www.google.com/maps/search/?api=1&query=101+6th+St+Armstrong+IA+51351" target="_blank" rel="noopener">Get Directions</a></article>
+    </div>
+  </div>
+</div>
 
-<div class="modal-layer" id="contactModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Plan Like a Pro</p><h2>Build Your Show</h2><form class="contact-form">
-<label>Name<input type="text" placeholder="Your name"></label><label>Email<input type="email" placeholder="you@email.com"></label><label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label><button type="submit">Send Message</button>
-</form></div></div>
+<div class="modal-layer" id="contactModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Plan Like a Pro</p>
+    <h2>Build Your Show</h2>
+    <form class="contact-form">
+      <label>Name<input type="text" placeholder="Your name"></label>
+      <label>Email<input type="email" placeholder="you@email.com"></label>
+      <label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
 
-<div class="modal-layer" id="favoritesModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Finale Favorites</p><h2>Top Picks for the Perfect Finale</h2><div class="favorites-grid">
-<article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
-<article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
-<article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
-<article><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
-</div></div></div>
+<div class="modal-layer" id="favoritesModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Finale Favorites</p>
+    <h2>Top Picks for the Perfect Finale</h2>
+    <div class="favorites-modal-grid">
+      <article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
+      <article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
+      <article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
+      <article><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
+    </div>
+  </div>
+</div>
 
-<div class="modal-layer" id="socialModal"><button class="modal-close" aria-label="Close">×</button><div class="modal"><p class="eyebrow">Follow the Finale</p><h2>Social Feed</h2><div class="fb-embed-wrap">
-<div class="fb-page" data-href="https://www.facebook.com/DFOBoji/" data-tabs="timeline" data-width="500" data-height="520" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-<blockquote cite="https://www.facebook.com/DFOBoji/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/DFOBoji/">DFO</a></blockquote></div></div>
-<div class="feed-grid" style="margin-top:14px">
-<article class="feed-card"><h3>Facebook</h3><p>Live updates, location reminders, and season posts.</p><a class="modal-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook</a></article>
-<article class="feed-card"><h3>Instagram</h3><p>Tent moments, product drops, and Fourth of July energy.</p></article>
-<article class="feed-card"><h3>YouTube</h3><p>Firework demos and finale previews.</p></article>
-</div><p class="build-note">This build uses the approved V32 screenshot as the locked visual target and extends it to a true 1920×1080 full-width artboard with no sidebars.</p></div></div>
+<div class="modal-layer" id="socialModal">
+  <button class="modal-close" aria-label="Close">×</button>
+  <div class="modal">
+    <p class="eyebrow">Follow the Finale</p>
+    <h2>Social Feed</h2>
+    <div class="fb-embed-wrap">
+      <div class="fb-page"
+        data-href="https://www.facebook.com/DFOBoji/"
+        data-tabs="timeline"
+        data-width="500"
+        data-height="520"
+        data-small-header="true"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="false">
+        <blockquote cite="https://www.facebook.com/DFOBoji/" class="fb-xfbml-parse-ignore">
+          <a href="https://www.facebook.com/DFOBoji/">DFO</a>
+        </blockquote>
+      </div>
+    </div>
+    <div class="feed-grid" style="margin-top:14px">
+      <article class="feed-card"><h3>Facebook</h3><p>Live updates, location reminders, and season posts.</p><a class="modal-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook</a></article>
+      <article class="feed-card"><h3>Instagram</h3><p>Tent moments, product drops, and Fourth of July energy.</p></article>
+      <article class="feed-card"><h3>YouTube</h3><p>Firework demos and finale previews.</p></article>
+    </div>
+  </div>
+</div>
+
 <script>
-function openModal(id){document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"));const modal=document.getElementById(id);if(modal) modal.classList.add("open")}
-function closeModals(){document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open"))}
-let activeIndex=2;
-function rotateProof(dir){activeIndex=(activeIndex+dir+5)%5;document.body.dataset.active=String(activeIndex)}
-document.querySelectorAll("[data-action]").forEach(btn=>{btn.addEventListener("click",()=>{const action=btn.dataset.action;if(action==="prev"){rotateProof(-1);return}if(action==="next"){rotateProof(1);return}openModal(action)})})
-document.querySelectorAll(".modal-layer,.modal-close").forEach(el=>{el.addEventListener("click",e=>{if(e.target.classList.contains("modal-layer")||e.target.classList.contains("modal-close")) closeModals()})})
-document.addEventListener("keydown",e=>{if(e.key==="Escape") closeModals();if(e.key==="ArrowLeft") rotateProof(-1);if(e.key==="ArrowRight") rotateProof(1)})
+const targetDate = new Date("2026-07-04T09:00:00");
+const slots = Array.from(document.querySelectorAll(".card-slot"));
+const PIN_SVG = `<svg class="pin" viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/>
+  <circle cx="12" cy="9.7" r="2.35"/>
+</svg>`;
+const https://www.facebook.com/DFOBoji/ = "https://www.facebook.com/DFOBoji/";
+
+const cards = [
+  {
+    id:"build",
+    modal:"contactModal",
+    eyebrow:"Plan Like a Pro",
+    title:"Build Your Show",
+    media:`<div class="card-media build-photo"></div>`,
+    copy:"Get ideas. Build the perfect backyard show.",
+    cta:"Start Planning"
+  },
+  {
+    id:"locations",
+    modal:"locationsModal",
+    eyebrow:"4 Great Spots",
+    title:"Locations",
+    media:`<div class="location-list">
+      <div class="loc">${PIN_SVG}<div><strong>Spirit Lake</strong><span>Vick’s Corner<br>HWY 9 & 86</span></div></div>
+      <div class="loc">${PIN_SVG}<div><strong>Milford</strong><span>Okoboji Gas Lot<br>2098 IA-86</span></div></div>
+      <div class="loc">${PIN_SVG}<div><strong>Spencer</strong><span>Spencer Mall Lot<br>901 11th Street SW</span></div></div>
+      <div class="loc">${PIN_SVG}<div><strong>Armstrong</strong><span>101 6th St<br>HWY 15</span></div></div>
+    </div>`,
+    copy:"Find the closest DFO location and get ready for the Fourth.",
+    cta:"View Locations"
+  },
+  {
+    id:"videos",
+    modal:"videosModal",
+    eyebrow:"Demo Videos",
+    title:"Preview the Boom Before You Buy",
+    media:`<div class="card-media video-preview">
+      <div class="video-feature"><span class="play">▶</span><span class="video-label">Featured Demo</span></div>
+      <div class="video-thumbs">
+        <span style="background-image:url('https://img.youtube.com/vi/kw6inOPzmOk/hqdefault.jpg')"></span>
+        <span style="background-image:url('https://img.youtube.com/vi/Qp3cQ-c910g/hqdefault.jpg')"></span>
+        <span style="background-image:url('https://img.youtube.com/vi/ZXwSRSY1s44/hqdefault.jpg')"></span>
+        <span style="background-image:url('https://img.youtube.com/vi/SljEYHowgNg/hqdefault.jpg')"></span>
+      </div>
+    </div>`,
+    copy:"Watch real demos, compare effects, and choose your finale.",
+    cta:"▷ Watch Videos"
+  },
+  {
+    id:"favorites",
+    modal:"favoritesModal",
+    eyebrow:"Finale Favorites",
+    title:"Top Picks for the Perfect Finale",
+    media:`<div class="card-media"><div class="favorite-grid">
+      <span style="--img:url('assets/finale-500g-cakes.png?v=36')"><b>500G Cakes</b></span>
+      <span style="--img:url('assets/finale-aerials.png?v=36')"><b>Aerials</b></span>
+      <span style="--img:url('assets/finale-finales.png?v=36')"><b>Finales</b></span>
+      <span style="--img:url('assets/finale-family-packs.png?v=36')"><b>Family Packs</b></span>
+    </div></div>`,
+    copy:"Shop our most popular finale options.",
+    cta:"See Favorites"
+  },
+  {
+    id:"social",
+    modal:"socialModal",
+    eyebrow:"Follow the Finale",
+    title:"Social Feed",
+    media:`<div class="card-media">
+      <div class="social-icons-row">
+        <a class="social-big fb" href="${https://www.facebook.com/DFOBoji/}" target="_blank" rel="noopener">f</a>
+        <a class="social-big ig" href="#" aria-label="Instagram">◎</a>
+        <a class="social-big yt" href="#" aria-label="YouTube">▶</a>
+      </div>
+      <div class="social-thumbs">
+        <span style="background-image:url('assets/social-thumb-1.png?v=36')"></span>
+        <span style="background-image:url('assets/social-thumb-2.png?v=36')"></span>
+        <span style="background-image:url('assets/social-thumb-3.png?v=36')"></span>
+        <span style="background-image:url('assets/social-thumb-4.png?v=36')"></span>
+        <span style="background-image:url('assets/social-thumb-5.png?v=36')"></span>
+        <span style="background-image:url('assets/social-thumb-6.png?v=36')"></span>
+      </div>
+    </div>`,
+    copy:"Catch demo drops, tent updates, new products, and more.",
+    cta:"View Socials"
+  }
+];
+
+let active = 2;
+let dragStart = null;
+
+function mod(n,m){ return ((n % m) + m) % m; }
+
+function renderCards(){
+  const visible = [active - 2, active - 1, active, active + 1, active + 2].map(i => cards[mod(i, cards.length)]);
+  slots.forEach((slot, i) => {
+    const c = visible[i];
+    slot.innerHTML = `<article class="card" data-id="${c.id}" data-modal="${c.modal}">
+      <p class="card-eyebrow">${c.eyebrow}</p>
+      <h2 class="card-title">${c.title}</h2>
+      ${c.media}
+      <div class="card-copy">
+        <p>${c.copy}</p>
+        <button class="card-btn" data-modal="${c.modal}">${c.cta}</button>
+      </div>
+    </article>`;
+  });
+}
+
+function rotate(dir){
+  active = mod(active + dir, cards.length);
+  renderCards();
+}
+
+function goTo(id){
+  const index = cards.findIndex(c => c.id === id);
+  if(index >= 0) {
+    active = index;
+    renderCards();
+  }
+}
+
+function pad(v){ return String(v).padStart(2,"0"); }
+
+function updateCountdown(){
+  const diff = Math.max(targetDate - new Date(), 0);
+  const vals = [
+    Math.floor(diff / 86400000),
+    Math.floor(diff / 3600000) % 24,
+    Math.floor(diff / 60000) % 60,
+    Math.floor(diff / 1000) % 60
+  ];
+  ["days","hours","minutes","seconds","bdays","bhours","bminutes","bseconds"].forEach((id,i)=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = pad(vals[i % 4]);
+  });
+}
+
+function openModal(id){
+  document.querySelectorAll(".modal-layer").forEach(m => m.classList.remove("open"));
+  const modal = document.getElementById(id);
+  if(modal) modal.classList.add("open");
+}
+
+function closeModals(){
+  document.querySelectorAll(".modal-layer").forEach(m => m.classList.remove("open"));
+}
+
+document.getElementById("prev").addEventListener("click", () => rotate(-1));
+document.getElementById("next").addEventListener("click", () => rotate(1));
+
+document.addEventListener("click", e => {
+  const modalBtn = e.target.closest("[data-modal]");
+  if(modalBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    openModal(modalBtn.dataset.modal);
+    return;
+  }
+
+  const goBtn = e.target.closest("[data-go]");
+  if(goBtn) {
+    e.preventDefault();
+    goTo(goBtn.dataset.go);
+    return;
+  }
+
+  const card = e.target.closest(".card");
+  if(card) {
+    const slot = card.closest(".card-slot");
+    const idx = slots.indexOf(slot);
+    if(idx === 0) rotate(-2);
+    else if(idx === 1) rotate(-1);
+    else if(idx === 3) rotate(1);
+    else if(idx === 4) rotate(2);
+    else openModal(card.dataset.modal);
+  }
+});
+
+document.querySelectorAll(".modal-layer,.modal-close").forEach(el => {
+  el.addEventListener("click", e => {
+    if(e.target.classList.contains("modal-layer") || e.target.classList.contains("modal-close")) closeModals();
+  });
+});
+
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") closeModals();
+  if(e.key === "ArrowLeft") rotate(-1);
+  if(e.key === "ArrowRight") rotate(1);
+});
+
+document.getElementById("carousel").addEventListener("pointerdown", e => {
+  dragStart = e.clientX;
+});
+
+window.addEventListener("pointerup", e => {
+  if(dragStart === null) return;
+  const dx = e.clientX - dragStart;
+  if(Math.abs(dx) > 45) rotate(dx < 0 ? 1 : -1);
+  dragStart = null;
+});
+
+renderCards();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+console.log("DFO V36 true production build loaded — no screenshot artboard background.");
 </script>
 </body>
 </html>

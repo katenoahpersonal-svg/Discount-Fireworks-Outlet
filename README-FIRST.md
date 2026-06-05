@@ -1,21 +1,35 @@
-# DFO V33 — Full-Width Pixel-Match Locked Build
+# DFO V36 — TRUE Production Build
 
-Upload these files to the root of your GitHub Pages repo:
+This is not the screenshot/artboard proof.
+
+Upload only these files/folders to GitHub Pages:
 
 - index.html
 - .nojekyll
-- assets/dfo-v33-fullwidth-locked-visual-1920x1080.png
-- QA-COMPARISON.json
+- assets/
 
-What changed:
-- The approved V32 visual is preserved.
-- The artboard is now true 1920x1080.
-- No sidebars.
-- No black/empty side columns.
-- No top/bottom crop.
-- DFO firecracker, cards, header, bottom countdown, footer, and all spacing stay aligned to the approved V32 visual.
-- Clickable hotspots open the correct modals.
-- Facebook Page Plugin embed is included for https://www.facebook.com/DFOBoji/
+Critical:
+Delete/replace the old index.html before uploading this.
+If you still see duplicated side cards or duplicated logos, the browser/GitHub is serving the OLD V33 screenshot-artboard build.
 
-Important:
-This is the pixel-match locked build. It uses the approved visual as the rendered layer so the screenshot matches.
+This build includes:
+- clean responsive background only, no cards/header/countdown baked in
+- desktop background: dfo-v36-bg-desktop-clean-1920x1080.png
+- tablet background: dfo-v36-bg-tablet-clean-1536x2048.png
+- mobile background: dfo-v36-bg-mobile-clean-1080x1920.png
+- coded header
+- coded top countdown
+- coded five-card fixed-slot carousel
+- card swapping between fixed slots
+- coded DFO firecracker object fixed to stage
+- coded small front ring
+- coded bottom countdown
+- coded footer
+- working arrows, side-card clicks, keyboard arrows, drag rotation
+- working modals
+- Facebook Page Plugin embed for https://www.facebook.com/DFOBoji/
+
+QA:
+- No asset named dfo-v33-fullwidth-locked-visual-1920x1080.png is included.
+- No screenshot-artboard background is included.
+- Cards are real HTML/CSS, not baked into the background.
