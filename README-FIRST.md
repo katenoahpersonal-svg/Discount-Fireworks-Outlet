@@ -1,28 +1,32 @@
-# DFO V26 — Circular Wall Carousel
+# DFO V27 — Filled Cards + Refined Rotation + More Ground
 
 Upload everything in this folder to your GitHub Pages repo root:
 
 - index.html
 - .nojekyll
-- assets/dfo-clean-stage-with-firecracker.png
+- assets/dfo-stage-full-height-ground-v27.png
+- assets/build-your-show-tent-scene.png
+- assets/favorite-500g-cakes.png
+- assets/favorite-aerials.png
+- assets/favorite-finales.png
+- assets/favorite-family-packs.png
 
-What this version does:
-- Uses the clean generated background with the small DFO firecracker and rings.
-- Adds a fully coded header.
-- Adds coded top countdown.
-- Adds exactly 5 carousel cards.
+What changed from V26:
+- Facebook link was added: https://share.google/GzfOnXO5YoaE1cwlv
+- Build Your Show card now uses an image generated from the screenshot reference.
+- Finale Favorites card now has 4 generated image tiles:
+  - 500G Cakes
+  - Aerials
+  - Finales
+  - Family Packs
+- Card rotation was softened:
+  - left card: +15 degrees
+  - far-left card: +30 degrees
+  - right card: -15 degrees
+  - far-right card: -30 degrees
+- Background was reformatted to preserve more vertical ground/bottom breathing room.
+- Bottom countdown is larger and stays lower.
+- Footer is shorter to free up more bottom space.
+- Exactly 5 cards.
 - Demo Videos starts centered.
-- Cards are arranged like a wall around a circle:
-  - center card faces front
-  - side cards face outward/tangent to the circular turntable
-  - far cards sit farther back and angled more deeply
-- Click side cards to rotate them into focus.
-- Left/right arrows rotate the carousel.
-- Keyboard left/right rotates the carousel.
-- Drag left/right rotates the carousel.
-- Bottom countdown is placed UNDER the front/bottom circle area.
-- Modals are included for videos, locations, contact, social, and favorites.
-- YouTube demo embeds and real location details are included.
-- No canvas fireworks.
-
-Background image dimensions: 1536 x 1024.
+- Carousel works by clicking side cards, arrows, keyboard arrows, and drag.

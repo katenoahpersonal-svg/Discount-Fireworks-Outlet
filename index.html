@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — Circular Wall Carousel</title>
+<title>Discount Fireworks Outlet — Filled Cards + Refined Rotation</title>
 <meta name="description" content="Discount Fireworks Outlet interactive Fourth of July landing page with a coded circular wall carousel, header, and countdowns.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -229,7 +229,7 @@ button {
 
 .stage {
   position:fixed;
-  inset:96px 0 128px;
+  inset:96px 0 154px;
   z-index:20;
   overflow:hidden;
   perspective:1500px;
@@ -257,7 +257,7 @@ button {
   --bright:1;
   position:absolute;
   left:50%;
-  top:48%;
+  top:45%;
   width:430px;
   height:435px;
   transform:
@@ -698,7 +698,7 @@ button {
 .bottom-count {
   position:fixed;
   left:50%;
-  bottom:54px;
+  bottom:48px;
   transform:translateX(-50%);
   z-index:36;
   text-align:center;
@@ -723,14 +723,14 @@ button {
 }
 
 .bottom-row span {
-  min-width:36px;
+  min-width:44px;
   display:grid;
 }
 
 .bottom-row b {
   font-family:var(--font-head);
   color:rgba(255,255,255,.88);
-  font-size:1.30rem;
+  font-size:1.58rem;
   line-height:1;
 }
 
@@ -754,7 +754,7 @@ button {
   right:0;
   bottom:0;
   z-index:78;
-  height:52px;
+  height:44px;
   padding:0 32px;
   display:grid;
   grid-template-columns:330px 1fr 330px;
@@ -1059,11 +1059,64 @@ button {
     grid-template-columns:1fr;
   }
 }
+
+/* V27 filled card imagery */
+.build-photo {
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.35)),
+    url('assets/build-your-show-tent-scene.png');
+  background-size:cover;
+  background-position:center center;
+}
+
+.favorite-image-grid span {
+  position:relative;
+  overflow:hidden;
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.58)),
+    var(--img)!important;
+  background-size:cover!important;
+  background-position:center!important;
+}
+
+.favorite-image-grid span::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    radial-gradient(circle at 50% 38%,rgba(255,111,46,.14),transparent 36%),
+    linear-gradient(180deg,transparent 40%,rgba(2,4,13,.72));
+}
+
+.favorite-image-grid span b {
+  position:relative;
+  z-index:2;
+  display:block;
+  padding:0 6px;
+  color:var(--gold);
+  text-shadow:0 2px 10px rgba(0,0,0,.85),0 0 16px rgba(255,111,46,.55);
+}
+
+.social-tile {
+  text-decoration:none;
+}
+
+.modal-link {
+  display:inline-block;
+  margin-top:14px;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:900;
+  text-decoration:none;
+}
+
 </style>
 </head>
 <body>
 <div class="bg-wrap" aria-hidden="true">
-  <img class="bg" src="assets/dfo-clean-stage-with-firecracker.png" alt="">
+  <img class="bg" src="assets/dfo-stage-full-height-ground-v27.png" alt="">
 </div>
 
 <header class="header">
@@ -1143,7 +1196,7 @@ button {
     <article class="card" data-card="build" data-modal="contactModal">
       <p class="card-eyebrow">Plan Like a Pro</p>
       <h2 class="card-title">Build Your Show</h2>
-      <div class="card-media art-build"><span class="shelf"></span><span class="counter"></span></div>
+      <div class="card-media build-photo" aria-label="Build your show tent scene"></div>
       <div class="card-copy">
         <p>Tell us your budget, crowd size, location, and finale goals.</p>
         <button class="card-btn" data-modal="contactModal">Start Planning</button>
@@ -1154,7 +1207,7 @@ button {
       <p class="card-eyebrow">Follow the Finale</p>
       <h2 class="card-title">Social Feed</h2>
       <div class="card-media art-social">
-        <span class="social-tile">Facebook<br>Updates</span>
+        <a class="social-tile" href="https://share.google/GzfOnXO5YoaE1cwlv" target="_blank" rel="noopener">Facebook<br>Updates</a>
         <span class="social-tile">Instagram<br>Scenes</span>
         <span class="social-tile">YouTube<br>Demos</span>
       </div>
@@ -1168,11 +1221,11 @@ button {
       <p class="card-eyebrow">Crowd Approved</p>
       <h2 class="card-title">Finale Favorites</h2>
       <div class="card-media art-favorites">
-        <div class="favorite-grid">
-          <span>500G Cakes</span>
-          <span>Aerials</span>
-          <span>Finales</span>
-          <span>Family Packs</span>
+        <div class="favorite-grid favorite-image-grid">
+          <span style="--img:url('assets/favorite-500g-cakes.png')"><b>500G Cakes</b></span>
+          <span style="--img:url('assets/favorite-aerials.png')"><b>Aerials</b></span>
+          <span style="--img:url('assets/favorite-finales.png')"><b>Finales</b></span>
+          <span style="--img:url('assets/favorite-family-packs.png')"><b>Family Packs</b></span>
         </div>
       </div>
       <div class="card-copy">
@@ -1200,7 +1253,7 @@ button {
   <div class="promise">Top Quality. Lowest Prices.<b>That’s the DFO Promise.</b></div>
   <div class="drag-note">Click and Drag to Rotate</div>
   <div class="socials">
-    <a href="#" aria-label="Facebook">f</a>
+    <a href="https://share.google/GzfOnXO5YoaE1cwlv" target="_blank" rel="noopener" aria-label="Facebook">f</a>
     <a href="#" aria-label="Instagram">◎</a>
     <a href="#" aria-label="YouTube">▶</a>
   </div>
@@ -1256,7 +1309,7 @@ button {
     <p class="eyebrow">Follow the Finale</p>
     <h2>Social Media Feed</h2>
     <div class="feed-grid">
-      <article class="feed-card"><h3>Facebook</h3><p>Season updates, location reminders, hours, and family-friendly Fourth of July posts.</p></article>
+      <article class="feed-card"><h3>Facebook</h3><p>Season updates, location reminders, hours, and family-friendly Fourth of July posts.</p><a class="modal-link" href="https://share.google/GzfOnXO5YoaE1cwlv" target="_blank" rel="noopener">Open Facebook</a></article>
       <article class="feed-card"><h3>Instagram</h3><p>Tent shots, product moments, behind-the-scenes updates, and local summer energy.</p></article>
       <article class="feed-card"><h3>YouTube</h3><p>Firework demos, effects previews, and featured finale videos.</p></article>
     </div>
@@ -1305,11 +1358,11 @@ const cards = Array.from(document.querySelectorAll("[data-card]"));
 let active = 0; // Demo Videos starts centered because cards array is ordered with videos first.
 
 const slots = [
-  { name:"center", x:0, y:-16, z:260, ry:0, scale:1.00, opacity:1.00, bright:1.08 },
-  { name:"right", x:420, y:18, z:-30, ry:-30, scale:.82, opacity:.92, bright:.88 },
-  { name:"far-right", x:705, y:55, z:-360, ry:-55, scale:.56, opacity:.72, bright:.66 },
-  { name:"far-left", x:-705, y:55, z:-360, ry:55, scale:.56, opacity:.72, bright:.66 },
-  { name:"left", x:-420, y:18, z:-30, ry:30, scale:.82, opacity:.92, bright:.88 }
+  { name:"center", x:0, y:-20, z:285, ry:0, scale:1.00, opacity:1.00, bright:1.08 },
+  { name:"right", x:455, y:16, z:-40, ry:-15, scale:.82, opacity:.92, bright:.88 },
+  { name:"far-right", x:780, y:58, z:-365, ry:-30, scale:.56, opacity:.72, bright:.66 },
+  { name:"far-left", x:-780, y:58, z:-365, ry:30, scale:.56, opacity:.72, bright:.66 },
+  { name:"left", x:-455, y:16, z:-40, ry:15, scale:.82, opacity:.92, bright:.88 }
 ];
 
 function mod(n,m){ return ((n % m) + m) % m; }
