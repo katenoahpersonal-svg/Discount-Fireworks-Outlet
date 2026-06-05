@@ -1,4 +1,4 @@
-# DFO V23 — No Top Logo Clean Background + Coded Cards
+# DFO V24 — Header + Countdowns + Fixed Carousel
 
 Upload everything in this folder to your GitHub Pages repo root:
 
@@ -6,14 +6,18 @@ Upload everything in this folder to your GitHub Pages repo root:
 - .nojekyll
 - assets/dfo-clean-background-no-top-logo.png
 
-What changed from V22:
-- Background no longer includes the top logo/header area.
-- Header, time clocks, and social icons are not part of the background.
-- The only DFO logo left in the background is the middle firecracker logo.
-- Tiny leftover bottom-right mark was softened/removed.
-- Cards remain coded and interactive on top of the background.
+What changed:
+- Background is now full-bleed with object-fit: cover.
+- Coded header is back.
+- Coded top countdown is back.
+- Coded bottom countdown is back.
+- Visible arrow buttons are back.
+- Carousel rotation is fixed with arrows, keyboard arrows, nav buttons, and drag.
+- Background remains the cleaned version with no baked-in top logo/header/countdown/social icons.
 - Exactly 5 cards.
 - Videos starts centered.
 - Modals, YouTube demos, and real location details remain included.
 
-Add ?debug=1 to reveal hotspot zones.
+Keyboard:
+- Left/right arrows rotate carousel.
+- Escape closes modals.
