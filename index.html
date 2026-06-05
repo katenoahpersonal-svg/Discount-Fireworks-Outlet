@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Discount Fireworks Outlet — Header + Countdown Fixed</title>
-<meta name="description" content="Discount Fireworks Outlet interactive Fourth of July landing page with full-bleed background, coded header, countdowns, and rotating carousel cards.">
+<title>Discount Fireworks Outlet — Formatted Background + Wide Carousel</title>
+<meta name="description" content="Discount Fireworks Outlet interactive Fourth of July landing page with 16:9 formatted background, coded header, countdowns, and wider rotating carousel cards.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -197,7 +197,7 @@ button {
 /* Carousel stage */
 .stage {
   position:fixed;
-  inset:98px 0 86px;
+  inset:112px 0 86px;
   z-index:20;
   perspective:1500px;
   perspective-origin:50% 52%;
@@ -216,8 +216,8 @@ button {
   position:absolute;
   left:50%;
   top:50%;
-  width:min(455px,29.5vw);
-  height:min(462px,53vh);
+  width:min(435px,28.4vw);
+  height:min(438px,49.5vh);
   transform-style:preserve-3d;
   border-radius:24px;
   border:1.4px solid rgba(255,111,46,.72);
@@ -343,31 +343,31 @@ button {
   z-index:30;
   opacity:1;
   filter:brightness(1.06) saturate(1.08);
-  transform:translate(-50%,-50%) translateX(0) translateY(-1.4%) translateZ(190px) rotateY(0deg) scale(1);
+  transform:translate(-50%,-50%) translateX(0) translateY(-3.8%) translateZ(210px) rotateY(0deg) scale(.98);
 }
 .pos-left {
   z-index:23;
   opacity:.92;
   filter:brightness(.84) saturate(.96);
-  transform:translate(-50%,-50%) translateX(-360px) translateY(3.3%) translateZ(-120px) rotateY(24deg) scale(.82);
+  transform:translate(-50%,-50%) translateX(-440px) translateY(2.2%) translateZ(-140px) rotateY(25deg) scale(.80);
 }
 .pos-right {
   z-index:23;
   opacity:.92;
   filter:brightness(.84) saturate(.96);
-  transform:translate(-50%,-50%) translateX(360px) translateY(3.3%) translateZ(-120px) rotateY(-24deg) scale(.82);
+  transform:translate(-50%,-50%) translateX(440px) translateY(2.2%) translateZ(-140px) rotateY(-25deg) scale(.80);
 }
 .pos-far-left {
   z-index:14;
   opacity:.76;
   filter:brightness(.64) saturate(.86);
-  transform:translate(-50%,-50%) translateX(-610px) translateY(8.5%) translateZ(-340px) rotateY(44deg) scale(.58);
+  transform:translate(-50%,-50%) translateX(-735px) translateY(7.4%) translateZ(-360px) rotateY(47deg) scale(.55);
 }
 .pos-far-right {
   z-index:14;
   opacity:.76;
   filter:brightness(.64) saturate(.86);
-  transform:translate(-50%,-50%) translateX(610px) translateY(8.5%) translateZ(-340px) rotateY(-44deg) scale(.58);
+  transform:translate(-50%,-50%) translateX(735px) translateY(7.4%) translateZ(-360px) rotateY(-47deg) scale(.55);
 }
 .card:not(.is-center) .card-title {font-size:2.05rem}
 .card:not(.is-center) .card-copy p {font-size:.70rem}
@@ -603,7 +603,7 @@ button {
 .bottom-count {
   position:fixed;
   left:50%;
-  bottom:84px;
+  bottom:70px;
   transform:translateX(-50%);
   z-index:35;
   text-align:center;
@@ -625,13 +625,13 @@ button {
   gap:7px;
 }
 .bottom-row span {
-  min-width:42px;
+  min-width:36px;
   display:grid;
 }
 .bottom-row b {
   font-family:var(--font-head);
   color:rgba(255,255,255,.88);
-  font-size:1.55rem;
+  font-size:1.32rem;
   line-height:1;
 }
 .bottom-row small {
@@ -841,6 +841,14 @@ button {
   letter-spacing:.14em;
 }
 
+
+@media(min-width:1500px){
+  .pos-left{transform:translate(-50%,-50%) translateX(-475px) translateY(2.2%) translateZ(-140px) rotateY(25deg) scale(.80)}
+  .pos-right{transform:translate(-50%,-50%) translateX(475px) translateY(2.2%) translateZ(-140px) rotateY(-25deg) scale(.80)}
+  .pos-far-left{transform:translate(-50%,-50%) translateX(-800px) translateY(7.4%) translateZ(-360px) rotateY(47deg) scale(.55)}
+  .pos-far-right{transform:translate(-50%,-50%) translateX(800px) translateY(7.4%) translateZ(-360px) rotateY(-47deg) scale(.55)}
+}
+
 @media(max-width:1120px) {
   html,body {
     overflow:auto;
@@ -894,7 +902,7 @@ button {
 </head>
 <body>
 <div class="bg-wrap" aria-hidden="true">
-  <img class="bg" src="assets/dfo-clean-background-no-top-logo.png" alt="">
+  <img class="bg" src="assets/dfo-clean-background-wide-16x9.png" alt="">
 </div>
 
 <header class="site-header">
