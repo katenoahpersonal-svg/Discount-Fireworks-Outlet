@@ -1,0 +1,28 @@
+{
+  "note": "Assets separated from the generated contact sheet and patched/upscaled where needed.",
+  "important": "These are separated production-direction assets. For final commercial polish, replace with real photography/product footage where available.",
+  "facebook_page_url": "https://www.facebook.com/DFOBoji/",
+  "assets": [
+    "final-clean-background-smaller-front-loop.png",
+    "dfo-firecracker-transparent.png",
+    "build-your-show-tent.png",
+    "demo-videos-hero.png",
+    "finale-500g-cakes.png",
+    "finale-aerials.png",
+    "finale-finales.png",
+    "finale-family-packs.png",
+    "social-thumb-1.png",
+    "social-thumb-2.png",
+    "social-thumb-3.png",
+    "social-thumb-4.png",
+    "social-thumb-5.png",
+    "social-thumb-6.png",
+    "facebook-feed-embed-code.html"
+  ],
+  "remembered_requirements": [
+    "background needs smaller front loop/ring",
+    "extra stone-ground breathing room at bottom",
+    "cards should behave like wallpaper on a circle wall",
+    "use separate assets, not contact sheets"
+  ]
+}
