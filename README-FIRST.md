@@ -1,4 +1,4 @@
-# Discount Fireworks Outlet — V30 Final Ready Code
+# DFO V31 Proof — Pre-Water Background + Baked Firecracker + Fixed Slots
 
 Upload these to the root of your GitHub Pages repository:
 
@@ -6,18 +6,15 @@ Upload these to the root of your GitHub Pages repository:
 - .nojekyll
 - assets/
 
-This version fixes the architecture:
-- DFO firecracker is baked into the background scene and does not move.
-- Background is rebuilt with a dark reflective water surface instead of stone.
-- Large carousel ring and smaller front circle are separated.
-- Bottom countdown sits below the small front circle.
-- Carousel uses real circular wall math with sin/cos-style positioning.
-- Cards face outward based on their position like wallpaper around a circular wall.
+Locked changes:
+- Uses the pre-water background style.
+- Bakes the DFO firecracker/logo into the bottom background.
+- Removes the separate coded firecracker image.
+- Uses fixed designer carousel slots, not circular math.
+- Cards are smaller and closer together.
 - Exactly 5 cards.
 - Demo Videos starts centered.
-- Facebook Page Plugin embed uses https://www.facebook.com/DFOBoji/
-- Arrows, side-card click, keyboard arrows, and drag all rotate the carousel.
+- Left cards rotate negative; right cards rotate positive.
+- Facebook Page Plugin embed included for https://www.facebook.com/DFOBoji/
 
-Notes:
-- Instagram and YouTube links are placeholders until final URLs are supplied.
-- Contact form is visual only until wired to a backend/form service.
+This is intentionally labeled a proof, not final, so the screenshot can be approved before locking.
