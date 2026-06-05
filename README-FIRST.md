@@ -1,21 +1,19 @@
-# DFO V20 — Exact Reference Hotspot Build
+# DFO V23 — No Top Logo Clean Background + Coded Cards
 
-Upload everything in this folder to the root of your GitHub Pages repo:
+Upload everything in this folder to your GitHub Pages repo root:
 
 - index.html
 - .nojekyll
-- assets/dfo-reference-scene-v20.png
+- assets/dfo-clean-background-no-top-logo.png
 
-This version uses the uploaded reference scene as the locked visual layer so the homepage matches the mockup instead of trying to recreate it with CSS shapes.
+What changed from V22:
+- Background no longer includes the top logo/header area.
+- Header, time clocks, and social icons are not part of the background.
+- The only DFO logo left in the background is the middle firecracker logo.
+- Tiny leftover bottom-right mark was softened/removed.
+- Cards remain coded and interactive on top of the background.
+- Exactly 5 cards.
+- Videos starts centered.
+- Modals, YouTube demos, and real location details remain included.
 
-Included:
-- clickable hotspots over Videos, Locations, Build Your Show, Get Directions, Contact, and nav
-- modal content for Videos, Locations, Contact, Finale Favorites, and Social Feed
-- YouTube demo embeds
-- real location details and Google Maps links
-- mobile fallback buttons
-- no canvas fireworks
-- no broken local CSS/JS
-- GitHub Pages ready
-
-Reference image dimensions: 1536 x 1024.
+Add ?debug=1 to reveal hotspot zones.
