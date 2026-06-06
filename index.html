@@ -260,12 +260,13 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 }
 
 
+
 /* =========================
-   V40 GROUNDED WALL CAROUSEL TUNE
-   Purpose:
-   - Non-front cards no longer float above the orange turntable ring.
-   - Cards are anchored by their bottom edge like physical panels on a circular wall.
-   - Bottom DFO/firecracker object stays removed for now.
+   V41 CYLINDRICAL WALL CAROUSEL
+   Scope:
+   - Rebuild carousel positioning only.
+   - Cards now sit on one shared elliptical/cylindrical wall.
+   - Bottom DFO/firecracker remains removed for now.
 ========================= */
 
 .firecracker,
@@ -282,8 +283,8 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   .scene{
     top:10.6vh;
     bottom:8.1vh;
-    perspective:2300px;
-    perspective-origin:50% 39%;
+    perspective:2400px;
+    perspective-origin:50% 38%;
   }
 
   .carousel{
@@ -293,22 +294,23 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   .card3d{
     transform-origin:bottom center !important;
     transform-style:preserve-3d;
+    will-change:transform,opacity,filter;
   }
 
-  /* Soft contact glow under each card so the cards feel seated on the ring/floor. */
+  /* Ground contact glow: makes every card feel seated on the same glowing ring. */
   .card3d::after{
     content:"";
     position:absolute;
     left:50%;
-    bottom:-7px;
-    width:72%;
-    height:18px;
+    bottom:-8px;
+    width:76%;
+    height:20px;
     transform:translateX(-50%);
     border-radius:50%;
     pointer-events:none;
-    opacity:.82;
-    background:radial-gradient(ellipse at center, rgba(255,109,46,.48) 0%, rgba(255,109,46,.20) 34%, transparent 72%);
-    filter:blur(2px);
+    opacity:.84;
+    background:radial-gradient(ellipse at center, rgba(255,109,46,.52) 0%, rgba(255,109,46,.22) 34%, transparent 74%);
+    filter:blur(2.2px);
     z-index:-1;
   }
 
@@ -339,7 +341,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 </style>
 </head>
-<body data-build="v40-grounded-wall-carousel-no-bottom-dfo">
+<body data-build="v41-cylindrical-wall-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -552,40 +554,80 @@ function metrics(){
   const w = scene.clientWidth  || window.innerWidth;
   const h = scene.clientHeight || window.innerHeight;
 
-  // Keep Claude/Antigravity's better card scale, but lock it tighter to the reference.
+  /*
+    V41 card scale:
+    Keep the current V40 sizing direction, but let the carousel geometry,
+    not hand-placed slots, control where the card sits.
+  */
   const centerW = Math.min(392, w * 0.235);
   const centerH = Math.min(520, h * 0.62);
 
-  return { w, h, centerW, centerH };
+  /*
+    Ellipse/cylinder geometry:
+    radiusX controls left/right spread.
+    depth controls how far side cards recede.
+    ringBaseY is the shared ground/ring baseline.
+    sideDrop makes side cards sit slightly LOWER on the ellipse, never higher.
+  */
+  const radiusX = w * 0.425;
+  const depth = w * 0.155;
+  const ringBaseY = h * 0.292;
+  const sideDrop = h * 0.034;
+
+  return { w, h, centerW, centerH, radiusX, depth, ringBaseY, sideDrop };
 }
 
 function layout(pos){
   const m = metrics();
-  const ap = Math.abs(pos);
-  const sign = Math.sign(pos);
 
-  /*
-    V40 fixed wall slots:
-    The critical change is the grounded Y values.
-    In V39 the side cards had larger bottom offsets, which lifted them into "lala land."
-    Here every card's bottom anchor sits on the same visual ring band with only tiny perspective variance.
-  */
-  const ground = m.h * 0.292;
-
-  const slots = {
-    "-2": { x:-m.w * 0.382, y:ground - m.h * 0.010, z:-230, ry:-18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.90 },
-    "-1": { x:-m.w * 0.225, y:ground + m.h * 0.002, z:-105, ry:-10, s:0.89, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.98 },
-     "0": { x: 0,           y:ground + m.h * 0.010, z:   0, ry:  0, s:1.00, w:m.centerW,        h:m.centerH,        o:1.00 },
-      "1": { x: m.w * 0.225, y:ground + m.h * 0.002, z:-105, ry: 10, s:0.89, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.98 },
-      "2": { x: m.w * 0.382, y:ground - m.h * 0.010, z:-230, ry: 18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.90 }
+  // Five visible angular stations on the front half of the carousel wall.
+  const angleMap = {
+    "-2": -42,
+    "-1": -21,
+     "0":   0,
+      "1":  21,
+      "2":  42
   };
 
-  if (ap > 2) {
-    const edge = sign < 0 ? slots["-2"] : slots["2"];
+  if (Math.abs(pos) > 2) {
+    const sign = Math.sign(pos);
+    const edge = layout(sign < 0 ? -2 : 2);
     return { ...edge, x: edge.x + sign * m.w * 0.14, o:0, pointer:false };
   }
 
-  return { ...slots[String(pos)], pointer:true };
+  const angle = angleMap[String(pos)];
+  const rad = angle * Math.PI / 180;
+  const sin = Math.sin(rad);
+  const absSin = Math.abs(sin);
+
+  /*
+    True shared ellipse:
+    - x comes from one radius.
+    - z comes from the same angle depth.
+    - bottom comes from the same ellipse baseline and intentionally DROPS at the sides.
+    - rotateY is tangent/inward from the same angle.
+  */
+  const x = sin * m.radiusX;
+  const z = -absSin * m.depth;
+  const bottom = m.ringBaseY - (absSin * m.sideDrop);
+  const rotateY = angle * -0.75;
+
+  const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
+  const widthScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.78 : 0.58);
+  const heightScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.94 : 0.84);
+
+  return {
+    x,
+    y: bottom,
+    z,
+    ry: rotateY,
+    s: scale,
+    w: m.centerW * widthScale,
+    h: m.centerH * heightScale,
+    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .91),
+    pointer:true,
+    angle
+  };
 }
 
 function place(el, pos, animate){
@@ -597,13 +639,18 @@ function place(el, pos, animate){
   el.style.marginLeft = (-L.w / 2) + "px";
   el.style.bottom = L.y + "px";
 
-  // Fixed designer slots. The panel rotations now face inward like cards mounted on a circular wall.
+  /*
+    V41: cylindrical wall transform.
+    Every transform value comes from the same angular station.
+    This prevents flat-slot floating and makes the cards read as panels on a ring.
+  */
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
-  el.style.zIndex = 30 - Math.abs(pos);
+  el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
   el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.94:0.84}) saturate(${Math.abs(pos)===1?0.98:0.90})`;
   el.style.pointerEvents = L.pointer === false ? "none" : "auto";
   el.classList.toggle("is-active", pos === 0);
+  el.dataset.carouselAngle = L.angle;
 }
 function update(){
   els.forEach((el, i) => {

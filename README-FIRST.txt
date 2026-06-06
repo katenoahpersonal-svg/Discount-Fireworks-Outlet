@@ -1,19 +1,23 @@
-DFO V40 — Grounded Wall Carousel / No Bottom DFO
+DFO V41 — Cylindrical Wall Carousel / No Bottom DFO
 
 Starting point:
-- V39 no-bottom-firecracker build.
+- V40 grounded wall carousel build.
 
 What changed:
-1. Kept the bottom DFO/firecracker object removed.
-2. Lowered the non-front card slots so they sit on the orange ring/floor instead of floating.
-3. Reversed/cleaned card rotations so side panels read more like a curved wall.
-4. Added a subtle contact glow under each card for grounded feet.
-5. Kept fixed slot behavior — no orbit math.
-6. Kept exactly five cards.
-7. Kept Demo Videos centered on first load.
-8. Ran a Node JavaScript syntax check.
+1. Rebuilt only the carousel positioning system.
+2. Removed the old flat fixed-slot positioning.
+3. Added true cylindrical/elliptical wall geometry using angles:
+   far-left -42°, left -21°, center 0°, right 21°, far-right 42°.
+4. x, z, bottom, rotateY, and scale now all come from the same angular station.
+5. Side cards intentionally sit slightly lower on the same ring baseline.
+6. Bottom DFO/firecracker remains removed.
+7. Header, background, card content, footer, modals, and countdowns were not redesigned.
+8. JavaScript syntax check passed.
 
 Upload:
 - index.html
 
-This version does not include separate assets because the uploaded Antigravity build has the imagery embedded into the HTML/CSS.
+QA to check in browser:
+- Side cards should sit on the same orange ring/ellipse, not float.
+- Far-left/far-right should feel farther back and smaller.
+- The five cards should read like panels on a curved wall.

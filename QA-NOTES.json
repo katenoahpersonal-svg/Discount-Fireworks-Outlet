@@ -1,14 +1,31 @@
 {
-  "version": "v40-grounded-wall-carousel-no-bottom-dfo",
+  "version": "v41-cylindrical-wall-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
+  "carousel_type": "cylindrical/elliptical wall geometry",
+  "angles": [
+    -42,
+    -21,
+    0,
+    21,
+    42
+  ],
+  "uses_angle_for": [
+    "x",
+    "z",
+    "bottom",
+    "rotateY",
+    "scale"
+  ],
   "bottom_dfo_firecracker_removed": true,
-  "carousel_type": "fixed designer slots with content rotation",
-  "main_v40_change": "side and far-side cards moved downward to share the same grounded ring band",
+  "header_changed": false,
+  "background_changed": false,
+  "card_content_changed": false,
   "initial_center_card": "Demo Videos",
   "exactly_five_cards": true,
-  "still_to_check_live": [
-    "Whether the far-left and far-right cards need 5\u201310px more downward adjustment after GitHub render",
-    "Whether side card rotation should be softened from 18/10 degrees to 16/8 degrees",
-    "Whether the background should be nudged up/down after the carousel is grounded"
+  "notes": [
+    "If cards still need visual grounding, adjust ringBaseY and sideDrop only.",
+    "If the arc is too wide/narrow, adjust radiusX only.",
+    "If the wall depth is too flat, adjust depth only.",
+    "If rotations are too aggressive, adjust rotateY multiplier only."
   ]
 }
