@@ -1,17 +1,17 @@
 {
-  "version": "v42-forced-tangent-cylinder-carousel-no-bottom-dfo",
+  "version": "v43-reversed-tangent-cylinder-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "force visible side-card rotateY on both wrapper and actual card face",
-  "wrapper_rotation_multiplier": -1.05,
+  "main_fix": "reversed wrapper and face rotateY direction from V42",
+  "wrapper_rotation_multiplier": 1.05,
   "face_rotation_by_slot": {
-    "-2": 30,
-    "-1": 17,
+    "-2": -30,
+    "-1": -17,
     "0": 0,
-    "1": -17,
-    "2": -30
+    "1": 17,
+    "2": 30
   },
   "bottom_dfo_removed": true,
-  "header_changed": false,
   "background_changed": false,
+  "header_changed": false,
   "card_content_changed": false
 }

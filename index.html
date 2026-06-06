@@ -419,9 +419,39 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V43 REVERSED TANGENT DIRECTION
+   Fix:
+   V42 finally made the side cards rotate, but they faced the wrong way.
+   V43 reverses the tangent face direction so cards wrap around the carousel wall correctly.
+========================= */
+
+@media (min-width:1181px){
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(-30deg) skewY(1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(-17deg) skewY(.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="0"] .card{
+    transform:perspective(950px) rotateY(0deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(17deg) skewY(-.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(30deg) skewY(-1.2deg) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v42-forced-tangent-cylinder-carousel-no-bottom-dfo">
+<body data-build="v43-reversed-tangent-cylinder-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -684,7 +714,7 @@ function layout(pos){
     CSS also rotates the actual .card face by data-wall-pos,
     so the side panels cannot still visually face front.
   */
-  const rotateY = angle * -1.05;
+  const rotateY = angle * 1.05;
 
   const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
   const widthScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.78 : 0.58);
