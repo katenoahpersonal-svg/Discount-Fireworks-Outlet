@@ -1,15 +1,19 @@
-DFO Separated Asset Pack V28
+DFO V40 — Grounded Wall Carousel / No Bottom DFO
 
-This pack contains the individual assets split from the latest contact sheet:
-- clean background with smaller front loop
-- transparent-style DFO firecracker
-- build-your-show tent image
-- demo videos hero image
-- 4 finale favorite images
-- 6 social thumbnails
-- Facebook Page Plugin embed code
+Starting point:
+- V39 no-bottom-firecracker build.
 
-Use the files inside /assets for the next website build.
+What changed:
+1. Kept the bottom DFO/firecracker object removed.
+2. Lowered the non-front card slots so they sit on the orange ring/floor instead of floating.
+3. Reversed/cleaned card rotations so side panels read more like a curved wall.
+4. Added a subtle contact glow under each card for grounded feet.
+5. Kept fixed slot behavior — no orbit math.
+6. Kept exactly five cards.
+7. Kept Demo Videos centered on first load.
+8. Ran a Node JavaScript syntax check.
 
-Important:
-The generator kept producing contact sheets instead of separate source images, so this pack extracts, patches, and upscales each panel into individual usable files. For final commercial launch, replace with real DFO photography/product assets whenever available.
+Upload:
+- index.html
+
+This version does not include separate assets because the uploaded Antigravity build has the imagery embedded into the HTML/CSS.

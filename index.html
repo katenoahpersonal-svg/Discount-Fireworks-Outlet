@@ -259,14 +259,15 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   .video-grid,.location-grid,.feed-grid,.favorites-modal-grid,.contact-form{grid-template-columns:1fr}
 }
 
+
 /* =========================
-   V39 REPLICA TUNE
-   Goal: keep Antigravity's closer card scale, remove bottom DFO obstruction,
-   keep the stage clean, and lock the carousel into five visual slots.
+   V40 GROUNDED WALL CAROUSEL TUNE
+   Purpose:
+   - Non-front cards no longer float above the orange turntable ring.
+   - Cards are anchored by their bottom edge like physical panels on a circular wall.
+   - Bottom DFO/firecracker object stays removed for now.
 ========================= */
 
-/* Kill the bottom firecracker/podium/circle for now. This was blocking the cards
-   and making the composition feel different from the approved reference. */
 .firecracker,
 .firecracker::before,
 .firecracker::after,
@@ -277,12 +278,11 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   display:none !important;
 }
 
-/* Desktop-only precision tuning. Mobile/tablet keeps the existing stacked behavior. */
 @media (min-width:1181px){
   .scene{
     top:10.6vh;
     bottom:8.1vh;
-    perspective:2200px;
+    perspective:2300px;
     perspective-origin:50% 39%;
   }
 
@@ -291,7 +291,25 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 
   .card3d{
-    transform-origin:center center;
+    transform-origin:bottom center !important;
+    transform-style:preserve-3d;
+  }
+
+  /* Soft contact glow under each card so the cards feel seated on the ring/floor. */
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-7px;
+    width:72%;
+    height:18px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.82;
+    background:radial-gradient(ellipse at center, rgba(255,109,46,.48) 0%, rgba(255,109,46,.20) 34%, transparent 72%);
+    filter:blur(2px);
+    z-index:-1;
   }
 
   .card{
@@ -301,10 +319,6 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
       linear-gradient(180deg,rgba(8,10,21,.96) 0%,rgba(5,8,17,.96) 60%,rgba(3,5,12,.98) 100%);
   }
 
-  .card-title{
-    letter-spacing:.01em;
-  }
-
   .card3d.is-active .card-title{
     font-size:clamp(34px,2.55vw,50px);
   }
@@ -312,10 +326,6 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   .bottom-count{
     bottom:4.35vh;
     z-index:46;
-  }
-
-  .bottom-count p{
-    margin-bottom:4px;
   }
 
   .footer{
@@ -329,7 +339,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 </style>
 </head>
-<body data-build="v39-no-bottom-firecracker-replica-tune">
+<body data-build="v40-grounded-wall-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -542,8 +552,7 @@ function metrics(){
   const w = scene.clientWidth  || window.innerWidth;
   const h = scene.clientHeight || window.innerHeight;
 
-  // Card scale is intentionally tied to the approved desktop proof proportions.
-  // The media queries handle tablet/mobile stacking separately.
+  // Keep Claude/Antigravity's better card scale, but lock it tighter to the reference.
   const centerW = Math.min(392, w * 0.235);
   const centerH = Math.min(520, h * 0.62);
 
@@ -555,19 +564,25 @@ function layout(pos){
   const ap = Math.abs(pos);
   const sign = Math.sign(pos);
 
-  // Locked designer slots. No orbit math. No empty positions.
-  // Negative pos = left side. Positive pos = right side.
+  /*
+    V40 fixed wall slots:
+    The critical change is the grounded Y values.
+    In V39 the side cards had larger bottom offsets, which lifted them into "lala land."
+    Here every card's bottom anchor sits on the same visual ring band with only tiny perspective variance.
+  */
+  const ground = m.h * 0.292;
+
   const slots = {
-    "-2": { x:-m.w * 0.385, y:m.h * 0.430, z:-150, ry: 18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.88 },
-    "-1": { x:-m.w * 0.228, y:m.h * 0.385, z: -72, ry: 10, s:0.88, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.96 },
-     "0": { x: 0,          y:m.h * 0.335, z:   0, ry:  0, s:1.00, w:m.centerW,        h:m.centerH,        o:1.00 },
-      "1": { x: m.w * 0.228, y:m.h * 0.385, z: -72, ry:-10, s:0.88, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.96 },
-      "2": { x: m.w * 0.385, y:m.h * 0.430, z:-150, ry:-18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.88 }
+    "-2": { x:-m.w * 0.382, y:ground - m.h * 0.010, z:-230, ry:-18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.90 },
+    "-1": { x:-m.w * 0.225, y:ground + m.h * 0.002, z:-105, ry:-10, s:0.89, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.98 },
+     "0": { x: 0,           y:ground + m.h * 0.010, z:   0, ry:  0, s:1.00, w:m.centerW,        h:m.centerH,        o:1.00 },
+      "1": { x: m.w * 0.225, y:ground + m.h * 0.002, z:-105, ry: 10, s:0.89, w:m.centerW * 0.78, h:m.centerH * 0.94, o:.98 },
+      "2": { x: m.w * 0.382, y:ground - m.h * 0.010, z:-230, ry: 18, s:0.76, w:m.centerW * 0.58, h:m.centerH * 0.84, o:.90 }
   };
 
   if (ap > 2) {
     const edge = sign < 0 ? slots["-2"] : slots["2"];
-    return { ...edge, x: edge.x + sign * m.w * 0.18, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * m.w * 0.14, o:0, pointer:false };
   }
 
   return { ...slots[String(pos)], pointer:true };
@@ -582,11 +597,11 @@ function place(el, pos, animate){
   el.style.marginLeft = (-L.w / 2) + "px";
   el.style.bottom = L.y + "px";
 
-  // Cards are treated like fixed panels on a curved wall.
+  // Fixed designer slots. The panel rotations now face inward like cards mounted on a circular wall.
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
   el.style.zIndex = 30 - Math.abs(pos);
-  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.92:0.82}) saturate(${Math.abs(pos)===1?0.96:0.88})`;
+  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.94:0.84}) saturate(${Math.abs(pos)===1?0.98:0.90})`;
   el.style.pointerEvents = L.pointer === false ? "none" : "auto";
   el.classList.toggle("is-active", pos === 0);
 }

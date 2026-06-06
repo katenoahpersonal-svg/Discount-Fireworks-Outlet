@@ -1,14 +1,14 @@
 {
-  "build": "v37-working-production-js-fixed",
-  "fatal_v36_issue": "Invalid JavaScript variable line from global URL replacement.",
-  "fixed": true,
+  "version": "v40-grounded-wall-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "expected_visible_result": [
-    "Cards render again",
-    "Top countdown numbers render",
-    "Bottom countdown numbers render",
-    "Carousel arrows rotate card content",
-    "Background has no baked duplicate cards"
-  ],
-  "node_output": ""
+  "bottom_dfo_firecracker_removed": true,
+  "carousel_type": "fixed designer slots with content rotation",
+  "main_v40_change": "side and far-side cards moved downward to share the same grounded ring band",
+  "initial_center_card": "Demo Videos",
+  "exactly_five_cards": true,
+  "still_to_check_live": [
+    "Whether the far-left and far-right cards need 5\u201310px more downward adjustment after GitHub render",
+    "Whether side card rotation should be softened from 18/10 degrees to 16/8 degrees",
+    "Whether the background should be nudged up/down after the carousel is grounded"
+  ]
 }
