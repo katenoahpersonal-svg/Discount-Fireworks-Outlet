@@ -893,9 +893,209 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V51 FOREGROUND RING OCCLUSION / STAGE COMPOSITE
+   Scope:
+   - No redesign.
+   - Builds depth by layering the environment around the HTML cards.
+   - Adds rear atmosphere behind cards and a foreground ring lip above card feet.
+   - Bottom DFO/firecracker remains removed.
+========================= */
+
+@media (min-width:1181px){
+  body:not(.calibration-on) .calibration-dot,
+  body:not(.calibration-on) .ring-guide,
+  body:not(.calibration-on) .calibration-panel{
+    display:none !important;
+  }
+
+  .scene{
+    perspective:1500px !important;
+    perspective-origin:50% 41% !important;
+    isolation:isolate;
+  }
+
+  /* Layer 2: behind-card stage bloom. This stitches cards into the orange platform glow. */
+  .rear-atmosphere-layer{
+    position:absolute;
+    left:50%;
+    top:58.5%;
+    width:80vw;
+    height:34vh;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:8;
+    opacity:.72;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,125,45,.28) 0%,
+        rgba(255,95,32,.18) 28%,
+        rgba(255,95,32,.08) 48%,
+        transparent 72%),
+      linear-gradient(90deg,
+        transparent 0%,
+        rgba(255,95,32,.09) 18%,
+        rgba(255,130,56,.13) 50%,
+        rgba(255,95,32,.09) 82%,
+        transparent 100%);
+    filter:blur(16px);
+    mix-blend-mode:screen;
+  }
+
+  /*
+    Layer 4: foreground occlusion ring.
+    This is the missing depth layer. It sits ABOVE the cards and hides/tints
+    the lower 6–18px of the card bases so the platform appears to pass in front.
+  */
+  .foreground-ring-occlusion{
+    position:absolute;
+    left:50%;
+    top:70.4%;
+    width:86vw;
+    height:20vh;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    z-index:56;
+    border-radius:50%;
+    opacity:.96;
+    mix-blend-mode:screen;
+    background:
+      /* thin hot front lip */
+      radial-gradient(ellipse at center,
+        transparent 54.0%,
+        rgba(255,88,24,.00) 56.0%,
+        rgba(255,116,37,.50) 57.4%,
+        rgba(255,188,97,.84) 58.5%,
+        rgba(255,110,34,.46) 59.6%,
+        rgba(255,95,25,.16) 61.2%,
+        transparent 63.6%),
+      /* warm platform haze that gently washes over card feet */
+      radial-gradient(ellipse at center,
+        transparent 36%,
+        rgba(255,96,28,.06) 49%,
+        rgba(255,124,44,.18) 58%,
+        rgba(255,88,24,.10) 66%,
+        transparent 74%),
+      /* shadow right below the lip */
+      radial-gradient(ellipse at center,
+        transparent 60%,
+        rgba(0,0,0,.28) 63%,
+        rgba(0,0,0,.18) 68%,
+        transparent 76%);
+    filter:
+      drop-shadow(0 0 5px rgba(255,105,35,.42))
+      drop-shadow(0 0 16px rgba(255,105,35,.26));
+  }
+
+  /* Extra front-only glow strip. Narrow, cinematic, not a fake second rail. */
+  .foreground-ring-occlusion::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:53.8%;
+    width:94%;
+    height:18%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    border-top:2px solid rgba(255,180,92,.78);
+    box-shadow:
+      0 -2px 10px rgba(255,122,45,.52),
+      0 4px 18px rgba(0,0,0,.35),
+      0 0 28px rgba(255,95,26,.24);
+    opacity:.74;
+  }
+
+  /* Lower haze/reflection wash, visually puts the cards inside the platform atmosphere. */
+  .foreground-ring-occlusion::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:61%;
+    width:88%;
+    height:34%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,127,47,.14) 0%,
+        rgba(255,89,24,.12) 28%,
+        rgba(0,0,0,.10) 48%,
+        transparent 76%);
+    filter:blur(7px);
+    opacity:.72;
+  }
+
+  /*
+    Keep cards under the occlusion layer, but their personal contact shadow is still visible
+    beneath the foreground lip.
+  */
+  .card3d{
+    transform-origin:50% 100% !important;
+    transform-style:preserve-3d !important;
+  }
+
+  .card3d::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-5px;
+    width:72%;
+    height:10px;
+    transform:translateX(-50%) perspective(650px) rotateX(72deg);
+    border-radius:999px;
+    pointer-events:none;
+    z-index:4;
+    opacity:.42;
+    background:linear-gradient(90deg, transparent, rgba(255,124,45,.48), rgba(255,183,92,.62), rgba(255,124,45,.48), transparent);
+    box-shadow:0 0 9px rgba(255,104,39,.24);
+  }
+
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-11px;
+    width:84%;
+    height:16px;
+    transform:translateX(-50%) perspective(650px) rotateX(72deg);
+    border-radius:999px;
+    pointer-events:none;
+    z-index:3;
+    opacity:.48;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,.42) 0%, rgba(255,109,46,.12) 44%, transparent 78%);
+    filter:blur(1.7px);
+  }
+
+  .card3d .card{
+    transform:perspective(950px) rotateY(var(--face-rotate, 0deg)) skewY(var(--face-skew, 0deg)) !important;
+  }
+
+  /* Keep arrows/footer above the composited scene. */
+  .arrow{
+    z-index:70 !important;
+  }
+
+  .footer{
+    z-index:80 !important;
+  }
+
+  .bottom-count{
+    z-index:66 !important;
+  }
+}
+
+/* Mobile/tablet: keep the overlay subtle and non-destructive. */
+@media (max-width:1180px){
+  .foreground-ring-occlusion,
+  .rear-atmosphere-layer{
+    display:none !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v50-real-ridge-drop-no-fake-rail">
+<body data-build="v51-foreground-ring-occlusion-stage-composite">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -912,7 +1112,9 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
         <div class="clock-unit"><div class="clock-num" id="hours">--</div><div class="clock-lab">Hours</div></div>
         <div class="clock-unit"><div class="clock-num" id="minutes">--</div><div class="clock-lab">Minutes</div></div>
         <div class="clock-unit"><div class="clock-num" id="seconds">--</div><div class="clock-lab">Seconds</div></div>
-      </div>
+      
+    <div class="foreground-ring-occlusion" aria-hidden="true"></div>
+</div>
     </section>
     <nav class="nav" aria-label="Main navigation">
       <button data-go="videos">Videos</button>
@@ -923,6 +1125,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   </header>
 
   <section class="scene" aria-label="DFO fireworks show carousel">
+    <div class="rear-atmosphere-layer" aria-hidden="true"></div>
     <div class="ring-guide" aria-hidden="true"></div>
     <div id="calibrationDots" aria-hidden="true"></div>
     <div class="carousel" id="carousel"></div>
@@ -1319,7 +1522,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V50 HIDDEN CALIBRATION</b>
+  <b>V51 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

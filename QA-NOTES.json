@@ -1,46 +1,21 @@
 {
-  "version": "v50-real-ridge-drop-no-fake-rail",
+  "version": "v51-foreground-ring-occlusion-stage-composite",
   "node_syntax_check": "passed",
-  "base": "v48",
-  "main_fix": "removed fake rail approach and lowered manual slots onto actual visible ridge",
-  "debug_helpers_default_visible": false,
-  "slot_config": {
-    "-2": {
-      "x": -33.0,
-      "y": 74.0,
-      "z": -235,
-      "scale": 0.76,
-      "rotateY": -25
-    },
-    "-1": {
-      "x": -19.2,
-      "y": 70.0,
-      "z": -105,
-      "scale": 0.88,
-      "rotateY": -13
-    },
-    "0": {
-      "x": 0.0,
-      "y": 68.6,
-      "z": 0,
-      "scale": 1.0,
-      "rotateY": 0
-    },
-    "1": {
-      "x": 19.2,
-      "y": 70.0,
-      "z": -105,
-      "scale": 0.88,
-      "rotateY": 13
-    },
-    "2": {
-      "x": 33.0,
-      "y": 74.0,
-      "z": -235,
-      "scale": 0.76,
-      "rotateY": 25
-    }
+  "base": "v50",
+  "background_changed": false,
+  "header_changed": false,
+  "card_content_changed": false,
+  "footer_changed": false,
+  "modals_changed": false,
+  "countdowns_changed": false,
+  "bottom_dfo_removed": true,
+  "new_layers": {
+    "rear_atmosphere_layer": true,
+    "foreground_ring_occlusion": true,
+    "card_contact_shadows_below_overlay": true
   },
-  "fake_rail_removed": true,
-  "bottom_dfo_removed": true
+  "foreground_overlay_above_cards": true,
+  "debug_helpers_default_visible": false,
+  "demo_videos_center_first_expected": true,
+  "exactly_five_cards_expected": true
 }
