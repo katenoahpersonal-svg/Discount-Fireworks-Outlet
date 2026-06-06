@@ -1,26 +1,24 @@
-DFO V48 — Clean Manual Ridge Pass / No Bottom DFO
+DFO V49 — Carousel-Ride Grounding / No Bottom DFO
 
 Starting point:
-- V47 manual calibration build.
+- V48 clean manual ridge pass.
 
-What was wrong in V47:
-1. Calibration helpers were ON by default, which made the page look like a broken debug board.
-2. The SLOT_CONFIG y-values placed the card feet on the wrong visual guide, above the real orange ridge.
-3. The center card was too high and the debug panel covered the design.
+What changed:
+1. Kept manual SLOT_CONFIG.
+2. Updated SLOT_CONFIG y-values to move cards down so their bottoms overlap the visible orange ridge:
+   far-left/far-right y 68.5
+   left/right y 64.2
+   center y 61.8
+3. Added a subtle base/track mount under every card.
+4. Added a contact shadow and orange bloom under every card.
+5. Added a shared glowing track-contact rail behind the card bases.
+6. Angled each base/contact shadow by slot so the foot follows the card perspective.
+7. Debug helpers remain hidden by default. Press D to show them.
+8. Kept bottom DFO/firecracker removed.
+9. Did not change background, header, card content, footer, modals, countdowns, or assets.
+10. Node JS syntax check passed.
 
-What changed in V48:
-1. Calibration helpers are hidden by default.
-2. Press D to show/hide red dots and the ring guide.
-3. Cards moved DOWN with manual y-values:
-   far-left/far-right y 64.2
-   left/right y 60.6
-   center y 58.1
-4. Debug ring guide moved down closer to the visible orange ridge for future tuning.
-5. Kept bottom DFO/firecracker removed.
-6. Did not change background, header, card content, footer, modals, countdowns, or assets.
-7. Node JS syntax check passed.
-
-If it still needs adjustment:
-- Move a card DOWN by increasing its y in SLOT_CONFIG.
-- Move a card UP by decreasing its y.
-- Show pins with D only when calibrating.
+If still floating:
+- Increase y for the affected slot in SLOT_CONFIG.
+- Example: center y 61.8 -> 63.0 moves center DOWN.
+- If base feet are too visible, lower opacity in .card3d::before.
