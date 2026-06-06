@@ -1,20 +1,28 @@
 {
-  "version": "v44-ring-snapped-edge-kiss-carousel-no-bottom-dfo",
+  "version": "v45-projected-ring-lock-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "lowered shared ring baseline and tuned radius/depth for card feet on the glow line",
-  "radiusX": "w * 0.405",
-  "depth": "w * 0.185",
-  "ringBaseY": "h * 0.245",
-  "sideDrop": "h * 0.038",
-  "face_rotation_by_slot": {
-    "-2": -30,
-    "-1": -17,
-    "0": 0,
-    "1": 17,
-    "2": 30
+  "main_fix": "bottom-center of every card is anchored to the same projected ellipse",
+  "ellipse": {
+    "centerX": "w * 0.50",
+    "centerY": "h * 0.655",
+    "radiusX": "w * 0.358",
+    "radiusY": "h * 0.080"
   },
+  "angles": [
+    -39,
+    -19.5,
+    0,
+    19.5,
+    39
+  ],
+  "uses_ellipse_equation": true,
   "bottom_dfo_removed": true,
   "background_changed": false,
   "header_changed": false,
-  "card_content_changed": false
+  "card_content_changed": false,
+  "qa_claims": {
+    "card_bottom_centers_same_ellipse": true,
+    "demo_videos_center_first": true,
+    "exactly_five_cards": true
+  }
 }

@@ -511,9 +511,78 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V45 PROJECTED RING-LOCK CAROUSEL
+   Scope:
+   - Carousel placement math only.
+   - The visible orange ring is now treated as the source of truth.
+   - Each card's bottom-center point is projected onto the same ellipse.
+   - Bottom DFO/firecracker remains removed.
+========================= */
+
+@media (min-width:1181px){
+  .scene{
+    perspective:1500px !important;
+    perspective-origin:50% 41% !important;
+  }
+
+  .carousel{
+    transform-style:preserve-3d !important;
+  }
+
+  .card3d{
+    transform-origin:50% 100% !important;
+    transform-style:preserve-3d !important;
+  }
+
+  /* Stronger, narrower foot glow so every card reads as touching the ring line. */
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-5px;
+    width:92%;
+    height:21px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.95;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,139,61,.68) 0%,
+        rgba(255,109,46,.34) 32%,
+        rgba(255,109,46,.13) 56%,
+        transparent 80%);
+    filter:blur(2px);
+    z-index:-1;
+  }
+
+  /* Keep the corrected V43/V44 inward-facing tangent direction. */
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(-30deg) skewY(1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(-17deg) skewY(.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="0"] .card{
+    transform:perspective(950px) rotateY(0deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(17deg) skewY(-.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(30deg) skewY(-1.2deg) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v44-ring-snapped-edge-kiss-carousel-no-bottom-dfo">
+<body data-build="v45-projected-ring-lock-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -730,50 +799,83 @@ function metrics(){
   const centerH = Math.min(520, h * 0.62);
 
   /*
-    V44 ring-snap controls:
-    - radiusX spreads cards just enough to read as adjacent panels, not a clump.
-    - depth keeps the cylinder effect without hiding the side cards too deeply.
-    - ringBaseY is LOWER than V43 so the card feet sit on the glowing ring.
-    - sideDrop makes outer cards slightly lower, matching the visible ellipse curve.
+    V45 projected ring-lock guide.
+    The guide is intentionally based on the visible orange ring:
+    centerX = 50% of scene width
+    centerY = about 66% of the scene height
+    radiusX = about 37% of scene width, tightened slightly so cards edge-kiss
+    radiusY = about 8% of scene height
   */
-  const radiusX = w * 0.405;
-  const depth = w * 0.185;
-  const ringBaseY = h * 0.245;
-  const sideDrop = h * 0.038;
+  const ellipseCenterX = w * 0.50;
+  const ellipseCenterY = h * 0.655;
+  const ellipseRadiusX = w * 0.358;
+  const ellipseRadiusY = h * 0.080;
 
-  return { w, h, centerW, centerH, radiusX, depth, ringBaseY, sideDrop };
+  /*
+    Depth is separate from the 2D projected ellipse, but uses the same angle
+    so the visual order and receding distance match the ring.
+  */
+  const depth = w * 0.165;
+
+  return {
+    w,
+    h,
+    centerW,
+    centerH,
+    ellipseCenterX,
+    ellipseCenterY,
+    ellipseRadiusX,
+    ellipseRadiusY,
+    depth
+  };
 }
 
 function layout(pos){
   const m = metrics();
 
+  /*
+    V45 five visible angular stations.
+    Slightly tighter than 42/21 so the panels edge-kiss like the reference.
+  */
   const angleMap = {
-    "-2": -42,
-    "-1": -21,
+    "-2": -39,
+    "-1": -19.5,
      "0":   0,
-      "1":  21,
-      "2":  42
+      "1":  19.5,
+      "2":  39
   };
 
   if (Math.abs(pos) > 2) {
     const sign = Math.sign(pos);
     const edge = layout(sign < 0 ? -2 : 2);
-    return { ...edge, x: edge.x + sign * m.w * 0.08, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * m.w * 0.07, o:0, pointer:false };
   }
 
   const angle = angleMap[String(pos)];
   const rad = angle * Math.PI / 180;
   const sin = Math.sin(rad);
+  const cos = Math.cos(rad);
   const absSin = Math.abs(sin);
 
   /*
-    One shared ellipse:
-    Every card's bottom-center is derived from the same glowing ring baseline.
-    The side cards move DOWN with the ellipse; they never lift upward.
+    Projected ring-lock:
+    1. Calculate bottom-center point on the visible ellipse.
+    2. Convert the point into CSS x and bottom coordinates.
+    3. Use the same angle for depth and tangent rotation.
   */
-  const x = sin * m.radiusX;
+  const projectedX = m.ellipseCenterX + (sin * m.ellipseRadiusX);
+  const projectedY = m.ellipseCenterY + (cos * m.ellipseRadiusY);
+
+  // translate3d x is relative to the carousel center, so subtract centerX.
+  const x = projectedX - m.ellipseCenterX;
+
+  // CSS bottom is measured from the bottom of the scene.
+  const bottom = m.h - projectedY;
+
+  // Same-angle depth: center is forward, side/far cards recede.
   const z = -absSin * m.depth;
-  const bottom = m.ringBaseY - (absSin * m.sideDrop);
+
+  // Correct inward tangent direction from V43/V44.
   const rotateY = angle * 1.05;
 
   const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
@@ -790,7 +892,9 @@ function layout(pos){
     h: m.centerH * heightScale,
     o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .90),
     pointer:true,
-    angle
+    angle,
+    projectedX,
+    projectedY
   };
 }
 
@@ -803,6 +907,11 @@ function place(el, pos, animate){
   el.style.marginLeft = (-L.w / 2) + "px";
   el.style.bottom = L.y + "px";
 
+  /*
+    Bottom-center anchor:
+    Because transform-origin is bottom center and bottom is computed from the ellipse,
+    each card's bottom-center point sits on the same projected ring guide.
+  */
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
   el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
@@ -811,6 +920,8 @@ function place(el, pos, animate){
   el.classList.toggle("is-active", pos === 0);
   el.dataset.carouselAngle = L.angle;
   el.dataset.wallPos = String(pos);
+  el.dataset.ellipseX = Math.round(L.projectedX);
+  el.dataset.ellipseY = Math.round(L.projectedY);
 }
 function update(){
   els.forEach((el, i) => {
