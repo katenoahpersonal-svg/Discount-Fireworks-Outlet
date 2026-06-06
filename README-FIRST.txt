@@ -1,28 +1,44 @@
-DFO V46 — Per-Slot Ridge-Lock Carousel / No Bottom DFO
+DFO V47 — Manual Visual Calibration Mode / No Bottom DFO
 
 Starting point:
-- V45 projected ring-lock carousel.
+- V46 per-slot ridge lock.
 
 What changed:
-1. Kept V45 ellipse projection.
-2. Added individual per-slot ridge offsets because the visible ring is not a perfect mathematical ellipse.
-3. Moved the front card up a few notches:
-   center ridgeOffset = +0.030 scene height
-4. Adjusted behind cards individually:
-   far-left/far-right = -0.020 scene height
-   left/right = +0.008 scene height
-5. Tightened the angle/radius slightly:
-   angles = -37, -18.5, 0, 18.5, 37
-   radiusX = scene width * 0.338
-6. Kept corrected card rotation direction.
-7. Kept bottom DFO/firecracker removed.
-8. Did not change background, header, card content, modals, footer, countdowns, or assets.
-9. Node JS syntax check passed.
+1. Removed shared ellipse positioning from the active placement logic.
+2. Added SLOT_CONFIG at the top of the script for manual slot-by-slot tuning.
+3. Each slot now has its own:
+   x, y, z, scale, rotateY, faceRotate, faceSkew, width, height
+4. x is percent of scene width from center.
+5. y is percent from top of the scene to the card bottom-center anchor.
+6. Cards are anchored by bottom-center with:
+   left = anchorX
+   top = anchorY
+   transform = translate3d(-50%,-100%,z)
+7. Added visible calibration helpers:
+   - red dot at each card bottom-center anchor
+   - faint dashed ellipse guide
+   - small calibration panel
+8. Press D to hide/show calibration helpers.
+9. Kept bottom DFO/firecracker removed.
+10. Did not change background, header, card content, footer, modals, countdowns, or assets.
+11. Node JS syntax check passed.
 
-Fast tuning knobs after browser test:
-- Center front too low? Increase ridgeOffsetMap["0"] from 0.030 to 0.040.
-- Center front too high? Decrease ridgeOffsetMap["0"] from 0.030 to 0.020.
-- Side cards too high? Lower ridgeOffsetMap["-1"] and ["1"].
-- Far cards too low? Raise ridgeOffsetMap["-2"] and ["2"].
-- Cards still too far apart? Lower ellipseRadiusX from 0.338 to 0.320.
-- Cards overlap too much? Raise ellipseRadiusX from 0.338 to 0.355.
+How to tune:
+- Open index.html.
+- Find SLOT_CONFIG.
+- Move a card DOWN by increasing y.
+- Move a card UP by decreasing y.
+- Move a card left/right by changing x.
+- Make cards closer by reducing the absolute x values.
+- Make a card larger/smaller with scale, width, height.
+- Adjust visual facing with rotateY and faceRotate.
+
+Current initial values:
+- far-left  x -34.8 y 58.7
+- left      x -19.8 y 54.6
+- center    x   0.0 y 50.6
+- right     x  19.8 y 54.6
+- far-right x  34.8 y 58.7
+
+Goal:
+Put each red dot directly on the visible orange glow ridge.

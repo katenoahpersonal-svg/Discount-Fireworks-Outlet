@@ -1,27 +1,63 @@
 {
-  "version": "v46-per-slot-ridge-lock-carousel-no-bottom-dfo",
+  "version": "v47-manual-calibration-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "slot-specific ridge offsets added after projected ellipse",
-  "angles": [
-    -37,
-    -18.5,
-    0,
-    18.5,
-    37
-  ],
-  "ellipse": {
-    "centerX": "w * 0.50",
-    "centerY": "h * 0.655",
-    "radiusX": "w * 0.338",
-    "radiusY": "h * 0.080"
+  "main_fix": "manual SLOT_CONFIG with per-slot bottom-center anchors",
+  "uses_ellipse_math_for_active_placement": false,
+  "debug_helpers": {
+    "red_anchor_dots": true,
+    "dashed_ring_guide": true,
+    "calibration_panel": true,
+    "toggle_key": "D",
+    "default_visible": true
   },
-  "ridgeOffsetMap": {
-    "-2": "-h * 0.020",
-    "-1": "h * 0.008",
-    "0": "h * 0.030",
-    "1": "h * 0.008",
-    "2": "-h * 0.020"
+  "slot_config": {
+    "-2": {
+      "x": -34.8,
+      "y": 58.7,
+      "z": -235,
+      "scale": 0.76,
+      "rotateY": -25,
+      "width": 0.58,
+      "height": 0.84
+    },
+    "-1": {
+      "x": -19.8,
+      "y": 54.6,
+      "z": -105,
+      "scale": 0.88,
+      "rotateY": -13,
+      "width": 0.78,
+      "height": 0.94
+    },
+    "0": {
+      "x": 0.0,
+      "y": 50.6,
+      "z": 0,
+      "scale": 1.0,
+      "rotateY": 0,
+      "width": 1.0,
+      "height": 1.0
+    },
+    "1": {
+      "x": 19.8,
+      "y": 54.6,
+      "z": -105,
+      "scale": 0.88,
+      "rotateY": 13,
+      "width": 0.78,
+      "height": 0.94
+    },
+    "2": {
+      "x": 34.8,
+      "y": 58.7,
+      "z": -235,
+      "scale": 0.76,
+      "rotateY": 25,
+      "width": 0.58,
+      "height": 0.84
+    }
   },
-  "bottom_dfo_removed": true,
-  "changed_only_carousel_placement": true
+  "exactly_five_slots": true,
+  "demo_videos_center_first": true,
+  "changed_only_carousel_placement_system": true
 }

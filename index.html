@@ -644,9 +644,147 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V47 MANUAL VISUAL CALIBRATION MODE
+   Scope:
+   - Carousel placement only.
+   - No ellipse math.
+   - Every visible slot has hand-tunable designer controls.
+   - Debug pins/guides included for visual alignment.
+========================= */
+
+@media (min-width:1181px){
+  .scene{
+    perspective:1500px !important;
+    perspective-origin:50% 41% !important;
+  }
+
+  .carousel{
+    transform-style:preserve-3d !important;
+  }
+
+  .card3d{
+    transform-origin:50% 100% !important;
+    transform-style:preserve-3d !important;
+    will-change:transform,opacity,filter,left,top !important;
+  }
+
+  /* Use data-driven CSS variables so rotation can be edited from SLOT_CONFIG. */
+  .card3d .card{
+    transform-style:preserve-3d !important;
+    backface-visibility:hidden !important;
+    transform-origin:50% 50% !important;
+    transform:perspective(950px) rotateY(var(--face-rotate, 0deg)) skewY(var(--face-skew, 0deg)) !important;
+    transition:transform .55s cubic-bezier(.22,.8,.2,1), box-shadow .55s ease, filter .55s ease !important;
+  }
+
+  /* Bottom contact glow lives exactly at each manually controlled card foot. */
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-3px;
+    width:88%;
+    height:18px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.92;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,145,62,.62) 0%,
+        rgba(255,109,46,.30) 34%,
+        rgba(255,109,46,.12) 58%,
+        transparent 82%);
+    filter:blur(1.8px);
+    z-index:-1;
+  }
+
+  /*
+    CALIBRATION HELPERS
+    Default ON for V47 because this version is meant for aligning pins to the painted ridge.
+    Press D to toggle helpers.
+  */
+  body:not(.calibration-on) .calibration-dot,
+  body:not(.calibration-on) .ring-guide,
+  body:not(.calibration-on) .calibration-panel{
+    display:none !important;
+  }
+
+  .calibration-dot{
+    position:absolute;
+    width:7px;
+    height:7px;
+    margin-left:-3.5px;
+    margin-top:-3.5px;
+    border-radius:999px;
+    background:#ff2020;
+    border:1px solid #fff;
+    box-shadow:0 0 0 2px rgba(255,32,32,.35), 0 0 14px rgba(255,32,32,.85);
+    z-index:200;
+    pointer-events:none;
+  }
+
+  .calibration-dot::after{
+    content:attr(data-pos);
+    position:absolute;
+    left:9px;
+    top:-7px;
+    color:#fff;
+    font:700 10px/1 Arial,sans-serif;
+    text-shadow:0 1px 3px #000;
+    white-space:nowrap;
+  }
+
+  .ring-guide{
+    position:absolute;
+    left:50%;
+    top:66.5%;
+    width:74vw;
+    height:16vh;
+    transform:translate(-50%,-50%);
+    border:1px dashed rgba(255,50,50,.62);
+    border-radius:50%;
+    box-shadow:0 0 18px rgba(255,50,50,.25);
+    z-index:3;
+    pointer-events:none;
+  }
+
+  .calibration-panel{
+    position:fixed;
+    right:16px;
+    top:126px;
+    width:270px;
+    max-height:52vh;
+    overflow:auto;
+    z-index:300;
+    padding:12px;
+    border:1px solid rgba(255,109,46,.55);
+    border-radius:12px;
+    background:rgba(2,4,12,.82);
+    color:#fff;
+    box-shadow:0 0 24px rgba(255,109,46,.24);
+    font:12px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    backdrop-filter:blur(12px);
+  }
+
+  .calibration-panel b{
+    color:#ff7a35;
+    display:block;
+    margin-bottom:6px;
+    letter-spacing:.08em;
+  }
+
+  .calibration-panel code{
+    color:#ffd8a8;
+    white-space:pre-wrap;
+  }
+}
+
 </style>
 </head>
-<body data-build="v46-per-slot-ridge-lock-carousel-no-bottom-dfo">
+<body data-build="v47-manual-calibration-carousel-no-bottom-dfo" class="calibration-on">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -674,6 +812,8 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   </header>
 
   <section class="scene" aria-label="DFO fireworks show carousel">
+    <div class="ring-guide" aria-hidden="true"></div>
+    <div id="calibrationDots" aria-hidden="true"></div>
     <div class="carousel" id="carousel"></div>
   </section>
 
@@ -855,6 +995,30 @@ function offsetFor(i){            // nearest wrapped offset in -2..2
   if (o > N/2) o -= N;
   return o;
 }
+/*
+  =========================
+  V47 MANUAL SLOT CONFIG
+  =========================
+  This is the tuning table.
+  Edit ONLY these numbers to visually pin the cards to the painted orange ring.
+
+  x = percent of scene width from center. Negative = left, positive = right.
+  y = percent from TOP of scene to the bottom-center anchor point.
+  z = depth in px.
+  scale = overall slot scale.
+  rotateY = wrapper rotation.
+  faceRotate = actual card-face rotation.
+  faceSkew = tiny vertical skew to sell the curved-wall illusion.
+  width/height = multipliers against the center card size.
+*/
+const SLOT_CONFIG = {
+  "-2": { name:"far-left",  x:-34.8, y:58.7, z:-235, scale:.76, rotateY:-25, faceRotate:-30, faceSkew: 1.2, width:.58, height:.84 },
+  "-1": { name:"left",      x:-19.8, y:54.6, z:-105, scale:.88, rotateY:-13, faceRotate:-17, faceSkew: .45, width:.78, height:.94 },
+  "0":  { name:"center",    x:  0.0, y:50.6, z:   0, scale:1.00, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
+  "1":  { name:"right",     x: 19.8, y:54.6, z:-105, scale:.88, rotateY: 13, faceRotate: 17, faceSkew:-.45, width:.78, height:.94 },
+  "2":  { name:"far-right", x: 34.8, y:58.7, z:-235, scale:.76, rotateY: 25, faceRotate: 30, faceSkew:-1.2, width:.58, height:.84 }
+};
+
 function metrics(){
   const w = scene.clientWidth  || window.innerWidth;
   const h = scene.clientHeight || window.innerHeight;
@@ -862,105 +1026,37 @@ function metrics(){
   const centerW = Math.min(392, w * 0.235);
   const centerH = Math.min(520, h * 0.62);
 
-  /*
-    V46:
-    Keep the ring-lock idea, but tighten the arc and use per-slot ridge offsets.
-    The background ring is painterly/photo-like, not a perfect computed ellipse,
-    so each visible position needs its own small Y correction.
-  */
-  const ellipseCenterX = w * 0.50;
-  const ellipseCenterY = h * 0.655;
-  const ellipseRadiusX = w * 0.338;
-  const ellipseRadiusY = h * 0.080;
-  const depth = w * 0.165;
-
-  return {
-    w,
-    h,
-    centerW,
-    centerH,
-    ellipseCenterX,
-    ellipseCenterY,
-    ellipseRadiusX,
-    ellipseRadiusY,
-    depth
-  };
+  return { w, h, centerW, centerH };
 }
 
 function layout(pos){
   const m = metrics();
 
-  /*
-    Tighter angular spacing makes the cards feel like neighboring wall panels.
-    The slot-specific ridge offsets below do the real “feet on ridge” work.
-  */
-  const angleMap = {
-    "-2": -37,
-    "-1": -18.5,
-     "0":   0,
-      "1":  18.5,
-      "2":  37
-  };
-
-  /*
-    Individual ridge offsets.
-    Positive CSS bottom = move the card visually UP.
-    Negative CSS bottom = move the card visually DOWN.
-
-    Current goal from the screenshot:
-    - front card up a few notches to meet the upper ridge
-    - side cards each corrected to the same visual ring curve
-    - far cards lowered slightly so they do not look pinned to a fake straight line
-  */
-  const ridgeOffsetMap = {
-    "-2": -m.h * 0.020,
-    "-1":  m.h * 0.008,
-     "0":  m.h * 0.030,
-      "1":  m.h * 0.008,
-      "2": -m.h * 0.020
-  };
-
   if (Math.abs(pos) > 2) {
     const sign = Math.sign(pos);
     const edge = layout(sign < 0 ? -2 : 2);
-    return { ...edge, x: edge.x + sign * m.w * 0.06, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * (m.w * .06), opacity:0, pointer:false };
   }
 
-  const angle = angleMap[String(pos)];
-  const rad = angle * Math.PI / 180;
-  const sin = Math.sin(rad);
-  const cos = Math.cos(rad);
-  const absSin = Math.abs(sin);
-
-  const projectedX = m.ellipseCenterX + (sin * m.ellipseRadiusX);
-  const projectedY = m.ellipseCenterY + (cos * m.ellipseRadiusY);
-
-  const x = projectedX - m.ellipseCenterX;
-  const baseBottom = m.h - projectedY;
-  const bottom = baseBottom + ridgeOffsetMap[String(pos)];
-
-  const z = -absSin * m.depth;
-  const rotateY = angle * 1.05;
-
-  const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
-  const widthScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.78 : 0.58);
-  const heightScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.94 : 0.84);
+  const cfg = SLOT_CONFIG[String(pos)];
+  const anchorX = (m.w * 0.50) + (m.w * (cfg.x / 100));
+  const anchorY = m.h * (cfg.y / 100);
 
   return {
-    x,
-    y: bottom,
-    z,
-    ry: rotateY,
-    s: scale,
-    w: m.centerW * widthScale,
-    h: m.centerH * heightScale,
-    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .90),
-    pointer:true,
-    angle,
-    projectedX,
-    projectedY,
-    baseBottom,
-    ridgeOffset: ridgeOffsetMap[String(pos)]
+    cfg,
+    anchorX,
+    anchorY,
+    x: anchorX - (m.w * 0.50),
+    top: anchorY,
+    z: cfg.z,
+    scale: cfg.scale,
+    ry: cfg.rotateY,
+    faceRotate: cfg.faceRotate,
+    faceSkew: cfg.faceSkew,
+    w: m.centerW * cfg.width,
+    h: m.centerH * cfg.height,
+    opacity: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .90),
+    pointer:true
   };
 }
 
@@ -970,21 +1066,31 @@ function place(el, pos, animate){
 
   el.style.width = L.w + "px";
   el.style.height = L.h + "px";
-  el.style.marginLeft = (-L.w / 2) + "px";
-  el.style.bottom = L.y + "px";
 
-  el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
-  el.style.opacity = L.o;
+  /*
+    Manual calibration anchors by bottom-center:
+    - left = anchorX
+    - top = anchorY
+    - translate(-50%, -100%) turns that point into the card's bottom-center.
+    This makes the red debug dot and the actual card foot share the same point.
+  */
+  el.style.left = L.anchorX + "px";
+  el.style.top = L.anchorY + "px";
+  el.style.bottom = "auto";
+  el.style.marginLeft = "0";
+
+  el.style.transform = `translate3d(-50%,-100%,${L.z}px) rotateY(${L.ry}deg) scale(${L.scale})`;
+  el.style.opacity = L.opacity;
   el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
   el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.95:0.84}) saturate(${Math.abs(pos)===1?1:0.90})`;
   el.style.pointerEvents = L.pointer === false ? "none" : "auto";
   el.classList.toggle("is-active", pos === 0);
-  el.dataset.carouselAngle = L.angle;
   el.dataset.wallPos = String(pos);
-  el.dataset.ellipseX = Math.round(L.projectedX);
-  el.dataset.ellipseY = Math.round(L.projectedY);
-  el.dataset.baseBottom = Math.round(L.baseBottom);
-  el.dataset.ridgeOffset = Math.round(L.ridgeOffset);
+  el.dataset.slotName = L.cfg.name;
+  el.style.setProperty("--face-rotate", L.faceRotate + "deg");
+  el.style.setProperty("--face-skew", L.faceSkew + "deg");
+
+  updateCalibrationDot(pos, L);
 }
 function update(){
   els.forEach((el, i) => {
@@ -999,6 +1105,30 @@ function update(){
     prevPos[i] = pos;
   });
 }
+
+function updateCalibrationDot(pos, L){
+  const holder = document.getElementById("calibrationDots");
+  if (!holder) return;
+
+  let dot = holder.querySelector(`[data-dot-pos="${pos}"]`);
+  if (!dot) {
+    dot = document.createElement("span");
+    dot.className = "calibration-dot";
+    dot.dataset.dotPos = String(pos);
+    dot.dataset.pos = String(pos);
+    holder.appendChild(dot);
+  }
+
+  dot.style.left = L.anchorX + "px";
+  dot.style.top = L.anchorY + "px";
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key && event.key.toLowerCase() === "d") {
+    document.body.classList.toggle("calibration-on");
+  }
+});
+
 function rotate(dir){ active = (active + dir + N) % N; update(); }
 function goTo(id){ const i = cards.findIndex(c => c.id === id); if (i >= 0){ active = i; update(); } }
 
@@ -1067,5 +1197,17 @@ update();
 countdown();
 setInterval(countdown, 1000);
 </script>
+
+<div class="calibration-panel" aria-hidden="true">
+  <b>V47 CALIBRATION MODE</b>
+  <div>Press <strong>D</strong> to hide/show pins.</div>
+  <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
+  <code>-2 far-left
+-1 left
+ 0 center
+ 1 right
+ 2 far-right</code>
+</div>
+
 </body>
 </html>
