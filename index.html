@@ -449,9 +449,71 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V44 RING-SNAPPED / EDGE-KISS PASS
+   Fix:
+   The carousel rotation is now correct, but the panels still need to sit ON the glow line
+   and read like one connected circular wall. This pass lowers the shared baseline,
+   spreads/aligns the arc, and strengthens the bottom contact point.
+========================= */
+
+@media (min-width:1181px){
+  .scene{
+    perspective:1450px !important;
+    perspective-origin:50% 41% !important;
+  }
+
+  .card3d{
+    transform-origin:50% 100% !important;
+  }
+
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-4px;
+    width:86%;
+    height:24px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.92;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,126,50,.60) 0%,
+        rgba(255,109,46,.30) 30%,
+        rgba(255,109,46,.12) 54%,
+        transparent 78%);
+    filter:blur(2.4px);
+    z-index:-1;
+  }
+
+  /* Keep the corrected inward-facing tangent direction from V43. */
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(-30deg) skewY(1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(-17deg) skewY(.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="0"] .card{
+    transform:perspective(950px) rotateY(0deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(17deg) skewY(-.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(30deg) skewY(-1.2deg) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v43-reversed-tangent-cylinder-carousel-no-bottom-dfo">
+<body data-build="v44-ring-snapped-edge-kiss-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -668,15 +730,16 @@ function metrics(){
   const centerH = Math.min(520, h * 0.62);
 
   /*
-    V42 geometry:
-    Radius is tighter so the cards feel like one circle, not five islands.
-    Depth is stronger so side cards visibly recede.
-    A smaller perspective in CSS makes rotateY visible.
+    V44 ring-snap controls:
+    - radiusX spreads cards just enough to read as adjacent panels, not a clump.
+    - depth keeps the cylinder effect without hiding the side cards too deeply.
+    - ringBaseY is LOWER than V43 so the card feet sit on the glowing ring.
+    - sideDrop makes outer cards slightly lower, matching the visible ellipse curve.
   */
-  const radiusX = w * 0.385;
-  const depth = w * 0.255;
-  const ringBaseY = h * 0.292;
-  const sideDrop = h * 0.044;
+  const radiusX = w * 0.405;
+  const depth = w * 0.185;
+  const ringBaseY = h * 0.245;
+  const sideDrop = h * 0.038;
 
   return { w, h, centerW, centerH, radiusX, depth, ringBaseY, sideDrop };
 }
@@ -685,17 +748,17 @@ function layout(pos){
   const m = metrics();
 
   const angleMap = {
-    "-2": -44,
-    "-1": -23,
+    "-2": -42,
+    "-1": -21,
      "0":   0,
-      "1":  23,
-      "2":  44
+      "1":  21,
+      "2":  42
   };
 
   if (Math.abs(pos) > 2) {
     const sign = Math.sign(pos);
     const edge = layout(sign < 0 ? -2 : 2);
-    return { ...edge, x: edge.x + sign * m.w * 0.10, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * m.w * 0.08, o:0, pointer:false };
   }
 
   const angle = angleMap[String(pos)];
@@ -703,17 +766,14 @@ function layout(pos){
   const sin = Math.sin(rad);
   const absSin = Math.abs(sin);
 
+  /*
+    One shared ellipse:
+    Every card's bottom-center is derived from the same glowing ring baseline.
+    The side cards move DOWN with the ellipse; they never lift upward.
+  */
   const x = sin * m.radiusX;
   const z = -absSin * m.depth;
-
-  // Side cards must drop onto the visible orange ring, not rise upward.
   const bottom = m.ringBaseY - (absSin * m.sideDrop);
-
-  /*
-    Wrapper rotation is stronger than V41.
-    CSS also rotates the actual .card face by data-wall-pos,
-    so the side panels cannot still visually face front.
-  */
   const rotateY = angle * 1.05;
 
   const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
@@ -728,7 +788,7 @@ function layout(pos){
     s: scale,
     w: m.centerW * widthScale,
     h: m.centerH * heightScale,
-    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .97 : .88),
+    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .90),
     pointer:true,
     angle
   };
@@ -746,7 +806,7 @@ function place(el, pos, animate){
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
   el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
-  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.94:0.83}) saturate(${Math.abs(pos)===1?0.98:0.90})`;
+  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.95:0.84}) saturate(${Math.abs(pos)===1?1:0.90})`;
   el.style.pointerEvents = L.pointer === false ? "none" : "auto";
   el.classList.toggle("is-active", pos === 0);
   el.dataset.carouselAngle = L.angle;

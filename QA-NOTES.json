@@ -1,8 +1,11 @@
 {
-  "version": "v43-reversed-tangent-cylinder-carousel-no-bottom-dfo",
+  "version": "v44-ring-snapped-edge-kiss-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "reversed wrapper and face rotateY direction from V42",
-  "wrapper_rotation_multiplier": 1.05,
+  "main_fix": "lowered shared ring baseline and tuned radius/depth for card feet on the glow line",
+  "radiusX": "w * 0.405",
+  "depth": "w * 0.185",
+  "ringBaseY": "h * 0.245",
+  "sideDrop": "h * 0.038",
   "face_rotation_by_slot": {
     "-2": -30,
     "-1": -17,

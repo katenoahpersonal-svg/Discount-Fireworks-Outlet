@@ -1,21 +1,19 @@
-DFO V43 — Reversed Tangent Cylinder Direction / No Bottom DFO
+DFO V44 — Ring-Snapped Edge-Kiss Carousel / No Bottom DFO
 
 Starting point:
-- V42 forced tangent cylinder carousel.
+- V43 corrected tangent direction.
 
 What changed:
-1. Kept the V42 cylinder geometry.
-2. Reversed the wrapper rotateY direction.
-3. Reversed the actual card-face rotateY direction.
-4. Kept the bottom DFO/firecracker removed.
-5. Did not change the background, header, card content, footer, modals, or countdowns.
-6. Ran Node JavaScript syntax check: passed.
+1. Kept the V43 correct rotation direction.
+2. Lowered the shared ring baseline so card bottoms sit on the orange glow ring.
+3. Added a stronger contact glow underneath each card.
+4. Adjusted radius/depth so the cards read more like neighboring panels on one circular wall.
+5. Kept bottom DFO/firecracker removed.
+6. Did not change header, background, content, footer, modals, or countdowns.
+7. Node JS syntax check passed.
 
-Why:
-V42 finally made the cards rotate, but they rotated in the wrong direction.
-V43 flips the tangent direction so the cards should now wrap around the carousel wall the correct way.
-
-If it is now too angled:
-- reduce 30/17 to 24/12 in the V43 CSS block.
-If it still needs more curve:
-- increase 30/17 to 36/22.
+If the cards still need to move:
+- Lower all cards more: reduce ringBaseY from 0.245 to 0.225.
+- Raise all cards: increase ringBaseY from 0.245 to 0.260.
+- Make cards touch/overlap more: reduce radiusX from 0.405 to 0.385.
+- Spread cards apart more: increase radiusX from 0.405 to 0.425.
