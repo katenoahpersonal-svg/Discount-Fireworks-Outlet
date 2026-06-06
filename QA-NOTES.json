@@ -1,21 +1,25 @@
 {
-  "version": "v51-foreground-ring-occlusion-stage-composite",
-  "node_syntax_check": "passed",
-  "base": "v50",
-  "background_changed": false,
-  "header_changed": false,
-  "card_content_changed": false,
-  "footer_changed": false,
-  "modals_changed": false,
-  "countdowns_changed": false,
-  "bottom_dfo_removed": true,
-  "new_layers": {
-    "rear_atmosphere_layer": true,
-    "foreground_ring_occlusion": true,
-    "card_contact_shadows_below_overlay": true
-  },
-  "foreground_overlay_above_cards": true,
-  "debug_helpers_default_visible": false,
-  "demo_videos_center_first_expected": true,
-  "exactly_five_cards_expected": true
+  "version": "v52-image-state-carousel",
+  "approach": "cinematic full-scene image states + coded interactive overlay",
+  "state_images": [
+    "assets/state-01-videos-center.jpg",
+    "assets/state-02-locations-center.jpg",
+    "assets/state-03-build-center.jpg",
+    "assets/state-04-favorites-center.jpg",
+    "assets/state-05-social-center.jpg"
+  ],
+  "exactly_five_states": true,
+  "initial_state": "videos",
+  "desktop_live_html_cards": false,
+  "coded_header": true,
+  "coded_footer": true,
+  "coded_bottom_countdown": true,
+  "coded_modals": [
+    "videos",
+    "locations",
+    "contact/build",
+    "favorites",
+    "social"
+  ],
+  "known_limitation": "State images are derived from available proof screenshots/assets, not newly generated AI state renders."
 }

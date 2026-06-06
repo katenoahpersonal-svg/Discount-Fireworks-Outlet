@@ -1,32 +1,33 @@
-DFO V51 — Foreground Ring Occlusion / Stage Composite / No Bottom DFO
+DFO V52 — Cinematic Image-State Carousel
 
-Starting point:
-- V50 real ridge drop.
+This is the new approach:
+- Desktop hero uses full-scene cinematic state images instead of live HTML cards.
+- Header, countdowns, footer, modals, links, and hotspots are real coded layers.
+- The carousel switches between 5 image states:
+  1. Videos centered
+  2. Locations centered
+  3. Build Your Show centered
+  4. Finale Favorites centered
+  5. Social centered
 
-What changed:
-1. Did not redesign background/header/cards/footer/modals/countdowns.
-2. Added rear-atmosphere-layer behind the cards:
-   - orange bloom
-   - haze
-   - light wash to connect cards to stage
-3. Added foreground-ring-occlusion above the cards:
-   - transparent CSS overlay
-   - front orange ring lip
-   - warm reflection haze
-   - subtle shadow/bloom
-4. The foreground ring overlay sits above the lower card edges so the platform can visually pass in front of the cards.
-5. Kept individual card contact shadows below the foreground overlay.
-6. Kept manual SLOT_CONFIG from V50.
-7. Kept bottom DFO/firecracker removed.
-8. Debug helpers remain hidden by default. Press D to show them.
-9. Node JS syntax check passed.
+Important note:
+The state images are built from the available visual proofs/assets in this chat.
+They are not brand-new AI generations, because this environment cannot generate new images directly.
+The structure is now correct for the approach: once truly final AI state images are generated, replace the JPGs in /assets with the same filenames.
 
-Why this matters:
-The reference image works because the environment is composited both behind and in front of the cards.
-V51 adds that missing foreground occlusion layer so the cards stop reading as pasted on top of a flat background.
+Upload to GitHub Pages:
+- index.html
+- assets folder
 
-Fast tuning:
-- If overlay covers too much card: set .foreground-ring-occlusion top from 70.4% to 71.2% or lower opacity.
-- If cards still float: set top from 70.4% to 69.6% and/or increase opacity.
-- If the ring lip is too strong: lower opacity of .foreground-ring-occlusion::before.
-- If the haze is too smoky: lower opacity of .foreground-ring-occlusion::after.
+Hotkeys:
+- ArrowLeft / ArrowRight: rotate states
+- H: show invisible hotspot zones for debugging
+
+QA:
+- Exactly 5 state images.
+- Videos starts centered.
+- Header is coded.
+- Bottom countdown is coded.
+- Footer is coded.
+- Modals are coded.
+- Main desktop carousel no longer uses live HTML cards.
