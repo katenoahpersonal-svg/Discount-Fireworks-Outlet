@@ -1,30 +1,28 @@
-DFO V45 — Projected Ring-Lock Carousel / No Bottom DFO
+DFO V46 — Per-Slot Ridge-Lock Carousel / No Bottom DFO
 
 Starting point:
-- V44 ring-snapped edge-kiss build.
+- V45 projected ring-lock carousel.
 
 What changed:
-1. Rebuilt only the carousel placement math.
-2. The visible orange floor ring is treated as the source of truth.
-3. Added an invisible ellipse guide:
-   centerX = scene width * 0.50
-   centerY = scene height * 0.655
-   radiusX = scene width * 0.358
-   radiusY = scene height * 0.080
-4. Every card's bottom-center point is calculated from that same ellipse:
-   x = centerX + sin(angle) * radiusX
-   y = centerY + cos(angle) * radiusY
-   bottom = sceneHeight - y
-5. Angles tightened to -39, -19.5, 0, 19.5, 39 for closer edge-kiss spacing.
-6. Kept corrected V43/V44 rotation direction.
+1. Kept V45 ellipse projection.
+2. Added individual per-slot ridge offsets because the visible ring is not a perfect mathematical ellipse.
+3. Moved the front card up a few notches:
+   center ridgeOffset = +0.030 scene height
+4. Adjusted behind cards individually:
+   far-left/far-right = -0.020 scene height
+   left/right = +0.008 scene height
+5. Tightened the angle/radius slightly:
+   angles = -37, -18.5, 0, 18.5, 37
+   radiusX = scene width * 0.338
+6. Kept corrected card rotation direction.
 7. Kept bottom DFO/firecracker removed.
 8. Did not change background, header, card content, modals, footer, countdowns, or assets.
 9. Node JS syntax check passed.
 
-If browser test needs final tuning:
-- If cards are too high above ring: increase ellipseCenterY from 0.655 to 0.670.
-- If cards are too low: decrease ellipseCenterY from 0.655 to 0.640.
-- If cards are too spread apart: reduce ellipseRadiusX from 0.358 to 0.340.
-- If cards overlap too much: increase ellipseRadiusX from 0.358 to 0.375.
-- If curve is too flat: increase ellipseRadiusY from 0.080 to 0.095.
-- If curve is too deep: reduce ellipseRadiusY from 0.080 to 0.065.
+Fast tuning knobs after browser test:
+- Center front too low? Increase ridgeOffsetMap["0"] from 0.030 to 0.040.
+- Center front too high? Decrease ridgeOffsetMap["0"] from 0.030 to 0.020.
+- Side cards too high? Lower ridgeOffsetMap["-1"] and ["1"].
+- Far cards too low? Raise ridgeOffsetMap["-2"] and ["2"].
+- Cards still too far apart? Lower ellipseRadiusX from 0.338 to 0.320.
+- Cards overlap too much? Raise ellipseRadiusX from 0.338 to 0.355.

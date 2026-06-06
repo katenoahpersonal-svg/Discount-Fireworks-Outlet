@@ -580,9 +580,73 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V46 PER-SLOT RIDGE LOCK
+   Fix:
+   V45 used one ellipse, but the visible background ring is not a perfect mathematical ellipse
+   from the browser camera angle. V46 keeps the projected ellipse but adds individual
+   slot-specific ridge offsets so each card can land on the visible glow ridge.
+========================= */
+
+@media (min-width:1181px){
+  .scene{
+    perspective:1500px !important;
+    perspective-origin:50% 41% !important;
+  }
+
+  .card3d{
+    transform-origin:50% 100% !important;
+    transform-style:preserve-3d !important;
+  }
+
+  /* Narrower “foot” glow: this should sit right on the ridge, not below it. */
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-3px;
+    width:88%;
+    height:18px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.92;
+    background:
+      radial-gradient(ellipse at center,
+        rgba(255,145,62,.62) 0%,
+        rgba(255,109,46,.30) 34%,
+        rgba(255,109,46,.12) 58%,
+        transparent 82%);
+    filter:blur(1.8px);
+    z-index:-1;
+  }
+
+  /* Keep corrected inward tangent direction. */
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(-30deg) skewY(1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(-17deg) skewY(.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="0"] .card{
+    transform:perspective(950px) rotateY(0deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(17deg) skewY(-.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(30deg) skewY(-1.2deg) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v45-projected-ring-lock-carousel-no-bottom-dfo">
+<body data-build="v46-per-slot-ridge-lock-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -799,22 +863,15 @@ function metrics(){
   const centerH = Math.min(520, h * 0.62);
 
   /*
-    V45 projected ring-lock guide.
-    The guide is intentionally based on the visible orange ring:
-    centerX = 50% of scene width
-    centerY = about 66% of the scene height
-    radiusX = about 37% of scene width, tightened slightly so cards edge-kiss
-    radiusY = about 8% of scene height
+    V46:
+    Keep the ring-lock idea, but tighten the arc and use per-slot ridge offsets.
+    The background ring is painterly/photo-like, not a perfect computed ellipse,
+    so each visible position needs its own small Y correction.
   */
   const ellipseCenterX = w * 0.50;
   const ellipseCenterY = h * 0.655;
-  const ellipseRadiusX = w * 0.358;
+  const ellipseRadiusX = w * 0.338;
   const ellipseRadiusY = h * 0.080;
-
-  /*
-    Depth is separate from the 2D projected ellipse, but uses the same angle
-    so the visual order and receding distance match the ring.
-  */
   const depth = w * 0.165;
 
   return {
@@ -834,21 +891,39 @@ function layout(pos){
   const m = metrics();
 
   /*
-    V45 five visible angular stations.
-    Slightly tighter than 42/21 so the panels edge-kiss like the reference.
+    Tighter angular spacing makes the cards feel like neighboring wall panels.
+    The slot-specific ridge offsets below do the real “feet on ridge” work.
   */
   const angleMap = {
-    "-2": -39,
-    "-1": -19.5,
+    "-2": -37,
+    "-1": -18.5,
      "0":   0,
-      "1":  19.5,
-      "2":  39
+      "1":  18.5,
+      "2":  37
+  };
+
+  /*
+    Individual ridge offsets.
+    Positive CSS bottom = move the card visually UP.
+    Negative CSS bottom = move the card visually DOWN.
+
+    Current goal from the screenshot:
+    - front card up a few notches to meet the upper ridge
+    - side cards each corrected to the same visual ring curve
+    - far cards lowered slightly so they do not look pinned to a fake straight line
+  */
+  const ridgeOffsetMap = {
+    "-2": -m.h * 0.020,
+    "-1":  m.h * 0.008,
+     "0":  m.h * 0.030,
+      "1":  m.h * 0.008,
+      "2": -m.h * 0.020
   };
 
   if (Math.abs(pos) > 2) {
     const sign = Math.sign(pos);
     const edge = layout(sign < 0 ? -2 : 2);
-    return { ...edge, x: edge.x + sign * m.w * 0.07, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * m.w * 0.06, o:0, pointer:false };
   }
 
   const angle = angleMap[String(pos)];
@@ -857,25 +932,14 @@ function layout(pos){
   const cos = Math.cos(rad);
   const absSin = Math.abs(sin);
 
-  /*
-    Projected ring-lock:
-    1. Calculate bottom-center point on the visible ellipse.
-    2. Convert the point into CSS x and bottom coordinates.
-    3. Use the same angle for depth and tangent rotation.
-  */
   const projectedX = m.ellipseCenterX + (sin * m.ellipseRadiusX);
   const projectedY = m.ellipseCenterY + (cos * m.ellipseRadiusY);
 
-  // translate3d x is relative to the carousel center, so subtract centerX.
   const x = projectedX - m.ellipseCenterX;
+  const baseBottom = m.h - projectedY;
+  const bottom = baseBottom + ridgeOffsetMap[String(pos)];
 
-  // CSS bottom is measured from the bottom of the scene.
-  const bottom = m.h - projectedY;
-
-  // Same-angle depth: center is forward, side/far cards recede.
   const z = -absSin * m.depth;
-
-  // Correct inward tangent direction from V43/V44.
   const rotateY = angle * 1.05;
 
   const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
@@ -894,7 +958,9 @@ function layout(pos){
     pointer:true,
     angle,
     projectedX,
-    projectedY
+    projectedY,
+    baseBottom,
+    ridgeOffset: ridgeOffsetMap[String(pos)]
   };
 }
 
@@ -907,11 +973,6 @@ function place(el, pos, animate){
   el.style.marginLeft = (-L.w / 2) + "px";
   el.style.bottom = L.y + "px";
 
-  /*
-    Bottom-center anchor:
-    Because transform-origin is bottom center and bottom is computed from the ellipse,
-    each card's bottom-center point sits on the same projected ring guide.
-  */
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
   el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
@@ -922,6 +983,8 @@ function place(el, pos, animate){
   el.dataset.wallPos = String(pos);
   el.dataset.ellipseX = Math.round(L.projectedX);
   el.dataset.ellipseY = Math.round(L.projectedY);
+  el.dataset.baseBottom = Math.round(L.baseBottom);
+  el.dataset.ridgeOffset = Math.round(L.ridgeOffset);
 }
 function update(){
   els.forEach((el, i) => {

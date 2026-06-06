@@ -1,28 +1,27 @@
 {
-  "version": "v45-projected-ring-lock-carousel-no-bottom-dfo",
+  "version": "v46-per-slot-ridge-lock-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "bottom-center of every card is anchored to the same projected ellipse",
+  "main_fix": "slot-specific ridge offsets added after projected ellipse",
+  "angles": [
+    -37,
+    -18.5,
+    0,
+    18.5,
+    37
+  ],
   "ellipse": {
     "centerX": "w * 0.50",
     "centerY": "h * 0.655",
-    "radiusX": "w * 0.358",
+    "radiusX": "w * 0.338",
     "radiusY": "h * 0.080"
   },
-  "angles": [
-    -39,
-    -19.5,
-    0,
-    19.5,
-    39
-  ],
-  "uses_ellipse_equation": true,
+  "ridgeOffsetMap": {
+    "-2": "-h * 0.020",
+    "-1": "h * 0.008",
+    "0": "h * 0.030",
+    "1": "h * 0.008",
+    "2": "-h * 0.020"
+  },
   "bottom_dfo_removed": true,
-  "background_changed": false,
-  "header_changed": false,
-  "card_content_changed": false,
-  "qa_claims": {
-    "card_bottom_centers_same_ellipse": true,
-    "demo_videos_center_first": true,
-    "exactly_five_cards": true
-  }
+  "changed_only_carousel_placement": true
 }
