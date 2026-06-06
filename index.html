@@ -821,17 +821,20 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 
 /* =========================
-   V49 CAROUSEL-RIDE GROUNDING
-   Scope:
-   - Carousel grounding + positioning only.
-   - Adds subtle base feet, contact shadows, and shared track rail.
-   - Bottom DFO/firecracker remains removed.
+   V50 REAL RIDGE DROP — NO FAKE RAIL
+   Problem fixed:
+   V49 added an artificial glowing rail above the actual ring. That made the cards feel even more fake.
+   V50 removes fake rail thinking and simply drops the manual slots onto the real visible platform ridge.
 ========================= */
 
 @media (min-width:1181px){
   body:not(.calibration-on) .calibration-dot,
   body:not(.calibration-on) .ring-guide,
   body:not(.calibration-on) .calibration-panel{
+    display:none !important;
+  }
+
+  .track-contact-rail{
     display:none !important;
   }
 
@@ -845,120 +848,54 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
     transform-style:preserve-3d !important;
   }
 
-  /* Shared subtle rail illusion behind the card feet. */
-  .track-contact-rail{
-    position:absolute;
-    left:50%;
-    top:66.1%;
-    width:74vw;
-    height:12.8vh;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    pointer-events:none;
-    z-index:12;
-    opacity:.52;
-    background:
-      radial-gradient(ellipse at center,
-        transparent 56%,
-        rgba(255,106,38,.10) 58%,
-        rgba(255,126,48,.45) 60%,
-        rgba(255,126,48,.18) 62%,
-        transparent 65%);
-    filter:blur(.3px);
-    mix-blend-mode:screen;
-  }
-
-  /*
-    The physical “base foot” under every card.
-    It is intentionally subtle: a glowing track mount + dark contact shadow.
-  */
+  /* Do NOT create a fake rail. Just add the tiniest contact bloom at the real card foot. */
   .card3d::before{
     content:"";
     position:absolute;
     left:50%;
-    bottom:-10px;
-    width:76%;
-    height:18px;
-    transform:translateX(-50%) perspective(700px) rotateX(68deg);
-    transform-origin:center center;
+    bottom:-5px;
+    width:74%;
+    height:12px;
+    transform:translateX(-50%) perspective(650px) rotateX(72deg);
     border-radius:999px;
     pointer-events:none;
     z-index:4;
-    background:
-      linear-gradient(90deg,
-        transparent 0%,
-        rgba(255,92,28,.12) 8%,
-        rgba(255,123,43,.74) 44%,
-        rgba(255,183,92,.92) 50%,
-        rgba(255,123,43,.74) 56%,
-        rgba(255,92,28,.12) 92%,
-        transparent 100%);
-    box-shadow:
-      0 0 12px rgba(255,103,37,.42),
-      0 4px 16px rgba(0,0,0,.66);
-    opacity:.76;
+    opacity:.54;
+    background:linear-gradient(90deg, transparent, rgba(255,124,45,.58), rgba(255,183,92,.72), rgba(255,124,45,.58), transparent);
+    box-shadow:0 0 10px rgba(255,104,39,.28);
   }
 
-  /* Contact shadow + orange bloom exactly where the card enters the track. */
   .card3d::after{
     content:"";
     position:absolute;
     left:50%;
-    bottom:-16px;
-    width:100%;
-    height:30px;
-    transform:translateX(-50%) perspective(700px) rotateX(70deg);
+    bottom:-10px;
+    width:86%;
+    height:18px;
+    transform:translateX(-50%) perspective(650px) rotateX(72deg);
     border-radius:999px;
     pointer-events:none;
     z-index:3;
-    opacity:.94;
-    background:
-      radial-gradient(ellipse at center,
-        rgba(0,0,0,.60) 0%,
-        rgba(0,0,0,.38) 23%,
-        rgba(255,109,46,.34) 42%,
-        rgba(255,109,46,.12) 62%,
-        transparent 82%);
-    filter:blur(2.2px);
-    mix-blend-mode:screen;
+    opacity:.55;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,.45) 0%, rgba(255,109,46,.16) 42%, transparent 78%);
+    filter:blur(1.8px);
   }
 
-  /* Angle the physical base with each card slot so it follows the panel perspective. */
-  .card3d[data-wall-pos="-2"]::before,
-  .card3d[data-wall-pos="-2"]::after{
-    transform:translateX(-50%) perspective(700px) rotateX(68deg) rotateZ(-4deg);
-  }
-
-  .card3d[data-wall-pos="-1"]::before,
-  .card3d[data-wall-pos="-1"]::after{
-    transform:translateX(-50%) perspective(700px) rotateX(68deg) rotateZ(-2deg);
-  }
-
-  .card3d[data-wall-pos="1"]::before,
-  .card3d[data-wall-pos="1"]::after{
-    transform:translateX(-50%) perspective(700px) rotateX(68deg) rotateZ(2deg);
-  }
-
-  .card3d[data-wall-pos="2"]::before,
-  .card3d[data-wall-pos="2"]::after{
-    transform:translateX(-50%) perspective(700px) rotateX(68deg) rotateZ(4deg);
-  }
-
-  /* Keep the side-card facing from the clean manual pass. */
   .card3d .card{
     transform:perspective(950px) rotateY(var(--face-rotate, 0deg)) skewY(var(--face-skew, 0deg)) !important;
   }
 
+  /* If D is pressed, the guide now sits where the REAL ridge is, not the upper fake line. */
   .ring-guide{
-    top:70.5% !important;
+    top:75.5% !important;
     height:13vh !important;
-    width:74vw !important;
+    width:73vw !important;
   }
 }
 
 </style>
 </head>
-<body data-build="v49-carousel-ride-grounding-no-bottom-dfo">
+<body data-build="v50-real-ridge-drop-no-fake-rail">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -986,7 +923,6 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   </header>
 
   <section class="scene" aria-label="DFO fireworks show carousel">
-    <div class="track-contact-rail" aria-hidden="true"></div>
     <div class="ring-guide" aria-hidden="true"></div>
     <div id="calibrationDots" aria-hidden="true"></div>
     <div class="carousel" id="carousel"></div>
@@ -1188,18 +1124,19 @@ function offsetFor(i){            // nearest wrapped offset in -2..2
 */
 const SLOT_CONFIG = {
   /*
-    V49 CAROUSEL-RIDE GROUNDING PASS
-    y = percent from TOP of scene to card bottom-center.
-    Bigger y moves card DOWN.
+    V50 REAL RIDGE DROP
+    Built from V48, not V49.
+    V49 added a fake glowing rail too high above the real platform. This version removes that idea.
 
-    These values intentionally overlap the visible orange ridge so the cards feel mounted
-    to the carousel track instead of hovering above it.
+    y = percent from TOP of scene to the card bottom-center.
+    Bigger y moves card DOWN.
+    These values deliberately drop the card feet onto the actual visible orange platform ridge.
   */
-  "-2": { name:"far-left",  x:-34.0, y:68.5, z:-235, scale:.76, rotateY:-25, faceRotate:-30, faceSkew: 1.2, width:.58, height:.84 },
-  "-1": { name:"left",      x:-20.0, y:64.2, z:-105, scale:.88, rotateY:-13, faceRotate:-17, faceSkew: .45, width:.78, height:.94 },
-  "0":  { name:"center",    x:  0.0, y:61.8, z:   0, scale:1.00, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
-  "1":  { name:"right",     x: 20.0, y:64.2, z:-105, scale:.88, rotateY: 13, faceRotate: 17, faceSkew:-.45, width:.78, height:.94 },
-  "2":  { name:"far-right", x: 34.0, y:68.5, z:-235, scale:.76, rotateY: 25, faceRotate: 30, faceSkew:-1.2, width:.58, height:.84 }
+  "-2": { name:"far-left",  x:-33.0, y:74.0, z:-235, scale:.76, rotateY:-25, faceRotate:-30, faceSkew: 1.2, width:.58, height:.84 },
+  "-1": { name:"left",      x:-19.2, y:70.0, z:-105, scale:.88, rotateY:-13, faceRotate:-17, faceSkew: .45, width:.78, height:.94 },
+  "0":  { name:"center",    x:  0.0, y:68.6, z:   0, scale:1.00, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
+  "1":  { name:"right",     x: 19.2, y:70.0, z:-105, scale:.88, rotateY: 13, faceRotate: 17, faceSkew:-.45, width:.78, height:.94 },
+  "2":  { name:"far-right", x: 33.0, y:74.0, z:-235, scale:.76, rotateY: 25, faceRotate: 30, faceSkew:-1.2, width:.58, height:.84 }
 };
 
 function metrics(){
@@ -1382,7 +1319,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V49 HIDDEN CALIBRATION</b>
+  <b>V50 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
