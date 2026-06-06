@@ -1,63 +1,46 @@
 {
-  "version": "v47-manual-calibration-carousel-no-bottom-dfo",
+  "version": "v48-clean-manual-ridge-pass-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "main_fix": "manual SLOT_CONFIG with per-slot bottom-center anchors",
-  "uses_ellipse_math_for_active_placement": false,
-  "debug_helpers": {
-    "red_anchor_dots": true,
-    "dashed_ring_guide": true,
-    "calibration_panel": true,
-    "toggle_key": "D",
-    "default_visible": true
-  },
+  "main_fix": "debug hidden by default; manual y-values moved down to visible ridge",
+  "debug_helpers_default_visible": false,
+  "toggle_key": "D",
   "slot_config": {
     "-2": {
-      "x": -34.8,
-      "y": 58.7,
+      "x": -34.0,
+      "y": 64.2,
       "z": -235,
       "scale": 0.76,
-      "rotateY": -25,
-      "width": 0.58,
-      "height": 0.84
+      "rotateY": -25
     },
     "-1": {
-      "x": -19.8,
-      "y": 54.6,
+      "x": -20.0,
+      "y": 60.6,
       "z": -105,
       "scale": 0.88,
-      "rotateY": -13,
-      "width": 0.78,
-      "height": 0.94
+      "rotateY": -13
     },
     "0": {
       "x": 0.0,
-      "y": 50.6,
+      "y": 58.1,
       "z": 0,
       "scale": 1.0,
-      "rotateY": 0,
-      "width": 1.0,
-      "height": 1.0
+      "rotateY": 0
     },
     "1": {
-      "x": 19.8,
-      "y": 54.6,
+      "x": 20.0,
+      "y": 60.6,
       "z": -105,
       "scale": 0.88,
-      "rotateY": 13,
-      "width": 0.78,
-      "height": 0.94
+      "rotateY": 13
     },
     "2": {
-      "x": 34.8,
-      "y": 58.7,
+      "x": 34.0,
+      "y": 64.2,
       "z": -235,
       "scale": 0.76,
-      "rotateY": 25,
-      "width": 0.58,
-      "height": 0.84
+      "rotateY": 25
     }
   },
-  "exactly_five_slots": true,
-  "demo_videos_center_first": true,
-  "changed_only_carousel_placement_system": true
+  "bottom_dfo_removed": true,
+  "changed_only_carousel_manual_positioning_and_debug_visibility": true
 }
