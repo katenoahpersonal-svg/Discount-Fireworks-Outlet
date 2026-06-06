@@ -1,33 +1,27 @@
-DFO V52 — Cinematic Image-State Carousel
+DFO V53 — Live Carousel Lowered Pass / No Image-State / No Bottom DFO
 
-This is the new approach:
-- Desktop hero uses full-scene cinematic state images instead of live HTML cards.
-- Header, countdowns, footer, modals, links, and hotspots are real coded layers.
-- The carousel switches between 5 image states:
-  1. Videos centered
-  2. Locations centered
-  3. Build Your Show centered
-  4. Finale Favorites centered
-  5. Social centered
+Starting point:
+- V51 live-card carousel.
+- V52 image-state approach is abandoned.
 
-Important note:
-The state images are built from the available visual proofs/assets in this chat.
-They are not brand-new AI generations, because this environment cannot generate new images directly.
-The structure is now correct for the approach: once truly final AI state images are generated, replace the JPGs in /assets with the same filenames.
+What changed:
+1. Kept the real HTML cards.
+2. Kept the carousel rotation/swap behavior.
+3. Brought the cards down significantly:
+   far-left/far-right y 79.0
+   left/right y 75.0
+   center y 72.6
+4. Disabled the large V51 foreground glow/occlusion by default because it created the wrong giant ring effect.
+5. Kept the V51 glow layers in the code for future use:
+   add class "use-occlusion" to body if needed later.
+6. Kept only a small natural foot/contact shadow.
+7. Debug helpers hidden by default; press D to show them.
+8. Bottom DFO/firecracker remains removed.
+9. Did not change background, header, card content, footer, modals, countdowns, or assets.
+10. Node JS syntax check passed.
 
-Upload to GitHub Pages:
-- index.html
-- assets folder
-
-Hotkeys:
-- ArrowLeft / ArrowRight: rotate states
-- H: show invisible hotspot zones for debugging
-
-QA:
-- Exactly 5 state images.
-- Videos starts centered.
-- Header is coded.
-- Bottom countdown is coded.
-- Footer is coded.
-- Modals are coded.
-- Main desktop carousel no longer uses live HTML cards.
+Fast tuning:
+- Move all cards down more: add +1.0 to every y value in SLOT_CONFIG.
+- Move center down only: center y 72.6 -> 74.0.
+- If cards go too low: subtract 1.0 from every y.
+- Bring cards closer: reduce far x 33 -> 31 and side x 19.2 -> 18.

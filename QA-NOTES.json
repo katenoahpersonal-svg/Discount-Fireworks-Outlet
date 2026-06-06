@@ -1,25 +1,49 @@
 {
-  "version": "v52-image-state-carousel",
-  "approach": "cinematic full-scene image states + coded interactive overlay",
-  "state_images": [
-    "assets/state-01-videos-center.jpg",
-    "assets/state-02-locations-center.jpg",
-    "assets/state-03-build-center.jpg",
-    "assets/state-04-favorites-center.jpg",
-    "assets/state-05-social-center.jpg"
-  ],
-  "exactly_five_states": true,
-  "initial_state": "videos",
-  "desktop_live_html_cards": false,
-  "coded_header": true,
-  "coded_footer": true,
-  "coded_bottom_countdown": true,
-  "coded_modals": [
-    "videos",
-    "locations",
-    "contact/build",
-    "favorites",
-    "social"
-  ],
-  "known_limitation": "State images are derived from available proof screenshots/assets, not newly generated AI state renders."
+  "version": "v53-live-carousel-lowered-no-image-state",
+  "node_syntax_check": "passed",
+  "base": "v51",
+  "approach": "live HTML cards retained, no image-state carousel",
+  "v52_abandoned": true,
+  "main_fix": "cards lowered while preserving circular/spinning carousel behavior",
+  "slot_config": {
+    "-2": {
+      "x": -33.0,
+      "y": 79.0,
+      "z": -235,
+      "scale": 0.76,
+      "rotateY": -25
+    },
+    "-1": {
+      "x": -19.2,
+      "y": 75.0,
+      "z": -105,
+      "scale": 0.88,
+      "rotateY": -13
+    },
+    "0": {
+      "x": 0.0,
+      "y": 72.6,
+      "z": 0,
+      "scale": 1.0,
+      "rotateY": 0
+    },
+    "1": {
+      "x": 19.2,
+      "y": 75.0,
+      "z": -105,
+      "scale": 0.88,
+      "rotateY": 13
+    },
+    "2": {
+      "x": 33.0,
+      "y": 79.0,
+      "z": -235,
+      "scale": 0.76,
+      "rotateY": 25
+    }
+  },
+  "foreground_occlusion_disabled_by_default": true,
+  "foreground_occlusion_available_with_body_class_use_occlusion": true,
+  "bottom_dfo_removed": true,
+  "debug_helpers_default_visible": false
 }
