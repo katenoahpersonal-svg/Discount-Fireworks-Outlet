@@ -1,31 +1,17 @@
 {
-  "version": "v41-cylindrical-wall-carousel-no-bottom-dfo",
+  "version": "v42-forced-tangent-cylinder-carousel-no-bottom-dfo",
   "node_syntax_check": "passed",
-  "carousel_type": "cylindrical/elliptical wall geometry",
-  "angles": [
-    -42,
-    -21,
-    0,
-    21,
-    42
-  ],
-  "uses_angle_for": [
-    "x",
-    "z",
-    "bottom",
-    "rotateY",
-    "scale"
-  ],
-  "bottom_dfo_firecracker_removed": true,
+  "main_fix": "force visible side-card rotateY on both wrapper and actual card face",
+  "wrapper_rotation_multiplier": -1.05,
+  "face_rotation_by_slot": {
+    "-2": 30,
+    "-1": 17,
+    "0": 0,
+    "1": -17,
+    "2": -30
+  },
+  "bottom_dfo_removed": true,
   "header_changed": false,
   "background_changed": false,
-  "card_content_changed": false,
-  "initial_center_card": "Demo Videos",
-  "exactly_five_cards": true,
-  "notes": [
-    "If cards still need visual grounding, adjust ringBaseY and sideDrop only.",
-    "If the arc is too wide/narrow, adjust radiusX only.",
-    "If the wall depth is too flat, adjust depth only.",
-    "If rotations are too aggressive, adjust rotateY multiplier only."
-  ]
+  "card_content_changed": false
 }

@@ -339,9 +339,89 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   }
 }
 
+
+/* =========================
+   V42 FORCED TANGENT CYLINDER
+   Problem fixed:
+   V41 moved cards along an ellipse, but the card faces still read too front-facing.
+   V42 forces visible tangent rotation on both the wrapper and the actual card face.
+========================= */
+
+@media (min-width:1181px){
+  .scene{
+    perspective:1400px !important;
+    perspective-origin:50% 42% !important;
+    transform-style:preserve-3d !important;
+  }
+
+  .carousel{
+    transform-style:preserve-3d !important;
+  }
+
+  .card3d{
+    transform-origin:50% 100% !important;
+    transform-style:preserve-3d !important;
+    will-change:transform,opacity,filter !important;
+  }
+
+  .card3d .card{
+    transform-style:preserve-3d !important;
+    backface-visibility:hidden !important;
+    transform-origin:50% 50% !important;
+    transition:transform .55s cubic-bezier(.22,.8,.2,1), box-shadow .55s ease, filter .55s ease !important;
+  }
+
+  /* FORCE the visible face angle too, so it cannot visually stay flat/front-facing. */
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(30deg) skewY(-1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(17deg) skewY(-.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="0"] .card{
+    transform:perspective(950px) rotateY(0deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(-17deg) skewY(.45deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(-30deg) skewY(1.2deg) !important;
+  }
+
+  .card3d[data-wall-pos="-2"],
+  .card3d[data-wall-pos="2"]{
+    opacity:.88 !important;
+  }
+
+  .card3d[data-wall-pos="-1"],
+  .card3d[data-wall-pos="1"]{
+    opacity:.97 !important;
+  }
+
+  .card3d::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-8px;
+    width:76%;
+    height:20px;
+    transform:translateX(-50%);
+    border-radius:50%;
+    pointer-events:none;
+    opacity:.84;
+    background:radial-gradient(ellipse at center, rgba(255,109,46,.52) 0%, rgba(255,109,46,.22) 34%, transparent 74%);
+    filter:blur(2.2px);
+    z-index:-1;
+  }
+}
+
 </style>
 </head>
-<body data-build="v41-cylindrical-wall-carousel-no-bottom-dfo">
+<body data-build="v42-forced-tangent-cylinder-carousel-no-bottom-dfo">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -554,25 +634,19 @@ function metrics(){
   const w = scene.clientWidth  || window.innerWidth;
   const h = scene.clientHeight || window.innerHeight;
 
-  /*
-    V41 card scale:
-    Keep the current V40 sizing direction, but let the carousel geometry,
-    not hand-placed slots, control where the card sits.
-  */
   const centerW = Math.min(392, w * 0.235);
   const centerH = Math.min(520, h * 0.62);
 
   /*
-    Ellipse/cylinder geometry:
-    radiusX controls left/right spread.
-    depth controls how far side cards recede.
-    ringBaseY is the shared ground/ring baseline.
-    sideDrop makes side cards sit slightly LOWER on the ellipse, never higher.
+    V42 geometry:
+    Radius is tighter so the cards feel like one circle, not five islands.
+    Depth is stronger so side cards visibly recede.
+    A smaller perspective in CSS makes rotateY visible.
   */
-  const radiusX = w * 0.425;
-  const depth = w * 0.155;
+  const radiusX = w * 0.385;
+  const depth = w * 0.255;
   const ringBaseY = h * 0.292;
-  const sideDrop = h * 0.034;
+  const sideDrop = h * 0.044;
 
   return { w, h, centerW, centerH, radiusX, depth, ringBaseY, sideDrop };
 }
@@ -580,19 +654,18 @@ function metrics(){
 function layout(pos){
   const m = metrics();
 
-  // Five visible angular stations on the front half of the carousel wall.
   const angleMap = {
-    "-2": -42,
-    "-1": -21,
+    "-2": -44,
+    "-1": -23,
      "0":   0,
-      "1":  21,
-      "2":  42
+      "1":  23,
+      "2":  44
   };
 
   if (Math.abs(pos) > 2) {
     const sign = Math.sign(pos);
     const edge = layout(sign < 0 ? -2 : 2);
-    return { ...edge, x: edge.x + sign * m.w * 0.14, o:0, pointer:false };
+    return { ...edge, x: edge.x + sign * m.w * 0.10, o:0, pointer:false };
   }
 
   const angle = angleMap[String(pos)];
@@ -600,17 +673,18 @@ function layout(pos){
   const sin = Math.sin(rad);
   const absSin = Math.abs(sin);
 
-  /*
-    True shared ellipse:
-    - x comes from one radius.
-    - z comes from the same angle depth.
-    - bottom comes from the same ellipse baseline and intentionally DROPS at the sides.
-    - rotateY is tangent/inward from the same angle.
-  */
   const x = sin * m.radiusX;
   const z = -absSin * m.depth;
+
+  // Side cards must drop onto the visible orange ring, not rise upward.
   const bottom = m.ringBaseY - (absSin * m.sideDrop);
-  const rotateY = angle * -0.75;
+
+  /*
+    Wrapper rotation is stronger than V41.
+    CSS also rotates the actual .card face by data-wall-pos,
+    so the side panels cannot still visually face front.
+  */
+  const rotateY = angle * -1.05;
 
   const scale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.88 : 0.74);
   const widthScale = pos === 0 ? 1 : (Math.abs(pos) === 1 ? 0.78 : 0.58);
@@ -624,7 +698,7 @@ function layout(pos){
     s: scale,
     w: m.centerW * widthScale,
     h: m.centerH * heightScale,
-    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .98 : .91),
+    o: pos === 0 ? 1 : (Math.abs(pos) === 1 ? .97 : .88),
     pointer:true,
     angle
   };
@@ -639,18 +713,14 @@ function place(el, pos, animate){
   el.style.marginLeft = (-L.w / 2) + "px";
   el.style.bottom = L.y + "px";
 
-  /*
-    V41: cylindrical wall transform.
-    Every transform value comes from the same angular station.
-    This prevents flat-slot floating and makes the cards read as panels on a ring.
-  */
   el.style.transform = `translate3d(${L.x}px,0,${L.z}px) rotateY(${L.ry}deg) scale(${L.s})`;
   el.style.opacity = L.o;
   el.style.zIndex = 40 - Math.round(Math.abs(pos) * 7);
-  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.94:0.84}) saturate(${Math.abs(pos)===1?0.98:0.90})`;
+  el.style.filter = pos === 0 ? "none" : `brightness(${Math.abs(pos)===1?0.94:0.83}) saturate(${Math.abs(pos)===1?0.98:0.90})`;
   el.style.pointerEvents = L.pointer === false ? "none" : "auto";
   el.classList.toggle("is-active", pos === 0);
   el.dataset.carouselAngle = L.angle;
+  el.dataset.wallPos = String(pos);
 }
 function update(){
   els.forEach((el, i) => {

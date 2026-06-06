@@ -1,23 +1,25 @@
-DFO V41 — Cylindrical Wall Carousel / No Bottom DFO
+DFO V42 — Forced Tangent Cylinder Carousel / No Bottom DFO
 
 Starting point:
-- V40 grounded wall carousel build.
+- V41 cylindrical wall carousel.
 
 What changed:
-1. Rebuilt only the carousel positioning system.
-2. Removed the old flat fixed-slot positioning.
-3. Added true cylindrical/elliptical wall geometry using angles:
-   far-left -42°, left -21°, center 0°, right 21°, far-right 42°.
-4. x, z, bottom, rotateY, and scale now all come from the same angular station.
-5. Side cards intentionally sit slightly lower on the same ring baseline.
-6. Bottom DFO/firecracker remains removed.
-7. Header, background, card content, footer, modals, and countdowns were not redesigned.
-8. JavaScript syntax check passed.
+1. Kept the same background/header/content.
+2. Kept bottom DFO/firecracker removed.
+3. Made perspective stronger so rotateY is visible.
+4. Increased wrapper rotateY from V41.
+5. Added data-wall-pos attributes to every visible card.
+6. Rotated the actual .card face with CSS based on position:
+   far-left: +30deg
+   left: +17deg
+   center: 0deg
+   right: -17deg
+   far-right: -30deg
+7. Tightened the carousel radius so the cards read as one shared circular wall.
+8. Increased depth so side cards visually recede.
+9. Ran Node JS syntax check: passed.
 
-Upload:
-- index.html
-
-QA to check in browser:
-- Side cards should sit on the same orange ring/ellipse, not float.
-- Far-left/far-right should feel farther back and smaller.
-- The five cards should read like panels on a curved wall.
+If this is too angled:
+- reduce the CSS .card rotateY values from 30/17 to 24/12.
+If still not angled enough:
+- increase them to 36/22.
