@@ -1,26 +1,18 @@
-DFO V59 — Symmetry-Locked Mirrored Slots
+DFO V60 — Front Card Down Only a Bit
 
 Starting point:
-- V57 live-card carousel.
-- V58 is intentionally skipped because it changed the right side independently.
+- V59 symmetry-locked mirrored slots.
 
-What changed:
-- Rebuilt SLOT_CONFIG as a locked mirror pair system.
+Only change:
+- center / front card y: 75.6 -> 76.8
 
-Rules:
-- far-left and far-right use the same y/z/scale/width/height.
-- left and right use the same y/z/scale/width/height.
-- x values are exact opposites.
-- rotateY values are exact opposites.
-- faceRotate values are exact opposites.
-- faceSkew values are exact opposites.
+Bigger y means the card moved DOWN.
 
-Current values:
-- far-left:  x -33.0, y 76.8
-- left:      x -19.2, y 78.0
-- center:    x   0.0, y 75.6
-- right:     x  19.2, y 78.0
-- far-right: x  33.0, y 76.8
+No other positioning changed:
+- far-left/back remains y 76.8
+- left / second-to-back remains y 78.0
+- right / second-to-back remains y 78.0
+- far-right/back remains y 76.8
 
 No background changes.
 No header changes.
