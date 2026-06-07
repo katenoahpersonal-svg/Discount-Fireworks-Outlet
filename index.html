@@ -1404,9 +1404,96 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   border-color:rgba(255,255,255,.2) !important;
 }
 
+
+/* =========================
+   V63 LOCATION FIT PATCH
+   Built from V62.
+   Only target: Locations card content fitting.
+   Goal: keep text readable but stop bottom copy/button from being cut off.
+========================= */
+
+/* Give the Locations card its own tighter internal rhythm. */
+.card-locations{
+  overflow:hidden !important;
+}
+
+.card-locations .kicker{
+  margin-top:clamp(8px,.75vw,14px) !important;
+  margin-bottom:clamp(4px,.35vw,8px) !important;
+}
+
+.card-locations h2{
+  font-size:clamp(2.35rem,3.4vw,4.1rem) !important;
+  line-height:.82 !important;
+  margin-bottom:clamp(8px,.8vw,15px) !important;
+}
+
+.card-locations .location-list{
+  margin:clamp(8px,.8vw,15px) clamp(14px,1.15vw,24px) 0 !important;
+  gap:0 !important;
+}
+
+.card-locations .loc{
+  gap:clamp(8px,.65vw,12px) !important;
+  margin-bottom:clamp(4px,.42vw,8px) !important;
+  align-items:flex-start !important;
+}
+
+.card-locations .pin{
+  width:clamp(21px,1.7vw,32px) !important;
+  min-width:clamp(21px,1.7vw,32px) !important;
+  margin-top:2px !important;
+}
+
+.card-locations .loc strong{
+  font-size:clamp(.96rem,1.15vw,1.38rem) !important;
+  line-height:.9 !important;
+  letter-spacing:.075em !important;
+}
+
+.card-locations .loc span{
+  font-size:clamp(.66rem,.75vw,.9rem) !important;
+  line-height:1.08 !important;
+  letter-spacing:.04em !important;
+}
+
+/* This was what got clipped. Keep it inside the safe area. */
+.card-locations .card-copy{
+  margin:clamp(8px,.8vw,14px) clamp(18px,1.4vw,28px) clamp(7px,.6vw,12px) !important;
+  font-size:clamp(.66rem,.78vw,.98rem) !important;
+  line-height:1.14 !important;
+  letter-spacing:.12em !important;
+  max-width:calc(100% - 36px) !important;
+}
+
+/* Pull the button safely upward and make it slightly shorter on Locations only. */
+.card-locations .card-btn{
+  margin:0 clamp(18px,1.4vw,28px) clamp(14px,1.1vw,22px) !important;
+  height:clamp(36px,3.1vw,52px) !important;
+  min-height:34px !important;
+  font-size:clamp(.66rem,.82vw,1rem) !important;
+}
+
+/* If Locations is in a small/far slot, compact it even more so it does not crop. */
+.card3d[data-slot="-2"] .card-locations .card-copy,
+.card3d[data-slot="2"] .card-locations .card-copy,
+.card3d[data-slot="-1"] .card-locations .card-copy,
+.card3d[data-slot="1"] .card-locations .card-copy{
+  font-size:clamp(.58rem,.66vw,.82rem) !important;
+  margin-top:clamp(5px,.45vw,9px) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .card-btn,
+.card3d[data-slot="2"] .card-locations .card-btn,
+.card3d[data-slot="-1"] .card-locations .card-btn,
+.card3d[data-slot="1"] .card-locations .card-btn{
+  height:clamp(30px,2.4vw,42px) !important;
+  margin-bottom:clamp(10px,.8vw,16px) !important;
+}
+
 </style>
 </head>
-<body data-build="v62-card-media-and-readability-updates">
+<body data-build="v63-location-fit-no-cutoff">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -1851,7 +1938,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V62 HIDDEN CALIBRATION</b>
+  <b>V63 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

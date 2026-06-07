@@ -1,28 +1,24 @@
-DFO V62 — Card Media + Readability Updates
+DFO V63 — Locations Card Fit / No Cutoff
 
 Starting point:
-- V61 bottom-countdown-up-only.
+- V62 card-media-and-readability-updates.
 
-Changes made:
-1. Demo Videos card:
-   - Replaced the internal demo images with YouTube thumbnail images for the videos used in the modal.
-   - Featured video and all four thumbs open the Demo Videos modal.
-2. Social Feed card:
-   - Replaced the 6 image tiles with crops from the uploaded social-feed mockup image.
-   - Kept the same 3x2 structure.
-3. Social modal:
-   - Removed the embedded Facebook timeline/feed area.
-   - Replaced it with a simple title + Facebook link hub.
-4. Build Your Show card:
-   - Replaced the card image with the uploaded tent image.
-5. Locations card:
-   - Increased text size and readability.
-   - Also improved modal location text readability.
-6. No carousel positioning changed.
-7. No background/header/footer/countdown positioning changed.
-8. Bottom DFO/firecracker remains removed.
-9. Node JS syntax check passed.
+Only change:
+- Locations card layout is compacted so the bottom copy and View Locations button are no longer cut off.
 
-Note:
-The social card thumbnails are built from the uploaded social-feed card screenshot.
-For a truly live Facebook photo feed, Facebook Graph API/app permissions or a Facebook plugin is required.
+What was adjusted on Locations card only:
+- slightly tighter title spacing
+- slightly smaller but still readable location text
+- tighter location row gaps
+- copy line moved into safe area
+- View Locations button pulled up and made slightly shorter
+- extra compact rules when Locations is in side/far slots
+
+No carousel positioning changed.
+No background changes.
+No header changes.
+No other card content changes.
+No footer/countdown changes.
+No modal behavior changes.
+Bottom DFO/firecracker remains removed.
+Node JS syntax check passed.

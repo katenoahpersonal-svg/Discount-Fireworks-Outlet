@@ -1,23 +1,17 @@
 {
-  "version": "v62-card-media-and-readability-updates",
-  "base": "v61-bottom-countdown-up-only",
+  "version": "v63-location-fit-no-cutoff",
+  "base": "v62-card-media-and-readability-updates",
   "node_syntax_check": "passed",
-  "changes": {
-    "demo_card_thumbnails": "YouTube thumbnail URLs matching modal videos",
-    "demo_thumb_clicks": "open videosModal",
-    "build_card_image": "assets/build-your-show-tent.jpg from uploaded image",
-    "social_card_images": "assets/social-feed-01..06.jpg cropped from uploaded social card screenshot",
-    "social_modal": "simplified title + real Facebook links; embedded feed removed",
-    "locations_text": "larger/easier to read"
+  "only_changes": {
+    "locations_card": "compacted layout to avoid clipped bottom copy/button"
   },
   "unchanged": [
     "carousel positioning",
     "background",
     "header",
-    "footer positioning",
-    "bottom countdown position",
-    "modal behavior system",
-    "bottom DFO/firecracker remains removed"
-  ],
-  "facebook_live_feed_note": "Static thumbnails used from upload; live Facebook feed would require plugin/API."
+    "non-location card content",
+    "footer",
+    "bottom countdown",
+    "modals behavior"
+  ]
 }
