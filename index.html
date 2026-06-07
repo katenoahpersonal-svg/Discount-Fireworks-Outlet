@@ -1200,9 +1200,20 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
    Nothing else changed.
 ========================= */
 
+
+/* =========================
+   V58 BABY STEP
+   Built from V57.
+   Keep the LEFT side locked.
+   Adjust RIGHT-side card slots only:
+   - right / second-to-back card y: 78.0 -> 81.0
+   - far-right / far-back card y: 76.8 -> 80.0
+   Nothing else changed.
+========================= */
+
 </style>
 </head>
-<body data-build="v57-far-back-cards-up-only">
+<body data-build="v58-right-side-alignment-only">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -1629,7 +1640,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V57 HIDDEN CALIBRATION</b>
+  <b>V58 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

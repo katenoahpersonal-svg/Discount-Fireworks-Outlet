@@ -1,17 +1,19 @@
-DFO V57 — Far-Back Cards Up Only
+DFO V58 — Right Side Alignment Only
 
 Starting point:
-- V56 live-card carousel.
+- V57 live-card carousel.
 
-Only change:
-- far-left / far-back card y: 79.0 -> 76.8
-- far-right / far-back card y: 79.0 -> 76.8
+Keep LEFT side locked.
 
-Smaller y means the card moves UP.
+Only changes:
+- right / second-to-back card y: 78.0 -> 81.0
+- far-right / far-back card y: 76.8 -> 80.0
 
-No other positioning changed:
+No left-side positioning changed:
+- far-left/back remains y 76.8
 - left / second-to-back remains y 78.0
-- right / second-to-back remains y 78.0
+
+No center positioning changed:
 - center/front remains y 75.6
 
 No background changes.

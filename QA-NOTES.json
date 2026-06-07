@@ -1,15 +1,17 @@
 {
-  "version": "v57-far-back-cards-up-only",
-  "base": "v56-front-card-down-only",
+  "version": "v58-right-side-alignment-only",
+  "base": "v57-far-back-cards-up-only",
   "node_syntax_check": "passed",
   "only_changes": {
-    "-2_far_left_back_y": "79.0 -> 76.8",
-    "2_far_right_back_y": "79.0 -> 76.8"
+    "1_right_second_to_back_y": "78.0 -> 81.0",
+    "2_far_right_back_y": "76.8 -> 80.0"
   },
-  "unchanged_positions": {
-    "-1_left_second_to_back_y": "78.0",
-    "0_center_front_y": "75.6",
-    "1_right_second_to_back_y": "78.0"
+  "left_side_locked": {
+    "-2_far_left_back_y": "76.8",
+    "-1_left_second_to_back_y": "78.0"
+  },
+  "center_unchanged": {
+    "0_center_front_y": "75.6"
   },
   "unchanged": [
     "background",
