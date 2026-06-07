@@ -1,16 +1,18 @@
-DFO V56 — Front Card Down Only
+DFO V57 — Far-Back Cards Up Only
 
 Starting point:
-- V55 live-card carousel.
+- V56 live-card carousel.
 
 Only change:
-- center / front card y: 72.6 -> 75.6
+- far-left / far-back card y: 79.0 -> 76.8
+- far-right / far-back card y: 79.0 -> 76.8
+
+Smaller y means the card moves UP.
 
 No other positioning changed:
-- far-left/back remains y 79.0
 - left / second-to-back remains y 78.0
 - right / second-to-back remains y 78.0
-- far-right/back remains y 79.0
+- center/front remains y 75.6
 
 No background changes.
 No header changes.
