@@ -1,15 +1,17 @@
 {
-  "version": "v63-location-fit-no-cutoff",
-  "base": "v62-card-media-and-readability-updates",
+  "version": "v64-locations-two-by-two-readable",
+  "base": "v63-location-fit-no-cutoff",
   "node_syntax_check": "passed",
   "only_changes": {
-    "locations_card": "compacted layout to avoid clipped bottom copy/button"
+    "locations_layout": "2 columns x 2 rows restored",
+    "address_text": "larger/readable",
+    "view_locations_button": "normalized"
   },
   "unchanged": [
     "carousel positioning",
     "background",
     "header",
-    "non-location card content",
+    "non-location cards",
     "footer",
     "bottom countdown",
     "modals behavior"

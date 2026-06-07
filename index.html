@@ -1491,9 +1491,141 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   margin-bottom:clamp(10px,.8vw,16px) !important;
 }
 
+
+/* =========================
+   V64 LOCATIONS 2x2 READABILITY PATCH
+   Built from V63.
+   Only target: Locations card interior.
+   Goal:
+   - back to 2 top / 2 bottom
+   - small location text bigger
+   - View Locations button normal/not weird
+========================= */
+
+.card-locations{
+  overflow:hidden !important;
+}
+
+/* Header stays bold, but we recover space by tightening only the title rhythm. */
+.card-locations .kicker{
+  margin-top:clamp(8px,.7vw,13px) !important;
+  margin-bottom:clamp(3px,.28vw,6px) !important;
+}
+
+.card-locations h2{
+  font-size:clamp(2.55rem,3.75vw,4.45rem) !important;
+  line-height:.82 !important;
+  margin:0 0 clamp(12px,1vw,20px) !important;
+}
+
+/* Back to 2 across / 2 down. */
+.card-locations .location-list{
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  column-gap:clamp(16px,1.55vw,32px) !important;
+  row-gap:clamp(13px,1.05vw,22px) !important;
+  margin:clamp(14px,1.1vw,22px) clamp(18px,1.55vw,32px) 0 !important;
+}
+
+/* Each location becomes a compact horizontal pin + text block. */
+.card-locations .loc{
+  display:grid !important;
+  grid-template-columns:clamp(24px,1.9vw,36px) minmax(0,1fr) !important;
+  gap:clamp(8px,.7vw,14px) !important;
+  align-items:start !important;
+  margin:0 !important;
+}
+
+.card-locations .pin{
+  width:clamp(23px,1.85vw,34px) !important;
+  min-width:clamp(23px,1.85vw,34px) !important;
+  margin-top:2px !important;
+  filter:drop-shadow(0 0 8px rgba(255,90,38,.35));
+}
+
+.card-locations .loc strong{
+  display:block !important;
+  font-size:clamp(.98rem,1.18vw,1.42rem) !important;
+  line-height:.88 !important;
+  letter-spacing:.08em !important;
+  white-space:nowrap !important;
+}
+
+.card-locations .loc span{
+  display:block !important;
+  font-size:clamp(.72rem,.86vw,1.04rem) !important;
+  line-height:1.15 !important;
+  letter-spacing:.045em !important;
+  color:rgba(255,255,255,.80) !important;
+  margin-top:clamp(2px,.22vw,4px) !important;
+}
+
+/* Keep the bottom sentence readable and safely above the button. */
+.card-locations .card-copy{
+  margin:clamp(18px,1.55vw,30px) clamp(22px,1.8vw,38px) clamp(10px,.8vw,16px) !important;
+  font-size:clamp(.78rem,.92vw,1.08rem) !important;
+  line-height:1.18 !important;
+  letter-spacing:.13em !important;
+  max-width:calc(100% - 44px) !important;
+}
+
+/* Normalize the button: centered, not too thick, not glued to the border. */
+.card-locations .card-btn{
+  width:auto !important;
+  max-width:none !important;
+  margin:0 clamp(22px,1.8vw,38px) clamp(18px,1.35vw,26px) !important;
+  height:clamp(38px,3.05vw,50px) !important;
+  min-height:36px !important;
+  font-size:clamp(.72rem,.88vw,1.02rem) !important;
+  border-radius:10px !important;
+  letter-spacing:.16em !important;
+}
+
+/* In side/far slots, preserve 2x2 layout but compress just enough to avoid clipping. */
+.card3d[data-slot="-2"] .card-locations .location-list,
+.card3d[data-slot="2"] .card-locations .location-list,
+.card3d[data-slot="-1"] .card-locations .location-list,
+.card3d[data-slot="1"] .card-locations .location-list{
+  column-gap:clamp(10px,1vw,20px) !important;
+  row-gap:clamp(8px,.75vw,14px) !important;
+  margin-left:clamp(14px,1.1vw,22px) !important;
+  margin-right:clamp(14px,1.1vw,22px) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .loc strong,
+.card3d[data-slot="2"] .card-locations .loc strong,
+.card3d[data-slot="-1"] .card-locations .loc strong,
+.card3d[data-slot="1"] .card-locations .loc strong{
+  font-size:clamp(.8rem,.92vw,1.08rem) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .loc span,
+.card3d[data-slot="2"] .card-locations .loc span,
+.card3d[data-slot="-1"] .card-locations .loc span,
+.card3d[data-slot="1"] .card-locations .loc span{
+  font-size:clamp(.58rem,.68vw,.82rem) !important;
+  line-height:1.12 !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .card-copy,
+.card3d[data-slot="2"] .card-locations .card-copy,
+.card3d[data-slot="-1"] .card-locations .card-copy,
+.card3d[data-slot="1"] .card-locations .card-copy{
+  font-size:clamp(.6rem,.72vw,.86rem) !important;
+  margin-top:clamp(10px,.8vw,16px) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .card-btn,
+.card3d[data-slot="2"] .card-locations .card-btn,
+.card3d[data-slot="-1"] .card-locations .card-btn,
+.card3d[data-slot="1"] .card-locations .card-btn{
+  height:clamp(30px,2.45vw,40px) !important;
+  margin-bottom:clamp(12px,.95vw,18px) !important;
+}
+
 </style>
 </head>
-<body data-build="v63-location-fit-no-cutoff">
+<body data-build="v64-locations-two-by-two-readable">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -1938,7 +2070,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V63 HIDDEN CALIBRATION</b>
+  <b>V64 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
