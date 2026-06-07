@@ -1,17 +1,15 @@
 {
-  "version": "v55-second-to-back-cards-down-only",
-  "base": "v53-live-carousel-lowered-no-image-state",
+  "version": "v56-front-card-down-only",
+  "base": "v55-second-to-back-cards-down-only",
   "node_syntax_check": "passed",
   "only_changes": {
-    "-1_left_second_to_back_y": "75.0 -> 78.0",
-    "1_right_second_to_back_y": "75.0 -> 78.0"
+    "0_center_front_y": "72.6 -> 75.6"
   },
-  "far_back_cards_unchanged_from_v53": {
+  "unchanged_positions": {
     "-2_far_left_y": "79.0",
+    "-1_left_second_to_back_y": "78.0",
+    "1_right_second_to_back_y": "78.0",
     "2_far_right_y": "79.0"
-  },
-  "center_unchanged_from_v53": {
-    "0_center_y": "72.6"
   },
   "unchanged": [
     "background",

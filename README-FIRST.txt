@@ -1,17 +1,16 @@
-DFO V55 — Second-to-Back Cards Down Only
+DFO V56 — Front Card Down Only
 
 Starting point:
-- V53 live-card carousel.
-- NOT V54, so the far/back card change is undone.
+- V55 live-card carousel.
 
 Only change:
-- left / second-to-back card y: 75.0 -> 78.0
-- right / second-to-back card y: 75.0 -> 78.0
+- center / front card y: 72.6 -> 75.6
 
 No other positioning changed:
 - far-left/back remains y 79.0
+- left / second-to-back remains y 78.0
+- right / second-to-back remains y 78.0
 - far-right/back remains y 79.0
-- center remains y 72.6
 
 No background changes.
 No header changes.
