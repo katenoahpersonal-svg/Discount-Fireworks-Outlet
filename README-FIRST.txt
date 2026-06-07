@@ -1,17 +1,16 @@
-DFO V65 — Locations Button + Side Card Fix
+DFO V66 — Locations Side-Slot Selector Fix
 
 Starting point:
-- V64 locations-two-by-two-readable.
+- V65 locations-button-and-side-card-fix.
+
+Root cause:
+- The carousel JS sets each slot as data-wall-pos="-2/-1/0/1/2".
+- The V65 side-card CSS accidentally targeted data-slot instead.
+- Because of that, the side/far Locations fixes were not applying at all when the card was not in front.
 
 Only change:
-- Locations card interior CSS only.
-
-What changed:
-1. View Locations button is full-width/centered again instead of shrink-wrapped weirdly.
-2. Locations stays 2 top / 2 bottom.
-3. Side/far carousel slots now keep the 2x2 structure instead of wrapping/morphing.
-4. Side/far text is scaled down just enough to avoid awkward wrapping.
-5. Front-facing address text remains larger/readable.
+- Corrected side/far Locations CSS selectors from data-slot to data-wall-pos.
+- Added a little extra side/far Locations scaling so the title, 2x2 list, copy, and button stay inside the card when it is angled.
 
 No carousel positioning changed.
 No background changes.
