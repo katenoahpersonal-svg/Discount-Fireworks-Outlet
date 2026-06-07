@@ -1220,9 +1220,38 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
    Nothing else changed.
 ========================= */
 
+
+/* =========================
+   V61 BABY STEP
+   Built from V60.
+   Only change from V60:
+   - bottom countdown/timelock moved UP a bit so red labels are not clipped.
+   Nothing else changed.
+========================= */
+
+.bottom-count,
+.bottom-countdown,
+.stage-countdown,
+.countdown-bottom,
+.lower-countdown,
+.show-countdown-bottom{
+  bottom: 54px !important;
+}
+
+/* If this build uses a transform/absolute timer wrapper, give it safe label room. */
+.bottom-count .label,
+.bottom-countdown .label,
+.stage-countdown .label,
+.countdown-bottom .label,
+.lower-countdown .label,
+.show-countdown-bottom .label{
+  margin-bottom: 0 !important;
+  padding-bottom: 6px !important;
+}
+
 </style>
 </head>
-<body data-build="v60-front-card-down-only-bit">
+<body data-build="v61-bottom-countdown-up-only">
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
 
@@ -1654,7 +1683,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V60 HIDDEN CALIBRATION</b>
+  <b>V61 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

@@ -1,16 +1,15 @@
-DFO V60 — Front Card Down Only a Bit
+DFO V61 — Bottom Countdown Up Only
 
 Starting point:
-- V59 symmetry-locked mirrored slots.
+- V60 front-card-down-only-bit.
 
 Only change:
-- center / front card y: 75.6 -> 76.8
+- Bottom countdown / timelock moved UP a bit so the red labels are no longer clipped.
 
-Bigger y means the card moved DOWN.
-
-No other positioning changed:
+No card positioning changed:
 - far-left/back remains y 76.8
 - left / second-to-back remains y 78.0
+- center/front remains y 76.8
 - right / second-to-back remains y 78.0
 - far-right/back remains y 76.8
 
@@ -18,7 +17,6 @@ No background changes.
 No header changes.
 No content changes.
 No carousel behavior changes.
-No countdown changes.
 No footer changes.
 Bottom DFO/firecracker remains removed.
 Large V51 occlusion remains disabled by default.

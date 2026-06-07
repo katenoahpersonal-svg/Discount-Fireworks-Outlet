@@ -1,13 +1,15 @@
 {
-  "version": "v60-front-card-down-only-bit",
-  "base": "v59-symmetry-lock-mirrored-slots",
+  "version": "v61-bottom-countdown-up-only",
+  "base": "v60-front-card-down-only-bit",
   "node_syntax_check": "passed",
   "only_changes": {
-    "0_center_front_y": "75.6 -> 76.8"
+    "bottom_countdown_position": "moved up via CSS override bottom:54px",
+    "bottom_countdown_labels": "padding-bottom:6px"
   },
-  "unchanged_positions": {
+  "card_positions_unchanged": {
     "-2_far_left_back_y": "76.8",
     "-1_left_second_to_back_y": "78.0",
+    "0_center_front_y": "76.8",
     "1_right_second_to_back_y": "78.0",
     "2_far_right_back_y": "76.8"
   },
@@ -17,7 +19,6 @@
     "content",
     "carousel behavior",
     "footer",
-    "countdowns",
     "modals"
   ]
 }
