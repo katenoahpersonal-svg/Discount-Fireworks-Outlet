@@ -1,11 +1,10 @@
 {
-  "version": "v64-locations-two-by-two-readable",
-  "base": "v63-location-fit-no-cutoff",
+  "version": "v65-locations-button-and-side-card-fix",
+  "base": "v64-locations-two-by-two-readable",
   "node_syntax_check": "passed",
   "only_changes": {
-    "locations_layout": "2 columns x 2 rows restored",
-    "address_text": "larger/readable",
-    "view_locations_button": "normalized"
+    "locations_button": "normalized full-width centered",
+    "locations_side_slots": "2x2 structure preserved with scaled text"
   },
   "unchanged": [
     "carousel positioning",

@@ -1,21 +1,22 @@
-DFO V64 — Locations 2x2 Readable
+DFO V65 — Locations Button + Side Card Fix
 
 Starting point:
-- V63 location-fit-no-cutoff.
+- V64 locations-two-by-two-readable.
 
 Only change:
-- Locations card interior only.
+- Locations card interior CSS only.
 
 What changed:
-1. Locations are back to a 2 top / 2 bottom grid.
-2. Smaller address text is larger/easier to read.
-3. View Locations button is normalized so it is not weirdly oversized or shoved into the edge.
-4. Extra compact rules keep the same 2x2 layout when the Locations card moves into side/far carousel slots.
+1. View Locations button is full-width/centered again instead of shrink-wrapped weirdly.
+2. Locations stays 2 top / 2 bottom.
+3. Side/far carousel slots now keep the 2x2 structure instead of wrapping/morphing.
+4. Side/far text is scaled down just enough to avoid awkward wrapping.
+5. Front-facing address text remains larger/readable.
 
 No carousel positioning changed.
 No background changes.
 No header changes.
-No other card media/content changes.
+No other card content changes.
 No footer/countdown changes.
 No modal behavior changes.
 Bottom DFO/firecracker remains removed.

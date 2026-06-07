@@ -1623,9 +1623,161 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   margin-bottom:clamp(12px,.95vw,18px) !important;
 }
 
+
+/* =========================
+   V65 LOCATIONS BUTTON + SIDE CARD FIX
+   Built from V64.
+   Only target: Locations card interior.
+   Goals:
+   - View Locations button looks normal again.
+   - Locations card keeps 2x2 structure when rotated/side-positioned.
+   - Address text stays readable without weird wrapping/morphing.
+========================= */
+
+/* Normalize all Locations card button states. */
+.card-locations .card-btn{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:calc(100% - clamp(44px,3.6vw,76px)) !important;
+  max-width:none !important;
+  margin:0 auto clamp(18px,1.35vw,26px) !important;
+  height:clamp(40px,3.15vw,52px) !important;
+  min-height:38px !important;
+  padding:0 18px !important;
+  border-radius:12px !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  font-size:clamp(.72rem,.88vw,1.02rem) !important;
+  letter-spacing:.15em !important;
+  line-height:1 !important;
+}
+
+/* Front-facing Locations card: two top / two bottom, readable, no button weirdness. */
+.card-locations .location-list{
+  display:grid !important;
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  column-gap:clamp(18px,1.75vw,36px) !important;
+  row-gap:clamp(14px,1.1vw,22px) !important;
+  margin:clamp(14px,1.1vw,22px) clamp(22px,1.8vw,38px) 0 !important;
+}
+
+.card-locations .loc{
+  display:grid !important;
+  grid-template-columns:clamp(24px,1.85vw,36px) minmax(0,1fr) !important;
+  gap:clamp(9px,.75vw,14px) !important;
+  align-items:start !important;
+  margin:0 !important;
+}
+
+.card-locations .loc strong,
+.card-locations .loc span{
+  white-space:nowrap !important;
+  overflow:visible !important;
+}
+
+.card-locations .loc strong{
+  font-size:clamp(.98rem,1.14vw,1.34rem) !important;
+  line-height:.9 !important;
+}
+
+.card-locations .loc span{
+  font-size:clamp(.72rem,.82vw,.98rem) !important;
+  line-height:1.12 !important;
+}
+
+/* Keep the copy safely inside, centered and readable. */
+.card-locations .card-copy{
+  margin:clamp(18px,1.55vw,30px) auto clamp(10px,.8vw,16px) !important;
+  width:calc(100% - clamp(48px,4vw,84px)) !important;
+  max-width:none !important;
+  font-size:clamp(.78rem,.9vw,1.06rem) !important;
+  line-height:1.16 !important;
+  letter-spacing:.13em !important;
+}
+
+/*
+  Side/far slot fix:
+  The previous version let the 2x2 Locations content reflow and wrap when the card got narrower,
+  which made it look like it was morphing. These slot-specific rules keep the design intact.
+*/
+.card3d[data-slot="-2"] .card-locations .location-list,
+.card3d[data-slot="2"] .card-locations .location-list,
+.card3d[data-slot="-1"] .card-locations .location-list,
+.card3d[data-slot="1"] .card-locations .location-list{
+  grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  column-gap:clamp(7px,.7vw,15px) !important;
+  row-gap:clamp(8px,.7vw,14px) !important;
+  margin:clamp(9px,.75vw,16px) clamp(12px,1vw,20px) 0 !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .loc,
+.card3d[data-slot="2"] .card-locations .loc,
+.card3d[data-slot="-1"] .card-locations .loc,
+.card3d[data-slot="1"] .card-locations .loc{
+  grid-template-columns:clamp(15px,1.25vw,24px) minmax(0,1fr) !important;
+  gap:clamp(4px,.42vw,8px) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .pin,
+.card3d[data-slot="2"] .card-locations .pin,
+.card3d[data-slot="-1"] .card-locations .pin,
+.card3d[data-slot="1"] .card-locations .pin{
+  width:clamp(15px,1.25vw,24px) !important;
+  min-width:clamp(15px,1.25vw,24px) !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .loc strong,
+.card3d[data-slot="2"] .card-locations .loc strong,
+.card3d[data-slot="-1"] .card-locations .loc strong,
+.card3d[data-slot="1"] .card-locations .loc strong{
+  font-size:clamp(.56rem,.64vw,.78rem) !important;
+  line-height:.9 !important;
+  letter-spacing:.055em !important;
+  white-space:nowrap !important;
+}
+
+.card3d[data-slot="-2"] .card-locations .loc span,
+.card3d[data-slot="2"] .card-locations .loc span,
+.card3d[data-slot="-1"] .card-locations .loc span,
+.card3d[data-slot="1"] .card-locations .loc span{
+  font-size:clamp(.43rem,.50vw,.62rem) !important;
+  line-height:1.08 !important;
+  letter-spacing:.025em !important;
+  white-space:nowrap !important;
+}
+
+/* Side/far button: normal centered shape, not tiny/weird, but compact enough not to crop. */
+.card3d[data-slot="-2"] .card-locations .card-btn,
+.card3d[data-slot="2"] .card-locations .card-btn,
+.card3d[data-slot="-1"] .card-locations .card-btn,
+.card3d[data-slot="1"] .card-locations .card-btn{
+  width:calc(100% - clamp(30px,2.6vw,54px)) !important;
+  height:clamp(28px,2.25vw,38px) !important;
+  min-height:28px !important;
+  margin:0 auto clamp(12px,.95vw,18px) !important;
+  padding:0 10px !important;
+  font-size:clamp(.48rem,.58vw,.72rem) !important;
+  letter-spacing:.12em !important;
+  border-radius:9px !important;
+}
+
+/* Side/far copy: still readable, no awkward cutoff. */
+.card3d[data-slot="-2"] .card-locations .card-copy,
+.card3d[data-slot="2"] .card-locations .card-copy,
+.card3d[data-slot="-1"] .card-locations .card-copy,
+.card3d[data-slot="1"] .card-locations .card-copy{
+  width:calc(100% - clamp(32px,2.8vw,58px)) !important;
+  margin:clamp(10px,.8vw,16px) auto clamp(7px,.6vw,12px) !important;
+  font-size:clamp(.48rem,.58vw,.7rem) !important;
+  line-height:1.12 !important;
+  letter-spacing:.08em !important;
+}
+
 </style>
 </head>
-<body data-build="v64-locations-two-by-two-readable">
+<body data-build="v65-locations-button-and-side-card-fix">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2070,7 +2222,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V64 HIDDEN CALIBRATION</b>
+  <b>V65 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
