@@ -1,24 +1,23 @@
 {
-  "version": "v67-curated-social-card-clean-modal",
-  "base": "v66-locations-side-slot-selector-fix",
-  "node_syntax_check": "passed",
-  "facebook_plugin_removed": true,
-  "social_card_strategy": "curated six-image local grid",
-  "local_social_assets": [
-    "assets/social-feed-01.jpg",
-    "assets/social-feed-02.jpg",
-    "assets/social-feed-03.jpg",
-    "assets/social-feed-04.jpg",
-    "assets/social-feed-05.jpg",
-    "assets/social-feed-06.jpg"
-  ],
-  "social_modal": {
-    "title": "Follow the Finale",
-    "subtitle": "Discount Fireworks Outlet on Facebook",
-    "button": "Open Facebook Page",
-    "visible_url": "facebook.com/DFOBoji",
-    "href": "https://www.facebook.com/DFOBoji/"
+  "version": "v68-facebook-auto-sync-ready",
+  "base": "v67-curated-social-card-clean-modal",
+  "node_syntax_check": {
+    "index_inline_script": "passed",
+    "sync_script": "passed"
   },
+  "changes": {
+    "front_end_layout": "unchanged",
+    "social_card_filenames": "unchanged",
+    "facebook_sync_script": "scripts/sync-facebook-images.js",
+    "github_action": ".github/workflows/sync-facebook-images.yml",
+    "package_json": "added",
+    "setup_doc": "FACEBOOK-SYNC-SETUP.md",
+    "env_example": ".env.example"
+  },
+  "requires_user_secret": [
+    "FACEBOOK_PAGE_ACCESS_TOKEN",
+    "FACEBOOK_PAGE_ID"
+  ],
   "unchanged": [
     "carousel positioning",
     "background",

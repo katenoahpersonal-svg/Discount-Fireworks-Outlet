@@ -1,0 +1,16 @@
+{
+  "name": "dfo-fireworks-homepage",
+  "version": "68.0.0",
+  "private": true,
+  "description": "Discount Fireworks Outlet homepage with optional Facebook social image sync.",
+  "scripts": {
+    "sync:facebook": "node scripts/sync-facebook-images.js",
+    "build": "echo \"Static site build complete.\""
+  },
+  "dependencies": {
+    "sharp": "^0.33.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
