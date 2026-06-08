@@ -2314,9 +2314,48 @@ textarea{
   background-image:none !important;
 }
 
+
+/* =========================
+   V77 BACKGROUND SWAP
+   Built from V76.
+   Changed only:
+   - background image replaced with the newly uploaded fireworks/water/ring image.
+========================= */
+
+:root{
+  --bg-d:url("assets/background-live.jpg") !important;
+  --bg-m:url("assets/background-live.jpg") !important;
+}
+
+.page{
+  background:var(--bg-d) center center / cover no-repeat !important;
+}
+
+.page::before{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.24) 0,rgba(0,0,0,.04) 18%,rgba(0,0,0,0) 52%,rgba(0,0,0,.60) 100%),
+    radial-gradient(circle at 50% 56%,rgba(255,90,38,.018),transparent 48%) !important;
+}
+
+/* Guardrail: no older/test background layers. */
+.scene,
+.hero,
+.stage,
+.main-stage,
+#stage{
+  background-image:none !important;
+}
+
+.scene::before,
+.hero::before,
+.stage::before,
+.main-stage::before{
+  background-image:none !important;
+}
+
 </style>
 </head>
-<body data-build="v76-uploaded-background">
+<body data-build="v77-uploaded-background-final-swap">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2770,7 +2809,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V76 HIDDEN CALIBRATION</b>
+  <b>V77 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

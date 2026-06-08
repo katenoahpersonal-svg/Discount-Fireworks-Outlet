@@ -1,8 +1,8 @@
 {
-  "version": "v76-uploaded-background",
-  "base": "v75-header-font-card-scale-careful",
+  "version": "v77-uploaded-background-final-swap",
+  "base": "v76-uploaded-background",
   "background": {
-    "source": "ChatGPT Image Jun 8, 2026, 06_05_11 PM.png",
+    "source": "7636c89f-a3c0-4758-b738-5bf0e7bd50d1.png",
     "asset_jpg": "assets/background-live.jpg",
     "asset_png": "assets/background-live.png",
     "size": "1920x1080"

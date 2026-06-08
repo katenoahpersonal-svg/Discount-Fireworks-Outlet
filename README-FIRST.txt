@@ -1,3 +1,31 @@
+DFO V77 — Latest Uploaded Fireworks Water Ring Background
+
+Starting point:
+- V76 uploaded-background.
+
+Changed only:
+1. Replaced the site background with the latest uploaded fireworks/water/orange-ring background.
+2. Updated:
+   - assets/background-live.jpg
+   - assets/background-live.png
+3. Background exported at 1920x1080.
+4. CSS forced to use assets/background-live.jpg.
+
+Unchanged:
+- header restored
+- improved Oswald small font
+- scaled-up cards
+- carousel positioning/order
+- card content
+- V71 Finale Favorites product-focused images
+- footer/info bar remains removed
+- drag wording remains removed
+- bottom countdown
+- social feed setup / Facebook auto-sync files
+- modals
+
+Node syntax checks passed.
+
 DFO V76 — Uploaded Fireworks Water Ring Background
 
 Starting point:
