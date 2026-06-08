@@ -1,21 +1,38 @@
 {
-  "version": "v69-no-header-no-info-bars",
-  "base": "v68-facebook-auto-sync-ready",
+  "version": "v70-finale-favorites-real-images",
+  "base": "v69-no-header-no-info-bars",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changes": {
-    "top_header": "hidden",
-    "bottom_info_footer_bar": "hidden",
-    "click_drag_wording": "hidden",
-    "bottom_countdown": "kept visible; bottom set to 24px"
+  "changed": {
+    "finale_favorites_images": {
+      "500G Cakes": {
+        "asset": "assets/finale-500g-cakes.jpg",
+        "source": "FireworkProduct Image-2.jpg"
+      },
+      "Aerials": {
+        "asset": "assets/finale-aerials.jpg",
+        "source": "FireworkProduct Image-1.jpg"
+      },
+      "Finales": {
+        "asset": "assets/finale-finales.jpg",
+        "source": "FIreworkProductImage-7.jpg"
+      },
+      "Family Packs": {
+        "asset": "assets/finale-family-packs.jpg",
+        "source": "FIreworkProductImage-4.jpg"
+      }
+    }
   },
   "unchanged": [
     "carousel positioning",
-    "cards",
+    "background",
+    "header removal",
+    "footer/info bar removal",
+    "bottom countdown",
+    "social sync",
     "modals",
-    "facebook auto-sync setup",
-    "background"
+    "other cards"
   ]
 }

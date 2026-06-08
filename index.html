@@ -2064,9 +2064,20 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   display:none !important;
 }
 
+
+/* =========================
+   V70 FINALE FAVORITES IMAGE UPDATE
+   Built from V69.
+   Only target: Finale Favorites 4 image tiles.
+========================= */
+.favorite-grid span{
+  background-size:cover !important;
+  background-position:center center !important;
+}
+
 </style>
 </head>
-<body data-build="v69-no-header-no-info-bars">
+<body data-build="v70-finale-favorites-real-images">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2215,6 +2226,15 @@ Object.assign(IMG, {
   s4: "assets/social-feed-04.jpg",
   s5: "assets/social-feed-05.jpg",
   s6: "assets/social-feed-06.jpg"
+});
+
+
+Object.assign(IMG, {
+  // V70 Finale Favorites replacement images from uploaded product/firework images.
+  cake: "assets/finale-500g-cakes.jpg",
+  aer: "assets/finale-aerials.jpg",
+  fin: "assets/finale-finales.jpg",
+  fam: "assets/finale-family-packs.jpg"
 });
 
 const PIN = `<svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c-4.1 0-7.4 3.18-7.4 7.1C4.6 15.18 12 21.5 12 21.5s7.4-6.32 7.4-11.9c0-3.92-3.3-7.1-7.4-7.1Z"/><circle cx="12" cy="9.7" r="2.35"/></svg>`;
@@ -2511,7 +2531,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V69 HIDDEN CALIBRATION</b>
+  <b>V70 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
