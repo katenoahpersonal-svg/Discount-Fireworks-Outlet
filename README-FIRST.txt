@@ -1,3 +1,59 @@
+DFO V72 — Uploaded Background Test
+
+Starting point:
+- V71 finale-images-product-focus.
+
+Only visual test change:
+- Added assets/background-v72-test.jpg from the uploaded background image.
+- The uploaded image was processed/darkened/blurred slightly so baked-in text/maps are less distracting.
+- Background CSS now tests this new image behind the existing carousel.
+
+Important:
+- This is a BACKGROUND TEST version.
+- The uploaded source image contains baked text/maps/logos, so this version is best for testing vibe only.
+- For production, a clean background with no baked UI/text/maps would be better.
+
+Unchanged:
+- carousel positioning
+- card content
+- Finale Favorites V71 product-focused images
+- header remains removed
+- bottom black info bar remains removed
+- bottom countdown
+- social feed setup / Facebook auto-sync files
+- modals
+
+Node syntax checks passed.
+
+DFO V71 — Finale Favorites Product-Focus Tile Crops
+
+Starting point:
+- V70 finale-favorites-real-images.
+
+Only card tuning change:
+- Re-cropped and reformatted the 4 Finale Favorites images so the product boxes are the main focus.
+- Replaced the blurry/weak bottom-right Family Packs tile with a sharper uploaded image.
+- Added subtle bottom darkening for label readability.
+- Increased crop output to 1200x672 for cleaner card rendering.
+
+Current Finale Favorites tile assets:
+1. assets/finale-500g-cakes.jpg
+2. assets/finale-aerials.jpg
+3. assets/finale-finales.jpg
+4. assets/finale-family-packs.jpg
+
+Unchanged:
+- carousel positioning
+- background
+- header remains removed
+- bottom black info bar remains removed
+- bottom countdown
+- social feed setup / Facebook auto-sync files
+- modals
+- other cards
+
+Node syntax checks passed.
+
 DFO V70 — Finale Favorites Real Image Tiles
 
 Starting point:

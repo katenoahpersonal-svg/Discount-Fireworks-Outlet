@@ -1,38 +1,23 @@
 {
-  "version": "v70-finale-favorites-real-images",
-  "base": "v69-no-header-no-info-bars",
+  "version": "v72-background-test-uploaded-image",
+  "base": "v71-finale-images-product-focus",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changed": {
-    "finale_favorites_images": {
-      "500G Cakes": {
-        "asset": "assets/finale-500g-cakes.jpg",
-        "source": "FireworkProduct Image-2.jpg"
-      },
-      "Aerials": {
-        "asset": "assets/finale-aerials.jpg",
-        "source": "FireworkProduct Image-1.jpg"
-      },
-      "Finales": {
-        "asset": "assets/finale-finales.jpg",
-        "source": "FIreworkProductImage-7.jpg"
-      },
-      "Family Packs": {
-        "asset": "assets/finale-family-packs.jpg",
-        "source": "FIreworkProductImage-4.jpg"
-      }
-    }
+    "background": "assets/background-v72-test.jpg from uploaded image",
+    "processing": "darkened, lightly blurred, vignette added"
   },
   "unchanged": [
     "carousel positioning",
-    "background",
+    "card content",
+    "finale favorites V71 images",
     "header removal",
     "footer/info bar removal",
     "bottom countdown",
     "social sync",
-    "modals",
-    "other cards"
-  ]
+    "modals"
+  ],
+  "note": "Uploaded image includes baked text/maps; clean background preferred for production."
 }

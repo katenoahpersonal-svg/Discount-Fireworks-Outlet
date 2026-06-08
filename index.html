@@ -2075,9 +2075,66 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   background-position:center center !important;
 }
 
+
+/* =========================
+   V71 FINALE FAVORITES PRODUCT-FOCUS IMAGE PATCH
+   Built from V70.
+   Only target:
+   - Finale Favorites tile image formatting.
+   Goal:
+   - product boxes are the main point
+   - bottom-right tile no longer uses the blurry/weak crop
+========================= */
+
+.favorite-grid span{
+  background-size:cover !important;
+  background-position:center 62% !important;
+  image-rendering:auto !important;
+}
+
+.favorite-grid span::after{
+  background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.58)) !important;
+}
+
+
+/* =========================
+   V72 BACKGROUND TEST
+   Built from V71.
+   Only target:
+   - background image swapped to the uploaded test image, processed/darkened as atmosphere.
+   No carousel positioning/card content/countdown/social sync changes.
+========================= */
+
+.scene,
+.hero,
+.stage,
+.main-stage,
+#stage{
+  background-image:
+    radial-gradient(circle at 50% 58%, rgba(255,90,38,.18), transparent 42%),
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.34)),
+    url("assets/background-v72-test.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+}
+
+/* If the original build uses a pseudo-layer for the background, force that layer too. */
+.scene::before,
+.hero::before,
+.stage::before,
+.main-stage::before{
+  background-image:
+    radial-gradient(circle at 50% 58%, rgba(255,90,38,.15), transparent 44%),
+    url("assets/background-v72-test.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+}
+
 </style>
 </head>
-<body data-build="v70-finale-favorites-real-images">
+<body data-build="v72-background-test-uploaded-image">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2230,7 +2287,7 @@ Object.assign(IMG, {
 
 
 Object.assign(IMG, {
-  // V70 Finale Favorites replacement images from uploaded product/firework images.
+  // V71 Finale Favorites images: product-box focused crops, sharpened and formatted for the card tiles.
   cake: "assets/finale-500g-cakes.jpg",
   aer: "assets/finale-aerials.jpg",
   fin: "assets/finale-finales.jpg",
@@ -2531,7 +2588,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V70 HIDDEN CALIBRATION</b>
+  <b>V72 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
