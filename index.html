@@ -1934,9 +1934,94 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   letter-spacing:.08em !important;
 }
 
+
+/* =========================
+   V67 CURATED SOCIAL CARD + CLEAN SOCIAL MODAL
+   Built from V66.
+   Only target: Social modal. Social carousel card remains curated local 6-image grid.
+========================= */
+
+.card-social .social-thumbs,
+.social-thumbs{
+  display:grid !important;
+  grid-template-columns:repeat(3, 1fr) !important;
+  gap:clamp(6px,.55vw,10px) !important;
+}
+
+.card-social .social-thumbs span,
+.social-thumbs span{
+  background-size:cover !important;
+  background-position:center !important;
+}
+
+.simple-social-modal{
+  text-align:center !important;
+  max-width:min(720px,92vw) !important;
+  padding:clamp(34px,4vw,62px) !important;
+}
+
+.simple-social-modal .eyebrow{
+  color:var(--orange) !important;
+  letter-spacing:.28em !important;
+  margin-bottom:10px !important;
+}
+
+.simple-social-modal h2{
+  margin:0 !important;
+  font-family:var(--head) !important;
+  font-size:clamp(3.2rem,6vw,6.5rem) !important;
+  line-height:.82 !important;
+  text-transform:uppercase !important;
+  color:#fff !important;
+  text-shadow:0 0 18px rgba(255,255,255,.14);
+}
+
+.simple-social-modal .social-subtitle{
+  margin:18px auto 28px !important;
+  color:rgba(255,255,255,.82) !important;
+  font-family:var(--head) !important;
+  font-size:clamp(1.05rem,1.55vw,1.45rem) !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  line-height:1.15 !important;
+}
+
+.social-open-button{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:min(360px,82vw) !important;
+  min-height:58px !important;
+  padding:0 26px !important;
+  border:2px solid var(--orange) !important;
+  border-radius:14px !important;
+  background:linear-gradient(180deg,rgba(255,106,42,.28),rgba(255,106,42,.12)) !important;
+  color:#fff !important;
+  text-decoration:none !important;
+  font-family:var(--head) !important;
+  font-weight:900 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.16em !important;
+  box-shadow:0 0 28px rgba(255,90,38,.22), inset 0 0 18px rgba(255,90,38,.10);
+}
+
+.social-visible-url{
+  display:block !important;
+  margin-top:18px !important;
+  color:rgba(255,255,255,.76) !important;
+  text-decoration:none !important;
+  font-family:var(--body) !important;
+  font-size:clamp(.95rem,1.2vw,1.1rem) !important;
+}
+
+.social-visible-url:hover{
+  color:#fff !important;
+  text-shadow:0 0 12px rgba(255,90,38,.35);
+}
+
 </style>
 </head>
-<body data-build="v66-locations-side-slot-selector-fix">
+<body data-build="v67-curated-social-card-clean-modal">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2049,14 +2134,14 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 <div class="modal-layer" id="socialModal">
   <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal simple-link-modal">
-    <p class="eyebrow">Follow the Finale</p><h2>DFO Social Links</h2>
-    <p class="modal-note">Catch demo drops, tent updates, location reminders, new products, and Fourth of July season posts.</p>
-    <div class="modal-link-row">
-      <a class="modal-link big-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook Page</a>
-      <a class="modal-link big-link" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">facebook.com/DFOBoji</a>
-    </div>
+  <div class="modal simple-social-modal">
+    <p class="eyebrow">Follow the Finale</p>
+    <h2>Follow the Finale</h2>
+    <p class="social-subtitle">Discount Fireworks Outlet on Facebook</p>
+    <a class="modal-link social-open-button" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook Page</a>
+    <a class="social-visible-url" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">facebook.com/DFOBoji</a>
   </div>
+</div>
 </div>
 
 <script>
@@ -2381,7 +2466,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V66 HIDDEN CALIBRATION</b>
+  <b>V67 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

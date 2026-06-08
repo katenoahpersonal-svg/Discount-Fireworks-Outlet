@@ -1,22 +1,29 @@
-DFO V66 — Locations Side-Slot Selector Fix
+DFO V67 — Curated Social Card + Clean Social Modal
 
 Starting point:
-- V65 locations-button-and-side-card-fix.
+- V66 locations-side-slot-selector-fix.
 
-Root cause:
-- The carousel JS sets each slot as data-wall-pos="-2/-1/0/1/2".
-- The V65 side-card CSS accidentally targeted data-slot instead.
-- Because of that, the side/far Locations fixes were not applying at all when the card was not in front.
-
-Only change:
-- Corrected side/far Locations CSS selectors from data-slot to data-wall-pos.
-- Added a little extra side/far Locations scaling so the title, 2x2 list, copy, and button stay inside the card when it is angled.
+Only social strategy changes:
+1. No live Facebook feed is embedded inside the carousel card.
+2. Social Feed carousel card remains a curated 6-image grid using local assets:
+   - assets/social-feed-01.jpg
+   - assets/social-feed-02.jpg
+   - assets/social-feed-03.jpg
+   - assets/social-feed-04.jpg
+   - assets/social-feed-05.jpg
+   - assets/social-feed-06.jpg
+3. To update the Social card, replace those six files using the same filenames.
+4. View Socials opens a clean modal with:
+   - title: Follow the Finale
+   - subtitle: Discount Fireworks Outlet on Facebook
+   - button: Open Facebook Page
+   - visible URL: facebook.com/DFOBoji
+5. Removed Facebook iframe/plugin/sdk artifacts.
 
 No carousel positioning changed.
 No background changes.
 No header changes.
-No other card content changes.
 No footer/countdown changes.
-No modal behavior changes.
+No other cards changed.
 Bottom DFO/firecracker remains removed.
 Node JS syntax check passed.

@@ -1,19 +1,30 @@
 {
-  "version": "v66-locations-side-slot-selector-fix",
-  "base": "v65-locations-button-and-side-card-fix",
+  "version": "v67-curated-social-card-clean-modal",
+  "base": "v66-locations-side-slot-selector-fix",
   "node_syntax_check": "passed",
-  "root_cause": "side/far Locations CSS used data-slot, but JS writes data-wall-pos",
-  "only_changes": {
-    "locations_side_slot_selectors": "data-slot -> data-wall-pos",
-    "locations_side_slot_scaling": "tightened title/list/copy/button for non-front positions"
+  "facebook_plugin_removed": true,
+  "social_card_strategy": "curated six-image local grid",
+  "local_social_assets": [
+    "assets/social-feed-01.jpg",
+    "assets/social-feed-02.jpg",
+    "assets/social-feed-03.jpg",
+    "assets/social-feed-04.jpg",
+    "assets/social-feed-05.jpg",
+    "assets/social-feed-06.jpg"
+  ],
+  "social_modal": {
+    "title": "Follow the Finale",
+    "subtitle": "Discount Fireworks Outlet on Facebook",
+    "button": "Open Facebook Page",
+    "visible_url": "facebook.com/DFOBoji",
+    "href": "https://www.facebook.com/DFOBoji/"
   },
   "unchanged": [
     "carousel positioning",
     "background",
     "header",
-    "non-location cards",
     "footer",
-    "bottom countdown",
-    "modals behavior"
+    "countdowns",
+    "other cards"
   ]
 }
