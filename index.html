@@ -2098,14 +2098,13 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 
 /* =========================
-   V73 LIVE CLEAN BACKGROUND
+   V74 LIVE BACKGROUND UPDATE
    Built from V71.
-   This is NOT a test background.
-   It replaces the page background with the clean uploaded firework/platform image:
+   New production background:
    assets/background-live.jpg
 
-   Removed the accidental screenshot/map background path by rebuilding from V71,
-   not V72.
+   Uses the generated water + fireworks + orange ring background.
+   No test/screenshot/map background.
 ========================= */
 
 :root{
@@ -2117,14 +2116,13 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   background:var(--bg-d) center center / cover no-repeat !important;
 }
 
-/* Keep the clean uploaded background visible. */
 .page::before{
   background:
-    linear-gradient(180deg,rgba(0,0,0,.56) 0,rgba(0,0,0,.18) 13%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 72%,rgba(0,0,0,.70) 100%),
-    radial-gradient(circle at 50% 44%,rgba(255,111,46,.035),transparent 46%) !important;
+    linear-gradient(180deg,rgba(0,0,0,.34) 0,rgba(0,0,0,.08) 18%,rgba(0,0,0,0) 48%,rgba(0,0,0,.68) 100%),
+    radial-gradient(circle at 50% 56%,rgba(255,90,38,.035),transparent 48%) !important;
 }
 
-/* Hard guard: no V72/test background selectors. */
+/* Guardrail: prevent any older test background layers from showing. */
 .scene,
 .hero,
 .stage,
@@ -2142,7 +2140,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 </style>
 </head>
-<body data-build="v73-live-clean-uploaded-background">
+<body data-build="v74-dalle-ring-water-background">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2596,7 +2594,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V73 HIDDEN CALIBRATION</b>
+  <b>V74 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

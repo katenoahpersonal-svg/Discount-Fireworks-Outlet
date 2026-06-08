@@ -1,17 +1,19 @@
 {
-  "version": "v73-live-clean-uploaded-background",
+  "version": "v74-dalle-ring-water-background",
   "base": "v71-finale-images-product-focus",
+  "background": {
+    "source": "a_dramatic_wide_panoramic_night_scene_landscape_wi.png",
+    "asset_jpg": "assets/background-live.jpg",
+    "asset_png": "assets/background-live.png",
+    "size": "1920x1080"
+  },
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed": {
-    "background": "assets/background-live.jpg",
-    "source": "ChatGPT Image Jun 7, 2026, 10_47_40 AM.png",
-    "size": "1920x1080",
-    "not_test": true,
-    "removed_bad_v72_background": true
-  },
+  "changed": [
+    "background only"
+  ],
   "unchanged": [
     "carousel positioning",
     "cards",
