@@ -1,23 +1,25 @@
 {
-  "version": "v72-background-test-uploaded-image",
+  "version": "v73-live-clean-uploaded-background",
   "base": "v71-finale-images-product-focus",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changed": {
-    "background": "assets/background-v72-test.jpg from uploaded image",
-    "processing": "darkened, lightly blurred, vignette added"
+    "background": "assets/background-live.jpg",
+    "source": "ChatGPT Image Jun 7, 2026, 10_47_40 AM.png",
+    "size": "1920x1080",
+    "not_test": true,
+    "removed_bad_v72_background": true
   },
   "unchanged": [
     "carousel positioning",
-    "card content",
+    "cards",
     "finale favorites V71 images",
     "header removal",
     "footer/info bar removal",
     "bottom countdown",
     "social sync",
     "modals"
-  ],
-  "note": "Uploaded image includes baked text/maps; clean background preferred for production."
+  ]
 }

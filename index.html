@@ -2098,43 +2098,51 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 
 
 /* =========================
-   V72 BACKGROUND TEST
+   V73 LIVE CLEAN BACKGROUND
    Built from V71.
-   Only target:
-   - background image swapped to the uploaded test image, processed/darkened as atmosphere.
-   No carousel positioning/card content/countdown/social sync changes.
+   This is NOT a test background.
+   It replaces the page background with the clean uploaded firework/platform image:
+   assets/background-live.jpg
+
+   Removed the accidental screenshot/map background path by rebuilding from V71,
+   not V72.
 ========================= */
 
+:root{
+  --bg-d:url("assets/background-live.jpg") !important;
+  --bg-m:url("assets/background-live.jpg") !important;
+}
+
+.page{
+  background:var(--bg-d) center center / cover no-repeat !important;
+}
+
+/* Keep the clean uploaded background visible. */
+.page::before{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.56) 0,rgba(0,0,0,.18) 13%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 72%,rgba(0,0,0,.70) 100%),
+    radial-gradient(circle at 50% 44%,rgba(255,111,46,.035),transparent 46%) !important;
+}
+
+/* Hard guard: no V72/test background selectors. */
 .scene,
 .hero,
 .stage,
 .main-stage,
 #stage{
-  background-image:
-    radial-gradient(circle at 50% 58%, rgba(255,90,38,.18), transparent 42%),
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.34)),
-    url("assets/background-v72-test.jpg") !important;
-  background-size:cover !important;
-  background-position:center center !important;
-  background-repeat:no-repeat !important;
+  background-image:none !important;
 }
 
-/* If the original build uses a pseudo-layer for the background, force that layer too. */
 .scene::before,
 .hero::before,
 .stage::before,
 .main-stage::before{
-  background-image:
-    radial-gradient(circle at 50% 58%, rgba(255,90,38,.15), transparent 44%),
-    url("assets/background-v72-test.jpg") !important;
-  background-size:cover !important;
-  background-position:center center !important;
-  background-repeat:no-repeat !important;
+  background-image:none !important;
 }
 
 </style>
 </head>
-<body data-build="v72-background-test-uploaded-image">
+<body data-build="v73-live-clean-uploaded-background">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2588,7 +2596,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V72 HIDDEN CALIBRATION</b>
+  <b>V73 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

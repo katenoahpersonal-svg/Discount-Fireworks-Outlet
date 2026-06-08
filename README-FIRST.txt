@@ -1,22 +1,23 @@
-DFO V72 — Uploaded Background Test
+DFO V73 — LIVE Clean Uploaded Background
 
 Starting point:
 - V71 finale-images-product-focus.
+- This intentionally skips/removes the V72 test background mistake.
 
-Only visual test change:
-- Added assets/background-v72-test.jpg from the uploaded background image.
-- The uploaded image was processed/darkened/blurred slightly so baked-in text/maps are less distracting.
-- Background CSS now tests this new image behind the existing carousel.
-
-Important:
-- This is a BACKGROUND TEST version.
-- The uploaded source image contains baked text/maps/logos, so this version is best for testing vibe only.
-- For production, a clean background with no baked UI/text/maps would be better.
+What changed:
+1. Added clean production background:
+   assets/background-live.jpg
+2. The background is made from:
+   ChatGPT Image Jun 7, 2026, 10_47_40 AM.png
+3. Resized to 1920x1080 for production use.
+4. CSS variables --bg-d and --bg-m now point directly to assets/background-live.jpg.
+5. No map/screenshot/test background is used.
+6. No V72 test filename remains.
 
 Unchanged:
 - carousel positioning
-- card content
-- Finale Favorites V71 product-focused images
+- cards
+- V71 Finale Favorites product-focused images
 - header remains removed
 - bottom black info bar remains removed
 - bottom countdown
