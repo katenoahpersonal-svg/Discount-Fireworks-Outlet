@@ -2019,9 +2019,54 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
   text-shadow:0 0 12px rgba(255,90,38,.35);
 }
 
+
+/* =========================
+   V69 NO HEADER / NO INFO BAR
+   Built from V68.
+   Changes:
+   - Removes the top coded header.
+   - Removes the bottom black info/footer bar.
+   - Removes the Click & Drag wording.
+   - Keeps the carousel, bottom countdown, modals, and Facebook auto-sync setup.
+========================= */
+
+.site-header,
+.header,
+.top-header,
+.main-header,
+.navbar{
+  display:none !important;
+}
+
+.site-footer,
+.footer,
+.bottom-bar,
+.drag-note,
+.promise,
+.social-follow{
+  display:none !important;
+}
+
+/* With the footer gone, the countdown can sit cleanly without being clipped. */
+.bottom-count,
+.bottom-countdown,
+.stage-countdown,
+.countdown-bottom,
+.lower-countdown,
+.show-countdown-bottom{
+  bottom: 24px !important;
+}
+
+/* Prevent any leftover black footer/header masks from appearing if present. */
+.header-mask,
+.footer-mask,
+.info-bar-mask{
+  display:none !important;
+}
+
 </style>
 </head>
-<body data-build="v68-facebook-auto-sync-ready">
+<body data-build="v69-no-header-no-info-bars">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2466,7 +2511,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V68 HIDDEN CALIBRATION</b>
+  <b>V69 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

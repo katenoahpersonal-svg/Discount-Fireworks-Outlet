@@ -1,29 +1,21 @@
 {
-  "version": "v68-facebook-auto-sync-ready",
-  "base": "v67-curated-social-card-clean-modal",
+  "version": "v69-no-header-no-info-bars",
+  "base": "v68-facebook-auto-sync-ready",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changes": {
-    "front_end_layout": "unchanged",
-    "social_card_filenames": "unchanged",
-    "facebook_sync_script": "scripts/sync-facebook-images.js",
-    "github_action": ".github/workflows/sync-facebook-images.yml",
-    "package_json": "added",
-    "setup_doc": "FACEBOOK-SYNC-SETUP.md",
-    "env_example": ".env.example"
+    "top_header": "hidden",
+    "bottom_info_footer_bar": "hidden",
+    "click_drag_wording": "hidden",
+    "bottom_countdown": "kept visible; bottom set to 24px"
   },
-  "requires_user_secret": [
-    "FACEBOOK_PAGE_ACCESS_TOKEN",
-    "FACEBOOK_PAGE_ID"
-  ],
   "unchanged": [
     "carousel positioning",
-    "background",
-    "header",
-    "footer",
-    "countdowns",
-    "other cards"
+    "cards",
+    "modals",
+    "facebook auto-sync setup",
+    "background"
   ]
 }
