@@ -1,44 +1,35 @@
-DFO V93 — No Buoy + Tablet/Mobile Responsive Pass
+DFO V94 — Bottom Clock Up + Mobile Card Clearance
 
 Starting point:
-- Built from V92 header-logo-swap.
+- Built from V93 no-buoy-responsive-tablet-mobile.
 
 Included:
-1. V89 updates:
-   - Social modal with Facebook, Instagram, and YouTube spots
-   - Favorites modal with images
-   - Locations polish
-   - Tiny headers visually hidden
-   - Consistent card colors
-2. V91 background system, but with the buoy removed/replaced by the clean no-buoy ring background.
-3. V92 uploaded header logo.
+- V89 social/favorites/location/card color updates
+- V92 header logo
+- V93 no-buoy clean background
+- V93 tablet/mobile responsive setup
 
-New V93 changes:
-1. Completely removed the buoy/firecracker from the background.
-2. Added clean active background:
-   - assets/background-live-v93-no-buoy.jpg
-   - assets/background-live-v93-no-buoy.png
-3. Updated generic background assets too:
-   - assets/background-live.jpg
-   - assets/background-live.png
-4. Added tablet responsive layout:
-   - 701px–1100px uses a horizontal swipe card rail.
-   - Cards are no longer squeezed/warped into weird 3D slivers.
-5. Added mobile responsive layout:
-   - 700px and below uses stacked full-width cards.
-   - Card text, images, buttons, locations, favorites, and social grids are resized for phone screens.
-6. Hidden drag wording on tablet/mobile.
+New V94 changes:
+1. Desktop only:
+   - Moved the bottom countdown/timeclock upward into the middle-lower hero area.
+   - Header/top countdown is untouched.
+
+2. Tablet/mobile:
+   - Added extra space between the card stack/rail and the lower countdown.
+   - Prevented stacked mobile cards from overlapping the timeclock.
+   - Prevented mobile card interiors from clipping or hiding content.
+   - Reduced/controlled image grid heights on mobile so copy/buttons stay visible.
 
 Unchanged:
-- Header logo from V92
-- Desktop carousel geometry
-- Card content
+- no-buoy background
+- header logo
+- desktop carousel geometry
+- card content
+- modals
 - YouTube embeds
-- V89 modal/content polish
-- Countdown content
-- Social sync script
+- social sync script
 
 Upload note:
 Upload/extract the full ZIP contents to GitHub.
-Make sure updated index.html and the entire assets folder are uploaded.
-Then hard refresh the live page with Ctrl+Shift+R.
+Make sure updated index.html is uploaded.
+Then hard refresh with Ctrl+Shift+R.

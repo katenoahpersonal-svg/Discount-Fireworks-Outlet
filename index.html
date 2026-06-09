@@ -3997,9 +3997,172 @@ html::after{
   }
 }
 
+
+/* =========================
+   V94 CLOCK + MOBILE CLEARANCE PASS
+   Built from V93.
+   Changes:
+   - Desktop only: moves the bottom timeclock upward into the middle-lower hero area.
+   - Mobile only: adds card/content clearance so stacked cards do not overlap the timeclock,
+     and prevents card interiors from clipping/masking important info.
+========================= */
+
+/* Desktop only: move the lower countdown up. Header clock is untouched. */
+@media (min-width:1101px){
+  .bottom-count{
+    position:absolute !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    bottom:clamp(78px,10.6vh,132px) !important;
+    z-index:42 !important;
+    margin:0 !important;
+    pointer-events:none !important;
+  }
+
+  .bottom-count .bottom-row,
+  .bottom-count p{
+    pointer-events:auto !important;
+  }
+}
+
+/* Tablet: keep extra breathing room before the lower clock/footer. */
+@media (min-width:701px) and (max-width:1100px){
+  .hero{
+    padding-bottom:48px !important;
+  }
+
+  .carousel{
+    padding-bottom:52px !important;
+  }
+
+  .bottom-count{
+    clear:both !important;
+    position:relative !important;
+    z-index:5 !important;
+    margin:26px auto 34px !important;
+  }
+}
+
+/* Mobile: stacked cards get full clearance and no clipped content. */
+@media (max-width:700px){
+  .hero{
+    padding-bottom:38px !important;
+  }
+
+  .carousel{
+    gap:22px !important;
+    padding-bottom:58px !important;
+    overflow:visible !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    overflow:visible !important;
+    margin-bottom:4px !important;
+  }
+
+  .card{
+    overflow:visible !important;
+    display:flex !important;
+    flex-direction:column !important;
+    box-sizing:border-box !important;
+  }
+
+  /* Stop mobile content from being hidden by old fixed/desktop sizing. */
+  .card > *{
+    max-width:100% !important;
+  }
+
+  .card-copy{
+    position:relative !important;
+    margin-top:auto !important;
+    padding-bottom:0 !important;
+  }
+
+  .card-btn{
+    flex:0 0 auto !important;
+  }
+
+  /* Demo card: keep all video/thumb/copy/button content visible on phone. */
+  .card-videos .video-feature{
+    flex:0 0 auto !important;
+    min-height:178px !important;
+    height:auto !important;
+  }
+
+  .card-videos .video-thumbs{
+    flex:0 0 auto !important;
+  }
+
+  .card-videos .card-copy{
+    margin-top:14px !important;
+  }
+
+  /* Build card: image should not push the button into the next section. */
+  .card-build .build-photo,
+  .build-photo{
+    flex:0 0 auto !important;
+    min-height:220px !important;
+    height:220px !important;
+  }
+
+  /* Favorites + social cards: make grids visible but compact enough for the phone stack. */
+  .favorite-grid,
+  .social-thumbs{
+    flex:0 0 auto !important;
+  }
+
+  .favorite-grid span,
+  .social-thumbs span{
+    min-height:100px !important;
+  }
+
+  /* Locations: keep all four locations readable without stealing button space. */
+  .card-locations .location-list{
+    flex:1 1 auto !important;
+    align-content:start !important;
+    row-gap:16px !important;
+    margin-top:18px !important;
+  }
+
+  .card-locations .card-copy{
+    margin-top:18px !important;
+  }
+
+  /* The lower clock is now clearly separated from the final stacked card. */
+  .bottom-count{
+    clear:both !important;
+    position:relative !important;
+    z-index:8 !important;
+    width:92vw !important;
+    margin:34px auto 24px !important;
+    padding-top:10px !important;
+    background:linear-gradient(180deg,rgba(3,5,13,.00),rgba(3,5,13,.28)) !important;
+    border-radius:18px !important;
+  }
+
+  .bottom-count::before{
+    content:"" !important;
+    display:block !important;
+    position:absolute !important;
+    left:50% !important;
+    top:-28px !important;
+    width:min(260px,70vw) !important;
+    height:1px !important;
+    transform:translateX(-50%) !important;
+    background:linear-gradient(90deg,transparent,rgba(255,109,46,.55),transparent) !important;
+    pointer-events:none !important;
+  }
+
+  .footer{
+    margin-top:8px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v93-no-buoy-responsive-tablet-mobile">
+<body data-build="v94-clock-up-mobile-card-clearance">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4483,7 +4646,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V93 HIDDEN CALIBRATION</b>
+  <b>V94 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

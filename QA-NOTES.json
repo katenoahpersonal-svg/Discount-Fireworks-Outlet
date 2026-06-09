@@ -1,35 +1,27 @@
 {
-  "version": "v93-no-buoy-responsive-tablet-mobile",
-  "base": "v92-header-logo-swap",
+  "version": "v94-clock-up-mobile-card-clearance",
+  "base": "v93-no-buoy-responsive-tablet-mobile",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "included_from_prior_versions": {
-    "v89": [
-      "social modal FB/IG/YT spots",
-      "favorites modal images",
-      "locations polish",
-      "tiny headers hidden",
-      "consistent colors"
+  "changed_v94": {
+    "desktop_bottom_countdown": "moved up with bottom: clamp(78px, 10.6vh, 132px)",
+    "mobile": [
+      "extra carousel bottom padding",
+      "extra bottom-count top margin",
+      "overflow visible for stacked cards",
+      "card interiors flex column to avoid clipping",
+      "image/grid heights compacted so info stays visible"
     ],
-    "v92": [
-      "uploaded header logo"
-    ]
-  },
-  "changed_v93": {
-    "background": "clean no-buoy ring background",
-    "tablet": "701-1100px horizontal swipe card rail",
-    "mobile": "700px and below stacked responsive cards",
-    "hidden_on_tablet_mobile": [
-      "drag wording",
-      "3D ring overlays/arrows"
-    ]
+    "tablet": "more breathing room before bottom countdown"
   },
   "unchanged": [
+    "background from V93",
+    "header logo from V92",
     "desktop carousel geometry",
     "card content",
-    "modals except prior V89 updates",
+    "modals",
     "YouTube embeds",
     "social sync"
   ]
