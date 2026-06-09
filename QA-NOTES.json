@@ -1,35 +1,26 @@
 {
-  "version": "v86-forced-card-visual-refresh",
-  "base": "v85-social-card-image-swap",
+  "version": "v88-visible-demo-card-preview-fix",
+  "base": "v87-video-thumbnail-fallback-fix",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "forced_card_visuals": {
-    "build": "assets/build-your-show-bomb-v86.jpg?v=86",
-    "social": [
-      "assets/social-card-v86-01.jpg?v=86",
-      "assets/social-card-v86-02.jpg?v=86",
-      "assets/social-card-v86-03.jpg?v=86",
-      "assets/social-card-v86-04.jpg?v=86",
-      "assets/social-card-v86-05.jpg?v=86",
-      "assets/social-card-v86-06.jpg?v=86"
-    ],
-    "demo_feature": "https://img.youtube.com/vi/cZHENq6D12o/maxresdefault.jpg",
-    "demo_thumbs": [
-      "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg",
-      "https://img.youtube.com/vi/iujTwXJBfy8/hqdefault.jpg",
-      "https://img.youtube.com/vi/458UhOBXJLg/hqdefault.jpg",
-      "https://img.youtube.com/vi/tFteOme5wYc/hqdefault.jpg"
-    ]
+  "changed": {
+    "visible_demo_card_feature_preview": {
+      "reason": "first YouTube thumbnail returns gray placeholder",
+      "to": "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg"
+    }
   },
   "unchanged": [
+    "all YouTube embeds",
     "background",
     "header",
     "carousel geometry",
-    "bottom countdown",
+    "Build Your Show image",
+    "Social Feed images",
     "Locations styling",
-    "social modal",
-    "card order"
+    "bottom countdown",
+    "modals",
+    "social sync"
   ]
 }

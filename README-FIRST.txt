@@ -1,38 +1,31 @@
-DFO V86 — Forced Card Visual Refresh
+DFO V88 — Visible Demo Card Preview Fix
 
 Starting point:
-- V85 social-card-image-swap.
+- V87 video-thumbnail-fallback-fix.
 
-What this fixes:
-Some previous changes affected modals or reused the same asset names, so the visible carousel cards could look unchanged on GitHub/browser cache.
-V86 forces the actual carousel card visuals with new v86 asset filenames and direct CSS overrides.
+What happened:
+- The first supplied YouTube video thumbnail is returning YouTube's gray placeholder image.
+- That is why the carousel card still looked gray even though the video/embed links were updated.
 
-Changes:
-1. Build Your Show card:
-   - forced to use assets/build-your-show-bomb-v86.jpg?v=86
-
-2. Social Feed card:
-   - forced to use the 6 uploaded DFO social graphics with new filenames:
-     assets/social-card-v86-01.jpg through assets/social-card-v86-06.jpg
-
-3. Demo Videos card:
-   - visible carousel feature image and 4 thumbnails now use the supplied YouTube video thumbnails.
-   - the modal still contains all 7 supplied YouTube embeds.
-
-4. Cache protection:
-   - new v86 filenames
-   - ?v=86 cache-busting query strings
-   - direct card-level CSS overrides
+Careful change:
+1. Kept all 7 supplied YouTube videos in the modal.
+2. Kept the first supplied video in the modal:
+   https://www.youtube.com/embed/cZHENq6D12o
+3. Changed only the visible carousel Demo Videos feature preview image to a working YouTube thumbnail:
+   https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg
+4. Added a stronger CSS override so the visible card cannot keep the old gray inline preview.
 
 Unchanged:
+- all 7 video embeds
 - background
 - header
 - carousel geometry
-- countdown
+- Build Your Show image
+- Social Feed images
 - Locations styling
-- modals except already-existing YouTube links
-- social modal
+- countdown
+- modals except no embed changes
+- social sync
 
 Upload note:
-Upload/extract the full ZIP contents to GitHub, including the updated index.html and all new assets.
-Then hard refresh the browser with Ctrl+Shift+R.
+Upload/extract the full ZIP contents to GitHub, then hard refresh with Ctrl+Shift+R.

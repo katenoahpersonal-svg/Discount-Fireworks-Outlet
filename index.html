@@ -2929,7 +2929,7 @@ body,button,input,textarea,.logo-text,.nav button,.header-title,.clock-lab,.card
 .card-videos .video-feature{
   background-image:
     linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),
-    url("https://img.youtube.com/vi/cZHENq6D12o/maxresdefault.jpg") !important;
+    url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
 }
 .card-videos .video-thumbs .video-thumb-button:nth-child(1){
   background-image:url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
@@ -2950,9 +2950,50 @@ html::after{
   display:none;
 }
 
+
+/* =========================
+   V87 VIDEO THUMBNAIL FALLBACK FIX
+   Built from V86.
+   Changes only:
+   - The first supplied YouTube video's maxres thumbnail was unavailable and showed the gray YouTube placeholder.
+   - The visible Demo Videos feature card now uses the more reliable hqdefault thumbnail.
+========================= */
+
+.card-videos .video-feature{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),
+    url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+
+
+/* =========================
+   V88 VISIBLE DEMO CARD PREVIEW FIX
+   Built from V87.
+   Changes only:
+   - The actual visible carousel Demo Videos feature preview no longer uses the gray placeholder thumbnail.
+   - The first supplied video stays in the modal; only the visible hero-card preview image uses the first working thumbnail.
+========================= */
+
+.card-videos .video-feature{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),
+    url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+
+/* Make sure the inline style image on the feature area cannot win over this override. */
+.card-videos .video-feature[style]{
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),
+    url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
+}
+
 </style>
 </head>
-<body data-build="v86-forced-card-visual-refresh">
+<body data-build="v88-visible-demo-card-preview-fix">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -3089,7 +3130,7 @@ Object.assign(IMG, {
   tent:"assets/build-your-show-bomb-v86.jpg?v=86",
 
   // Demo card uses the same YouTube videos the modal opens.
-  videoFeature: "https://img.youtube.com/vi/cZHENq6D12o/maxresdefault.jpg",
+  videoFeature: "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg",
   videoCake: "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg",
   videoAerial: "https://img.youtube.com/vi/iujTwXJBfy8/hqdefault.jpg",
   videoFinale: "https://img.youtube.com/vi/458UhOBXJLg/hqdefault.jpg",
@@ -3407,7 +3448,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V86 HIDDEN CALIBRATION</b>
+  <b>V88 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
