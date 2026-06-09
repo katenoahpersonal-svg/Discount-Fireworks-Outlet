@@ -1,26 +1,34 @@
 {
-  "version": "v88-visible-demo-card-preview-fix",
-  "base": "v87-video-thumbnail-fallback-fix",
+  "version": "v92-header-logo-swap",
+  "base": "v91-v89-plus-new-buoy-background",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed": {
-    "visible_demo_card_feature_preview": {
-      "reason": "first YouTube thumbnail returns gray placeholder",
-      "to": "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg"
+  "new_change": {
+    "header_logo_only": "assets/header-logo-v92.png?v=92",
+    "source_upload": "DFO header Logo.png",
+    "trimmed_logo_size": {
+      "width": 2036,
+      "height": 1196
     }
   },
+  "included_from_v91_v89": [
+    "approved 16:9 buoy background",
+    "social modal FB/IG/YT spots",
+    "favorites modal images",
+    "location card polish",
+    "tiny headers hidden",
+    "consistent card colors"
+  ],
   "unchanged": [
-    "all YouTube embeds",
-    "background",
-    "header",
+    "background from V91",
     "carousel geometry",
-    "Build Your Show image",
-    "Social Feed images",
-    "Locations styling",
+    "card content",
+    "footer",
     "bottom countdown",
-    "modals",
-    "social sync"
+    "modals except prior V89 updates",
+    "social sync",
+    "YouTube embeds"
   ]
 }

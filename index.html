@@ -2991,14 +2991,379 @@ html::after{
     url("https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg") !important;
 }
 
+
+/* =========================
+   V89 SOCIAL + FAVORITES + LOCATION POLISH
+   Built from V88.
+   Changes:
+   - Social modal now has Facebook, Instagram, and YouTube spots.
+   - Favorites modal now uses images for each category.
+   - Locations fills the middle space better without moving title/button.
+   - Tiny orange/red eyebrow headers are visually removed everywhere.
+   - Card colors are unified.
+========================= */
+
+:root{
+  --dfo-orange:#ff6d2e;
+  --dfo-orange-soft:rgba(255,109,46,.42);
+  --dfo-gold:#ffd56c;
+  --dfo-white:rgba(255,255,255,.88);
+  --dfo-muted:rgba(255,255,255,.72);
+  --dfo-panel:rgba(5,8,20,.92);
+}
+
+/* Remove the tiny orange/red headers visually but keep card title placement stable. */
+.card-eyebrow{
+  visibility:hidden !important;
+  color:transparent !important;
+  text-shadow:none !important;
+}
+
+.modal .eyebrow,
+.eyebrow{
+  display:none !important;
+}
+
+/* Consistent color language across all carousel cards. */
+.card{
+  border-color:var(--dfo-orange-soft) !important;
+}
+
+.card3d.is-active .card{
+  border-color:var(--dfo-orange) !important;
+}
+
+.card-media,
+.video-feature,
+.video-thumb-button,
+.favorite-grid span,
+.social-thumbs span{
+  border-color:rgba(255,109,46,.35) !important;
+}
+
+.card-copy p,
+.loc span,
+.social-subtitle,
+.modal p,
+.location-grid p,
+.feed-card p,
+.favorites-modal-grid p{
+  color:var(--dfo-muted) !important;
+}
+
+.card-btn,
+.modal-link,
+.social-open-button{
+  border-color:var(--dfo-orange) !important;
+  color:var(--dfo-orange) !important;
+}
+
+.video-label,
+.video-thumb-button span,
+.favorite-grid b,
+.favorites-modal-grid h3,
+.social-modal-link strong{
+  color:var(--dfo-gold) !important;
+}
+
+/* Locations card: fill the available middle space without moving the title or CTA button. */
+.card-locations{
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+.card-locations .location-list,
+.card3d:not(.is-active) .card-locations .location-list{
+  flex:1 1 auto !important;
+  width:auto !important;
+  margin:
+    clamp(20px,1.6vw,32px)
+    clamp(34px,2.35vw,48px)
+    0 !important;
+  padding:clamp(4px,.45vw,8px) 0 !important;
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  align-content:space-evenly !important;
+  justify-content:stretch !important;
+  row-gap:clamp(16px,1.32vw,28px) !important;
+}
+
+.card-locations .loc,
+.card3d:not(.is-active) .card-locations .loc{
+  display:grid !important;
+  grid-template-columns:clamp(28px,1.95vw,40px) minmax(0,1fr) !important;
+  gap:clamp(12px,.9vw,16px) !important;
+  align-items:center !important;
+  text-align:left !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+.card-locations .pin,
+.card3d:not(.is-active) .card-locations .pin{
+  width:clamp(28px,1.95vw,40px) !important;
+  min-width:clamp(28px,1.95vw,40px) !important;
+  height:clamp(28px,1.95vw,40px) !important;
+}
+
+.card-locations .loc strong,
+.card3d:not(.is-active) .card-locations .loc strong{
+  font-size:clamp(21px,1.65vw,32px) !important;
+  line-height:.92 !important;
+  letter-spacing:.045em !important;
+  white-space:nowrap !important;
+}
+
+.card-locations .loc span,
+.card3d:not(.is-active) .card-locations .loc span{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  display:block !important;
+  font-size:clamp(12px,.88vw,17px) !important;
+  line-height:1.08 !important;
+  letter-spacing:.028em !important;
+  font-weight:700 !important;
+  color:var(--dfo-white) !important;
+  white-space:nowrap !important;
+  margin-top:3px !important;
+}
+
+/* Keep the Locations button where it already belongs. */
+.card-locations .card-copy,
+.card3d:not(.is-active) .card-locations .card-copy{
+  margin-top:0 !important;
+  padding:
+    clamp(8px,.65vw,12px)
+    clamp(28px,2vw,40px)
+    clamp(14px,1.05vw,22px) !important;
+}
+
+.card-locations .card-btn,
+.card3d:not(.is-active) .card-locations .card-btn{
+  width:76% !important;
+  max-width:330px !important;
+  height:clamp(36px,3vh,46px) !important;
+  margin:0 auto !important;
+}
+
+/* Favorites modal: image-led category cards. */
+#favoritesModal .modal{
+  width:min(1180px,94vw) !important;
+}
+
+#favoritesModal .favorites-modal-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:18px !important;
+}
+
+#favoritesModal .favorites-modal-grid article{
+  padding:0 !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,109,46,.30) !important;
+  background:linear-gradient(180deg,rgba(255,109,46,.055),rgba(255,255,255,.035)) !important;
+  border-radius:16px !important;
+}
+
+.favorite-modal-img{
+  display:block !important;
+  width:100% !important;
+  height:clamp(160px,18vw,250px) !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  border-bottom:1px solid rgba(255,109,46,.22) !important;
+}
+
+.favorite-modal-body{
+  padding:18px 20px 20px !important;
+}
+
+#favoritesModal .favorites-modal-grid h3{
+  padding:0 !important;
+  margin:0 0 8px !important;
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  font-size:clamp(1rem,1.15vw,1.35rem) !important;
+  letter-spacing:.13em !important;
+  font-weight:800 !important;
+  text-transform:uppercase !important;
+}
+
+#favoritesModal .favorites-modal-grid p{
+  margin:0 !important;
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  font-size:clamp(.95rem,1.05vw,1.15rem) !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+}
+
+/* Social modal: link hub with Facebook, Instagram, and YouTube spots. */
+.social-hub-modal{
+  text-align:center !important;
+  width:min(1000px,94vw) !important;
+}
+
+.social-hub-modal h2{
+  margin-bottom:14px !important;
+}
+
+.social-subtitle{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  text-transform:uppercase !important;
+  letter-spacing:.13em !important;
+  font-weight:800 !important;
+  margin:0 auto 26px !important;
+}
+
+.social-modal-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:16px !important;
+  width:min(880px,100%) !important;
+  margin:0 auto !important;
+}
+
+.social-modal-link{
+  display:grid !important;
+  gap:8px !important;
+  place-items:center !important;
+  min-height:180px !important;
+  padding:22px 18px !important;
+  border:1px solid rgba(255,109,46,.42) !important;
+  border-radius:16px !important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,109,46,.16),transparent 58%),
+    rgba(255,255,255,.045) !important;
+  color:#fff !important;
+  text-decoration:none !important;
+  box-shadow:inset 0 0 35px rgba(0,0,0,.45),0 0 24px rgba(255,90,38,.08) !important;
+}
+
+.social-modal-link:hover{
+  border-color:var(--dfo-orange) !important;
+  box-shadow:0 0 28px rgba(255,109,46,.20),inset 0 0 35px rgba(0,0,0,.45) !important;
+}
+
+.social-modal-icon{
+  width:56px !important;
+  height:56px !important;
+  border-radius:50% !important;
+  display:grid !important;
+  place-items:center !important;
+  background:var(--dfo-orange) !important;
+  color:#fff !important;
+  font-size:1.6rem !important;
+  font-weight:900 !important;
+}
+
+.social-modal-link.fb .social-modal-icon{background:#1877f2 !important;}
+.social-modal-link.ig .social-modal-icon{background:linear-gradient(135deg,#ffd56c,#e1306c,#833ab4) !important;}
+.social-modal-link.yt .social-modal-icon{background:#ff2e18 !important;}
+
+.social-modal-link strong{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  text-transform:uppercase !important;
+  letter-spacing:.16em !important;
+  font-size:1.05rem !important;
+  font-weight:900 !important;
+}
+
+.social-modal-link small{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  color:var(--dfo-muted) !important;
+  font-size:.95rem !important;
+  letter-spacing:.035em !important;
+}
+
+.social-modal-link.is-placeholder{
+  opacity:.82 !important;
+}
+
+/* Responsive modal safety. */
+@media (max-width:800px){
+  #favoritesModal .favorites-modal-grid,
+  .social-modal-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* =========================
+   V91 NEW BACKGROUND INTEGRATION
+   Built directly from V89, not V90.
+   Includes all V89 social/favorites/location polish.
+   Changes only:
+   - Uses the newly approved 16:9 buoy/firework lake background.
+========================= */
+
+:root{
+  --bg-d:url("assets/background-live-v91-buoy.jpg?v=91") !important;
+  --bg-m:url("assets/background-live-v91-buoy.jpg?v=91") !important;
+}
+
+.page{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.08)),
+    var(--bg-d) center center / cover no-repeat !important;
+}
+
+
+/* =========================
+   V92 HEADER LOGO SWAP
+   Built from V91.
+   Changes only:
+   - Header logo now uses the uploaded DFO Fireworks Outlet logo image.
+   - This is header-only. Footer/card/social/modal logos are untouched.
+========================= */
+
+.header .logo.logo-image-link{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  width:clamp(170px,15vw,260px) !important;
+  min-width:clamp(170px,15vw,260px) !important;
+  height:clamp(54px,5vw,82px) !important;
+  gap:0 !important;
+  text-decoration:none !important;
+}
+
+.header .header-logo-img{
+  display:block !important;
+  width:100% !important;
+  max-width:260px !important;
+  height:auto !important;
+  max-height:82px !important;
+  object-fit:contain !important;
+  object-position:left center !important;
+  filter:
+    drop-shadow(0 0 10px rgba(255,70,36,.16))
+    drop-shadow(0 0 18px rgba(255,70,36,.08)) !important;
+}
+
+/* Hide the old text-mark logo if any older CSS/content survives. */
+.header .logo.logo-image-link .logo-mark,
+.header .logo.logo-image-link .logo-text{
+  display:none !important;
+}
+
+@media (max-width:900px){
+  .header .logo.logo-image-link{
+    width:clamp(145px,34vw,210px) !important;
+    min-width:clamp(145px,34vw,210px) !important;
+    height:clamp(48px,12vw,68px) !important;
+  }
+
+  .header .header-logo-img{
+    max-width:210px !important;
+    max-height:68px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v88-visible-demo-card-preview-fix">
+<body data-build="v92-header-logo-swap">
 <main class="page">
   <header class="header">
-    <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
-      <span class="logo-mark">DFO</span>
-      <span class="logo-text">Discount<br>Fireworks<br>Outlet</span>
+    <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
+      <img class="header-logo-img" src="assets/header-logo-v92.png?v=92" alt="DFO Discount Fireworks Outlet">
     </a>
     <section class="header-clock" aria-label="Countdown to America's 250th birthday">
       <div class="header-title">★★★ Happy 250th Birthday, America ★★★</div>
@@ -3094,25 +3459,55 @@ html::after{
 
 <div class="modal-layer" id="favoritesModal">
   <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal">
+  <div class="modal favorites-image-modal">
     <p class="eyebrow">Finale Favorites</p><h2>Top Picks for the Perfect Finale</h2>
     <div class="favorites-modal-grid">
-      <article><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></article>
-      <article><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></article>
-      <article><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></article>
-      <article><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></article>
+      <article>
+        <img class="favorite-modal-img" src="assets/finale-500g-cakes.jpg" alt="500 gram cakes fireworks">
+        <div class="favorite-modal-body"><h3>500 Gram Cakes</h3><p>Big backyard impact with color, height, crackle, and multi-shot finales.</p></div>
+      </article>
+      <article>
+        <img class="favorite-modal-img" src="assets/finale-aerials.jpg" alt="Aerial fireworks">
+        <div class="favorite-modal-body"><h3>Aerials</h3><p>High-flying effects for the classic Fourth of July sky show.</p></div>
+      </article>
+      <article>
+        <img class="favorite-modal-img" src="assets/finale-finales.jpg" alt="Finale fireworks">
+        <div class="favorite-modal-body"><h3>Finales</h3><p>Save the biggest moment for the end with a strong closing sequence.</p></div>
+      </article>
+      <article>
+        <img class="favorite-modal-img" src="assets/finale-family-packs.jpg" alt="Family packs fireworks">
+        <div class="favorite-modal-body"><h3>Family Packs</h3><p>Easy crowd-pleasers for backyard nights, gatherings, and neighborhood fun.</p></div>
+      </article>
     </div>
   </div>
 </div>
 
 <div class="modal-layer" id="socialModal">
   <button class="modal-close" aria-label="Close">×</button>
-  <div class="modal simple-social-modal">
+  <div class="modal simple-social-modal social-hub-modal">
     <p class="eyebrow">Follow the Finale</p>
     <h2>Follow the Finale</h2>
-    <p class="social-subtitle">Discount Fireworks Outlet on Facebook</p>
-    <a class="modal-link social-open-button" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">Open Facebook Page</a>
-    <a class="social-visible-url" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">facebook.com/DFOBoji</a>
+    <p class="social-subtitle">Connect with Discount Fireworks Outlet</p>
+
+    <div class="social-modal-grid" aria-label="Discount Fireworks Outlet social links">
+      <a class="social-modal-link fb" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">
+        <span class="social-modal-icon">f</span>
+        <strong>Facebook</strong>
+        <small>facebook.com/DFOBoji</small>
+      </a>
+
+      <a class="social-modal-link ig is-placeholder" href="#" aria-label="Instagram link placeholder">
+        <span class="social-modal-icon">◎</span>
+        <strong>Instagram</strong>
+        <small>Add Instagram URL</small>
+      </a>
+
+      <a class="social-modal-link yt is-placeholder" href="#" aria-label="YouTube link placeholder">
+        <span class="social-modal-icon">▶</span>
+        <strong>YouTube</strong>
+        <small>Add YouTube URL</small>
+      </a>
+    </div>
   </div>
 </div>
 </div>
@@ -3448,7 +3843,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V88 HIDDEN CALIBRATION</b>
+  <b>V92 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

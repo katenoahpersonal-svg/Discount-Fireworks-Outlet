@@ -1,31 +1,24 @@
-DFO V88 — Visible Demo Card Preview Fix
+DFO V92 — Header Logo Swap
 
 Starting point:
-- V87 video-thumbnail-fallback-fix.
+- Built from V91 v89-plus-new-buoy-background.
 
-What happened:
-- The first supplied YouTube video thumbnail is returning YouTube's gray placeholder image.
-- That is why the carousel card still looked gray even though the video/embed links were updated.
+Included from V91/V89:
+1. Approved 16:9 buoy/firework lake background.
+2. V89 social modal with Facebook, Instagram, and YouTube spots.
+3. V89 favorites modal with images.
+4. V89 locations polish.
+5. V89 tiny headers visually hidden and consistent card colors.
 
-Careful change:
-1. Kept all 7 supplied YouTube videos in the modal.
-2. Kept the first supplied video in the modal:
-   https://www.youtube.com/embed/cZHENq6D12o
-3. Changed only the visible carousel Demo Videos feature preview image to a working YouTube thumbnail:
-   https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg
-4. Added a stronger CSS override so the visible card cannot keep the old gray inline preview.
-
-Unchanged:
-- all 7 video embeds
-- background
-- header
-- carousel geometry
-- Build Your Show image
-- Social Feed images
-- Locations styling
-- countdown
-- modals except no embed changes
-- social sync
+New V92 change:
+1. Replaced the HEADER logo only with the uploaded image:
+   assets/header-logo-v92.png
+2. The header now uses:
+   <img class="header-logo-img" src="assets/header-logo-v92.png?v=92">
+3. This change is header-only.
+4. Footer/card/social/modal logos are not changed.
 
 Upload note:
-Upload/extract the full ZIP contents to GitHub, then hard refresh with Ctrl+Shift+R.
+Upload/extract the full ZIP contents to GitHub.
+Make sure updated index.html and assets/header-logo-v92.png are uploaded.
+Then hard refresh with Ctrl+Shift+R.
