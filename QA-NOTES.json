@@ -1,25 +1,35 @@
 {
-  "version": "v81-locations-fixed-layout-no-copy",
-  "base": "v80-location-card-clean-font-fit",
+  "version": "v86-forced-card-visual-refresh",
+  "base": "v85-social-card-image-swap",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed": {
-    "locations_copy": "removed",
-    "locations_addresses": "one line each",
-    "locations_names": "larger",
-    "locations_layout": "locked same vertical layout for active and non-active states",
-    "button": "kept inside card"
+  "forced_card_visuals": {
+    "build": "assets/build-your-show-bomb-v86.jpg?v=86",
+    "social": [
+      "assets/social-card-v86-01.jpg?v=86",
+      "assets/social-card-v86-02.jpg?v=86",
+      "assets/social-card-v86-03.jpg?v=86",
+      "assets/social-card-v86-04.jpg?v=86",
+      "assets/social-card-v86-05.jpg?v=86",
+      "assets/social-card-v86-06.jpg?v=86"
+    ],
+    "demo_feature": "https://img.youtube.com/vi/cZHENq6D12o/maxresdefault.jpg",
+    "demo_thumbs": [
+      "https://img.youtube.com/vi/HQKTQe-Efvs/hqdefault.jpg",
+      "https://img.youtube.com/vi/iujTwXJBfy8/hqdefault.jpg",
+      "https://img.youtube.com/vi/458UhOBXJLg/hqdefault.jpg",
+      "https://img.youtube.com/vi/tFteOme5wYc/hqdefault.jpg"
+    ]
   },
   "unchanged": [
     "background",
     "header",
-    "carousel positioning",
+    "carousel geometry",
     "bottom countdown",
-    "card order",
-    "other cards",
-    "modals",
-    "social sync"
+    "Locations styling",
+    "social modal",
+    "card order"
   ]
 }

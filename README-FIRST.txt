@@ -1,17 +1,38 @@
-DFO V81 — Locations Card Fixed Layout / No Copy Line
+DFO V86 — Forced Card Visual Refresh
 
 Starting point:
-- V80 location-card-clean-font-fit.
+- V85 social-card-image-swap.
 
-Careful changes:
-1. Removed the Locations card description:
-   "Find the closest DFO location and get ready for the Fourth."
-2. Each location now shows exactly two visible lines:
-   - town name
-   - one-line address/location text
-3. Spirit Lake, Milford, Spencer, and Armstrong are larger.
-4. The Locations card keeps the same vertical layout even when it is not the front/center card.
-5. View Locations button is pulled up and kept inside the card.
-6. Background, header, carousel positioning, countdown, modals, social sync, and other cards unchanged.
+What this fixes:
+Some previous changes affected modals or reused the same asset names, so the visible carousel cards could look unchanged on GitHub/browser cache.
+V86 forces the actual carousel card visuals with new v86 asset filenames and direct CSS overrides.
 
-Node syntax checks passed.
+Changes:
+1. Build Your Show card:
+   - forced to use assets/build-your-show-bomb-v86.jpg?v=86
+
+2. Social Feed card:
+   - forced to use the 6 uploaded DFO social graphics with new filenames:
+     assets/social-card-v86-01.jpg through assets/social-card-v86-06.jpg
+
+3. Demo Videos card:
+   - visible carousel feature image and 4 thumbnails now use the supplied YouTube video thumbnails.
+   - the modal still contains all 7 supplied YouTube embeds.
+
+4. Cache protection:
+   - new v86 filenames
+   - ?v=86 cache-busting query strings
+   - direct card-level CSS overrides
+
+Unchanged:
+- background
+- header
+- carousel geometry
+- countdown
+- Locations styling
+- modals except already-existing YouTube links
+- social modal
+
+Upload note:
+Upload/extract the full ZIP contents to GitHub, including the updated index.html and all new assets.
+Then hard refresh the browser with Ctrl+Shift+R.
