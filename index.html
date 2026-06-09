@@ -3357,9 +3357,649 @@ html::after{
   }
 }
 
+
+/* =========================
+   V93 NO-BUOY + TABLET/MOBILE RESPONSIVE PASS
+   Built from V92.
+   Includes V89 + V91 + V92 changes, but removes the buoy background.
+   Changes:
+   - Clean no-buoy ring/lake background.
+   - Tablet layout: responsive swipe-friendly card stack, no weird 3D squeeze.
+   - Mobile layout: stacked full-width cards with readable spacing and clean CTAs.
+========================= */
+
+:root{
+  --bg-d:url("assets/background-live-v93-no-buoy.jpg?v=93") !important;
+  --bg-m:url("assets/background-live-v93-no-buoy.jpg?v=93") !important;
+}
+
+/* Force the clean no-buoy background everywhere. */
+.page{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.035),rgba(0,0,0,.10)),
+    var(--bg-d) center center / cover no-repeat !important;
+}
+
+/* Hide any old center/buoy/firecracker element if it survived from older builds. */
+.firecracker,
+.buoy,
+.center-buoy,
+.dfo-buoy,
+[data-buoy],
+[class*="buoy"]{
+  display:none !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+/* =========================
+   TABLET SIZE
+   701px – 1100px
+   Keep it premium, but stop the side cards from becoming tiny warped slivers.
+========================= */
+@media (min-width:701px) and (max-width:1100px){
+  html,body{
+    overflow-x:hidden !important;
+  }
+
+  .page{
+    min-height:100svh !important;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.18)),
+      var(--bg-m) center center / cover no-repeat !important;
+  }
+
+  .header{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:88px !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    justify-items:center !important;
+    align-items:center !important;
+    gap:10px !important;
+    padding:16px 20px 14px !important;
+    background:rgba(3,5,13,.82) !important;
+    backdrop-filter:blur(12px) !important;
+    border-bottom:1px solid rgba(255,109,46,.24) !important;
+  }
+
+  .header .logo.logo-image-link{
+    width:min(250px,52vw) !important;
+    min-width:0 !important;
+    height:auto !important;
+    justify-content:center !important;
+  }
+
+  .header .header-logo-img{
+    max-width:min(250px,52vw) !important;
+    max-height:82px !important;
+    object-position:center center !important;
+  }
+
+  .header-clock{
+    width:100% !important;
+    max-width:620px !important;
+  }
+
+  .header-title{
+    font-size:clamp(11px,1.65vw,16px) !important;
+    letter-spacing:.16em !important;
+    text-align:center !important;
+  }
+
+  .clock-row{
+    justify-content:center !important;
+    gap:clamp(8px,2.3vw,18px) !important;
+  }
+
+  .clock-unit{
+    min-width:clamp(54px,12vw,86px) !important;
+  }
+
+  .clock-num{
+    font-size:clamp(25px,4.6vw,42px) !important;
+  }
+
+  .clock-lab{
+    font-size:clamp(8px,1.2vw,11px) !important;
+  }
+
+  .nav{
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:12px !important;
+  }
+
+  .nav button{
+    font-size:clamp(11px,1.45vw,14px) !important;
+  }
+
+  .nav .directions{
+    padding:12px 20px !important;
+  }
+
+  .hero{
+    position:relative !important;
+    min-height:auto !important;
+    height:auto !important;
+    padding:clamp(28px,4vw,48px) 0 34px !important;
+    overflow:visible !important;
+  }
+
+  .carousel{
+    position:relative !important;
+    inset:auto !important;
+    height:auto !important;
+    width:100% !important;
+    display:grid !important;
+    grid-auto-flow:column !important;
+    grid-auto-columns:minmax(320px,58vw) !important;
+    gap:24px !important;
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    scroll-snap-type:x mandatory !important;
+    scroll-padding-inline:7vw !important;
+    padding:22px 7vw 34px !important;
+    transform:none !important;
+    perspective:none !important;
+    -webkit-overflow-scrolling:touch !important;
+  }
+
+  .carousel::-webkit-scrollbar{
+    height:8px !important;
+  }
+
+  .carousel::-webkit-scrollbar-thumb{
+    background:rgba(255,109,46,.45) !important;
+    border-radius:999px !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    height:clamp(510px,66vw,670px) !important;
+    min-height:510px !important;
+    margin:0 !important;
+    transform:none !important;
+    opacity:1 !important;
+    filter:none !important;
+    pointer-events:auto !important;
+    scroll-snap-align:center !important;
+    z-index:1 !important;
+  }
+
+  .card{
+    height:100% !important;
+    min-height:100% !important;
+    transform:none !important;
+    border-color:rgba(255,109,46,.50) !important;
+    box-shadow:
+      0 0 0 1px rgba(255,109,46,.12),
+      0 0 36px rgba(255,84,32,.16),
+      inset 0 0 46px rgba(0,0,0,.58) !important;
+  }
+
+  .card3d.is-active .card{
+    box-shadow:
+      0 0 0 1px rgba(255,109,46,.34),
+      0 0 54px rgba(255,84,32,.22),
+      inset 0 0 46px rgba(0,0,0,.58) !important;
+  }
+
+  .card-title,
+  .card3d.is-active .card-title{
+    font-size:clamp(36px,6vw,58px) !important;
+    line-height:.88 !important;
+  }
+
+  .card-copy{
+    padding-inline:clamp(20px,4vw,34px) !important;
+  }
+
+  .card-btn{
+    min-height:44px !important;
+  }
+
+  .arrow{
+    display:none !important;
+  }
+
+  .front-ring,
+  .foreground-ring-occlusion{
+    display:none !important;
+  }
+
+  .bottom-count{
+    position:relative !important;
+    left:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:min(560px,92vw) !important;
+    margin:10px auto 26px !important;
+  }
+
+  .bottom-count p{
+    font-size:clamp(11px,1.6vw,15px) !important;
+  }
+
+  .bottom-row{
+    justify-content:center !important;
+    gap:clamp(8px,2vw,16px) !important;
+  }
+
+  .bottom-row strong{
+    font-size:clamp(28px,5vw,44px) !important;
+  }
+
+  .footer{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:100% !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    padding:16px 20px 22px !important;
+    text-align:center !important;
+    background:rgba(3,5,13,.88) !important;
+    border-top:1px solid rgba(255,109,46,.20) !important;
+  }
+
+  .footer .drag{
+    display:none !important;
+  }
+
+  .follow{
+    justify-content:center !important;
+  }
+
+  /* Tablet card-specific cleanup */
+  .card-locations .location-list{
+    margin:clamp(20px,3vw,32px) clamp(30px,4vw,44px) 0 !important;
+    row-gap:clamp(16px,2.1vw,24px) !important;
+  }
+
+  .card-locations .loc strong{
+    font-size:clamp(24px,3.7vw,36px) !important;
+  }
+
+  .card-locations .loc span{
+    font-size:clamp(13px,2vw,17px) !important;
+  }
+
+  .video-feature{
+    min-height:clamp(170px,24vw,260px) !important;
+  }
+
+  .video-thumbs{
+    gap:10px !important;
+  }
+
+  .favorite-grid{
+    gap:12px !important;
+  }
+
+  .social-thumbs{
+    gap:12px !important;
+  }
+}
+
+/* =========================
+   MOBILE SIZE
+   700px and below
+   Stacked cards, readable text, no 3D warp.
+========================= */
+@media (max-width:700px){
+  html,body{
+    overflow-x:hidden !important;
+  }
+
+  body{
+    background:#040610 !important;
+  }
+
+  .page{
+    min-height:100svh !important;
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.22)),
+      var(--bg-m) center top / auto 100vh no-repeat,
+      #03050d !important;
+  }
+
+  .header{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:100% !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    justify-items:center !important;
+    gap:10px !important;
+    padding:14px 14px 12px !important;
+    background:rgba(3,5,13,.90) !important;
+    border-bottom:1px solid rgba(255,109,46,.22) !important;
+  }
+
+  .header .logo.logo-image-link{
+    width:min(230px,72vw) !important;
+    min-width:0 !important;
+    height:auto !important;
+    justify-content:center !important;
+  }
+
+  .header .header-logo-img{
+    max-width:min(230px,72vw) !important;
+    max-height:74px !important;
+    object-position:center center !important;
+  }
+
+  .header-title{
+    font-size:10px !important;
+    line-height:1.2 !important;
+    letter-spacing:.13em !important;
+    text-align:center !important;
+  }
+
+  .header-clock{
+    width:100% !important;
+  }
+
+  .clock-row{
+    justify-content:center !important;
+    gap:6px !important;
+  }
+
+  .clock-unit{
+    min-width:54px !important;
+    padding-inline:3px !important;
+  }
+
+  .clock-num{
+    font-size:26px !important;
+    line-height:.95 !important;
+  }
+
+  .clock-lab{
+    font-size:8px !important;
+    letter-spacing:.14em !important;
+  }
+
+  .nav{
+    width:100% !important;
+    justify-content:center !important;
+    flex-wrap:wrap !important;
+    gap:8px !important;
+  }
+
+  .nav button{
+    font-size:10px !important;
+    letter-spacing:.08em !important;
+    padding:8px 8px !important;
+  }
+
+  .nav .directions{
+    width:auto !important;
+    min-width:165px !important;
+    padding:10px 14px !important;
+  }
+
+  .hero{
+    position:relative !important;
+    height:auto !important;
+    min-height:auto !important;
+    padding:18px 0 12px !important;
+    overflow:visible !important;
+  }
+
+  .carousel{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:auto !important;
+    display:flex !important;
+    flex-direction:column !important;
+    gap:18px !important;
+    padding:14px 14px 24px !important;
+    transform:none !important;
+    perspective:none !important;
+    overflow:visible !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    max-width:430px !important;
+    height:auto !important;
+    min-height:auto !important;
+    margin:0 auto !important;
+    transform:none !important;
+    opacity:1 !important;
+    filter:none !important;
+    pointer-events:auto !important;
+    z-index:auto !important;
+  }
+
+  .card{
+    height:auto !important;
+    min-height:0 !important;
+    transform:none !important;
+    border-radius:22px !important;
+    padding-top:16px !important;
+    padding-bottom:16px !important;
+    background:
+      linear-gradient(180deg,rgba(255,109,46,.10),rgba(2,4,12,.92) 28%,rgba(7,4,8,.90) 100%) !important;
+    border-color:rgba(255,109,46,.45) !important;
+  }
+
+  .card-title,
+  .card3d.is-active .card-title{
+    font-size:clamp(34px,11vw,46px) !important;
+    line-height:.88 !important;
+    letter-spacing:-.02em !important;
+    padding-inline:14px !important;
+  }
+
+  .card-copy{
+    padding-inline:18px !important;
+  }
+
+  .card-copy p{
+    font-size:13px !important;
+    line-height:1.32 !important;
+    letter-spacing:.055em !important;
+  }
+
+  .card-btn{
+    min-height:44px !important;
+    width:100% !important;
+    font-size:12px !important;
+    letter-spacing:.12em !important;
+  }
+
+  .arrow,
+  .front-ring,
+  .foreground-ring-occlusion{
+    display:none !important;
+  }
+
+  /* Mobile Demo card */
+  .video-feature{
+    min-height:190px !important;
+    margin:18px 14px 10px !important;
+    border-radius:16px !important;
+  }
+
+  .video-thumbs{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:9px !important;
+    margin-inline:14px !important;
+  }
+
+  .video-thumb-button{
+    min-height:76px !important;
+  }
+
+  .video-thumb-button span{
+    font-size:10px !important;
+  }
+
+  /* Mobile Locations card */
+  .card-locations .location-list{
+    margin:20px 22px 6px !important;
+    row-gap:18px !important;
+  }
+
+  .card-locations .loc{
+    grid-template-columns:32px minmax(0,1fr) !important;
+    gap:12px !important;
+    align-items:center !important;
+  }
+
+  .card-locations .pin{
+    width:32px !important;
+    height:32px !important;
+  }
+
+  .card-locations .loc strong{
+    font-size:25px !important;
+    line-height:.95 !important;
+    white-space:nowrap !important;
+  }
+
+  .card-locations .loc span{
+    font-size:13px !important;
+    line-height:1.12 !important;
+    white-space:normal !important;
+  }
+
+  .card-locations .card-copy{
+    padding:14px 22px 0 !important;
+  }
+
+  .card-locations .card-btn{
+    width:100% !important;
+    max-width:none !important;
+  }
+
+  /* Mobile Build */
+  .build-photo{
+    min-height:250px !important;
+    margin:18px 14px 12px !important;
+    border-radius:16px !important;
+  }
+
+  /* Mobile Favorites/Social */
+  .favorite-grid,
+  .social-thumbs{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:10px !important;
+    margin:18px 14px 12px !important;
+  }
+
+  .favorite-grid span,
+  .social-thumbs span{
+    min-height:112px !important;
+  }
+
+  .social-icons-row{
+    gap:14px !important;
+    margin:16px auto 4px !important;
+  }
+
+  .social-icon{
+    width:42px !important;
+    height:42px !important;
+  }
+
+  .bottom-count{
+    position:relative !important;
+    left:auto !important;
+    bottom:auto !important;
+    transform:none !important;
+    width:92vw !important;
+    margin:2px auto 18px !important;
+  }
+
+  .bottom-count p{
+    font-size:11px !important;
+    letter-spacing:.14em !important;
+  }
+
+  .bottom-row{
+    justify-content:center !important;
+    gap:6px !important;
+  }
+
+  .bottom-row strong{
+    font-size:28px !important;
+  }
+
+  .bottom-row small{
+    font-size:8px !important;
+  }
+
+  .footer{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:100% !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+    padding:16px 14px 22px !important;
+    text-align:center !important;
+    background:rgba(3,5,13,.92) !important;
+    border-top:1px solid rgba(255,109,46,.20) !important;
+  }
+
+  .footer .drag{
+    display:none !important;
+  }
+
+  .follow{
+    justify-content:center !important;
+  }
+
+  .modal{
+    width:94vw !important;
+    padding:22px 16px !important;
+    border-radius:20px !important;
+  }
+
+  .modal h2{
+    font-size:clamp(32px,10vw,46px) !important;
+    line-height:.9 !important;
+  }
+
+  #favoritesModal .favorites-modal-grid,
+  .social-modal-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v92-header-logo-swap">
+<body data-build="v93-no-buoy-responsive-tablet-mobile">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -3843,7 +4483,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V92 HIDDEN CALIBRATION</b>
+  <b>V93 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

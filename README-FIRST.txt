@@ -1,24 +1,44 @@
-DFO V92 — Header Logo Swap
+DFO V93 — No Buoy + Tablet/Mobile Responsive Pass
 
 Starting point:
-- Built from V91 v89-plus-new-buoy-background.
+- Built from V92 header-logo-swap.
 
-Included from V91/V89:
-1. Approved 16:9 buoy/firework lake background.
-2. V89 social modal with Facebook, Instagram, and YouTube spots.
-3. V89 favorites modal with images.
-4. V89 locations polish.
-5. V89 tiny headers visually hidden and consistent card colors.
+Included:
+1. V89 updates:
+   - Social modal with Facebook, Instagram, and YouTube spots
+   - Favorites modal with images
+   - Locations polish
+   - Tiny headers visually hidden
+   - Consistent card colors
+2. V91 background system, but with the buoy removed/replaced by the clean no-buoy ring background.
+3. V92 uploaded header logo.
 
-New V92 change:
-1. Replaced the HEADER logo only with the uploaded image:
-   assets/header-logo-v92.png
-2. The header now uses:
-   <img class="header-logo-img" src="assets/header-logo-v92.png?v=92">
-3. This change is header-only.
-4. Footer/card/social/modal logos are not changed.
+New V93 changes:
+1. Completely removed the buoy/firecracker from the background.
+2. Added clean active background:
+   - assets/background-live-v93-no-buoy.jpg
+   - assets/background-live-v93-no-buoy.png
+3. Updated generic background assets too:
+   - assets/background-live.jpg
+   - assets/background-live.png
+4. Added tablet responsive layout:
+   - 701px–1100px uses a horizontal swipe card rail.
+   - Cards are no longer squeezed/warped into weird 3D slivers.
+5. Added mobile responsive layout:
+   - 700px and below uses stacked full-width cards.
+   - Card text, images, buttons, locations, favorites, and social grids are resized for phone screens.
+6. Hidden drag wording on tablet/mobile.
+
+Unchanged:
+- Header logo from V92
+- Desktop carousel geometry
+- Card content
+- YouTube embeds
+- V89 modal/content polish
+- Countdown content
+- Social sync script
 
 Upload note:
 Upload/extract the full ZIP contents to GitHub.
-Make sure updated index.html and assets/header-logo-v92.png are uploaded.
-Then hard refresh with Ctrl+Shift+R.
+Make sure updated index.html and the entire assets folder are uploaded.
+Then hard refresh the live page with Ctrl+Shift+R.

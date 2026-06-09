@@ -1,34 +1,36 @@
 {
-  "version": "v92-header-logo-swap",
-  "base": "v91-v89-plus-new-buoy-background",
+  "version": "v93-no-buoy-responsive-tablet-mobile",
+  "base": "v92-header-logo-swap",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "new_change": {
-    "header_logo_only": "assets/header-logo-v92.png?v=92",
-    "source_upload": "DFO header Logo.png",
-    "trimmed_logo_size": {
-      "width": 2036,
-      "height": 1196
-    }
+  "included_from_prior_versions": {
+    "v89": [
+      "social modal FB/IG/YT spots",
+      "favorites modal images",
+      "locations polish",
+      "tiny headers hidden",
+      "consistent colors"
+    ],
+    "v92": [
+      "uploaded header logo"
+    ]
   },
-  "included_from_v91_v89": [
-    "approved 16:9 buoy background",
-    "social modal FB/IG/YT spots",
-    "favorites modal images",
-    "location card polish",
-    "tiny headers hidden",
-    "consistent card colors"
-  ],
+  "changed_v93": {
+    "background": "clean no-buoy ring background",
+    "tablet": "701-1100px horizontal swipe card rail",
+    "mobile": "700px and below stacked responsive cards",
+    "hidden_on_tablet_mobile": [
+      "drag wording",
+      "3D ring overlays/arrows"
+    ]
+  },
   "unchanged": [
-    "background from V91",
-    "carousel geometry",
+    "desktop carousel geometry",
     "card content",
-    "footer",
-    "bottom countdown",
     "modals except prior V89 updates",
-    "social sync",
-    "YouTube embeds"
+    "YouTube embeds",
+    "social sync"
   ]
 }
