@@ -1,20 +1,21 @@
 {
-  "version": "v79-locations-vertical-larger-text",
-  "base": "v78-location-fill-back-card-rotation",
+  "version": "v80-location-card-clean-font-fit",
+  "base": "v79-locations-vertical-larger-text",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changed": {
-    "locations_card": "vertical list restored",
-    "font_size": "location labels/details increased slightly",
-    "button": "centered/aligned"
+    "small_font": "Roboto Condensed",
+    "locations_card": "vertical compact fit",
+    "locations_button": "centered, narrower, pulled up inside card",
+    "side_back_locations": "compact anti-clipping rules"
   },
   "unchanged": [
     "background",
     "header",
+    "carousel positioning",
     "bottom countdown",
-    "far-card rotation tune from V78",
     "card order",
     "modals",
     "social sync"
