@@ -2450,9 +2450,112 @@ textarea{
   }
 }
 
+
+/* =========================
+   V79 LOCATIONS CARD VERTICAL PASS
+   Built from V78.
+   Changes only:
+   - Locations card goes back to a vertical stacked location list.
+   - Location text is enlarged slightly.
+   - Button remains centered/aligned with other cards.
+   - V78 far-back card rotation stays.
+========================= */
+
+.card-locations{display:flex !important;flex-direction:column !important;}
+
+.card-locations .location-list{
+  flex:1 1 auto !important;
+  width:auto !important;
+  margin:clamp(16px,1.25vw,24px) clamp(24px,1.8vw,36px) 0 !important;
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  align-content:center !important;
+  justify-content:stretch !important;
+  row-gap:clamp(12px,1vw,19px) !important;
+}
+
+.card-locations .loc{
+  display:grid !important;
+  grid-template-columns:clamp(27px,2vw,39px) minmax(0,1fr) !important;
+  gap:clamp(10px,.85vw,15px) !important;
+  text-align:left !important;
+  align-items:start !important;
+  min-width:0 !important;
+}
+
+.card-locations .pin{
+  width:clamp(27px,2vw,39px) !important;
+  height:clamp(27px,2vw,39px) !important;
+  margin-top:1px !important;
+}
+
+.card-locations .loc strong{
+  font-size:clamp(15px,1.08vw,21px) !important;
+  line-height:1.03 !important;
+  letter-spacing:.075em !important;
+  white-space:nowrap !important;
+}
+
+.card-locations .loc span{
+  font-size:clamp(11px,.82vw,16px) !important;
+  line-height:1.18 !important;
+  letter-spacing:.045em !important;
+  color:rgba(255,255,255,.86) !important;
+  white-space:normal !important;
+}
+
+.card-locations .card-copy{
+  margin-top:auto !important;
+  padding-top:clamp(12px,1vw,18px) !important;
+  padding-bottom:clamp(16px,1.2vw,22px) !important;
+}
+
+.card-locations .card-copy p{
+  max-width:92% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-bottom:clamp(11px,.9vw,16px) !important;
+  font-size:clamp(11px,.80vw,15px) !important;
+  line-height:1.25 !important;
+  letter-spacing:.07em !important;
+}
+
+.card-locations .card-btn{
+  width:82% !important;
+  margin:0 auto !important;
+  height:clamp(36px,3.1vh,48px) !important;
+  border-radius:10px !important;
+}
+
+.card3d:not(.is-active) .card-locations .location-list{
+  margin-left:clamp(18px,1.35vw,28px) !important;
+  margin-right:clamp(18px,1.35vw,28px) !important;
+  row-gap:clamp(9px,.8vw,15px) !important;
+}
+
+.card3d:not(.is-active) .card-locations .loc strong{
+  font-size:clamp(12px,.92vw,17px) !important;
+}
+
+.card3d:not(.is-active) .card-locations .loc span{
+  font-size:clamp(9px,.68vw,13px) !important;
+}
+
+.card3d:not(.is-active) .card-locations .card-btn{width:86% !important;}
+
+@media (max-width:1180px){
+  .card-locations .location-list{
+    row-gap:clamp(9px,.75vw,14px) !important;
+    margin-left:clamp(18px,1.2vw,26px) !important;
+    margin-right:clamp(18px,1.2vw,26px) !important;
+  }
+  .card-locations .loc strong{font-size:clamp(12px,.95vw,17px) !important;}
+  .card-locations .loc span{font-size:clamp(9px,.72vw,13px) !important;}
+}
+
 </style>
 </head>
-<body data-build="v78-location-fill-back-card-rotation">
+<body data-build="v79-locations-vertical-larger-text">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2906,7 +3009,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V78 HIDDEN CALIBRATION</b>
+  <b>V79 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

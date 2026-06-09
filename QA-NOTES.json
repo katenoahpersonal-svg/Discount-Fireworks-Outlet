@@ -1,35 +1,20 @@
 {
-  "version": "v78-location-fill-back-card-rotation",
-  "base": "v77-uploaded-background-final-swap",
+  "version": "v79-locations-vertical-larger-text",
+  "base": "v78-location-fill-back-card-rotation",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changed": {
-    "locations_card": "2x2 fill layout, bigger text, centered CTA",
-    "far_slots": {
-      "-2": {
-        "y": 77.6,
-        "z": -250,
-        "rotateY": -32,
-        "faceRotate": -38
-      },
-      "2": {
-        "y": 77.6,
-        "z": -250,
-        "rotateY": 32,
-        "faceRotate": 38
-      }
-    }
+    "locations_card": "vertical list restored",
+    "font_size": "location labels/details increased slightly",
+    "button": "centered/aligned"
   },
   "unchanged": [
     "background",
     "header",
     "bottom countdown",
-    "footer/drag removal",
-    "left slot",
-    "center slot",
-    "right slot",
+    "far-card rotation tune from V78",
     "card order",
     "modals",
     "social sync"
