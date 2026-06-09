@@ -2587,9 +2587,135 @@ body,button,input,textarea,.logo-text,.nav button,.header-title,.clock-lab,.card
 .card3d:not(.is-active) .card-locations .card-btn{width:76% !important;height:clamp(25px,2vh,32px) !important;font-size:clamp(7px,.49vw,9.5px) !important;letter-spacing:.10em !important;}
 @media (max-width:1180px){.card-locations .location-list{margin-left:clamp(18px,1.3vw,26px) !important;margin-right:clamp(18px,1.3vw,26px) !important;row-gap:clamp(7px,.60vw,11px) !important}.card-locations .loc strong{font-size:clamp(12px,.95vw,17px) !important}.card-locations .loc span{font-size:clamp(8.5px,.66vw,12px) !important}.card-locations .card-btn{height:clamp(30px,2.5vh,38px) !important}}
 
+
+/* =========================
+   V81 LOCATIONS CARD FIX
+   Built from V80.
+   Changes only:
+   - Removes the Locations description line.
+   - Keeps each location to exactly 2 visible lines:
+     1) town name
+     2) address/location line
+   - Enlarges town names.
+   - Keeps the same vertical layout even when the card is not centered.
+   - Pulls the button up and keeps it inside the card.
+========================= */
+
+/* Lock the locations card layout so side/back states do NOT change layout. */
+.card-locations,
+.card3d:not(.is-active) .card-locations{
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+.card-locations .location-list,
+.card3d:not(.is-active) .card-locations .location-list{
+  flex:1 1 auto !important;
+  width:auto !important;
+  margin:clamp(20px,1.55vw,31px) clamp(34px,2.35vw,48px) 0 !important;
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  align-content:center !important;
+  justify-content:stretch !important;
+  row-gap:clamp(15px,1.12vw,22px) !important;
+}
+
+.card-locations .loc,
+.card3d:not(.is-active) .card-locations .loc{
+  display:grid !important;
+  grid-template-columns:clamp(27px,1.9vw,39px) minmax(0,1fr) !important;
+  gap:clamp(11px,.9vw,16px) !important;
+  align-items:center !important;
+  text-align:left !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+.card-locations .pin,
+.card3d:not(.is-active) .card-locations .pin{
+  width:clamp(27px,1.9vw,39px) !important;
+  min-width:clamp(27px,1.9vw,39px) !important;
+  height:clamp(27px,1.9vw,39px) !important;
+  margin-top:0 !important;
+  stroke-width:1.7 !important;
+  filter:drop-shadow(0 0 8px rgba(255,90,38,.45)) !important;
+}
+
+.card-locations .loc strong,
+.card3d:not(.is-active) .card-locations .loc strong{
+  font-family:var(--head) !important;
+  display:block !important;
+  font-size:clamp(20px,1.55vw,30px) !important;
+  line-height:.92 !important;
+  letter-spacing:.055em !important;
+  white-space:nowrap !important;
+}
+
+.card-locations .loc span,
+.card3d:not(.is-active) .card-locations .loc span{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  display:block !important;
+  font-size:clamp(12px,.88vw,17px) !important;
+  line-height:1.08 !important;
+  letter-spacing:.03em !important;
+  font-weight:700 !important;
+  color:rgba(255,255,255,.86) !important;
+  white-space:nowrap !important;
+  margin-top:3px !important;
+}
+
+/* Remove only the Locations description paragraph. */
+.card-locations .card-copy p,
+.card3d:not(.is-active) .card-locations .card-copy p{
+  display:none !important;
+}
+
+/* Keep the Locations button inside the card and aligned cleanly. */
+.card-locations .card-copy,
+.card3d:not(.is-active) .card-locations .card-copy{
+  margin-top:0 !important;
+  padding:clamp(12px,.95vw,18px) clamp(28px,2vw,40px) clamp(30px,2.15vw,42px) !important;
+}
+
+.card-locations .card-btn,
+.card3d:not(.is-active) .card-locations .card-btn{
+  width:76% !important;
+  max-width:330px !important;
+  height:clamp(36px,3vh,46px) !important;
+  margin:0 auto !important;
+  border-radius:10px !important;
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  font-size:clamp(10px,.72vw,13px) !important;
+  letter-spacing:.13em !important;
+  font-weight:800 !important;
+}
+
+/* Allow the whole card to scale/rotate, but never switch Locations into a different internal layout. */
+.card3d:not(.is-active) .card-locations *{
+  box-sizing:border-box !important;
+}
+
+/* Smaller desktop guardrail: same layout, just protect against text clipping. */
+@media (max-width:1180px){
+  .card-locations .location-list,
+  .card3d:not(.is-active) .card-locations .location-list{
+    margin-left:clamp(24px,1.6vw,34px) !important;
+    margin-right:clamp(24px,1.6vw,34px) !important;
+    row-gap:clamp(11px,.85vw,17px) !important;
+  }
+  .card-locations .loc strong,
+  .card3d:not(.is-active) .card-locations .loc strong{
+    font-size:clamp(15px,1.25vw,22px) !important;
+  }
+  .card-locations .loc span,
+  .card3d:not(.is-active) .card-locations .loc span{
+    font-size:clamp(9px,.72vw,13px) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v80-location-card-clean-font-fit">
+<body data-build="v81-locations-fixed-layout-no-copy">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2758,11 +2884,11 @@ const cards = [
     copy:"Get ideas. Build the perfect backyard show.", cta:"Start Planning" },
   { id:"locations", modal:"locationsModal", eyebrow:"4 Great Spots", title:"Locations",
     media:`<div class="location-list">
-      <div class="loc">${PIN}<div><strong>Spirit Lake</strong><span>Vick’s Corner<br>HWY 9 &amp; 86</span></div></div>
-      <div class="loc">${PIN}<div><strong>Milford</strong><span>Okoboji Gas Lot<br>2098 IA-86</span></div></div>
-      <div class="loc">${PIN}<div><strong>Spencer</strong><span>Spencer Mall Lot<br>901 11th Street SW</span></div></div>
-      <div class="loc">${PIN}<div><strong>Armstrong</strong><span>101 6th St<br>HWY 15</span></div></div>
-    </div>`, copy:"Find the closest DFO location and get ready for the Fourth.", cta:"View Locations" },
+      <div class="loc">${PIN}<div><strong>Spirit Lake</strong><span>Vick’s Corner · HWY 9 &amp; 86</span></div></div>
+      <div class="loc">${PIN}<div><strong>Milford</strong><span>Okoboji Gas Lot · 2098 IA-86</span></div></div>
+      <div class="loc">${PIN}<div><strong>Spencer</strong><span>Spencer Mall Lot · 901 11th Street SW</span></div></div>
+      <div class="loc">${PIN}<div><strong>Armstrong</strong><span>101 6th St · HWY 15</span></div></div>
+    </div>`, copy:"", cta:"View Locations" },
   { id:"videos", modal:"videosModal", eyebrow:"Demo Videos", title:"Preview the Boom Before You Buy",
     media:`<div class="card-media video-preview">
       <button class="video-feature video-open" data-modal="videosModal" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),url('${IMG.videoFeature}')">
@@ -3043,7 +3169,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V80 HIDDEN CALIBRATION</b>
+  <b>V81 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

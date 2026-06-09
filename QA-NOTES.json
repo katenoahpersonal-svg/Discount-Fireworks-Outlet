@@ -1,15 +1,16 @@
 {
-  "version": "v80-location-card-clean-font-fit",
-  "base": "v79-locations-vertical-larger-text",
+  "version": "v81-locations-fixed-layout-no-copy",
+  "base": "v80-location-card-clean-font-fit",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
   "changed": {
-    "small_font": "Roboto Condensed",
-    "locations_card": "vertical compact fit",
-    "locations_button": "centered, narrower, pulled up inside card",
-    "side_back_locations": "compact anti-clipping rules"
+    "locations_copy": "removed",
+    "locations_addresses": "one line each",
+    "locations_names": "larger",
+    "locations_layout": "locked same vertical layout for active and non-active states",
+    "button": "kept inside card"
   },
   "unchanged": [
     "background",
@@ -17,6 +18,7 @@
     "carousel positioning",
     "bottom countdown",
     "card order",
+    "other cards",
     "modals",
     "social sync"
   ]
