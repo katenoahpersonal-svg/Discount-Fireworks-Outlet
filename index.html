@@ -2353,9 +2353,106 @@ textarea{
   background-image:none !important;
 }
 
+
+/* =========================
+   V78 LOCATION CARD + FAR BACK CARD TUNE
+   Built from V77.
+   Changes only:
+   - Locations card fills its card better.
+   - Locations CTA button aligns like other card CTAs.
+   - Far-left/far-right carousel slots rotate farther inward and sit a hair lower.
+========================= */
+
+/* Make the locations card use the full card body instead of feeling like a small block floating at top. */
+.card-locations{
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+.card-locations .location-list{
+  flex:1 1 auto !important;
+  width:auto !important;
+  margin:clamp(13px,1vw,18px) clamp(18px,1.45vw,28px) 0 !important;
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  align-content:center !important;
+  justify-content:center !important;
+  column-gap:clamp(16px,1.8vw,34px) !important;
+  row-gap:clamp(14px,1.35vw,25px) !important;
+}
+
+.card-locations .loc{
+  grid-template-columns:clamp(23px,1.65vw,34px) minmax(0,1fr) !important;
+  gap:clamp(7px,.7vw,12px) !important;
+  align-items:start !important;
+  min-width:0 !important;
+}
+
+.card-locations .pin{
+  width:clamp(23px,1.65vw,34px) !important;
+  height:clamp(23px,1.65vw,34px) !important;
+}
+
+.card-locations .loc strong{
+  font-size:clamp(13px,.95vw,18px) !important;
+  line-height:1.05 !important;
+  letter-spacing:.08em !important;
+  white-space:nowrap !important;
+}
+
+.card-locations .loc span{
+  font-size:clamp(10px,.72vw,14px) !important;
+  line-height:1.22 !important;
+  letter-spacing:.045em !important;
+  color:rgba(255,255,255,.84) !important;
+  white-space:normal !important;
+}
+
+.card-locations .card-copy{
+  margin-top:auto !important;
+  padding-top:clamp(10px,.85vw,16px) !important;
+  padding-bottom:clamp(16px,1.2vw,22px) !important;
+}
+
+.card-locations .card-copy p{
+  max-width:92% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  margin-bottom:clamp(11px,.9vw,16px) !important;
+  font-size:clamp(10px,.72vw,14px) !important;
+  line-height:1.28 !important;
+}
+
+.card-locations .card-btn{
+  width:82% !important;
+  margin:0 auto !important;
+  height:clamp(36px,3.1vh,48px) !important;
+  border-radius:10px !important;
+}
+
+/* When locations is side/back, keep the button from looking stretched or clipped. */
+.card3d:not(.is-active) .card-locations .card-btn{
+  width:88% !important;
+}
+
+/* Small-width safety so the 2x2 grid does not spill when the card is not centered. */
+@media (max-width:1180px){
+  .card-locations .location-list{
+    column-gap:clamp(10px,1.2vw,18px) !important;
+    margin-left:clamp(14px,1vw,20px) !important;
+    margin-right:clamp(14px,1vw,20px) !important;
+  }
+  .card-locations .loc strong{
+    font-size:clamp(11px,.9vw,15px) !important;
+  }
+  .card-locations .loc span{
+    font-size:clamp(8.5px,.68vw,12px) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v77-uploaded-background-final-swap">
+<body data-build="v78-location-fill-back-card-rotation">
 <main class="page">
   <header class="header">
     <a class="logo" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -2620,13 +2717,13 @@ const SLOT_CONFIG = {
     This fixes the V58 mistake where the right side was moved independently.
   */
 
-  "-2": { name:"far-left",  x:-33.0, y:76.8, z:-235, scale:.79, rotateY:-25, faceRotate:-30, faceSkew: 1.2, width:.60, height:.86 },
+  "-2": { name:"far-left",  x:-33.0, y:77.6, z:-250, scale:.79, rotateY:-32, faceRotate:-38, faceSkew: 1.35, width:.60, height:.86 },
   "-1": { name:"left",      x:-19.2, y:78.0, z:-105, scale:.91, rotateY:-13, faceRotate:-17, faceSkew: .45, width:.80, height:.96 },
 
   "0":  { name:"center",    x:  0.0, y:76.8, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
 
   "1":  { name:"right",     x: 19.2, y:78.0, z:-105, scale:.91, rotateY: 13, faceRotate: 17, faceSkew:-.45, width:.80, height:.96 },
-  "2":  { name:"far-right", x: 33.0, y:76.8, z:-235, scale:.79, rotateY: 25, faceRotate: 30, faceSkew:-1.2, width:.60, height:.86 }
+  "2":  { name:"far-right", x: 33.0, y:77.6, z:-250, scale:.79, rotateY: 32, faceRotate: 38, faceSkew:-1.35, width:.60, height:.86 }
 };
 
 function metrics(){
@@ -2809,7 +2906,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V77 HIDDEN CALIBRATION</b>
+  <b>V78 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

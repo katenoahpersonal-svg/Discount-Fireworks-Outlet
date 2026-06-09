@@ -1,3 +1,22 @@
+DFO V78 — Locations Fill + Back Card Rotation Tune
+
+Starting point:
+- V77 latest uploaded background.
+
+Careful changes:
+1. Locations card now fills the card body better using a 2x2 grid.
+2. Location details are larger/easier to read.
+3. Locations CTA button is centered and aligned more like the other cards.
+4. Only far-left and far-right slots were tuned:
+   - moved down slightly: y 76.8 -> 77.6
+   - moved deeper: z -235 -> -250
+   - rotated farther inward: rotateY +/-25 -> +/-32
+   - faceRotate +/-30 -> +/-38
+5. Left, center, right slots were not moved.
+6. Background, header, countdown, modals, social sync, and card order unchanged.
+
+Node syntax checks passed.
+
 DFO V77 — Latest Uploaded Fireworks Water Ring Background
 
 Starting point:

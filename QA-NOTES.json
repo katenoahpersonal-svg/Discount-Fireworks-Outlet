@@ -1,29 +1,37 @@
 {
-  "version": "v77-uploaded-background-final-swap",
-  "base": "v76-uploaded-background",
-  "background": {
-    "source": "7636c89f-a3c0-4758-b738-5bf0e7bd50d1.png",
-    "asset_jpg": "assets/background-live.jpg",
-    "asset_png": "assets/background-live.png",
-    "size": "1920x1080"
-  },
+  "version": "v78-location-fill-back-card-rotation",
+  "base": "v77-uploaded-background-final-swap",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed": [
-    "background only"
-  ],
+  "changed": {
+    "locations_card": "2x2 fill layout, bigger text, centered CTA",
+    "far_slots": {
+      "-2": {
+        "y": 77.6,
+        "z": -250,
+        "rotateY": -32,
+        "faceRotate": -38
+      },
+      "2": {
+        "y": 77.6,
+        "z": -250,
+        "rotateY": 32,
+        "faceRotate": 38
+      }
+    }
+  },
   "unchanged": [
-    "header restored",
-    "small font/readability update",
-    "card scaling",
-    "carousel positioning",
-    "cards",
-    "footer/info bar removal",
-    "drag wording removal",
+    "background",
+    "header",
     "bottom countdown",
-    "social sync",
-    "modals"
+    "footer/drag removal",
+    "left slot",
+    "center slot",
+    "right slot",
+    "card order",
+    "modals",
+    "social sync"
   ]
 }
