@@ -4160,9 +4160,241 @@ html::after{
   }
 }
 
+
+/* =========================
+   V95 CLASSIER CARD TYPE + HOVER FIX
+   Built from V94.
+   Changes:
+   - Makes card titles/copy more consistent so long titles do not feel clunky.
+   - Gives titles a consistent visual title zone.
+   - Makes CTA hover states readable so text never disappears when highlighted/hovered.
+   - Keeps layout/background/header/carousel positioning unchanged.
+========================= */
+
+:root{
+  --dfo-title-white:#ffffff;
+  --dfo-copy-white:rgba(255,255,255,.82);
+  --dfo-btn-hover:#ff6d2e;
+  --dfo-btn-hover-text:#ffffff;
+}
+
+/* Make all main card titles feel intentionally styled, not randomly wrapped. */
+.card-title,
+.card3d.is-active .card-title{
+  width:100% !important;
+  max-width:min(92%, 720px) !important;
+  min-height:clamp(76px,8.1vh,118px) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  text-wrap:balance !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  hyphens:none !important;
+  line-height:.88 !important;
+  letter-spacing:-.018em !important;
+  color:var(--dfo-title-white) !important;
+  text-shadow:
+    0 2px 0 rgba(0,0,0,.22),
+    0 0 18px rgba(255,255,255,.07) !important;
+}
+
+/* Long-title cards get a slightly more elegant scale instead of screaming into two awkward lines. */
+.card-videos .card-title,
+.card-favorites .card-title,
+.card3d.is-active .card-videos .card-title,
+.card3d.is-active .card-favorites .card-title{
+  font-size:clamp(38px,3.55vw,66px) !important;
+  line-height:.86 !important;
+  letter-spacing:-.032em !important;
+  max-width:94% !important;
+}
+
+/* Short title cards keep their punch, but share the same title zone. */
+.card-social .card-title,
+.card-build .card-title,
+.card-locations .card-title{
+  font-size:clamp(40px,3.8vw,70px) !important;
+  line-height:.86 !important;
+}
+
+/* Copy uses the easier-to-read small font and consistent color/weight. */
+.card-copy p,
+.card-desc,
+.card small,
+.loc span,
+.video-thumb-button span,
+.favorite-grid b,
+.social-thumbs span,
+.social-card-caption{
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  color:var(--dfo-copy-white) !important;
+  text-shadow:0 1px 5px rgba(0,0,0,.62) !important;
+}
+
+/* Favorites labels: make each tile label look consistent/classy instead of random length/line behavior. */
+.favorite-grid b{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:34px !important;
+  padding:0 10px !important;
+  text-align:center !important;
+  line-height:1.02 !important;
+  letter-spacing:.105em !important;
+  white-space:normal !important;
+  text-wrap:balance !important;
+  color:var(--dfo-gold, #ffd56c) !important;
+}
+
+/* Give image grids a more premium, less chunky frame. */
+.favorite-grid,
+.social-thumbs,
+.video-thumbs{
+  border-color:rgba(255,109,46,.22) !important;
+}
+
+.favorite-grid span,
+.social-thumbs span,
+.video-thumb-button{
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.045),
+    inset 0 -35px 44px rgba(0,0,0,.48),
+    0 0 18px rgba(255,109,46,.055) !important;
+}
+
+/* CTA hover/readability fix: text should NEVER disappear on mouse hover/highlight. */
+.card-btn,
+.modal-link,
+.social-open-button,
+button,
+a{
+  -webkit-tap-highlight-color:rgba(255,109,46,.20) !important;
+}
+
+.card-btn,
+.card-btn:visited,
+.card-btn:focus,
+.card-btn:active,
+.modal-link,
+.modal-link:visited,
+.modal-link:focus,
+.modal-link:active,
+.social-open-button,
+.social-open-button:visited,
+.social-open-button:focus,
+.social-open-button:active{
+  color:var(--dfo-orange, #ff6d2e) !important;
+  text-shadow:0 0 8px rgba(0,0,0,.45) !important;
+}
+
+.card-btn:hover,
+.card-btn:focus-visible,
+.modal-link:hover,
+.modal-link:focus-visible,
+.social-open-button:hover,
+.social-open-button:focus-visible{
+  background:
+    linear-gradient(180deg,rgba(255,109,46,.92),rgba(255,79,28,.86)) !important;
+  color:var(--dfo-btn-hover-text) !important;
+  border-color:rgba(255,132,72,.98) !important;
+  text-shadow:
+    0 1px 0 rgba(0,0,0,.28),
+    0 0 10px rgba(255,255,255,.12) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.10) inset,
+    0 0 24px rgba(255,109,46,.35) !important;
+}
+
+/* Mouse text selection should also stay readable. */
+::selection{
+  background:rgba(255,109,46,.88) !important;
+  color:#fff !important;
+  text-shadow:none !important;
+}
+
+/* Desktop-only little refinement: keep title/copy spacing graceful on active card. */
+@media (min-width:1101px){
+  .card{
+    padding-top:clamp(22px,2.2vh,34px) !important;
+  }
+
+  .card-copy p{
+    font-size:clamp(14px,.92vw,18px) !important;
+    line-height:1.28 !important;
+    letter-spacing:.09em !important;
+  }
+
+  .card-favorites .card-copy p,
+  .card-social .card-copy p{
+    max-width:88% !important;
+    margin-inline:auto !important;
+  }
+}
+
+/* Tablet title/copy cleanup. */
+@media (min-width:701px) and (max-width:1100px){
+  .card-title,
+  .card3d.is-active .card-title{
+    min-height:96px !important;
+    font-size:clamp(36px,5.6vw,56px) !important;
+    line-height:.88 !important;
+  }
+
+  .card-videos .card-title,
+  .card-favorites .card-title{
+    font-size:clamp(34px,5.2vw,52px) !important;
+  }
+
+  .card-copy p{
+    font-size:clamp(14px,2vw,18px) !important;
+    line-height:1.3 !important;
+  }
+}
+
+/* Mobile: preserve info, but make titles less massive and CTAs readable. */
+@media (max-width:700px){
+  .card-title,
+  .card3d.is-active .card-title{
+    min-height:auto !important;
+    display:block !important;
+    font-size:clamp(31px,9.2vw,42px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.018em !important;
+    padding-inline:16px !important;
+    margin-bottom:10px !important;
+  }
+
+  .card-videos .card-title,
+  .card-favorites .card-title{
+    font-size:clamp(28px,8.4vw,39px) !important;
+    line-height:.93 !important;
+  }
+
+  .card-copy p{
+    font-size:13.5px !important;
+    line-height:1.34 !important;
+    letter-spacing:.055em !important;
+  }
+
+  .favorite-grid b{
+    min-height:30px !important;
+    font-size:11px !important;
+    letter-spacing:.07em !important;
+  }
+
+  .card-btn:hover,
+  .card-btn:focus-visible{
+    color:#fff !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v94-clock-up-mobile-card-clearance">
+<body data-build="v95-classier-card-type-hover-fix">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4646,7 +4878,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V94 HIDDEN CALIBRATION</b>
+  <b>V95 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

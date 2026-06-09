@@ -1,25 +1,22 @@
 {
-  "version": "v94-clock-up-mobile-card-clearance",
-  "base": "v93-no-buoy-responsive-tablet-mobile",
+  "version": "v95-classier-card-type-hover-fix",
+  "base": "v94-clock-up-mobile-card-clearance",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed_v94": {
-    "desktop_bottom_countdown": "moved up with bottom: clamp(78px, 10.6vh, 132px)",
-    "mobile": [
-      "extra carousel bottom padding",
-      "extra bottom-count top margin",
-      "overflow visible for stacked cards",
-      "card interiors flex column to avoid clipping",
-      "image/grid heights compacted so info stays visible"
-    ],
-    "tablet": "more breathing room before bottom countdown"
+  "changed_v95": {
+    "card_titles": "consistent title zone, balanced wrapping, graceful scale for long titles",
+    "favorites_tile_labels": "centered balanced labels",
+    "button_hover": "orange fill with white text; text no longer disappears",
+    "selection": "high contrast selection colors"
   },
   "unchanged": [
     "background from V93",
     "header logo from V92",
     "desktop carousel geometry",
+    "bottom clock position from V94",
+    "tablet/mobile layout from V93/V94",
     "card content",
     "modals",
     "YouTube embeds",
