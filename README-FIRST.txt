@@ -1,19 +1,18 @@
-DFO V111 — Soft Arrow Drift Transition
+DFO V112 — Arrow Glide Position/Size Transition
 
 Starting point:
-- Built from the safe V108/V107 base, not the V109/V110 motion experiments.
+- Built from the safe V108/V107 base, not the V109/V110/V111 motion experiments.
 
-V111 changes:
+V112 changes:
 1. Arrow-click transition only:
-   - Left/right arrow movement is slower and softer.
-   - Removed the V110 settle-pop/glow feeling.
-   - Uses a soft drift easing curve.
-   - Arrow clicks are locked while the movement is running so rapid clicks do not create jarring jumps.
+   - Left/right arrow movement now animates left, top, width, height, transform, opacity, and filter together.
+   - This fixes the jagged snap caused by cards changing position/size instantly while only transform was easing.
+   - Arrow clicks are locked briefly during the glide so rapid-clicking does not create jumps.
 
 Not changed:
 - No face card content changes
-- No face card layout changes
-- No card sizing/spacing changes
+- No face card layout value changes
+- No card spacing changes
 - No carousel slot geometry changes
 - No header changes
 - No clock changes

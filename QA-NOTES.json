@@ -1,17 +1,16 @@
 {
-  "version": "v111-soft-arrow-drift-transition",
+  "version": "v112-arrow-glide-position-size-transition",
   "base": "dfo-v108-red-inner-cards-smoother-carousel.zip",
-  "changed_v111": [
-    "arrow buttons now use arrowRotate with soft drift timing",
-    "arrow movement duration increased to 1280ms",
-    "removed settle-pop animation behavior",
-    "arrow clicks are locked during transition",
-    "double requestAnimationFrame ensures transition class applies before rotation"
+  "changed_v112": [
+    "arrow buttons use arrowRotate",
+    "arrow-click transitions now include left/top/width/height",
+    "arrow-click transitions include transform/opacity/filter",
+    "arrow clicks are briefly locked during glide"
   ],
   "unchanged": [
     "face card content",
-    "face card layout",
-    "card sizing/spacing",
+    "face card layout values",
+    "card spacing",
     "carousel slot geometry",
     "header",
     "clock",
