@@ -1,24 +1,27 @@
-DFO V106 — Nav Hard-Lock + Card Button Hover Colors
+DFO V107 — Header Direct Modal/Wall Open + Card Button Colors
 
 Starting point:
 - Built from V105 full-upload-pages-permissions-fix.
 
-Included:
-- Full GitHub Pages workflow/permissions fix from V105.
-- V104 header nav/card mapping.
-- No-buoy background, header logo, favicon, and all prior safe site assets.
+V107 plan of attack:
+Instead of trying to make the header nav rotate first and then depend on the front card,
+the header nav now directly opens the exact modal/wall you asked for.
 
-V106 changes:
-1. Header nav hard-lock:
-   - Video opens/rotates to the Video card.
-   - Social opens/rotates to the Social Feed card.
-   - Contact opens/rotates to the Build Your Show / Contact card.
-   - Get Directions opens/rotates to the Locations card.
-   - Header clicks are captured and stopped so they cannot fall through and open the current/front card modal.
+Header nav:
+- Video opens videosModal
+- Social opens socialModal
+- Contact opens contactModal
+- Get Directions opens locationsModal
 
-2. Card button hover colors:
-   - Card buttons now transition to the same orange fill / white text hover behavior as the header button.
-   - This is color/visual only. No movement or sizing changes.
+Why this should fix it:
+- Header nav no longer uses data-go.
+- Header nav click handler runs in capture phase.
+- It stops propagation and stopImmediatePropagation.
+- The generic card/current-front-card click handler ignores header nav clicks completely.
+- This prevents Social from accidentally opening whatever card is currently facing front.
+
+Card button hover:
+- Card buttons now use the same orange-fill / white-text hover color behavior as the header button.
 
 Not changed:
 - No card layout changes

@@ -1,11 +1,15 @@
 {
-  "version": "v106-nav-capture-card-button-hover-colors",
+  "version": "v107-header-direct-modal-open-card-button-colors",
   "base": "v105-full-upload-pages-permissions-fix",
-  "changed_v106": [
-    "capture-phase header nav click handler with stopImmediatePropagation",
-    "header nav cannot fall through to current/front card modal",
-    "card button hover/focus background becomes orange and text white",
-    "smooth color/background/border/box-shadow transition on card buttons"
+  "changed_v107": [
+    "header nav uses data-open-modal instead of data-go",
+    "Video opens videosModal directly",
+    "Social opens socialModal directly",
+    "Contact opens contactModal directly",
+    "Get Directions opens locationsModal directly",
+    "header nav click handler uses capture phase and stopImmediatePropagation",
+    "document click handler ignores nav clicks before card/front-card logic",
+    "card button hover/focus color behavior matches header button"
   ],
   "unchanged": [
     "card layout",

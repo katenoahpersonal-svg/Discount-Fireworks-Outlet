@@ -4336,12 +4336,13 @@ button:focus-visible{
 
 
 /* =========================
-   V106 NAV CAPTURE + CARD BUTTON HOVER COLORS
+   V107 HEADER DIRECT MODALS + CARD BUTTON COLORS
    Built from V105.
    Changes:
-   - Header nav is hard-locked to exact card targets using capture-phase JS.
-   - Card buttons now use the same orange/white hover color behavior as the header button.
-   - No layout, spacing, sizing, card geometry, carousel, clock, background, or image changes.
+   - Header nav opens the exact matching modal/wall directly.
+   - Header nav no longer uses data-go, so it cannot trigger the current/front card.
+   - Card buttons get the same orange-fill / white-text hover color as the header button.
+   No layout, spacing, size, carousel, clock, background, or image changes.
 ========================= */
 
 .card .card-btn,
@@ -4376,7 +4377,7 @@ button:focus-visible{
 
 </style>
 </head>
-<body data-build="v106-nav-capture-card-button-hover-colors">
+<body data-build="v107-header-direct-modal-open-card-button-colors">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4394,10 +4395,10 @@ button:focus-visible{
 </div>
     </section>
     <nav class="nav" aria-label="Main navigation">
-      <button data-go="videos" data-nav-card="videos">Video</button>
-      <button data-go="social" data-nav-card="social">Social</button>
-      <button data-go="build" data-nav-card="build">Contact</button>
-      <button class="directions" data-go="locations" data-nav-card="locations">Get Directions ▶</button>
+      <button type="button" data-open-modal="videosModal" data-nav-card="videos">Video</button>
+      <button type="button" data-open-modal="socialModal" data-nav-card="social">Social</button>
+      <button type="button" data-open-modal="contactModal" data-nav-card="build">Contact</button>
+      <button type="button" class="directions" data-open-modal="locationsModal" data-nav-card="locations">Get Directions ▶</button>
     </nav>
   </header>
 
@@ -4834,16 +4835,25 @@ function closeModals(){ document.querySelectorAll(".modal-layer").forEach(m=>m.c
 document.getElementById("prev").addEventListener("click", ()=>rotate(-1));
 document.getElementById("next").addEventListener("click", ()=>rotate(1));
 
-/* V104: header nav buttons always open their matching card only. */
-document.querySelectorAll(".nav [data-nav-card]").forEach(navBtn=>{
+/* V107: header nav buttons open the exact matching modal/wall, not the current front card. */
+document.querySelectorAll(".nav [data-open-modal]").forEach(navBtn=>{
   navBtn.addEventListener("click", e=>{
     e.preventDefault();
     e.stopPropagation();
-    goTo(navBtn.dataset.navCard);
-  });
+    e.stopImmediatePropagation();
+
+    const targetCard = navBtn.dataset.navCard;
+    const targetModal = navBtn.dataset.openModal;
+
+    if (targetCard) goTo(targetCard);
+    if (targetModal) {
+      requestAnimationFrame(()=>openModal(targetModal));
+    }
+  }, true);
 });
 
 document.addEventListener("click", e=>{
+  if (e.target.closest(".nav")) return;
   const btn = e.target.closest(".card-btn,[data-go],.directions,.video-feature,.video-thumb-button");
   if (btn){
     if (btn.closest(".nav")) return;
@@ -4888,22 +4898,10 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 update();
 countdown();
 setInterval(countdown, 1000);
-
-/* ===== V106 nav hard-lock: header nav opens exact carousel card, never current/front modal ===== */
-document.querySelectorAll(".nav [data-nav-card]").forEach(navBtn=>{
-  navBtn.addEventListener("click", function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    const targetCard = this.dataset.navCard;
-    if (targetCard) goTo(targetCard);
-  }, true);
-});
-
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V106 HIDDEN CALIBRATION</b>
+  <b>V107 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
