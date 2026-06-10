@@ -1,31 +1,19 @@
-DFO V100 — Header Logo Glow + Bottom Countdown Spacing
+DFO V101 — Card Button Hover Font Color Only
 
 Starting point:
-- Built from V99 rollback-to-v94-plus-favicon.
-- This keeps the V94 card system intact.
-- V95/V97/V98 card CSS is not included.
+- Built from V100 header-glow-clock-spacing.
 
-Included:
-- V89 updates
-- V92 header logo
-- V93 no-buoy background
-- V94 desktop clock/mobile clearance
-- V99 favicon/browser tab icon
+Only V101 change:
+- Card button text turns/stays white when hovered or focused.
 
-New V100 changes only:
-1. Header logo glow reduced so it does not look hazy/weird in the black header bar.
-2. Desktop bottom timeclock made larger.
-3. Desktop bottom countdown numbers and colon separators moved closer together.
-
-Unchanged:
-- cards
-- carousel geometry
-- card buttons
-- card typography/layout
-- mobile/tablet layout
-- modals
-- YouTube embeds
-- social sync
+Not changed:
+- No card layout changes
+- No button position changes
+- No button size changes
+- No card spacing changes
+- No carousel changes
+- No clock changes
+- No background/header/logo/image/modal changes
 
 Upload:
 - Upload the full ZIP contents to GitHub.

@@ -1,23 +1,24 @@
 {
-  "version": "v100-header-glow-clock-spacing",
-  "base": "v99-rollback-to-v94-plus-favicon",
-  "node_syntax_check": {
-    "index_inline_script": "passed",
-    "sync_script": "passed"
-  },
-  "changed_v100": [
-    "reduced header logo glow/drop-shadow",
-    "desktop bottom countdown larger",
-    "desktop bottom countdown number/colon spacing tightened"
+  "version": "v101-card-button-hover-font-color-only",
+  "base": "v100-header-glow-clock-spacing",
+  "changed_v101": [
+    "card button hover/focus font color only: #ffffff"
   ],
   "unchanged": [
     "cards",
-    "carousel geometry",
-    "card buttons",
-    "card typography/layout",
-    "mobile/tablet layout",
+    "button layout",
+    "button size",
+    "button background",
+    "carousel",
+    "clock",
+    "background",
+    "header",
+    "logo",
     "modals",
-    "YouTube embeds",
-    "social sync"
-  ]
+    "images"
+  ],
+  "node_syntax_check": {
+    "index_inline_script": "passed",
+    "sync_script": "passed"
+  }
 }

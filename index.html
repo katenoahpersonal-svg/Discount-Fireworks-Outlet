@@ -4231,9 +4231,32 @@ html::after{
   }
 }
 
+
+/* =========================
+   V101 CARD BUTTON HOVER FONT COLOR ONLY
+   Built from V100.
+   Only change:
+   - When any card button is hovered/focused, force the button text to stay white.
+   - No layout, size, spacing, background, card, carousel, clock, or image changes.
+========================= */
+
+.card .card-btn:hover,
+.card .card-btn:focus-visible,
+.card3d .card .card-btn:hover,
+.card3d .card .card-btn:focus-visible{
+  color:#ffffff !important;
+}
+
+.card .card-btn:hover *,
+.card .card-btn:focus-visible *,
+.card3d .card .card-btn:hover *,
+.card3d .card .card-btn:focus-visible *{
+  color:#ffffff !important;
+}
+
 </style>
 </head>
-<body data-build="v100-header-glow-clock-spacing">
+<body data-build="v101-card-button-hover-font-color-only">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4717,7 +4740,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V100 HIDDEN CALIBRATION</b>
+  <b>V101 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
