@@ -1,24 +1,26 @@
 {
-  "version": "v95-classier-card-type-hover-fix",
-  "base": "v94-clock-up-mobile-card-clearance",
+  "version": "v97-locked-buttons-lux-card-reset",
+  "base": "v96-favicon-browser-tab-icon",
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "changed_v95": {
-    "card_titles": "consistent title zone, balanced wrapping, graceful scale for long titles",
-    "favorites_tile_labels": "centered balanced labels",
-    "button_hover": "orange fill with white text; text no longer disappears",
-    "selection": "high contrast selection colors"
+  "changed_v97": {
+    "desktop_buttons": "absolute bottom safe-zone; locked per card",
+    "tiny_headers": "fully removed/no reserved ghost spacing",
+    "card_titles": "consistent headline system; side-slot scaling",
+    "small_text": "larger and cleaner font stack",
+    "locations": "less top dead space, bigger names/addresses",
+    "hover": "button text remains readable"
   },
   "unchanged": [
     "background from V93",
     "header logo from V92",
-    "desktop carousel geometry",
-    "bottom clock position from V94",
-    "tablet/mobile layout from V93/V94",
+    "favicon from V96",
+    "carousel slot geometry",
     "card content",
     "modals",
+    "countdowns",
     "YouTube embeds",
     "social sync"
   ]

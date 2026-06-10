@@ -1,38 +1,52 @@
-DFO V95 — Classier Card Typography + Hover Readability Fix
+DFO V97 — Locked Buttons + Luxury Card Reset
 
 Starting point:
-- Built from V94 clock-up-mobile-card-clearance.
+- Built from V96 favicon-browser-tab-icon.
 
 Included:
 - V89 social/favorites/location/card color updates
 - V92 header logo
 - V93 no-buoy clean background
-- V93 tablet/mobile responsive setup
-- V94 desktop bottom clock moved up + mobile clearance fixes
+- V93/V94 tablet/mobile responsive fixes
+- V95 typography/hover fixes
+- V96 favicon/browser tab icon
 
-New V95 changes:
-1. Card typography polish:
-   - Main card titles now share a consistent title zone.
-   - Long titles like “Top Picks for the Perfect Finale” and “Preview the Boom Before You Buy” scale more gracefully.
-   - Title wrapping uses balanced text behavior instead of feeling random/clunky.
-   - Short title cards keep their strong look but follow the same spacing system.
+New V97 fixes:
+1. Buttons are locked:
+   - Desktop card CTAs are now absolutely positioned in a consistent bottom safe-zone.
+   - Button location no longer depends on title/media/copy height.
+   - Side and far-side cards get scaled button sizing but remain locked to their card bottoms.
 
-2. Favorites tile labels:
-   - Category labels are centered and balanced so one-line/two-line behavior feels more intentional.
+2. Tiny headers are fully removed:
+   - The tiny red/orange eyebrow headers no longer reserve invisible space.
 
-3. CTA hover/readability fix:
-   - Button text no longer disappears when hovering/highlighting.
-   - Hover state now turns buttons orange with white readable text.
-   - Text selection is forced to high-contrast white-on-orange.
+3. Header/title typography reset:
+   - All card titles now use one consistent headline system.
+   - Long titles scale more gracefully.
+   - Side-card titles are scaled by carousel slot so they stop cropping/blowing up.
+
+4. Small font improved:
+   - Small/card copy text is larger.
+   - Uses a cleaner readable font stack.
+   - Applies across locations, card copy, video labels, favorite labels, and social captions.
+
+5. Locations card spacing:
+   - The location list starts much closer to the title.
+   - The list fills the middle of the card better.
+   - Location names and addresses are larger and more readable.
+
+6. Hover text fix hardened:
+   - Button text stays readable on hover/focus.
+   - Orange fill hover uses white text.
 
 Unchanged:
 - background
 - header logo
-- carousel geometry
-- bottom clock position from V94
-- tablet/mobile layout from V93/V94
+- favicon
+- carousel slot geometry
 - card content
 - modals
+- countdowns
 - YouTube embeds
 - social sync script
 

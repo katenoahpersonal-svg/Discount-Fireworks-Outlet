@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Discount Fireworks Outlet</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=96">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-v96.png?v=96">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-v96.png?v=96">
+  <link rel="manifest" href="site.webmanifest?v=96">
+  <meta name="theme-color" content="#050711">
+
 <meta name="description" content="Discount Fireworks Outlet — immersive Fourth of July homepage with a 3D demo carousel, Iowa locations, finale favorites, social feed, and show planning.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -4392,9 +4398,543 @@ a{
   }
 }
 
+
+/* =========================
+   V97 LOCKED BUTTONS + LUX CARD RESET
+   Built from V96.
+   Fixes:
+   - Card buttons are locked to a consistent bottom position on desktop.
+   - Tiny red/orange headers are removed with no ghost spacing.
+   - Main titles use one consistent sizing system.
+   - Side-card titles are scaled by slot so they do not explode/crop.
+   - Small font is larger, cleaner, and easier to read.
+   - Locations content starts closer to the title and fills the card better.
+   - Hover/selection states stay readable; button text cannot disappear.
+========================= */
+
+:root{
+  --dfo-clean:"Arial Narrow","Aptos","Inter","Segoe UI",Arial,sans-serif;
+  --dfo-orange:#ff6d2e;
+  --dfo-gold:#ffd56c;
+  --dfo-white:#ffffff;
+  --dfo-soft:rgba(255,255,255,.84);
+}
+
+/* No more invisible header ghosts stealing vertical space. */
+.card-eyebrow,
+.kicker,
+.card .eyebrow{
+  display:none !important;
+  visibility:hidden !important;
+  height:0 !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  line-height:0 !important;
+  overflow:hidden !important;
+}
+
+/* Strong readable button states everywhere. */
+.card .card-btn,
+.card .card-btn:link,
+.card .card-btn:visited,
+.card .card-btn:active,
+.card .card-btn:focus{
+  color:var(--dfo-orange) !important;
+  background:linear-gradient(180deg,rgba(255,109,46,.10),rgba(255,109,46,.035)) !important;
+  border-color:var(--dfo-orange) !important;
+  text-shadow:0 0 8px rgba(0,0,0,.62) !important;
+}
+
+.card .card-btn:hover,
+.card .card-btn:focus-visible,
+.card3d .card .card-btn:hover,
+.card3d .card .card-btn:focus-visible{
+  color:#fff !important;
+  background:linear-gradient(180deg,rgba(255,109,46,.96),rgba(244,74,25,.92)) !important;
+  border-color:#ff9a65 !important;
+  text-shadow:0 1px 0 rgba(0,0,0,.35),0 0 8px rgba(0,0,0,.25) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.12),
+    0 0 24px rgba(255,109,46,.36) !important;
+}
+
+.card .card-btn:hover *,
+.card .card-btn:focus-visible *{
+  color:#fff !important;
+}
+
+::selection{
+  background:rgba(255,109,46,.92) !important;
+  color:#fff !important;
+  text-shadow:none !important;
+}
+
+/* Desktop-only: rebuilt internal card system. */
+@media (min-width:1101px){
+  .card{
+    position:relative !important;
+    display:flex !important;
+    flex-direction:column !important;
+    overflow:hidden !important;
+    box-sizing:border-box !important;
+    padding:
+      clamp(24px,2.35vh,34px)
+      clamp(24px,1.85vw,36px)
+      clamp(104px,10.8vh,126px) !important;
+  }
+
+  /* Consistent luxury headline system. */
+  .card-title,
+  .card3d.is-active .card-title,
+  .card-videos .card-title,
+  .card-favorites .card-title,
+  .card-social .card-title,
+  .card-build .card-title,
+  .card-locations .card-title{
+    flex:0 0 auto !important;
+    display:block !important;
+    width:100% !important;
+    max-width:92% !important;
+    min-height:0 !important;
+    height:auto !important;
+    margin:
+      clamp(14px,1.7vh,22px)
+      auto
+      clamp(18px,2.0vh,26px) !important;
+    padding:0 !important;
+    font-family:var(--head) !important;
+    font-size:clamp(42px,3.28vw,58px) !important;
+    line-height:.90 !important;
+    letter-spacing:-.012em !important;
+    text-align:center !important;
+    text-wrap:balance !important;
+    word-break:normal !important;
+    overflow-wrap:normal !important;
+    color:#fff !important;
+    text-shadow:
+      0 2px 0 rgba(0,0,0,.24),
+      0 0 16px rgba(255,255,255,.08) !important;
+  }
+
+  /* Long titles are intentionally scaled, not randomly blown up. */
+  .card-videos .card-title,
+  .card-favorites .card-title{
+    font-size:clamp(40px,3.05vw,54px) !important;
+    line-height:.91 !important;
+    max-width:94% !important;
+  }
+
+  /* Off-center cards: same design, scaled so they stop looking broken/cropped. */
+  .card3d[data-wall-pos="-1"] .card-title,
+  .card3d[data-wall-pos="1"] .card-title{
+    font-size:clamp(28px,2.25vw,42px) !important;
+    line-height:.92 !important;
+    max-width:90% !important;
+    margin-top:clamp(12px,1.4vh,18px) !important;
+    margin-bottom:clamp(12px,1.45vh,18px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-title,
+  .card3d[data-wall-pos="2"] .card-title{
+    font-size:clamp(21px,1.62vw,31px) !important;
+    line-height:.94 !important;
+    max-width:88% !important;
+    margin-top:clamp(10px,1.15vh,14px) !important;
+    margin-bottom:clamp(8px,1vh,12px) !important;
+  }
+
+  /* Clean, readable small font across all cards. */
+  .card-copy p,
+  .loc span,
+  .video-label,
+  .video-thumb-button span,
+  .favorite-grid b,
+  .social-thumbs span,
+  .social-card-caption{
+    font-family:var(--dfo-clean) !important;
+    font-weight:800 !important;
+    text-transform:uppercase !important;
+    color:var(--dfo-soft) !important;
+    text-shadow:0 1px 6px rgba(0,0,0,.72) !important;
+  }
+
+  /* Every CTA is locked in the same safe zone. */
+  .card-copy{
+    position:absolute !important;
+    left:clamp(28px,2.05vw,42px) !important;
+    right:clamp(28px,2.05vw,42px) !important;
+    bottom:clamp(32px,4.9vh,50px) !important;
+    height:clamp(84px,10.5vh,110px) !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-end !important;
+    align-items:center !important;
+    gap:clamp(10px,1.25vh,15px) !important;
+    z-index:5 !important;
+  }
+
+  .card-copy p{
+    display:block !important;
+    margin:0 !important;
+    max-width:94% !important;
+    font-size:clamp(15px,1.02vw,19px) !important;
+    line-height:1.25 !important;
+    letter-spacing:.062em !important;
+    text-align:center !important;
+  }
+
+  .card-copy p:empty{
+    display:none !important;
+  }
+
+  .card-btn{
+    flex:0 0 auto !important;
+    width:min(100%, 330px) !important;
+    height:clamp(45px,5.35vh,58px) !important;
+    min-height:45px !important;
+    margin:0 auto !important;
+    padding:0 18px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-family:var(--dfo-clean) !important;
+    font-size:clamp(13px,.90vw,17px) !important;
+    font-weight:900 !important;
+    letter-spacing:.13em !important;
+    text-transform:uppercase !important;
+    border-width:2px !important;
+    border-radius:clamp(11px,1vw,16px) !important;
+    white-space:nowrap !important;
+  }
+
+  /* Smaller, still readable, locked buttons on side slots. */
+  .card3d[data-wall-pos="-1"] .card-copy,
+  .card3d[data-wall-pos="1"] .card-copy{
+    left:clamp(18px,1.5vw,30px) !important;
+    right:clamp(18px,1.5vw,30px) !important;
+    bottom:clamp(22px,3.6vh,38px) !important;
+    height:clamp(70px,9vh,92px) !important;
+    gap:clamp(7px,.9vh,11px) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card-copy p,
+  .card3d[data-wall-pos="1"] .card-copy p{
+    font-size:clamp(10px,.74vw,14px) !important;
+    line-height:1.18 !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card-btn,
+  .card3d[data-wall-pos="1"] .card-btn{
+    height:clamp(34px,4.2vh,46px) !important;
+    min-height:34px !important;
+    font-size:clamp(9px,.65vw,12px) !important;
+    max-width:92% !important;
+    letter-spacing:.10em !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-copy,
+  .card3d[data-wall-pos="2"] .card-copy{
+    left:clamp(12px,1vw,22px) !important;
+    right:clamp(12px,1vw,22px) !important;
+    bottom:clamp(16px,2.7vh,26px) !important;
+    height:clamp(52px,7vh,72px) !important;
+    gap:clamp(5px,.72vh,8px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-copy p,
+  .card3d[data-wall-pos="2"] .card-copy p{
+    font-size:clamp(7.5px,.54vw,10px) !important;
+    line-height:1.10 !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-btn,
+  .card3d[data-wall-pos="2"] .card-btn{
+    height:clamp(26px,3.1vh,34px) !important;
+    min-height:26px !important;
+    max-width:90% !important;
+    font-size:clamp(7px,.48vw,9.5px) !important;
+    letter-spacing:.08em !important;
+    border-width:1.5px !important;
+  }
+
+  /* Locations: tighten the dead space under the title and make address type bigger. */
+  .card-locations .card-title{
+    margin-top:clamp(18px,2vh,26px) !important;
+    margin-bottom:clamp(10px,1.25vh,16px) !important;
+  }
+
+  .card-locations .location-list{
+    flex:1 1 auto !important;
+    width:auto !important;
+    margin:
+      0
+      clamp(38px,3.3vw,62px)
+      clamp(100px,11.4vh,126px) !important;
+    padding:0 !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    align-content:start !important;
+    justify-content:stretch !important;
+    row-gap:clamp(16px,1.95vh,25px) !important;
+    transform:translateY(clamp(-10px,-1.1vh,-4px)) !important;
+  }
+
+  .card-locations .loc{
+    display:grid !important;
+    grid-template-columns:clamp(36px,2.75vw,52px) minmax(0,1fr) !important;
+    gap:clamp(14px,1.2vw,22px) !important;
+    align-items:center !important;
+    min-width:0 !important;
+    margin:0 !important;
+  }
+
+  .card-locations .pin{
+    width:clamp(36px,2.75vw,52px) !important;
+    min-width:clamp(36px,2.75vw,52px) !important;
+    height:clamp(36px,2.75vw,52px) !important;
+    filter:drop-shadow(0 0 10px rgba(255,90,38,.38)) !important;
+  }
+
+  .card-locations .loc strong{
+    display:block !important;
+    font-family:var(--head) !important;
+    font-size:clamp(28px,2.05vw,38px) !important;
+    line-height:.90 !important;
+    letter-spacing:.025em !important;
+    color:#fff !important;
+    white-space:nowrap !important;
+  }
+
+  .card-locations .loc span{
+    display:block !important;
+    margin-top:4px !important;
+    font-size:clamp(15px,1.12vw,20px) !important;
+    line-height:1.08 !important;
+    letter-spacing:.035em !important;
+    color:rgba(255,255,255,.86) !important;
+    white-space:nowrap !important;
+  }
+
+  .card-locations .card-copy{
+    height:clamp(54px,6.4vh,72px) !important;
+  }
+
+  .card-locations .card-btn{
+    width:min(78%,330px) !important;
+  }
+
+  /* Side/far location card scale, same layout but smaller, not mutated. */
+  .card3d[data-wall-pos="-1"] .card-locations .location-list,
+  .card3d[data-wall-pos="1"] .card-locations .location-list{
+    margin:
+      0
+      clamp(22px,2vw,38px)
+      clamp(78px,9vh,98px) !important;
+    row-gap:clamp(10px,1.15vh,16px) !important;
+    transform:translateY(-4px) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card-locations .loc strong,
+  .card3d[data-wall-pos="1"] .card-locations .loc strong{
+    font-size:clamp(15px,1.18vw,22px) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card-locations .loc span,
+  .card3d[data-wall-pos="1"] .card-locations .loc span{
+    font-size:clamp(8px,.68vw,12px) !important;
+    white-space:nowrap !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card-locations .pin,
+  .card3d[data-wall-pos="1"] .card-locations .pin{
+    width:clamp(19px,1.5vw,28px) !important;
+    min-width:clamp(19px,1.5vw,28px) !important;
+    height:clamp(19px,1.5vw,28px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-locations .location-list,
+  .card3d[data-wall-pos="2"] .card-locations .location-list{
+    margin:
+      0
+      clamp(14px,1.25vw,26px)
+      clamp(60px,7vh,78px) !important;
+    row-gap:clamp(7px,.82vh,11px) !important;
+    transform:translateY(-2px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-locations .loc{
+    grid-template-columns:clamp(14px,1.1vw,20px) minmax(0,1fr) !important;
+    gap:clamp(6px,.6vw,10px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-locations .loc strong,
+  .card3d[data-wall-pos="2"] .card-locations .loc strong{
+    font-size:clamp(10px,.82vw,15px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-locations .loc span,
+  .card3d[data-wall-pos="2"] .card-locations .loc span{
+    font-size:clamp(6px,.48vw,8.5px) !important;
+  }
+
+  .card3d[data-wall-pos="-2"] .card-locations .pin,
+  .card3d[data-wall-pos="2"] .card-locations .pin{
+    width:clamp(14px,1.1vw,20px) !important;
+    min-width:clamp(14px,1.1vw,20px) !important;
+    height:clamp(14px,1.1vw,20px) !important;
+  }
+
+  /* Media areas reserve a middle lane; buttons no longer push/move them. */
+  .card-media,
+  .video-preview,
+  .favorite-grid,
+  .social-thumbs,
+  .build-photo{
+    flex:1 1 auto !important;
+  }
+
+  .video-preview{
+    margin-bottom:clamp(102px,11.2vh,124px) !important;
+    min-height:0 !important;
+  }
+
+  .video-feature{
+    min-height:clamp(170px,24vh,260px) !important;
+  }
+
+  .video-thumbs .video-thumb-button span{
+    font-size:clamp(9px,.66vw,12px) !important;
+    line-height:1 !important;
+    letter-spacing:.075em !important;
+  }
+
+  .favorite-grid{
+    margin-bottom:clamp(98px,11vh,122px) !important;
+    gap:clamp(12px,1vw,18px) !important;
+  }
+
+  .favorite-grid b{
+    font-size:clamp(13px,.96vw,18px) !important;
+    line-height:1 !important;
+    letter-spacing:.075em !important;
+    white-space:nowrap !important;
+    color:var(--dfo-gold) !important;
+  }
+
+  .build-photo{
+    margin-bottom:clamp(98px,11vh,122px) !important;
+  }
+
+  .card-social .card-media{
+    margin-bottom:clamp(98px,11vh,122px) !important;
+  }
+
+  .social-icons-row{
+    margin-top:0 !important;
+  }
+}
+
+/* Tablet: prevent V95 giant title behavior and keep buttons readable. */
+@media (min-width:701px) and (max-width:1100px){
+  .card-eyebrow,
+  .kicker{
+    display:none !important;
+  }
+
+  .card-title,
+  .card-videos .card-title,
+  .card-favorites .card-title,
+  .card-social .card-title,
+  .card-build .card-title,
+  .card-locations .card-title{
+    min-height:0 !important;
+    font-size:clamp(32px,4.9vw,48px) !important;
+    line-height:.92 !important;
+    margin:18px auto 18px !important;
+    max-width:92% !important;
+    text-wrap:balance !important;
+  }
+
+  .card-copy p,
+  .loc span{
+    font-family:var(--dfo-clean) !important;
+    font-size:clamp(14px,2vw,18px) !important;
+    line-height:1.25 !important;
+  }
+
+  .card-btn{
+    color:var(--dfo-orange) !important;
+  }
+
+  .card-btn:hover{
+    color:#fff !important;
+  }
+
+  .card-locations .location-list{
+    margin-top:8px !important;
+    row-gap:clamp(14px,1.8vw,22px) !important;
+  }
+}
+
+/* Mobile: keep info visible and improve hierarchy without desktop lock. */
+@media (max-width:700px){
+  .card-eyebrow,
+  .kicker{
+    display:none !important;
+  }
+
+  .card-title,
+  .card-videos .card-title,
+  .card-favorites .card-title,
+  .card-social .card-title,
+  .card-build .card-title,
+  .card-locations .card-title{
+    min-height:0 !important;
+    font-size:clamp(30px,8.6vw,40px) !important;
+    line-height:.92 !important;
+    margin:16px auto 16px !important;
+    max-width:92% !important;
+    text-wrap:balance !important;
+  }
+
+  .card-copy p,
+  .loc span,
+  .video-thumb-button span,
+  .favorite-grid b{
+    font-family:var(--dfo-clean) !important;
+    font-size:14px !important;
+    line-height:1.25 !important;
+  }
+
+  .card-locations .location-list{
+    margin-top:8px !important;
+    row-gap:14px !important;
+  }
+
+  .card-locations .loc strong{
+    font-size:26px !important;
+  }
+
+  .card-locations .loc span{
+    font-size:14px !important;
+  }
+
+  .card .card-btn{
+    color:var(--dfo-orange) !important;
+  }
+
+  .card .card-btn:hover,
+  .card .card-btn:focus-visible{
+    color:#fff !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v95-classier-card-type-hover-fix">
+<body data-build="v97-locked-buttons-lux-card-reset">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4878,7 +5418,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V95 HIDDEN CALIBRATION</b>
+  <b>V97 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
