@@ -1,20 +1,22 @@
 {
-  "version": "v101-card-button-hover-font-color-only",
-  "base": "v100-header-glow-clock-spacing",
-  "changed_v101": [
-    "card button hover/focus font color only: #ffffff"
+  "version": "v102-header-nav-opens-cards",
+  "base": "v101-card-button-hover-font-color-only",
+  "changed_v102": [
+    "Videos nav opens videos card",
+    "Locations nav opens locations card",
+    "Contact nav opens build/contact card",
+    "Get Directions nav opens locations card",
+    "active nav glow",
+    "tablet/mobile scrolls matching card into view"
   ],
   "unchanged": [
     "cards",
-    "button layout",
-    "button size",
-    "button background",
-    "carousel",
+    "carousel geometry",
     "clock",
     "background",
-    "header",
-    "logo",
+    "header layout",
     "modals",
+    "button layout",
     "images"
   ],
   "node_syntax_check": {

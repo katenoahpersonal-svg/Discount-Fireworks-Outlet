@@ -4254,9 +4254,27 @@ html::after{
   color:#ffffff !important;
 }
 
+
+/* =========================
+   V102 HEADER NAV OPENS CARDS
+   Built from V101.
+   Only behavior/styling changes:
+   - Header nav items rotate/open their matching carousel cards.
+   - Get Directions brings the Locations card forward.
+   - Active header nav gets a subtle orange glow.
+   - No card, carousel, clock, background, button, or layout changes.
+========================= */
+
+.nav [data-nav-card].is-active{
+  color:#ff6d2e !important;
+  text-shadow:
+    0 0 10px rgba(255,109,46,.46),
+    0 0 22px rgba(255,109,46,.18) !important;
+}
+
 </style>
 </head>
-<body data-build="v101-card-button-hover-font-color-only">
+<body data-build="v102-header-nav-opens-cards">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4274,10 +4292,10 @@ html::after{
 </div>
     </section>
     <nav class="nav" aria-label="Main navigation">
-      <button data-go="videos">Videos</button>
-      <button data-go="locations">Locations</button>
-      <button data-go="build">Contact</button>
-      <button class="directions" data-modal="locationsModal">Get Directions ▶</button>
+      <button data-go="videos" data-nav-card="videos">Videos</button>
+      <button data-go="locations" data-nav-card="locations">Locations</button>
+      <button data-go="build" data-nav-card="build">Contact</button>
+      <button class="directions" data-go="locations" data-nav-card="locations">Get Directions ▶</button>
     </nav>
   </header>
 
@@ -4645,6 +4663,7 @@ function update(){
     }
     prevPos[i] = pos;
   });
+  syncHeaderNav();
 }
 
 function updateCalibrationDot(pos, L){
@@ -4671,7 +4690,27 @@ document.addEventListener("keydown", (event) => {
 });
 
 function rotate(dir){ active = (active + dir + N) % N; update(); }
-function goTo(id){ const i = cards.findIndex(c => c.id === id); if (i >= 0){ active = i; update(); } }
+function syncHeaderNav(){
+  const currentId = cards[active]?.id;
+  document.querySelectorAll(".nav [data-nav-card]").forEach(btn=>{
+    const match = btn.dataset.navCard === currentId;
+    btn.classList.toggle("is-active", match);
+    if (match) btn.setAttribute("aria-current", "true");
+    else btn.removeAttribute("aria-current");
+  });
+}
+function goTo(id){
+  const i = cards.findIndex(c => c.id === id);
+  if (i >= 0){
+    active = i;
+    closeModals();
+    update();
+    const target = els[i];
+    if (target && window.matchMedia("(max-width: 1100px)").matches){
+      target.scrollIntoView({behavior:"smooth", block:"nearest", inline:"center"});
+    }
+  }
+}
 
 /* ===== countdown ===== */
 const target = new Date("2026-07-04T09:00:00");
@@ -4740,7 +4779,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V101 HIDDEN CALIBRATION</b>
+  <b>V102 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

@@ -1,19 +1,28 @@
-DFO V101 — Card Button Hover Font Color Only
+DFO V102 — Header Nav Opens Cards
 
 Starting point:
-- Built from V100 header-glow-clock-spacing.
+- Built from V101 card-button-hover-font-color-only.
 
-Only V101 change:
-- Card button text turns/stays white when hovered or focused.
+Only V102 changes:
+1. Header nav links now open/rotate to their matching carousel cards:
+   - Videos → Videos card
+   - Locations → Locations card
+   - Contact → Build Your Show / Contact card
+   - Get Directions → Locations card
+
+2. Tablet/mobile:
+   - The same nav buttons scroll the matching stacked/swipe card into view.
+
+3. Active nav:
+   - The header nav item for the current open card gets a subtle orange glow.
 
 Not changed:
 - No card layout changes
-- No button position changes
-- No button size changes
-- No card spacing changes
-- No carousel changes
+- No carousel geometry changes
 - No clock changes
-- No background/header/logo/image/modal changes
+- No background changes
+- No header layout changes
+- No modal/card/button layout changes
 
 Upload:
 - Upload the full ZIP contents to GitHub.
