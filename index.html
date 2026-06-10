@@ -4272,9 +4272,22 @@ html::after{
     0 0 22px rgba(255,109,46,.18) !important;
 }
 
+
+/* =========================
+   V103 HEADER NAV LABEL/CARD MAP
+   Built from V102.
+   Only change:
+   - Header nav is now Video, Social, Contact, and Get Directions.
+   - Video opens Videos card.
+   - Social opens Social Feed card.
+   - Contact opens Build Your Show / Contact card.
+   - Get Directions opens Locations card.
+   No layout/card/clock/background/button styling changes.
+========================= */
+
 </style>
 </head>
-<body data-build="v102-header-nav-opens-cards">
+<body data-build="v103-header-nav-video-social-contact">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4292,8 +4305,8 @@ html::after{
 </div>
     </section>
     <nav class="nav" aria-label="Main navigation">
-      <button data-go="videos" data-nav-card="videos">Videos</button>
-      <button data-go="locations" data-nav-card="locations">Locations</button>
+      <button data-go="videos" data-nav-card="videos">Video</button>
+      <button data-go="social" data-nav-card="social">Social</button>
       <button data-go="build" data-nav-card="build">Contact</button>
       <button class="directions" data-go="locations" data-nav-card="locations">Get Directions ▶</button>
     </nav>
@@ -4779,7 +4792,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V102 HIDDEN CALIBRATION</b>
+  <b>V103 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

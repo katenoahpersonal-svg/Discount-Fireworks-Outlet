@@ -1,28 +1,24 @@
-DFO V102 — Header Nav Opens Cards
+DFO V103 — Header Nav: Video, Social, Contact
 
 Starting point:
-- Built from V101 card-button-hover-font-color-only.
+- Built from V102 header-nav-opens-cards.
 
-Only V102 changes:
-1. Header nav links now open/rotate to their matching carousel cards:
-   - Videos → Videos card
-   - Locations → Locations card
-   - Contact → Build Your Show / Contact card
-   - Get Directions → Locations card
-
-2. Tablet/mobile:
-   - The same nav buttons scroll the matching stacked/swipe card into view.
-
-3. Active nav:
-   - The header nav item for the current open card gets a subtle orange glow.
+Only V103 changes:
+1. Header nav labels/card mapping:
+   - Video → opens Videos card
+   - Social → opens Social Feed card
+   - Contact → opens Build Your Show / Contact card
+   - Get Directions → stays as the button and opens Locations card
 
 Not changed:
 - No card layout changes
 - No carousel geometry changes
 - No clock changes
 - No background changes
-- No header layout changes
-- No modal/card/button layout changes
+- No header styling/layout changes
+- No button styling/layout changes
+- No modal changes
+- No image changes
 
 Upload:
 - Upload the full ZIP contents to GitHub.
