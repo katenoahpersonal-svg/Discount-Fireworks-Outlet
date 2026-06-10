@@ -1,32 +1,35 @@
-DFO V104 — Header Nav Exact Card Targets + Button Font Color Only
+DFO V105 — Full Upload + GitHub Pages Deploy Fix
 
 Starting point:
-- Built from V103 header-nav-video-social-contact.
+- Built from V104 nav-card-targets-button-color-only.
 
-V104 changes:
-1. Header nav click behavior:
-   - Video opens/rotates to Videos card.
-   - Social opens/rotates to Social Feed card.
-   - Contact opens/rotates to Build Your Show / Contact card.
-   - Get Directions opens/rotates to Locations card.
-   - Header nav clicks now stop before the generic card/modal click handler, so they do not accidentally open the current/front card.
+Included:
+- Everything from V104.
+- No visual/layout/card/clock/header changes.
+- Added GitHub Pages workflow fix.
 
-2. Button font color only:
-   - Get Directions hover/focus text is forced white so it does not disappear.
-   - Card/modal/social button hover/focus text is forced white.
-   - Non-direction nav hover/focus transitions to orange.
-   - Added smooth color transition only.
+New in V105:
+1. Added/updated:
+   .github/workflows/pages.yml
 
-Not changed:
-- No card layout changes
-- No carousel geometry changes
-- No clock changes
-- No background changes
-- No header layout changes
-- No button size/position/background changes
-- No modal/image changes
+2. The workflow includes the deploy permissions GitHub Pages needs:
+   permissions:
+     contents: read
+     pages: write
+     id-token: write
 
-Upload:
-- Upload the full ZIP contents to GitHub.
-- Make sure updated index.html is uploaded.
-- Hard refresh with Ctrl+Shift+R.
+3. It deploys the full static site folder to GitHub Pages.
+
+Upload instructions:
+1. Extract this ZIP.
+2. Upload ALL extracted files/folders to the repo root.
+3. Include hidden folders if your unzip tool shows them:
+   .github/workflows/pages.yml
+4. If GitHub asks, choose “Commit changes.”
+5. Go to Settings > Pages and set Source to “GitHub Actions.”
+6. Wait for Actions to finish.
+7. Hard refresh your site with Ctrl + Shift + R.
+
+Important:
+- Do not upload only index.html this time.
+- Upload the full folder contents, including assets, scripts, site.webmanifest, and .github.

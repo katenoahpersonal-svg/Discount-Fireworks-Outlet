@@ -1,14 +1,10 @@
 {
-  "version": "v104-nav-card-targets-button-color-only",
-  "base": "v103-header-nav-video-social-contact",
-  "changed_v104": [
-    "header nav clicks stop propagation and go directly to navBtn.dataset.navCard",
-    "Video -> videos card",
-    "Social -> social card",
-    "Contact -> build/contact card",
-    "Get Directions -> locations card",
-    "hover/focus font color fixed for buttons",
-    "smooth color transition added"
+  "version": "v105-full-upload-pages-permissions-fix",
+  "base": "v104-nav-card-targets-button-color-only",
+  "changed_v105": [
+    "added .github/workflows/pages.yml",
+    "workflow includes contents: read, pages: write, id-token: write",
+    "build marker updated to V105"
   ],
   "unchanged": [
     "cards",
@@ -16,12 +12,14 @@
     "clock",
     "background",
     "header layout",
-    "button layout/size/background",
+    "button layout",
     "modals",
-    "images"
+    "images",
+    "V104 nav behavior"
   ],
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
-  }
+  },
+  "workflow_check": "permissions block present"
 }
