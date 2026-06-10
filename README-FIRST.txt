@@ -1,24 +1,20 @@
-DFO V117 — American Blue Countdown Label Glow Only
+DFO V118 — Baby Bright Blue Labels Only
 
 Starting point:
-- Built from V115 card-hover-button-color-match.
-- This intentionally does NOT use V116, because V116 made the countdown numbers blue too.
+- Built from V117.
 
-V117 changes:
-- Only the countdown label words are changed to a prettier American blue glow:
+V118 changes:
+- Only the countdown label words are changed to a softer baby-bright blue glow:
   DAYS / HOURS / MINUTES / SECONDS
-- Applies to the bottom countdown labels and the header countdown labels for consistency.
 
 Not changed:
 - Countdown numbers
 - Countdown colons
-- Countdown layout/spacing
+- Layout
+- Spacing
+- Cards
+- Carousel
 - Header placement
-- Card placement
-- Ring alignment
-- Card layout
-- Card size
-- Carousel geometry
 - Background/images
 - Modals
 - GitHub Pages workflow remains included

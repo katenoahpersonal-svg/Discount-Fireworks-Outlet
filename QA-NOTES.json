@@ -1,27 +1,20 @@
 {
-  "version": "v117-american-blue-label-glow-only",
-  "base": "dfo-v115-card-hover-button-color-match.zip",
-  "changed_v117": [
-    "bottom countdown label words changed to American blue glow",
-    "header countdown label words changed to American blue glow for consistency"
+  "version": "v118-baby-bright-blue-labels-only",
+  "base": "dfo-v117-american-blue-label-glow-only.zip",
+  "changed_v118": [
+    "only .bottom-row small and .clock-lab label words changed to baby bright blue glow"
   ],
   "unchanged": [
-    "countdown numbers",
-    "countdown colons",
-    "countdown layout/spacing",
+    "numbers",
+    "colons",
+    "layout",
+    "spacing",
+    "cards",
+    "carousel",
     "header placement",
-    "card placement",
-    "ring alignment",
-    "card layout",
-    "card size",
-    "carousel geometry",
     "background/images",
-    "modal structure",
+    "modals",
     "GitHub Pages workflow"
   ],
-  "node_syntax_check": {
-    "index_inline_script": "passed",
-    "sync_script": "passed"
-  },
-  "workflow_check": "pages.yml present with pages: write and id-token: write"
+  "node_syntax_check": "passed"
 }
