@@ -1,38 +1,29 @@
-DFO V107 — Header Direct Modal/Wall Open + Card Button Colors
+DFO V108 — Red Inner Cards + Smoother Carousel
 
 Starting point:
-- Built from V105 full-upload-pages-permissions-fix.
+- Built from V107 header-direct-modal-open-card-button-colors.
 
-V107 plan of attack:
-Instead of trying to make the header nav rotate first and then depend on the front card,
-the header nav now directly opens the exact modal/wall you asked for.
+V108 changes:
+1. Inner modal/cards red theme:
+   - Replaces gold accents inside modal/inner cards with red.
+   - Applies to video modal labels, favorites modal headings, location modal links, social modal labels, and inner panel borders/glow.
+   - Contact form button uses a red gradient.
 
-Header nav:
-- Video opens videosModal
-- Social opens socialModal
-- Contact opens contactModal
-- Get Directions opens locationsModal
-
-Why this should fix it:
-- Header nav no longer uses data-go.
-- Header nav click handler runs in capture phase.
-- It stops propagation and stopImmediatePropagation.
-- The generic card/current-front-card click handler ignores header nav clicks completely.
-- This prevents Social from accidentally opening whatever card is currently facing front.
-
-Card button hover:
-- Card buttons now use the same orange-fill / white-text hover color behavior as the header button.
+2. Carousel motion:
+   - Smooths the carousel wrapper transition slightly.
+   - Only the .card3d wrapper transition timing was changed.
 
 Not changed:
-- No card layout changes
+- No face-card content changes
+- No face-card layout changes
 - No carousel geometry changes
-- No clock changes
-- No background changes
+- No card sizing/spacing changes
 - No header layout changes
-- No button size/position changes
-- No modal/image changes
+- No clock changes
+- No background/image changes
+- No modal structure changes
 
 Upload:
 - Upload the full extracted ZIP contents to the repo root.
 - Include .github/workflows/pages.yml.
-- Hard refresh with Ctrl + Shift + R after the GitHub Action finishes.
+- Hard refresh with Ctrl + Shift + R after GitHub Action finishes.

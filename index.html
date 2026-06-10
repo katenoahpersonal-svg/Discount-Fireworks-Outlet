@@ -4375,9 +4375,76 @@ button:focus-visible{
   color:#ffffff !important;
 }
 
+
+/* =========================
+   V108 RED INNER CARDS + SMOOTHER CAROUSEL
+   Built from V107.
+   Changes:
+   - Modal/inner cards are shifted from gold accents to red accents.
+   - Carousel wrapper motion is slightly smoother.
+   - Face card content/layout is untouched.
+========================= */
+
+/* Inner modal/card red theme only. This does not touch the carousel face cards. */
+.modal{
+  --gold:#ff3d1f;
+  --dfo-gold:#ff3d1f;
+  --modal-red:#ff3d1f;
+  --modal-red-soft:rgba(255,61,31,.34);
+}
+
+.modal .video-card,
+.modal .location-grid article,
+.modal .feed-card,
+.modal .favorites-modal-grid article,
+.modal .social-modal-link{
+  border-color:rgba(255,61,31,.42) !important;
+  background:linear-gradient(180deg,rgba(255,61,31,.075),rgba(255,255,255,.035)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.035),
+    0 0 18px rgba(255,61,31,.075) !important;
+}
+
+.modal .video-card p,
+.modal .favorites-modal-grid h3,
+.modal .location-grid a,
+.modal .modal-link,
+.modal .social-modal-link strong,
+.modal .feed-card h3,
+.modal .location-grid h3{
+  color:#ff3d1f !important;
+  text-shadow:0 0 12px rgba(255,61,31,.16) !important;
+}
+
+.modal .contact-form button,
+.modal button[type="submit"]{
+  background:linear-gradient(180deg,rgba(255,75,36,.98),rgba(224,34,18,.94)) !important;
+  color:#ffffff !important;
+  box-shadow:0 0 24px rgba(255,61,31,.22) !important;
+}
+
+.modal .contact-form label{
+  color:rgba(255,255,255,.82) !important;
+}
+
+.modal .social-modal-link.ig .social-modal-icon{
+  background:linear-gradient(135deg,#ff6d2e,#ff3d1f,#c2185b) !important;
+}
+
+/* Carousel wrapper transition only. No face-card content/layout changes. */
+@media (min-width:1181px){
+  .card3d{
+    transition:
+      transform .92s cubic-bezier(.16,.86,.24,1),
+      opacity .72s ease,
+      filter .72s ease,
+      bottom .92s cubic-bezier(.16,.86,.24,1) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v107-header-direct-modal-open-card-button-colors">
+<body data-build="v108-red-inner-cards-smoother-carousel">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4901,7 +4968,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V107 HIDDEN CALIBRATION</b>
+  <b>V108 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

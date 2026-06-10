@@ -1,26 +1,22 @@
 {
-  "version": "v107-header-direct-modal-open-card-button-colors",
-  "base": "v105-full-upload-pages-permissions-fix",
-  "changed_v107": [
-    "header nav uses data-open-modal instead of data-go",
-    "Video opens videosModal directly",
-    "Social opens socialModal directly",
-    "Contact opens contactModal directly",
-    "Get Directions opens locationsModal directly",
-    "header nav click handler uses capture phase and stopImmediatePropagation",
-    "document click handler ignores nav clicks before card/front-card logic",
-    "card button hover/focus color behavior matches header button"
+  "version": "v108-red-inner-cards-smoother-carousel",
+  "base": "v107-header-direct-modal-open-card-button-colors",
+  "changed_v108": [
+    "modal/inner cards gold accents changed to red",
+    "modal inner panel borders/glow shifted red",
+    "contact modal submit button shifted to red gradient",
+    "carousel wrapper transition smoothed via .card3d only"
   ],
   "unchanged": [
-    "card layout",
+    "face-card content",
+    "face-card layout",
     "carousel geometry",
-    "clock",
-    "background",
+    "card sizing/spacing",
     "header layout",
-    "button size/position",
-    "modals",
-    "images",
-    "GitHub Pages workflow from V105"
+    "clock",
+    "background/images",
+    "modal structure",
+    "GitHub Pages workflow"
   ],
   "node_syntax_check": {
     "index_inline_script": "passed",
