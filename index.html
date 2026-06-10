@@ -4521,9 +4521,38 @@ button:focus-visible{
   contain:layout paint style !important;
 }
 
+
+/* =========================
+   V114 CARD FEET / RING ALIGNMENT ONLY
+   Built from V113.
+   Only changes how the side/far cards sit on the glowing ring:
+   - side/far card wall angle is tucked back slightly
+   - inner lower points align cleaner with the ring
+   - center/front card is untouched
+   No card content, card dimensions, spacing, slot x/y, header, clock, background, images, or modals changed.
+========================= */
+
+@media (min-width:1181px){
+  .card3d[data-wall-pos="-2"] .card{
+    transform:perspective(950px) rotateY(-33deg) skewY(.70deg) !important;
+  }
+
+  .card3d[data-wall-pos="-1"] .card{
+    transform:perspective(950px) rotateY(-19deg) skewY(.20deg) !important;
+  }
+
+  .card3d[data-wall-pos="1"] .card{
+    transform:perspective(950px) rotateY(19deg) skewY(-.20deg) !important;
+  }
+
+  .card3d[data-wall-pos="2"] .card{
+    transform:perspective(950px) rotateY(33deg) skewY(-.70deg) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v113-two-line-title-glitch-fix">
+<body data-build="v114-card-feet-ring-alignment-only">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4834,13 +4863,13 @@ const SLOT_CONFIG = {
     This fixes the V58 mistake where the right side was moved independently.
   */
 
-  "-2": { name:"far-left",  x:-33.0, y:77.6, z:-250, scale:.79, rotateY:-32, faceRotate:-38, faceSkew: 1.35, width:.60, height:.86 },
-  "-1": { name:"left",      x:-19.2, y:78.0, z:-105, scale:.91, rotateY:-13, faceRotate:-17, faceSkew: .45, width:.80, height:.96 },
+  "-2": { name:"far-left",  x:-33.0, y:77.6, z:-250, scale:.79, rotateY:-34, faceRotate:-38, faceSkew: 1.35, width:.60, height:.86 },
+  "-1": { name:"left",      x:-19.2, y:78.0, z:-105, scale:.91, rotateY:-15, faceRotate:-17, faceSkew: .45, width:.80, height:.96 },
 
   "0":  { name:"center",    x:  0.0, y:76.8, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
 
-  "1":  { name:"right",     x: 19.2, y:78.0, z:-105, scale:.91, rotateY: 13, faceRotate: 17, faceSkew:-.45, width:.80, height:.96 },
-  "2":  { name:"far-right", x: 33.0, y:77.6, z:-250, scale:.79, rotateY: 32, faceRotate: 38, faceSkew:-1.35, width:.60, height:.86 }
+  "1":  { name:"right",     x: 19.2, y:78.0, z:-105, scale:.91, rotateY: 15, faceRotate: 17, faceSkew:-.45, width:.80, height:.96 },
+  "2":  { name:"far-right", x: 33.0, y:77.6, z:-250, scale:.79, rotateY: 34, faceRotate: 38, faceSkew:-1.35, width:.60, height:.86 }
 };
 
 function metrics(){
@@ -5090,7 +5119,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V113 HIDDEN CALIBRATION</b>
+  <b>V114 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

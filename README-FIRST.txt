@@ -1,27 +1,25 @@
-DFO V113 — Two-Line Title Glitch Fix
+DFO V114 — Card Feet / Ring Alignment Only
 
 Starting point:
-- Built from V112 arrow-glide-position-size-transition.
+- Built from V113 two-line-title-glitch-fix.
 
-V113 changes:
-1. Fixes the weird glitch on cards with 2-line titles:
-   - Preview the Boom / Before You Buy
-   - Top Picks for the Perfect / Finale
-
-2. The fix:
-   - Adds a stable title renderer for those cards.
-   - Locks the title into exact line spans so it does not re-wrap while the card width/height animates.
-   - Adds GPU/text rendering isolation for the title only.
+V114 changes:
+1. Side/far cards are tucked back slightly so the inner bottom points sit cleaner on the glowing ring.
+2. Only wall angle/tangent tuning changed:
+   - side/far SLOT_CONFIG rotateY values
+   - final side/far card face rotateY/skewY override
 
 Not changed:
-- No face card layout value changes
+- No center/front card change
+- No card content changes
+- No card layout changes
+- No card size changes
 - No card spacing changes
-- No card sizing changes
-- No carousel slot geometry changes
+- No carousel x/y slot placement changes
 - No header changes
 - No clock changes
 - No background/image changes
-- No modal layout changes
+- No modal changes
 - GitHub Pages workflow remains included
 
 Upload:

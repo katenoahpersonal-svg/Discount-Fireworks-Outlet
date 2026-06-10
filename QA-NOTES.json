@@ -1,18 +1,17 @@
 {
-  "version": "v113-two-line-title-glitch-fix",
-  "base": "dfo-v112-arrow-glide-position-size-transition.zip",
-  "changed_v113": [
-    "added renderCardTitle() for stable two-line titles",
-    "videos title locked to Preview the Boom / Before You Buy",
-    "favorites title locked to Top Picks for the Perfect / Finale",
-    "title spans use nowrap to prevent rewrap during arrow glide",
-    "GPU/text rendering isolation applied to titles"
+  "version": "v114-card-feet-ring-alignment-only",
+  "base": "dfo-v113-two-line-title-glitch-fix.zip",
+  "changed_v114": [
+    "side/far SLOT_CONFIG rotateY tucked back slightly",
+    "side/far face rotateY/skewY adjusted to clean up inner bottom points on ring"
   ],
   "unchanged": [
-    "face card layout values",
+    "center/front card",
+    "card content",
+    "card layout",
+    "card size",
     "card spacing",
-    "card sizing",
-    "carousel slot geometry",
+    "carousel x/y slot placement",
     "header",
     "clock",
     "background/images",
