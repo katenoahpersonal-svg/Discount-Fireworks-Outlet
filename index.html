@@ -4591,24 +4591,27 @@ button:focus-visible{
 
 
 /* =========================
-   V116 BLUE GLOW COUNTDOWN LABELS ONLY
-   Built from V115.
-   Only changes the small countdown words: DAYS / HOURS / MINUTES / SECONDS.
-   Numbers, layout, spacing, carousel, cards, header, background, and modals are untouched.
+   V117 AMERICAN BLUE LABEL GLOW ONLY
+   Built from V115, not V116.
+   Only changes the countdown label words:
+   DAYS / HOURS / MINUTES / SECONDS.
+   Numbers and colons stay untouched.
+   No layout, spacing, sizing, cards, carousel, header placement, background, or modal changes.
 ========================= */
 
-.bottom-row span,
-.top-count span{
-  color:#4da3ff !important;
+.bottom-row small,
+.clock-lab{
+  color:#2f80ff !important;
   text-shadow:
-    0 0 6px rgba(77,163,255,.95),
-    0 0 14px rgba(0,126,255,.62),
-    0 0 26px rgba(0,94,255,.34) !important;
+    0 0 3px rgba(255,255,255,.42),
+    0 0 8px rgba(47,128,255,.86),
+    0 0 16px rgba(0,64,180,.62),
+    0 0 28px rgba(0,40,104,.34) !important;
 }
 
 </style>
 </head>
-<body data-build="v116-blue-glow-countdown-labels">
+<body data-build="v117-american-blue-label-glow-only">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5175,7 +5178,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V116 HIDDEN CALIBRATION</b>
+  <b>V117 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

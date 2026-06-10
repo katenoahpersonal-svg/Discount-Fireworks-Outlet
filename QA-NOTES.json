@@ -1,18 +1,19 @@
 {
-  "version": "v116-blue-glow-countdown-labels",
+  "version": "v117-american-blue-label-glow-only",
   "base": "dfo-v115-card-hover-button-color-match.zip",
-  "changed_v116": [
-    "bottom countdown label words changed to blue glow",
-    "top countdown label words changed to blue glow for consistency"
+  "changed_v117": [
+    "bottom countdown label words changed to American blue glow",
+    "header countdown label words changed to American blue glow for consistency"
   ],
   "unchanged": [
     "countdown numbers",
-    "header layout",
+    "countdown colons",
+    "countdown layout/spacing",
+    "header placement",
     "card placement",
     "ring alignment",
     "card layout",
     "card size",
-    "spacing",
     "carousel geometry",
     "background/images",
     "modal structure",
