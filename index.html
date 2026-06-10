@@ -4444,59 +4444,56 @@ button:focus-visible{
 
 
 /* =========================
-   V110 ARROW-CLICK CAROUSEL TRANSITION
-   Built from V108/V109 safe base.
-   Only changes the transition when using the left/right arrow buttons.
-   Does not change face card content, layout, sizing, spacing, slot geometry, header, clock, background, or images.
+   V111 SOFT ARROW DRIFT TRANSITION
+   Built from safe V108/V107 base.
+   Only changes the left/right arrow-click motion.
+   Removes the pop/settle feel and replaces it with a slower, softer drift.
+   No face-card content, layout, size, spacing, slot geometry, header, clock, background, or modal changes.
 ========================= */
 
 @media (min-width:1181px){
-  .carousel.arrow-moving .card3d{
-    transition:
-      transform .82s cubic-bezier(.20,.78,.22,1),
-      opacity .70s cubic-bezier(.22,.72,.20,1),
-      filter .70s cubic-bezier(.22,.72,.20,1),
-      bottom .82s cubic-bezier(.20,.78,.22,1) !important;
+  .carousel.arrow-drift .card3d{
     will-change:transform, opacity, filter !important;
+    transition:
+      transform 1.28s cubic-bezier(.12,.74,.18,1),
+      opacity 1.12s cubic-bezier(.16,.70,.18,1),
+      filter 1.12s cubic-bezier(.16,.70,.18,1),
+      bottom 1.28s cubic-bezier(.12,.74,.18,1) !important;
   }
 
-  .carousel.arrow-moving.arrow-right .card3d.is-active .card,
-  .carousel.arrow-moving.arrow-left .card3d.is-active .card{
-    animation:dfoArrowSettle .76s cubic-bezier(.20,.78,.22,1) both;
+  .carousel.arrow-drift .card3d .card{
+    transition:
+      box-shadow 1.18s ease,
+      border-color 1.18s ease,
+      filter 1.18s ease !important;
   }
 
-  @keyframes dfoArrowSettle{
-    0%{
-      filter:brightness(.94) saturate(.96);
-      box-shadow:
-        0 0 0 rgba(255,109,46,0),
-        var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
-    }
-    58%{
-      filter:brightness(1.05) saturate(1.06);
-      box-shadow:
-        0 0 34px rgba(255,109,46,.30),
-        var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
-    }
-    100%{
-      filter:brightness(1) saturate(1);
-      box-shadow:var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
-    }
+  #prev,
+  #next{
+    transition:
+      color .24s ease,
+      border-color .24s ease,
+      background .24s ease,
+      box-shadow .24s ease,
+      opacity .24s ease !important;
+  }
+
+  .carousel.arrow-drift ~ #prev,
+  .carousel.arrow-drift ~ #next{
+    pointer-events:none !important;
   }
 }
 
 @media (prefers-reduced-motion: reduce){
-  .carousel.arrow-moving .card3d,
-  .carousel.arrow-moving.arrow-right .card3d.is-active .card,
-  .carousel.arrow-moving.arrow-left .card3d.is-active .card{
+  .carousel.arrow-drift .card3d,
+  .carousel.arrow-drift .card3d .card{
     transition:none !important;
-    animation:none !important;
   }
 }
 
 </style>
 </head>
-<body data-build="v110-arrow-click-carousel-transition">
+<body data-build="v111-soft-arrow-drift-transition">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4951,22 +4948,33 @@ function openModal(id){ document.querySelectorAll(".modal-layer").forEach(m=>m.c
 function closeModals(){ document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open")); }
 
 /* ===== events ===== */
-/* V110: arrow-click carousel transition only */
+/* V111: soft arrow drift. Slower, gentler, and click-locked during motion. */
+let arrowIsMoving = false;
 let arrowTransitionTimer = null;
+const ARROW_DRIFT_MS = 1280;
 
 function arrowRotate(dir){
+  if (arrowIsMoving) return;
+
+  arrowIsMoving = true;
   if (arrowTransitionTimer) clearTimeout(arrowTransitionTimer);
 
-  wheel.classList.remove("arrow-left","arrow-right","arrow-moving");
-  void wheel.offsetWidth; // restart transition helper cleanly
+  wheel.classList.remove("arrow-drift","arrow-left","arrow-right");
+  void wheel.offsetWidth;
 
-  wheel.classList.add("arrow-moving", dir > 0 ? "arrow-right" : "arrow-left");
-  rotate(dir);
+  wheel.classList.add("arrow-drift", dir > 0 ? "arrow-right" : "arrow-left");
+
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      rotate(dir);
+    });
+  });
 
   arrowTransitionTimer = setTimeout(()=>{
-    wheel.classList.remove("arrow-left","arrow-right","arrow-moving");
+    wheel.classList.remove("arrow-drift","arrow-left","arrow-right");
+    arrowIsMoving = false;
     arrowTransitionTimer = null;
-  }, 760);
+  }, ARROW_DRIFT_MS);
 }
 
 document.getElementById("prev").addEventListener("click", ()=>arrowRotate(-1));
@@ -5038,7 +5046,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V110 HIDDEN CALIBRATION</b>
+  <b>V111 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

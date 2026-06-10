@@ -1,11 +1,12 @@
 {
-  "version": "v110-arrow-click-carousel-transition",
+  "version": "v111-soft-arrow-drift-transition",
   "base": "dfo-v108-red-inner-cards-smoother-carousel.zip",
-  "changed_v110": [
-    "arrow buttons now call arrowRotate",
-    "arrow-click card transition easing refined",
-    "subtle settle glow animation on arriving active card",
-    "targeted to arrow-click transitions only"
+  "changed_v111": [
+    "arrow buttons now use arrowRotate with soft drift timing",
+    "arrow movement duration increased to 1280ms",
+    "removed settle-pop animation behavior",
+    "arrow clicks are locked during transition",
+    "double requestAnimationFrame ensures transition class applies before rotation"
   ],
   "unchanged": [
     "face card content",

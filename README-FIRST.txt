@@ -1,13 +1,14 @@
-DFO V110 — Arrow-Click Carousel Transition
+DFO V111 — Soft Arrow Drift Transition
 
 Starting point:
-- Built from the safe V108/V109 package.
+- Built from the safe V108/V107 base, not the V109/V110 motion experiments.
 
-V110 changes:
-1. Left/right arrow buttons now use their own arrowRotate() transition handler.
-2. The arrow-click card movement uses a smoother easing curve.
-3. The arriving/front card gets a subtle settle glow so the movement feels more polished.
-4. This targets arrow clicks only.
+V111 changes:
+1. Arrow-click transition only:
+   - Left/right arrow movement is slower and softer.
+   - Removed the V110 settle-pop/glow feeling.
+   - Uses a soft drift easing curve.
+   - Arrow clicks are locked while the movement is running so rapid clicks do not create jarring jumps.
 
 Not changed:
 - No face card content changes
