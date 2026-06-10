@@ -1,21 +1,21 @@
 {
-  "version": "v108-red-inner-cards-smoother-carousel",
-  "base": "v107-header-direct-modal-open-card-button-colors",
-  "changed_v108": [
-    "modal/inner cards gold accents changed to red",
-    "modal inner panel borders/glow shifted red",
-    "contact modal submit button shifted to red gradient",
-    "carousel wrapper transition smoothed via .card3d only"
+  "version": "v109-smoother-carousel-motion-only",
+  "base": "v108-red-inner-cards-smoother-carousel",
+  "changed_v109": [
+    "carousel card transition easing/duration refined",
+    "temporary carousel.is-rotating class during movement",
+    "multi-slot rotate now queues one-card-at-a-time steps",
+    "will-change hints added for smoother rendering"
   ],
   "unchanged": [
-    "face-card content",
-    "face-card layout",
-    "carousel geometry",
-    "card sizing/spacing",
-    "header layout",
+    "face card content",
+    "face card layout",
+    "face card sizing/spacing",
+    "carousel slot geometry",
+    "header",
     "clock",
     "background/images",
-    "modal structure",
+    "modal layout",
     "GitHub Pages workflow"
   ],
   "node_syntax_check": {

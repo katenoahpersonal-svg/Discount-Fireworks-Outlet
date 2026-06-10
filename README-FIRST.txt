@@ -1,29 +1,29 @@
-DFO V108 — Red Inner Cards + Smoother Carousel
+DFO V109 — Smoother Carousel Motion Only
 
 Starting point:
-- Built from V107 header-direct-modal-open-card-button-colors.
+- Built from V108 red-inner-cards-smoother-carousel.
 
-V108 changes:
-1. Inner modal/cards red theme:
-   - Replaces gold accents inside modal/inner cards with red.
-   - Applies to video modal labels, favorites modal headings, location modal links, social modal labels, and inner panel borders/glow.
-   - Contact form button uses a red gradient.
+V109 changes:
+1. Carousel motion only:
+   - Longer, smoother easing for carousel card movement.
+   - Adds a temporary carousel.is-rotating class during motion.
+   - Adds will-change hints for smoother browser rendering.
 
-2. Carousel motion:
-   - Smooths the carousel wrapper transition slightly.
-   - Only the .card3d wrapper transition timing was changed.
+2. Multi-card moves:
+   - Clicking a farther side card now steps through one card at a time instead of snapping across multiple positions.
 
 Not changed:
-- No face-card content changes
-- No face-card layout changes
-- No carousel geometry changes
-- No card sizing/spacing changes
-- No header layout changes
+- No face card content changes
+- No face card layout changes
+- No face card sizing/spacing changes
+- No carousel slot geometry changes
+- No header changes
 - No clock changes
 - No background/image changes
-- No modal structure changes
+- No modal layout changes
+- GitHub Pages workflow remains included
 
 Upload:
 - Upload the full extracted ZIP contents to the repo root.
 - Include .github/workflows/pages.yml.
-- Hard refresh with Ctrl + Shift + R after GitHub Action finishes.
+- Hard refresh with Ctrl + Shift + R after the GitHub Action finishes.

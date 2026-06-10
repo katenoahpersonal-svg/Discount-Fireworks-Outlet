@@ -4442,9 +4442,55 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V109 SMOOTHER CAROUSEL MOTION ONLY
+   Built from V108.
+   Changes only the motion/transition feeling between carousel cards.
+   Does not change face-card content, layout, sizing, spacing, or slot geometry.
+========================= */
+
+@media (min-width:1181px){
+  .carousel{
+    will-change:transform !important;
+  }
+
+  .card3d{
+    will-change:transform, opacity, filter !important;
+    transition:
+      transform 1.08s cubic-bezier(.18,.82,.18,1),
+      opacity .88s cubic-bezier(.22,.72,.2,1),
+      filter .88s cubic-bezier(.22,.72,.2,1),
+      bottom 1.08s cubic-bezier(.18,.82,.18,1) !important;
+  }
+
+  .carousel.is-rotating .card3d{
+    transition:
+      transform 1.14s cubic-bezier(.16,.84,.18,1),
+      opacity .92s cubic-bezier(.22,.72,.2,1),
+      filter .92s cubic-bezier(.22,.72,.2,1),
+      bottom 1.14s cubic-bezier(.16,.84,.18,1) !important;
+  }
+
+  .card3d .card{
+    transition:
+      box-shadow .9s ease,
+      border-color .9s ease,
+      filter .9s ease !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .card3d,
+  .carousel.is-rotating .card3d,
+  .card3d .card{
+    transition:none !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v108-red-inner-cards-smoother-carousel">
+<body data-build="v109-smoother-carousel-motion-only">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4859,7 +4905,38 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-function rotate(dir){ active = (active + dir + N) % N; update(); }
+/* V109: smoother carousel motion. Multi-slot moves step through one card at a time. */
+let rotateQueue = 0;
+let rotateTimer = null;
+const ROTATE_STEP_MS = 620;
+
+function runQueuedRotation(){
+  if (rotateQueue === 0){
+    wheel.classList.remove("is-rotating");
+    rotateTimer = null;
+    return;
+  }
+
+  wheel.classList.add("is-rotating");
+
+  const step = rotateQueue > 0 ? 1 : -1;
+  rotateQueue -= step;
+  active = (active + step + N) % N;
+  update();
+
+  rotateTimer = setTimeout(runQueuedRotation, ROTATE_STEP_MS);
+}
+
+function rotate(dir){
+  const steps = Math.trunc(dir);
+  if (!steps) return;
+
+  rotateQueue += steps;
+
+  if (!rotateTimer){
+    runQueuedRotation();
+  }
+}
 function syncHeaderNav(){
   const currentId = cards[active]?.id;
   document.querySelectorAll(".nav [data-nav-card]").forEach(btn=>{
@@ -4968,7 +5045,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V108 HIDDEN CALIBRATION</b>
+  <b>V109 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
