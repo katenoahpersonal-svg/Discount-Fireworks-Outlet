@@ -4444,53 +4444,59 @@ button:focus-visible{
 
 
 /* =========================
-   V109 SMOOTHER CAROUSEL MOTION ONLY
-   Built from V108.
-   Changes only the motion/transition feeling between carousel cards.
-   Does not change face-card content, layout, sizing, spacing, or slot geometry.
+   V110 ARROW-CLICK CAROUSEL TRANSITION
+   Built from V108/V109 safe base.
+   Only changes the transition when using the left/right arrow buttons.
+   Does not change face card content, layout, sizing, spacing, slot geometry, header, clock, background, or images.
 ========================= */
 
 @media (min-width:1181px){
-  .carousel{
-    will-change:transform !important;
-  }
-
-  .card3d{
+  .carousel.arrow-moving .card3d{
+    transition:
+      transform .82s cubic-bezier(.20,.78,.22,1),
+      opacity .70s cubic-bezier(.22,.72,.20,1),
+      filter .70s cubic-bezier(.22,.72,.20,1),
+      bottom .82s cubic-bezier(.20,.78,.22,1) !important;
     will-change:transform, opacity, filter !important;
-    transition:
-      transform 1.08s cubic-bezier(.18,.82,.18,1),
-      opacity .88s cubic-bezier(.22,.72,.2,1),
-      filter .88s cubic-bezier(.22,.72,.2,1),
-      bottom 1.08s cubic-bezier(.18,.82,.18,1) !important;
   }
 
-  .carousel.is-rotating .card3d{
-    transition:
-      transform 1.14s cubic-bezier(.16,.84,.18,1),
-      opacity .92s cubic-bezier(.22,.72,.2,1),
-      filter .92s cubic-bezier(.22,.72,.2,1),
-      bottom 1.14s cubic-bezier(.16,.84,.18,1) !important;
+  .carousel.arrow-moving.arrow-right .card3d.is-active .card,
+  .carousel.arrow-moving.arrow-left .card3d.is-active .card{
+    animation:dfoArrowSettle .76s cubic-bezier(.20,.78,.22,1) both;
   }
 
-  .card3d .card{
-    transition:
-      box-shadow .9s ease,
-      border-color .9s ease,
-      filter .9s ease !important;
+  @keyframes dfoArrowSettle{
+    0%{
+      filter:brightness(.94) saturate(.96);
+      box-shadow:
+        0 0 0 rgba(255,109,46,0),
+        var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
+    }
+    58%{
+      filter:brightness(1.05) saturate(1.06);
+      box-shadow:
+        0 0 34px rgba(255,109,46,.30),
+        var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
+    }
+    100%{
+      filter:brightness(1) saturate(1);
+      box-shadow:var(--card-shadow, 0 0 42px rgba(255,109,46,.22));
+    }
   }
 }
 
 @media (prefers-reduced-motion: reduce){
-  .card3d,
-  .carousel.is-rotating .card3d,
-  .card3d .card{
+  .carousel.arrow-moving .card3d,
+  .carousel.arrow-moving.arrow-right .card3d.is-active .card,
+  .carousel.arrow-moving.arrow-left .card3d.is-active .card{
     transition:none !important;
+    animation:none !important;
   }
 }
 
 </style>
 </head>
-<body data-build="v109-smoother-carousel-motion-only">
+<body data-build="v110-arrow-click-carousel-transition">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4905,38 +4911,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-/* V109: smoother carousel motion. Multi-slot moves step through one card at a time. */
-let rotateQueue = 0;
-let rotateTimer = null;
-const ROTATE_STEP_MS = 620;
-
-function runQueuedRotation(){
-  if (rotateQueue === 0){
-    wheel.classList.remove("is-rotating");
-    rotateTimer = null;
-    return;
-  }
-
-  wheel.classList.add("is-rotating");
-
-  const step = rotateQueue > 0 ? 1 : -1;
-  rotateQueue -= step;
-  active = (active + step + N) % N;
-  update();
-
-  rotateTimer = setTimeout(runQueuedRotation, ROTATE_STEP_MS);
-}
-
-function rotate(dir){
-  const steps = Math.trunc(dir);
-  if (!steps) return;
-
-  rotateQueue += steps;
-
-  if (!rotateTimer){
-    runQueuedRotation();
-  }
-}
+function rotate(dir){ active = (active + dir + N) % N; update(); }
 function syncHeaderNav(){
   const currentId = cards[active]?.id;
   document.querySelectorAll(".nav [data-nav-card]").forEach(btn=>{
@@ -4976,8 +4951,26 @@ function openModal(id){ document.querySelectorAll(".modal-layer").forEach(m=>m.c
 function closeModals(){ document.querySelectorAll(".modal-layer").forEach(m=>m.classList.remove("open")); }
 
 /* ===== events ===== */
-document.getElementById("prev").addEventListener("click", ()=>rotate(-1));
-document.getElementById("next").addEventListener("click", ()=>rotate(1));
+/* V110: arrow-click carousel transition only */
+let arrowTransitionTimer = null;
+
+function arrowRotate(dir){
+  if (arrowTransitionTimer) clearTimeout(arrowTransitionTimer);
+
+  wheel.classList.remove("arrow-left","arrow-right","arrow-moving");
+  void wheel.offsetWidth; // restart transition helper cleanly
+
+  wheel.classList.add("arrow-moving", dir > 0 ? "arrow-right" : "arrow-left");
+  rotate(dir);
+
+  arrowTransitionTimer = setTimeout(()=>{
+    wheel.classList.remove("arrow-left","arrow-right","arrow-moving");
+    arrowTransitionTimer = null;
+  }, 760);
+}
+
+document.getElementById("prev").addEventListener("click", ()=>arrowRotate(-1));
+document.getElementById("next").addEventListener("click", ()=>arrowRotate(1));
 
 /* V107: header nav buttons open the exact matching modal/wall, not the current front card. */
 document.querySelectorAll(".nav [data-open-modal]").forEach(navBtn=>{
@@ -5045,7 +5038,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V109 HIDDEN CALIBRATION</b>
+  <b>V110 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

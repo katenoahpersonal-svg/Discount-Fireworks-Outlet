@@ -1,16 +1,16 @@
 {
-  "version": "v109-smoother-carousel-motion-only",
-  "base": "v108-red-inner-cards-smoother-carousel",
-  "changed_v109": [
-    "carousel card transition easing/duration refined",
-    "temporary carousel.is-rotating class during movement",
-    "multi-slot rotate now queues one-card-at-a-time steps",
-    "will-change hints added for smoother rendering"
+  "version": "v110-arrow-click-carousel-transition",
+  "base": "dfo-v108-red-inner-cards-smoother-carousel.zip",
+  "changed_v110": [
+    "arrow buttons now call arrowRotate",
+    "arrow-click card transition easing refined",
+    "subtle settle glow animation on arriving active card",
+    "targeted to arrow-click transitions only"
   ],
   "unchanged": [
     "face card content",
     "face card layout",
-    "face card sizing/spacing",
+    "card sizing/spacing",
     "carousel slot geometry",
     "header",
     "clock",

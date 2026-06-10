@@ -1,21 +1,18 @@
-DFO V109 — Smoother Carousel Motion Only
+DFO V110 — Arrow-Click Carousel Transition
 
 Starting point:
-- Built from V108 red-inner-cards-smoother-carousel.
+- Built from the safe V108/V109 package.
 
-V109 changes:
-1. Carousel motion only:
-   - Longer, smoother easing for carousel card movement.
-   - Adds a temporary carousel.is-rotating class during motion.
-   - Adds will-change hints for smoother browser rendering.
-
-2. Multi-card moves:
-   - Clicking a farther side card now steps through one card at a time instead of snapping across multiple positions.
+V110 changes:
+1. Left/right arrow buttons now use their own arrowRotate() transition handler.
+2. The arrow-click card movement uses a smoother easing curve.
+3. The arriving/front card gets a subtle settle glow so the movement feels more polished.
+4. This targets arrow clicks only.
 
 Not changed:
 - No face card content changes
 - No face card layout changes
-- No face card sizing/spacing changes
+- No card sizing/spacing changes
 - No carousel slot geometry changes
 - No header changes
 - No clock changes
