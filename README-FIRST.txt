@@ -1,25 +1,26 @@
-DFO V114 — Card Feet / Ring Alignment Only
+DFO V115 — Card Hover Button Color Match
 
 Starting point:
-- Built from V113 two-line-title-glitch-fix.
+- Built from V114 card-feet-ring-alignment-only.
 
-V114 changes:
-1. Side/far cards are tucked back slightly so the inner bottom points sit cleaner on the glowing ring.
-2. Only wall angle/tangent tuning changed:
-   - side/far SLOT_CONFIG rotateY values
-   - final side/far card face rotateY/skewY override
+V115 changes:
+- If hovering anywhere on a carousel card triggers the button color state, the button now gets the same full color treatment:
+  - orange fill
+  - white text
+  - matching orange border/glow
+  - smooth transition
 
 Not changed:
-- No center/front card change
-- No card content changes
+- No card placement changes
+- No ring alignment changes
 - No card layout changes
 - No card size changes
-- No card spacing changes
-- No carousel x/y slot placement changes
+- No spacing changes
+- No carousel geometry changes
 - No header changes
 - No clock changes
 - No background/image changes
-- No modal changes
+- No modal structure changes
 - GitHub Pages workflow remains included
 
 Upload:

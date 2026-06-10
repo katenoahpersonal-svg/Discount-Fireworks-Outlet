@@ -4550,9 +4550,48 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V115 CARD HOVER BUTTON COLOR MATCH
+   Built from V114.
+   Only color/visual hover behavior changed.
+   When a card hover state triggers the button color state, the button now gets the full matching orange fill and white text.
+   No card placement, layout, size, spacing, carousel, header, clock, background, images, or modal structure changed.
+========================= */
+
+.card:hover .card-btn,
+.card:focus-within .card-btn,
+.card3d:hover .card .card-btn,
+.card3d:focus-within .card .card-btn{
+  color:#ffffff !important;
+  background:linear-gradient(180deg,rgba(255,119,55,.98),rgba(255,101,39,.96)) !important;
+  border-color:#ff7a36 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.10) inset,
+    0 0 30px rgba(255,109,46,.34) !important;
+}
+
+.card:hover .card-btn *,
+.card:focus-within .card-btn *,
+.card3d:hover .card .card-btn *,
+.card3d:focus-within .card .card-btn *{
+  color:#ffffff !important;
+}
+
+.card .card-btn,
+.card .card-btn *,
+.card3d .card .card-btn,
+.card3d .card .card-btn *{
+  transition:
+    color .22s ease,
+    background .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease !important;
+}
+
 </style>
 </head>
-<body data-build="v114-card-feet-ring-alignment-only">
+<body data-build="v115-card-hover-button-color-match">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5119,7 +5158,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V114 HIDDEN CALIBRATION</b>
+  <b>V115 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

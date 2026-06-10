@@ -1,21 +1,22 @@
 {
-  "version": "v114-card-feet-ring-alignment-only",
-  "base": "dfo-v113-two-line-title-glitch-fix.zip",
-  "changed_v114": [
-    "side/far SLOT_CONFIG rotateY tucked back slightly",
-    "side/far face rotateY/skewY adjusted to clean up inner bottom points on ring"
+  "version": "v115-card-hover-button-color-match",
+  "base": "dfo-v114-card-feet-ring-alignment-only.zip",
+  "changed_v115": [
+    "card hover/focus-within now gives card button matching orange-fill and white-text state",
+    "card button child text forced white during card hover/focus-within",
+    "button transition preserved for color/background/border/box-shadow"
   ],
   "unchanged": [
-    "center/front card",
-    "card content",
+    "card placement",
+    "ring alignment",
     "card layout",
     "card size",
-    "card spacing",
-    "carousel x/y slot placement",
+    "spacing",
+    "carousel geometry",
     "header",
     "clock",
     "background/images",
-    "modal layout",
+    "modal structure",
     "GitHub Pages workflow"
   ],
   "node_syntax_check": {
