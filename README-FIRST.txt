@@ -1,56 +1,19 @@
-DFO V97 — Locked Buttons + Luxury Card Reset
+DFO V99 — V94 Rollback + Favicon Only
 
-Starting point:
-- Built from V96 favicon-browser-tab-icon.
+Built from V94 clock-up-mobile-card-clearance.
 
-Included:
-- V89 social/favorites/location/card color updates
+This does NOT include V95 card CSS, V97, or V98.
+
+Kept from V94:
+- V89 updates
 - V92 header logo
-- V93 no-buoy clean background
-- V93/V94 tablet/mobile responsive fixes
-- V95 typography/hover fixes
-- V96 favicon/browser tab icon
+- V93 no-buoy background
+- V94 desktop bottom clock position
+- V94 mobile/tablet clearance fixes
 
-New V97 fixes:
-1. Buttons are locked:
-   - Desktop card CTAs are now absolutely positioned in a consistent bottom safe-zone.
-   - Button location no longer depends on title/media/copy height.
-   - Side and far-side cards get scaled button sizing but remain locked to their card bottoms.
+New in V99:
+- Browser tab icon/favicon added only.
 
-2. Tiny headers are fully removed:
-   - The tiny red/orange eyebrow headers no longer reserve invisible space.
+Nothing changed in card typography, button layout, carousel geometry, card internals, content, modals, or countdowns.
 
-3. Header/title typography reset:
-   - All card titles now use one consistent headline system.
-   - Long titles scale more gracefully.
-   - Side-card titles are scaled by carousel slot so they stop cropping/blowing up.
-
-4. Small font improved:
-   - Small/card copy text is larger.
-   - Uses a cleaner readable font stack.
-   - Applies across locations, card copy, video labels, favorite labels, and social captions.
-
-5. Locations card spacing:
-   - The location list starts much closer to the title.
-   - The list fills the middle of the card better.
-   - Location names and addresses are larger and more readable.
-
-6. Hover text fix hardened:
-   - Button text stays readable on hover/focus.
-   - Orange fill hover uses white text.
-
-Unchanged:
-- background
-- header logo
-- favicon
-- carousel slot geometry
-- card content
-- modals
-- countdowns
-- YouTube embeds
-- social sync script
-
-Upload note:
-Upload/extract the full ZIP contents to GitHub.
-Make sure updated index.html is uploaded.
-Then hard refresh with Ctrl+Shift+R.
+Upload the full ZIP to GitHub and hard refresh with Ctrl+Shift+R.

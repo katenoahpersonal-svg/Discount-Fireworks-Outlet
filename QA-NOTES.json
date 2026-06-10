@@ -1,27 +1,13 @@
 {
-  "version": "v97-locked-buttons-lux-card-reset",
-  "base": "v96-favicon-browser-tab-icon",
-  "node_syntax_check": {
-    "index_inline_script": "passed",
-    "sync_script": "passed"
-  },
-  "changed_v97": {
-    "desktop_buttons": "absolute bottom safe-zone; locked per card",
-    "tiny_headers": "fully removed/no reserved ghost spacing",
-    "card_titles": "consistent headline system; side-slot scaling",
-    "small_text": "larger and cleaner font stack",
-    "locations": "less top dead space, bigger names/addresses",
-    "hover": "button text remains readable"
-  },
-  "unchanged": [
-    "background from V93",
-    "header logo from V92",
-    "favicon from V96",
-    "carousel slot geometry",
-    "card content",
-    "modals",
-    "countdowns",
-    "YouTube embeds",
-    "social sync"
-  ]
+  "version": "v99-rollback-to-v94-plus-favicon",
+  "base": "v94-clock-up-mobile-card-clearance",
+  "not_used": [
+    "v95 card CSS",
+    "v97",
+    "v98"
+  ],
+  "changed": [
+    "favicon only"
+  ],
+  "js_check": "passed"
 }
