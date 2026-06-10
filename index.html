@@ -4285,9 +4285,50 @@ html::after{
    No layout/card/clock/background/button styling changes.
 ========================= */
 
+
+/* =========================
+   V104 NAV TARGET FIX + BUTTON COLOR ONLY
+   Built from V103.
+   Changes:
+   - Header nav clicks are locked to their intended card target.
+   - Button hover/focus font color is fixed so text does not disappear.
+   - Smooth color transition added.
+   Only color/transition properties below. No layout, spacing, size, card, carousel, clock, or background changes.
+========================= */
+
+.nav button,
+.card-btn,
+.modal-link,
+.social-open-button,
+button{
+  transition:color .22s ease !important;
+}
+
+.nav button:not(.directions):hover,
+.nav button:not(.directions):focus-visible{
+  color:#ff6d2e !important;
+}
+
+.nav .directions:hover,
+.nav .directions:focus-visible,
+.card-btn:hover,
+.card-btn:focus-visible,
+.modal-link:hover,
+.modal-link:focus-visible,
+.social-open-button:hover,
+.social-open-button:focus-visible,
+button:hover,
+button:focus-visible{
+  color:#ffffff !important;
+}
+
+.nav [data-nav-card].is-active:not(.directions){
+  color:#ff6d2e !important;
+}
+
 </style>
 </head>
-<body data-build="v103-header-nav-video-social-contact">
+<body data-build="v104-nav-card-targets-button-color-only">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4745,9 +4786,19 @@ function closeModals(){ document.querySelectorAll(".modal-layer").forEach(m=>m.c
 document.getElementById("prev").addEventListener("click", ()=>rotate(-1));
 document.getElementById("next").addEventListener("click", ()=>rotate(1));
 
+/* V104: header nav buttons always open their matching card only. */
+document.querySelectorAll(".nav [data-nav-card]").forEach(navBtn=>{
+  navBtn.addEventListener("click", e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    goTo(navBtn.dataset.navCard);
+  });
+});
+
 document.addEventListener("click", e=>{
   const btn = e.target.closest(".card-btn,[data-go],.directions,.video-feature,.video-thumb-button");
   if (btn){
+    if (btn.closest(".nav")) return;
     if (btn.dataset.go){ e.preventDefault(); goTo(btn.dataset.go); return; }
     if (btn.dataset.modal){ e.preventDefault(); e.stopPropagation(); openModal(btn.dataset.modal); return; }
   }
@@ -4792,7 +4843,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V103 HIDDEN CALIBRATION</b>
+  <b>V104 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

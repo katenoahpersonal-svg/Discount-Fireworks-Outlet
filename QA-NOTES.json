@@ -1,19 +1,22 @@
 {
-  "version": "v103-header-nav-video-social-contact",
-  "base": "v102-header-nav-opens-cards",
-  "changed_v103": [
-    "Videos label changed to Video and opens videos card",
-    "Locations nav item changed to Social and opens social card",
-    "Contact opens build/contact card",
-    "Get Directions remains a button and opens locations card"
+  "version": "v104-nav-card-targets-button-color-only",
+  "base": "v103-header-nav-video-social-contact",
+  "changed_v104": [
+    "header nav clicks stop propagation and go directly to navBtn.dataset.navCard",
+    "Video -> videos card",
+    "Social -> social card",
+    "Contact -> build/contact card",
+    "Get Directions -> locations card",
+    "hover/focus font color fixed for buttons",
+    "smooth color transition added"
   ],
   "unchanged": [
     "cards",
     "carousel geometry",
     "clock",
     "background",
-    "header styling/layout",
-    "button styling/layout",
+    "header layout",
+    "button layout/size/background",
     "modals",
     "images"
   ],

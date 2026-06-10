@@ -1,24 +1,30 @@
-DFO V103 — Header Nav: Video, Social, Contact
+DFO V104 — Header Nav Exact Card Targets + Button Font Color Only
 
 Starting point:
-- Built from V102 header-nav-opens-cards.
+- Built from V103 header-nav-video-social-contact.
 
-Only V103 changes:
-1. Header nav labels/card mapping:
-   - Video → opens Videos card
-   - Social → opens Social Feed card
-   - Contact → opens Build Your Show / Contact card
-   - Get Directions → stays as the button and opens Locations card
+V104 changes:
+1. Header nav click behavior:
+   - Video opens/rotates to Videos card.
+   - Social opens/rotates to Social Feed card.
+   - Contact opens/rotates to Build Your Show / Contact card.
+   - Get Directions opens/rotates to Locations card.
+   - Header nav clicks now stop before the generic card/modal click handler, so they do not accidentally open the current/front card.
+
+2. Button font color only:
+   - Get Directions hover/focus text is forced white so it does not disappear.
+   - Card/modal/social button hover/focus text is forced white.
+   - Non-direction nav hover/focus transitions to orange.
+   - Added smooth color transition only.
 
 Not changed:
 - No card layout changes
 - No carousel geometry changes
 - No clock changes
 - No background changes
-- No header styling/layout changes
-- No button styling/layout changes
-- No modal changes
-- No image changes
+- No header layout changes
+- No button size/position/background changes
+- No modal/image changes
 
 Upload:
 - Upload the full ZIP contents to GitHub.
