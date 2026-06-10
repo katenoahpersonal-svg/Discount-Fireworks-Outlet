@@ -1,18 +1,22 @@
-DFO V112 — Arrow Glide Position/Size Transition
+DFO V113 — Two-Line Title Glitch Fix
 
 Starting point:
-- Built from the safe V108/V107 base, not the V109/V110/V111 motion experiments.
+- Built from V112 arrow-glide-position-size-transition.
 
-V112 changes:
-1. Arrow-click transition only:
-   - Left/right arrow movement now animates left, top, width, height, transform, opacity, and filter together.
-   - This fixes the jagged snap caused by cards changing position/size instantly while only transform was easing.
-   - Arrow clicks are locked briefly during the glide so rapid-clicking does not create jumps.
+V113 changes:
+1. Fixes the weird glitch on cards with 2-line titles:
+   - Preview the Boom / Before You Buy
+   - Top Picks for the Perfect / Finale
+
+2. The fix:
+   - Adds a stable title renderer for those cards.
+   - Locks the title into exact line spans so it does not re-wrap while the card width/height animates.
+   - Adds GPU/text rendering isolation for the title only.
 
 Not changed:
-- No face card content changes
 - No face card layout value changes
 - No card spacing changes
+- No card sizing changes
 - No carousel slot geometry changes
 - No header changes
 - No clock changes

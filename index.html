@@ -4481,9 +4481,49 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V113 TWO-LINE TITLE GLITCH FIX
+   Built from V112.
+   Only fixes title rendering on the 2-line face cards during arrow motion.
+   The issue was title text re-wrapping while card width/height transitioned.
+   This locks known two-line titles into stable line spans.
+   No face-card content, card layout values, spacing, carousel slot geometry, header, clock, background, or modal changes.
+========================= */
+
+.card-title{
+  backface-visibility:hidden !important;
+  transform:translateZ(.01px) !important;
+  -webkit-font-smoothing:antialiased !important;
+  text-rendering:geometricPrecision !important;
+}
+
+.card-videos .card-title,
+.card-favorites .card-title{
+  overflow:hidden !important;
+  white-space:normal !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  hyphens:none !important;
+  contain:paint !important;
+}
+
+.card-videos .card-title .title-line,
+.card-favorites .card-title .title-line{
+  display:block !important;
+  width:100% !important;
+  white-space:nowrap !important;
+  text-align:center !important;
+}
+
+.carousel.arrow-glide .card-videos .card-title,
+.carousel.arrow-glide .card-favorites .card-title{
+  contain:layout paint style !important;
+}
+
 </style>
 </head>
-<body data-build="v112-arrow-glide-position-size-transition">
+<body data-build="v113-two-line-title-glitch-fix">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4721,6 +4761,22 @@ const cards = [
       </div></div>`, copy:"Catch demo drops, tent updates, new products, and more.", cta:"View Socials" }
 ];
 
+
+/* V113: stable title renderer for known two-line face card titles.
+   Prevents re-wrap flicker/jagged title glitches during arrow glide. */
+function renderCardTitle(c){
+  const fixedLines = {
+    videos: ["Preview the Boom", "Before You Buy"],
+    favorites: ["Top Picks for the Perfect", "Finale"]
+  };
+
+  if (fixedLines[c.id]){
+    return fixedLines[c.id].map(line => `<span class="title-line">${line}</span>`).join("");
+  }
+
+  return c.title;
+}
+
 /* ===== build 3D carousel ===== */
 const N = cards.length;
 const scene = document.querySelector(".scene");
@@ -4735,7 +4791,7 @@ cards.forEach((c, i) => {
   el.dataset.index = i;
   el.innerHTML = `<article class="card card-${c.id}" data-card-id="${c.id}" data-modal="${c.modal}">
     <p class="card-eyebrow">${c.eyebrow}</p>
-    <h2 class="card-title">${c.title}</h2>
+    <h2 class="card-title">${renderCardTitle(c)}</h2>
     ${c.media}
     <div class="card-copy"><p>${c.copy}</p>
       <button class="card-btn" data-modal="${c.modal}">${c.cta}</button></div>
@@ -5034,7 +5090,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V112 HIDDEN CALIBRATION</b>
+  <b>V113 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left
