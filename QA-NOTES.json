@@ -1,20 +1,19 @@
 {
-  "version": "v115-card-hover-button-color-match",
-  "base": "dfo-v114-card-feet-ring-alignment-only.zip",
-  "changed_v115": [
-    "card hover/focus-within now gives card button matching orange-fill and white-text state",
-    "card button child text forced white during card hover/focus-within",
-    "button transition preserved for color/background/border/box-shadow"
+  "version": "v116-blue-glow-countdown-labels",
+  "base": "dfo-v115-card-hover-button-color-match.zip",
+  "changed_v116": [
+    "bottom countdown label words changed to blue glow",
+    "top countdown label words changed to blue glow for consistency"
   ],
   "unchanged": [
+    "countdown numbers",
+    "header layout",
     "card placement",
     "ring alignment",
     "card layout",
     "card size",
     "spacing",
     "carousel geometry",
-    "header",
-    "clock",
     "background/images",
     "modal structure",
     "GitHub Pages workflow"

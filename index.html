@@ -4589,9 +4589,26 @@ button:focus-visible{
     box-shadow .22s ease !important;
 }
 
+
+/* =========================
+   V116 BLUE GLOW COUNTDOWN LABELS ONLY
+   Built from V115.
+   Only changes the small countdown words: DAYS / HOURS / MINUTES / SECONDS.
+   Numbers, layout, spacing, carousel, cards, header, background, and modals are untouched.
+========================= */
+
+.bottom-row span,
+.top-count span{
+  color:#4da3ff !important;
+  text-shadow:
+    0 0 6px rgba(77,163,255,.95),
+    0 0 14px rgba(0,126,255,.62),
+    0 0 26px rgba(0,94,255,.34) !important;
+}
+
 </style>
 </head>
-<body data-build="v115-card-hover-button-color-match">
+<body data-build="v116-blue-glow-countdown-labels">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5158,7 +5175,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V115 HIDDEN CALIBRATION</b>
+  <b>V116 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

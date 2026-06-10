@@ -1,26 +1,23 @@
-DFO V115 — Card Hover Button Color Match
+DFO V116 — Blue Glow Countdown Labels Only
 
 Starting point:
-- Built from V114 card-feet-ring-alignment-only.
+- Built from V115 card-hover-button-color-match.
 
-V115 changes:
-- If hovering anywhere on a carousel card triggers the button color state, the button now gets the same full color treatment:
-  - orange fill
-  - white text
-  - matching orange border/glow
-  - smooth transition
+V116 changes:
+- The small countdown words now have a pretty electric blue glow:
+  DAYS / HOURS / MINUTES / SECONDS
 
 Not changed:
-- No card placement changes
-- No ring alignment changes
-- No card layout changes
-- No card size changes
-- No spacing changes
-- No carousel geometry changes
-- No header changes
-- No clock changes
-- No background/image changes
-- No modal structure changes
+- Countdown numbers
+- Header layout
+- Card placement
+- Ring alignment
+- Card layout
+- Card size
+- Spacing
+- Carousel geometry
+- Background/images
+- Modals
 - GitHub Pages workflow remains included
 
 Upload:
