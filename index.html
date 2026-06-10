@@ -4334,9 +4334,49 @@ button:focus-visible{
    Added .github/workflows/pages.yml with Pages permissions.
 ========================= */
 
+
+/* =========================
+   V106 NAV CAPTURE + CARD BUTTON HOVER COLORS
+   Built from V105.
+   Changes:
+   - Header nav is hard-locked to exact card targets using capture-phase JS.
+   - Card buttons now use the same orange/white hover color behavior as the header button.
+   - No layout, spacing, sizing, card geometry, carousel, clock, background, or image changes.
+========================= */
+
+.card .card-btn,
+.card .card-btn *,
+.card3d .card .card-btn,
+.card3d .card .card-btn *{
+  transition:
+    color .22s ease,
+    background .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease !important;
+}
+
+.card .card-btn:hover,
+.card .card-btn:focus-visible,
+.card3d .card .card-btn:hover,
+.card3d .card .card-btn:focus-visible{
+  color:#ffffff !important;
+  background:linear-gradient(180deg,rgba(255,119,55,.98),rgba(255,101,39,.96)) !important;
+  border-color:#ff7a36 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.10) inset,
+    0 0 30px rgba(255,109,46,.34) !important;
+}
+
+.card .card-btn:hover *,
+.card .card-btn:focus-visible *,
+.card3d .card .card-btn:hover *,
+.card3d .card .card-btn:focus-visible *{
+  color:#ffffff !important;
+}
+
 </style>
 </head>
-<body data-build="v105-full-upload-pages-permissions-fix">
+<body data-build="v106-nav-capture-card-button-hover-colors">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4848,10 +4888,22 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 update();
 countdown();
 setInterval(countdown, 1000);
+
+/* ===== V106 nav hard-lock: header nav opens exact carousel card, never current/front modal ===== */
+document.querySelectorAll(".nav [data-nav-card]").forEach(navBtn=>{
+  navBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    const targetCard = this.dataset.navCard;
+    if (targetCard) goTo(targetCard);
+  }, true);
+});
+
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V105 HIDDEN CALIBRATION</b>
+  <b>V106 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

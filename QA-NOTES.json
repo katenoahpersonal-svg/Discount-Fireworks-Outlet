@@ -1,25 +1,26 @@
 {
-  "version": "v105-full-upload-pages-permissions-fix",
-  "base": "v104-nav-card-targets-button-color-only",
-  "changed_v105": [
-    "added .github/workflows/pages.yml",
-    "workflow includes contents: read, pages: write, id-token: write",
-    "build marker updated to V105"
+  "version": "v106-nav-capture-card-button-hover-colors",
+  "base": "v105-full-upload-pages-permissions-fix",
+  "changed_v106": [
+    "capture-phase header nav click handler with stopImmediatePropagation",
+    "header nav cannot fall through to current/front card modal",
+    "card button hover/focus background becomes orange and text white",
+    "smooth color/background/border/box-shadow transition on card buttons"
   ],
   "unchanged": [
-    "cards",
+    "card layout",
     "carousel geometry",
     "clock",
     "background",
     "header layout",
-    "button layout",
+    "button size/position",
     "modals",
     "images",
-    "V104 nav behavior"
+    "GitHub Pages workflow from V105"
   ],
   "node_syntax_check": {
     "index_inline_script": "passed",
     "sync_script": "passed"
   },
-  "workflow_check": "permissions block present"
+  "workflow_check": "pages.yml present with pages: write and id-token: write"
 }
