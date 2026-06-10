@@ -4169,9 +4169,71 @@ html::after{
 
 /* V99: built from V94. No V95/V97/V98 card CSS included. Favicon links only. */
 
+
+/* =========================
+   V100 HEADER LOGO GLOW + BOTTOM CLOCK SIZE
+   Built from V99 rollback.
+   Changes only:
+   - Header logo glow reduced/cleaned so it does not look hazy in the black bar.
+   - Desktop bottom timeclock made larger.
+   - Bottom countdown numbers/colon spacing tightened.
+   - No card, carousel, mobile/tablet, or modal layout changes.
+========================= */
+
+@media (min-width:1101px){
+  .header .header-logo-img{
+    filter:
+      drop-shadow(0 0 4px rgba(255,72,36,.18))
+      drop-shadow(0 0 8px rgba(255,72,36,.08)) !important;
+  }
+
+  .bottom-count{
+    width:auto !important;
+    min-width:min(520px,48vw) !important;
+  }
+
+  .bottom-count p{
+    font-size:clamp(12px,.92vw,17px) !important;
+    letter-spacing:.22em !important;
+    margin-bottom:4px !important;
+  }
+
+  .bottom-row{
+    gap:clamp(3px,.28vw,7px) !important;
+    align-items:flex-end !important;
+  }
+
+  .bottom-row span{
+    min-width:clamp(48px,3.15vw,62px) !important;
+  }
+
+  .bottom-row b{
+    font-size:clamp(44px,3.55vw,72px) !important;
+    line-height:.9 !important;
+  }
+
+  .bottom-row small{
+    font-size:clamp(8px,.58vw,11px) !important;
+    letter-spacing:.16em !important;
+  }
+
+  .bottom-row i{
+    font-size:clamp(26px,2.2vw,44px) !important;
+    line-height:.95 !important;
+    margin:0 clamp(-2px,-.08vw,0px) clamp(12px,1.05vh,18px) !important;
+  }
+}
+
+/* Keep the logo clean on tablet/mobile too, but do not resize layouts. */
+@media (max-width:1100px){
+  .header .header-logo-img{
+    filter:drop-shadow(0 0 5px rgba(255,72,36,.12)) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v99-rollback-to-v94-plus-favicon">
+<body data-build="v100-header-glow-clock-spacing">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4655,7 +4717,7 @@ setInterval(countdown, 1000);
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V99 HIDDEN CALIBRATION</b>
+  <b>V100 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

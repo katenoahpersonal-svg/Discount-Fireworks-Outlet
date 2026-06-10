@@ -1,19 +1,33 @@
-DFO V99 — V94 Rollback + Favicon Only
+DFO V100 — Header Logo Glow + Bottom Countdown Spacing
 
-Built from V94 clock-up-mobile-card-clearance.
+Starting point:
+- Built from V99 rollback-to-v94-plus-favicon.
+- This keeps the V94 card system intact.
+- V95/V97/V98 card CSS is not included.
 
-This does NOT include V95 card CSS, V97, or V98.
-
-Kept from V94:
+Included:
 - V89 updates
 - V92 header logo
 - V93 no-buoy background
-- V94 desktop bottom clock position
-- V94 mobile/tablet clearance fixes
+- V94 desktop clock/mobile clearance
+- V99 favicon/browser tab icon
 
-New in V99:
-- Browser tab icon/favicon added only.
+New V100 changes only:
+1. Header logo glow reduced so it does not look hazy/weird in the black header bar.
+2. Desktop bottom timeclock made larger.
+3. Desktop bottom countdown numbers and colon separators moved closer together.
 
-Nothing changed in card typography, button layout, carousel geometry, card internals, content, modals, or countdowns.
+Unchanged:
+- cards
+- carousel geometry
+- card buttons
+- card typography/layout
+- mobile/tablet layout
+- modals
+- YouTube embeds
+- social sync
 
-Upload the full ZIP to GitHub and hard refresh with Ctrl+Shift+R.
+Upload:
+- Upload the full ZIP contents to GitHub.
+- Make sure updated index.html is uploaded.
+- Hard refresh with Ctrl+Shift+R.
