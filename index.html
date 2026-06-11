@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
 <!-- DFO V132 EMERGENCY STABLE MAIN ROLLBACK: stable no-domain restore -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -4938,9 +4939,329 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V133 NO INTRO + VIDEO WALL IN WALL
+   Built from V132 stable.
+   - No opening animation: carousel renders final state immediately.
+   - Videos modal first screen is a category wall.
+   - Clicking a category opens an inner video wall with breadcrumbs.
+   - Empty categories show a coming-soon wall instead of duplicate/misplaced videos.
+   No domain/CNAME.
+========================= */
+
+/* Disable any old intro classes if browser has stale class timing */
+.carousel.intro-final-seat,
+.carousel.intro-final-seat-live,
+.carousel.intro-fanout,
+.carousel.intro-no-rise,
+.carousel.intro-horizontal,
+.carousel.intro-ride{
+  opacity:1 !important;
+  filter:none !important;
+  transform:none !important;
+}
+
+.carousel.intro-final-seat .card3d,
+.carousel.intro-fanout .card3d,
+.carousel.intro-no-rise .card3d,
+.carousel.intro-horizontal .card3d,
+.carousel.intro-ride .card3d{
+  transition:none !important;
+}
+
+/* Videos modal wall */
+#videosModal .modal{
+  width:min(1500px,96vw) !important;
+}
+
+#videosModal .category-note{
+  margin:8px 0 28px !important;
+  max-width:1120px !important;
+  color:rgba(255,255,255,.72) !important;
+  font-weight:900 !important;
+  letter-spacing:.075em !important;
+  text-transform:uppercase !important;
+}
+
+#videosModal .demo-wall-view.is-active{
+  display:block !important;
+}
+
+#videosModal .demo-wall-view:not(.is-active),
+#videosModal .demo-inner-wall[hidden]{
+  display:none !important;
+}
+
+#videosModal .demo-breadcrumbs{
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:0 0 20px !important;
+  color:rgba(255,255,255,.68) !important;
+  font-weight:950 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+}
+
+#videosModal .demo-breadcrumbs button{
+  appearance:none !important;
+  border:0 !important;
+  background:none !important;
+  color:#ff7a36 !important;
+  padding:0 !important;
+  cursor:pointer !important;
+  font:inherit !important;
+  letter-spacing:inherit !important;
+  text-transform:inherit !important;
+}
+
+#videosModal .demo-breadcrumbs button:hover,
+#videosModal .demo-breadcrumbs button:focus-visible{
+  color:#fff !important;
+  text-shadow:0 0 12px rgba(255,109,46,.45) !important;
+  outline:none !important;
+}
+
+#videosModal .demo-wall-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:24px !important;
+  align-items:stretch !important;
+}
+
+#videosModal .demo-wall-card{
+  appearance:none !important;
+  border:1px solid rgba(255,74,32,.46) !important;
+  border-radius:18px !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:linear-gradient(180deg,rgba(255,74,32,.075),rgba(255,255,255,.035)) !important;
+  text-align:left !important;
+  cursor:pointer !important;
+  min-height:430px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035),0 0 24px rgba(255,74,32,.08) !important;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease !important;
+}
+
+#videosModal .demo-wall-card:hover,
+#videosModal .demo-wall-card:focus-visible{
+  transform:translateY(-3px) !important;
+  border-color:rgba(255,122,54,.86) !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 36px rgba(255,74,32,.22) !important;
+  outline:none !important;
+}
+
+#videosModal .demo-wall-art,
+#videosModal .demo-inner-art{
+  position:relative !important;
+  display:block !important;
+  min-height:245px !important;
+  overflow:hidden !important;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255,196,110,.26), transparent 32%),
+    radial-gradient(circle at 24% 26%, rgba(255,58,44,.30), transparent 26%),
+    radial-gradient(circle at 76% 35%, rgba(255,126,42,.26), transparent 26%),
+    linear-gradient(180deg,#24101a 0%,#070916 55%,#02040d 100%) !important;
+  border-bottom:1px solid rgba(255,74,32,.34) !important;
+}
+
+#videosModal .demo-wall-art::before,
+#videosModal .demo-inner-art::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:
+    repeating-radial-gradient(circle at 22% 25%, rgba(255,105,58,.45) 0 2px, transparent 3px 18px),
+    repeating-radial-gradient(circle at 68% 18%, rgba(255,210,125,.38) 0 2px, transparent 3px 22px),
+    linear-gradient(180deg,transparent 45%,rgba(0,0,0,.68) 100%) !important;
+  opacity:.72 !important;
+}
+
+#videosModal .demo-art-glow{
+  position:absolute !important;
+  left:50% !important;
+  bottom:24px !important;
+  width:72% !important;
+  height:38px !important;
+  transform:translateX(-50%) !important;
+  border-radius:999px !important;
+  background:rgba(255,109,46,.18) !important;
+  box-shadow:0 0 34px rgba(255,109,46,.34), 0 0 90px rgba(255,74,32,.18) !important;
+}
+
+#videosModal .demo-art-label{
+  position:absolute !important;
+  left:24px !important;
+  right:24px !important;
+  bottom:22px !important;
+  color:rgba(255,255,255,.86) !important;
+  font-weight:950 !important;
+  letter-spacing:.11em !important;
+  text-transform:uppercase !important;
+  font-size:clamp(12px,.88vw,16px) !important;
+  z-index:2 !important;
+}
+
+#videosModal .demo-wall-content{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:11px !important;
+  padding:22px 26px 24px !important;
+  flex:1 1 auto !important;
+}
+
+#videosModal .demo-wall-content strong{
+  display:block !important;
+  color:#fff !important;
+  font-family:var(--head) !important;
+  font-size:clamp(40px,3.6vw,68px) !important;
+  line-height:.84 !important;
+  text-transform:uppercase !important;
+}
+
+#videosModal .demo-wall-content em{
+  display:block !important;
+  color:rgba(255,255,255,.72) !important;
+  font-style:normal !important;
+  font-weight:900 !important;
+  font-size:clamp(14px,.9vw,18px) !important;
+  line-height:1.28 !important;
+  letter-spacing:.045em !important;
+}
+
+#videosModal .demo-wall-content b{
+  margin-top:auto !important;
+  color:#ff4a28 !important;
+  font-weight:950 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.14em !important;
+  font-size:clamp(13px,.8vw,16px) !important;
+}
+
+#videosModal .demo-wall-card.is-empty .demo-wall-art,
+#videosModal .demo-wall-card.is-empty .demo-wall-content{
+  opacity:.82 !important;
+}
+
+/* Inner wall */
+#videosModal .demo-inner-hero{
+  display:grid !important;
+  grid-template-columns:minmax(300px,.85fr) minmax(320px,1.15fr) !important;
+  gap:24px !important;
+  align-items:stretch !important;
+  margin-bottom:24px !important;
+  border:1px solid rgba(255,74,32,.40) !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  background:linear-gradient(180deg,rgba(255,74,32,.07),rgba(255,255,255,.03)) !important;
+}
+
+#videosModal .demo-inner-hero > div{
+  padding:34px 34px 30px !important;
+  align-self:center !important;
+}
+
+#videosModal .demo-inner-hero h3{
+  margin:0 0 14px !important;
+  color:#fff !important;
+  font-family:var(--head) !important;
+  font-size:clamp(50px,4.6vw,90px) !important;
+  line-height:.82 !important;
+  text-transform:uppercase !important;
+}
+
+#videosModal .demo-inner-hero p{
+  margin:0 !important;
+  color:rgba(255,255,255,.72) !important;
+  font-weight:900 !important;
+  font-size:clamp(15px,.95vw,19px) !important;
+  line-height:1.35 !important;
+  letter-spacing:.05em !important;
+}
+
+#videosModal .demo-video-scroll{
+  max-height:min(58vh,680px) !important;
+  overflow:auto !important;
+  padding:0 12px 12px 0 !important;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:22px !important;
+  scrollbar-color:#ff6d2e rgba(255,255,255,.12) !important;
+}
+
+#videosModal .demo-video-item{
+  border:1px solid rgba(255,74,32,.40) !important;
+  border-radius:16px !important;
+  overflow:hidden !important;
+  background:rgba(4,6,18,.78) !important;
+}
+
+#videosModal .demo-video-item iframe{
+  display:block !important;
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  border:0 !important;
+}
+
+#videosModal .demo-video-empty{
+  grid-column:1/-1 !important;
+  min-height:360px !important;
+  border:1px dashed rgba(255,122,54,.52) !important;
+  border-radius:18px !important;
+  display:grid !important;
+  place-items:center !important;
+  text-align:center !important;
+  padding:34px !important;
+  background:radial-gradient(circle at center,rgba(255,74,32,.12),rgba(255,74,32,.035) 48%,rgba(0,0,0,0) 70%),rgba(4,6,18,.72) !important;
+}
+
+#videosModal .demo-video-empty strong{
+  display:block !important;
+  color:#fff !important;
+  font-family:var(--head) !important;
+  font-size:clamp(42px,4vw,72px) !important;
+  line-height:.86 !important;
+  text-transform:uppercase !important;
+  margin-bottom:12px !important;
+}
+
+#videosModal .demo-video-empty span{
+  color:rgba(255,255,255,.74) !important;
+  font-weight:900 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.08em !important;
+}
+
+/* Kill old demo grid if stale CSS/HTML ever tries to appear */
+#videosModal .video-grid,
+#videosModal .video-card{
+  display:none !important;
+}
+
+@media (max-width:980px){
+  #videosModal .demo-wall-grid,
+  #videosModal .demo-inner-hero,
+  #videosModal .demo-video-scroll{
+    grid-template-columns:1fr !important;
+  }
+
+  #videosModal .demo-wall-card{
+    min-height:auto !important;
+  }
+
+  #videosModal .demo-wall-art,
+  #videosModal .demo-inner-art{
+    min-height:210px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v132-emergency-stable-main-rollback">
+<body data-build="v133-no-intro-video-wall-breadcrumbs">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4999,45 +5320,172 @@ button:focus-visible{
 <div class="modal-layer" id="videosModal">
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
-      <h2>Featured Firework Demos</h2>
-      <p class="category-note">Sorted by category for easier show planning. More videos can be added as we collect them.</p>
-      <div class="video-grid">
-        <article class="video-card" data-category="assortments">
-          <span class="video-category">ASSORTMENTS</span>
-          <iframe src="https://www.youtube.com/embed/HQKTQe-Efvs" title="Heavy Duty Assortment / World-Class Fireworks" allowfullscreen></iframe>
-          <p>Heavy Duty Assortment / World-Class Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/cZHENq6D12o" title="The Godfather — Firework Fireworks" allowfullscreen></iframe>
-          <p>The Godfather — Firework Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/iujTwXJBfy8" title="Bone Shaker By Mars Pyrotechnics" allowfullscreen></iframe>
-          <p>Bone Shaker By Mars Pyrotechnics</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/458UhOBXJLg" title="Boss Firework Demo By World-Class Fireworks" allowfullscreen></iframe>
-          <p>Boss Firework Demo By World-Class Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/tFteOme5wYc" title="I’m King of the Block / 500 Gram Cake" allowfullscreen></iframe>
-          <p>I’m King of the Block / 500 Gram Cake</p>
-        </article>
-        <article class="video-card" data-category="fountains">
-          <span class="video-category">FOUNTAINS</span>
-          <iframe src="https://www.youtube.com/embed/-rW3QapRaLQ" title="Eruption FF4033 Flashing Firework Fountain" allowfullscreen></iframe>
-          <p>Eruption FF4033 Flashing Firework Fountain</p>
-        </article>
-        <article class="video-card" data-category="artilleries">
-          <span class="video-category">ARTILLERIES</span>
-          <iframe src="https://www.youtube.com/embed/NqIRgRR2wP8" title="BP-A100 Masterclass Assortment" allowfullscreen></iframe>
-          <p>BP-A100 Masterclass Assortment</p>
-        </article>
-      </div>
+      <h2>Choose Your Firework Demo Category</h2>
+      <p class="category-note">Pick a category first. Each category opens into its own video wall with breadcrumbs.</p>
+
+      <section class="demo-wall-view is-active" data-demo-view="wall" aria-label="Firework demo category wall">
+        <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
+          <span>Videos</span>
+        </nav>
+        <div class="demo-wall-grid">
+        <button class="demo-wall-card has-videos" type="button" data-demo-open="cakes">
+          <span class="demo-wall-art demo-art-cakes" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">500g cakes stacked in a finale wall</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Cakes</strong>
+            <em>500 gram cakes, multi-shot cakes, color, crackle, height, and finale energy.</em>
+            <b>Open 4 videos</b>
+          </span>
+        </button>
+        <button class="demo-wall-card is-empty" type="button" data-demo-open="artilleries">
+          <span class="demo-wall-art demo-art-artilleries" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">shells and canister kits</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Artilleries</strong>
+            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
+          </span>
+        </button>
+        <button class="demo-wall-card has-videos" type="button" data-demo-open="assortments">
+          <span class="demo-wall-art demo-art-assortments" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">mixed show bundles</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Assortments</strong>
+            <em>Mixed firework bundles and show-in-a-box options.</em>
+            <b>Open 2 videos</b>
+          </span>
+        </button>
+        <button class="demo-wall-card has-videos" type="button" data-demo-open="fountains">
+          <span class="demo-wall-art demo-art-fountains" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">spark fountains and ground effects</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Fountains</strong>
+            <em>Ground effects with sparks, crackle, spray, color, and low-height show energy.</em>
+            <b>Open 1 video</b>
+          </span>
+        </button>
+        <button class="demo-wall-card is-empty" type="button" data-demo-open="missile">
+          <span class="demo-wall-art demo-art-missile" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">missile batteries and rocket-style effects</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Missile</strong>
+            <em>Missile and rocket-style effects. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
+          </span>
+        </button>
+        <button class="demo-wall-card is-empty" type="button" data-demo-open="misc">
+          <span class="demo-wall-art demo-art-misc" aria-hidden="true">
+            <span class="demo-art-glow"></span>
+            <span class="demo-art-label">novelties, romans, smoke, parachutes, rockets</span>
+          </span>
+          <span class="demo-wall-content">
+            <strong>Misc.</strong>
+            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
+          </span>
+        </button>
+        </div>
+      </section>
+
+      <section class="demo-inner-wall" data-demo-view="category" hidden aria-label="Category video wall">
+        <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
+          <button type="button" data-demo-back>Videos</button>
+          <span>/</span>
+          <strong data-demo-crumb></strong>
+        </nav>
+
+        <div class="demo-inner-hero">
+          <span class="demo-inner-art" data-demo-inner-art aria-hidden="true"></span>
+          <div>
+            <h3 data-demo-title></h3>
+            <p data-demo-desc></p>
+          </div>
+        </div>
+
+        <div class="demo-video-scroll" data-demo-video-scroll></div>
+      </section>
+
+      <script type="application/json" id="demoWallData">
+{
+  "cakes": {
+    "title": "Cakes",
+    "crumb": "Cakes",
+    "desc": "500 gram cakes, multi-shot cakes, color, crackle, height, and finale energy.",
+    "videos": [
+      {
+        "title": "The Godfather \u2014 Firework Fireworks",
+        "src": "https://www.youtube.com/embed/cZHENq6D12o"
+      },
+      {
+        "title": "Bone Shaker By Mars Pyrotechnics",
+        "src": "https://www.youtube.com/embed/iujTwXJBfy8"
+      },
+      {
+        "title": "Boss Firework Demo By World-Class Fireworks",
+        "src": "https://www.youtube.com/embed/458UhOBXJLg"
+      },
+      {
+        "title": "I\u2019m King of the Block / 500 Gram Cake",
+        "src": "https://www.youtube.com/embed/tFteOme5wYc"
+      }
+    ]
+  },
+  "artilleries": {
+    "title": "Artilleries",
+    "crumb": "Artilleries",
+    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.",
+    "videos": []
+  },
+  "assortments": {
+    "title": "Assortments",
+    "crumb": "Assortments",
+    "desc": "Mixed firework bundles and show-in-a-box options.",
+    "videos": [
+      {
+        "title": "Heavy Duty Assortment / World-Class Fireworks",
+        "src": "https://www.youtube.com/embed/HQKTQe-Efvs"
+      },
+      {
+        "title": "BP-A100 Masterclass Assortment",
+        "src": "https://www.youtube.com/embed/NqIRgRR2wP8"
+      }
+    ]
+  },
+  "fountains": {
+    "title": "Fountains",
+    "crumb": "Fountains",
+    "desc": "Ground effects with sparks, crackle, spray, color, and low-height show energy.",
+    "videos": [
+      {
+        "title": "Eruption FF4033 Flashing Firework Fountain",
+        "src": "https://www.youtube.com/embed/-rW3QapRaLQ"
+      }
+    ]
+  },
+  "missile": {
+    "title": "Missile",
+    "crumb": "Missile",
+    "desc": "Missile and rocket-style effects. Demo videos coming soon.",
+    "videos": []
+  },
+  "misc": {
+    "title": "Misc.",
+    "crumb": "Misc.",
+    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.",
+    "videos": []
+  }
+}
+      </script>
     </div>
 </div>
 
@@ -5424,36 +5872,9 @@ function goTo(id){
 }
 
 
-/* V125: forced no-vertical intro.
-   Cards are seated at their final ring position immediately.
-   There is no opening path from below, no top/bottom movement, and no vertical glide. */
+/* V133: no opening transition. Render final carousel state immediately. */
 function startIntroRide(){
-  const desktopRide = window.matchMedia("(min-width:1181px)").matches;
-
-  if (!desktopRide){
-    update();
-    return;
-  }
-
-  wheel.classList.add("intro-final-seat");
-
-  els.forEach((el, i) => {
-    const pos = offsetFor(i);
-    place(el, pos, false);
-    prevPos[i] = pos;
-  });
-
-  syncHeaderNav();
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      wheel.classList.add("intro-final-seat-live");
-    });
-  });
-
-  setTimeout(() => {
-    wheel.classList.remove("intro-final-seat","intro-final-seat-live");
-  }, 760);
+  update();
 }
 
 /* ===== countdown ===== */
@@ -5566,11 +5987,116 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V132 emergency stable rollback loaded.");
+console.log("DFO V133 loaded: no intro, video wall-in-wall with breadcrumbs.");
+
+
+/* V133: video wall-in-wall navigation with breadcrumbs */
+(function(){
+  const modal = document.getElementById("videosModal");
+  const dataEl = document.getElementById("demoWallData");
+  if (!modal || !dataEl) return;
+
+  let data = {};
+  try {
+    data = JSON.parse(dataEl.textContent || "{}");
+  } catch (err) {
+    console.warn("DFO video wall data failed to parse", err);
+    return;
+  }
+
+  const wall = modal.querySelector('[data-demo-view="wall"]');
+  const inner = modal.querySelector('[data-demo-view="category"]');
+  const crumb = modal.querySelector("[data-demo-crumb]");
+  const title = modal.querySelector("[data-demo-title]");
+  const desc = modal.querySelector("[data-demo-desc]");
+  const art = modal.querySelector("[data-demo-inner-art]");
+  const scroll = modal.querySelector("[data-demo-video-scroll]");
+  const back = modal.querySelector("[data-demo-back]");
+
+  function stopVideos(){
+    if (!scroll) return;
+    scroll.querySelectorAll("iframe").forEach(frame => {
+      const src = frame.getAttribute("src");
+      frame.setAttribute("src", src);
+    });
+  }
+
+  function showWall(){
+    stopVideos();
+    if (inner) inner.hidden = true;
+    if (wall) wall.classList.add("is-active");
+    if (scroll) scroll.innerHTML = "";
+  }
+
+  function showCategory(key){
+    const item = data[key];
+    if (!item || !wall || !inner || !scroll) return;
+
+    wall.classList.remove("is-active");
+    inner.hidden = false;
+
+    if (crumb) crumb.textContent = item.crumb || item.title || "";
+    if (title) title.textContent = item.title || "";
+    if (desc) desc.textContent = item.desc || "";
+    if (art) art.className = "demo-inner-art demo-art-" + key;
+
+    scroll.innerHTML = "";
+
+    if (!item.videos || !item.videos.length){
+      scroll.innerHTML = `
+        <div class="demo-video-empty">
+          <div>
+            <strong>Videos Coming Soon</strong>
+            <span>This category wall is ready. We can add demos here later.</span>
+          </div>
+        </div>`;
+    } else {
+      item.videos.forEach(video => {
+        const card = document.createElement("article");
+        card.className = "demo-video-item";
+
+        const iframe = document.createElement("iframe");
+        iframe.src = video.src;
+        iframe.title = video.title || item.title || "Firework demo";
+        iframe.loading = "lazy";
+        iframe.allowFullscreen = true;
+        iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+
+        card.appendChild(iframe);
+        scroll.appendChild(card);
+      });
+    }
+
+    inner.scrollIntoView({block:"start", behavior:"smooth"});
+  }
+
+  modal.querySelectorAll("[data-demo-open]").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      showCategory(btn.dataset.demoOpen);
+    });
+  });
+
+  if (back){
+    back.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      showWall();
+    });
+  }
+
+  document.querySelectorAll('[data-modal="videosModal"], [data-open-modal="videosModal"]').forEach(trigger => {
+    trigger.addEventListener("click", () => requestAnimationFrame(showWall));
+  });
+
+  showWall();
+})();
+
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V132 HIDDEN CALIBRATION</b>
+  <b>V133 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

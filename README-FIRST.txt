@@ -1,18 +1,13 @@
-DFO V132 — Emergency Stable Main Rollback
+DFO V133 — No Intro + Video Wall In Wall
 
-This is the recovery file.
+Built from V132 stable rollback.
 
-Built from the last stable no-domain package before the video modal reset attempts.
+This is the next stable main package:
+- no opening transition
+- video wall-in-wall modal with breadcrumbs
+- corrected firework demo categories
+- no CNAME/domain
 
-Changed:
-- Restores stable homepage/carousel behavior.
-- Removes CNAME/custom domain.
-- Keeps countdown target July 4, 2026 at 10 PM CDT.
-- Adds clear V132 marker.
-
-Not included:
-- The broken V128/V131 video modal hard reset.
-- Any branch-specific setup.
-- Any custom domain setup.
-
-Upload to main only.
+Expected proof:
+The video modal first screen says “Choose Your Firework Demo Category.”
+No YouTube embeds appear until a category is clicked.

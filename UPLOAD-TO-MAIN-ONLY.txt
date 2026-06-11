@@ -1,28 +1,35 @@
-DFO V131 MAIN LIVE RESET — NO BRANCH
+DFO V133 — No Intro + Video Wall In Wall
 
-Use this package ONLY for the main branch.
+Use on main branch only.
 
-Do this:
-1. Go to GitHub repo > Code.
-2. Make sure branch dropdown says main.
-3. Click Add file > Upload files.
-4. Extract this zip first.
-5. Drag the CONTENTS of the extracted folder into GitHub.
-6. Scroll down.
-7. Select: Commit directly to the main branch.
-8. Click Commit changes.
-9. Wait for Actions green check.
-10. Open:
-   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v131
+Changed:
+1. Opening transition removed completely.
+   - The carousel renders directly to its final state.
+   - No intro animation.
 
-Do NOT:
-- Do not create a new branch.
-- Do not create a pull request.
-- Do not add CNAME.
-- Do not use dfofireworks.com right now.
+2. Video modal rebuilt as wall-in-wall:
+   - First wall: six category cards only.
+   - Categories: Cakes, Artilleries, Assortments, Fountains, Missile, Misc.
+   - Breadcrumbs show Videos / Category.
+   - Back breadcrumb returns to category wall.
 
-Expected proof after it works:
-- Video modal should say: Choose Your Firework Demo Category
-- First video modal screen should show six category cards only:
-  Cakes, Artilleries, Assortments, Fountains, Missile, Misc.
-- It should NOT show embedded YouTube cards first.
+3. Corrected video sorting:
+   - Cakes: 4 videos
+   - Assortments: 2 videos
+   - Fountains: 1 video
+   - Artilleries: coming soon
+   - Missile: coming soon
+   - Misc.: coming soon
+
+4. No CNAME/domain file.
+   Use GitHub URL:
+   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v133
+
+Upload:
+1. Extract this zip.
+2. GitHub Code tab.
+3. Branch must say main.
+4. Add file > Upload files.
+5. Drag extracted contents.
+6. Commit directly to main.
+7. Wait for green Actions check.

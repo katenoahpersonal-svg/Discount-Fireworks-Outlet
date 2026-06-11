@@ -1,0 +1,19 @@
+{
+  "version": "v133-no-intro-video-wall-breadcrumbs",
+  "base": "DFO-V132-EMERGENCY-STABLE-MAIN-ROLLBACK.zip",
+  "no_opening_transition": true,
+  "startIntroRide": "update only",
+  "cname_present": false,
+  "video_categories": {
+    "cakes": 4,
+    "artilleries": 0,
+    "assortments": 2,
+    "fountains": 1,
+    "missile": 0,
+    "misc": 0
+  },
+  "first_video_modal_screen_has_iframes": false,
+  "breadcrumbs": true,
+  "node_syntax_check": "passed",
+  "expected_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v133"
+}
