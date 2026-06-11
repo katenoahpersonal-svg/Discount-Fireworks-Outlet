@@ -4906,9 +4906,40 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V125 FORCE NO-VERTICAL INTRO + CDT COUNTDOWN
+   Built from V124.
+   Opening intro is now opacity/filter only.
+   Cards are placed at final seated ring positions immediately.
+   No vertical path, no bottom rise, no card top movement, no card transform travel on load.
+   Countdown target locked to July 4, 2026 at 10:00 PM Central / CDT.
+========================= */
+
+@media (min-width:1181px){
+  .carousel.intro-final-seat{
+    opacity:0 !important;
+    filter:blur(1.6px) brightness(.84) saturate(.94) !important;
+    transform:none !important;
+    transition:none !important;
+  }
+
+  .carousel.intro-final-seat .card3d{
+    transition:none !important;
+  }
+
+  .carousel.intro-final-seat.intro-final-seat-live{
+    opacity:1 !important;
+    filter:none !important;
+    transition:
+      opacity .68s cubic-bezier(.22,.72,.22,1),
+      filter .68s cubic-bezier(.22,.72,.22,1) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v124-cname-dfofireworks-com">
+<body data-build="v126-github-pages-domain-no-cname">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5392,7 +5423,9 @@ function goTo(id){
 }
 
 
-/* V122: no-rise intro. Cards are placed at final height immediately, then fade/settle in place. */
+/* V125: forced no-vertical intro.
+   Cards are seated at their final ring position immediately.
+   There is no opening path from below, no top/bottom movement, and no vertical glide. */
 function startIntroRide(){
   const desktopRide = window.matchMedia("(min-width:1181px)").matches;
 
@@ -5401,31 +5434,29 @@ function startIntroRide(){
     return;
   }
 
-  wheel.classList.add("intro-no-rise");
+  wheel.classList.add("intro-final-seat");
 
   els.forEach((el, i) => {
     const pos = offsetFor(i);
     place(el, pos, false);
     prevPos[i] = pos;
-    el.classList.add("intro-card");
   });
 
   syncHeaderNav();
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      wheel.classList.add("intro-no-rise-live");
-      els.forEach(el => el.classList.remove("intro-card"));
+      wheel.classList.add("intro-final-seat-live");
     });
   });
 
   setTimeout(() => {
-    wheel.classList.remove("intro-no-rise","intro-no-rise-live");
-  }, 980);
+    wheel.classList.remove("intro-final-seat","intro-final-seat-live");
+  }, 760);
 }
 
 /* ===== countdown ===== */
-const target = new Date("2026-07-04T22:00:00");
+const target = new Date("2026-07-04T22:00:00-05:00");
 const pad = v => String(v).padStart(2,"0");
 function countdown(){
   const d = Math.max(target - new Date(), 0);
@@ -5534,11 +5565,11 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V124 loaded: CNAME added for dfofireworks.com.");
+console.log("DFO V126 loaded: GitHub Pages domain version, no CNAME custom domain file.");
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V124 HIDDEN CALIBRATION</b>
+  <b>V126 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

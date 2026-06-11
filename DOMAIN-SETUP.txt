@@ -1,21 +1,14 @@
-Domain added
+Domain status for this version
 
-This package includes a CNAME file containing:
-dfofireworks.com
+This V126 package intentionally does NOT include a CNAME file.
 
-GitHub Pages custom domain checklist:
-1. Upload the full ZIP contents to the repo root, including CNAME.
-2. In GitHub repo Settings > Pages, confirm the custom domain shows dfofireworks.com.
-3. At your domain/DNS provider, point the domain to GitHub Pages.
+Temporary live URL:
+https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/
 
-For apex/root domain dfofireworks.com, GitHub Pages typically uses these A records:
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
+Use that GitHub Pages URL until dfofireworks.com is disconnected from Squarespace and DNS is pointed to GitHub Pages.
 
-Optional www setup:
-Create a CNAME record:
-www -> katenoahpersonal-svg.github.io
-
-After DNS updates, enable/verify HTTPS in GitHub Pages.
+To move dfofireworks.com to GitHub Pages later:
+- In the domain/DNS provider, remove old Squarespace DNS records.
+- Add GitHub Pages DNS records.
+- In GitHub repo Settings > Pages, add dfofireworks.com as the custom domain.
+- Add CNAME back only when ready.
