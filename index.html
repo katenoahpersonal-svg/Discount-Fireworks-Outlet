@@ -4590,27 +4590,174 @@ button:focus-visible{
 }
 
 
-
 /* =========================
-   V118 BABY BRIGHT BLUE LABELS ONLY
-   Built from V117.
-   Only changes countdown label words: DAYS / HOURS / MINUTES / SECONDS.
-   Numbers, colons, layout, spacing, cards, carousel, header, background, and modals are untouched.
+   V119 WARM RED COUNTDOWN + LIFTED MOOD
+   Built from safe red base when available.
+   Changes only color/mood treatment:
+   - countdown label words return to brighter ember red/orange
+   - lower countdown area gets a warm, subtle glow so it feels less dark/dreary
+   - overall hero gets a tiny warm lift without moving or resizing anything
+   No card layout, card placement, carousel geometry, header layout, clock position, images, or modals changed.
 ========================= */
 
-.bottom-row small,
-.clock-lab{
-  color:#9fe6ff !important;
+/* Countdown labels only: DAYS / HOURS / MINUTES / SECONDS */
+.bottom-row span,
+.bottom-clock span,
+.bottom-count span,
+.countdown-bottom span,
+.bottom-countdown span,
+.top-count span,
+.header-count span,
+.header-countdown span,
+.countdown-top span{
+  color:#ff7a36 !important;
   text-shadow:
-    0 0 2px rgba(255,255,255,.55),
-    0 0 6px rgba(159,230,255,.82),
-    0 0 13px rgba(84,196,255,.50),
-    0 0 22px rgba(36,140,255,.24) !important;
+    0 0 5px rgba(255,122,54,.88),
+    0 0 13px rgba(255,74,32,.55),
+    0 0 22px rgba(255,178,88,.30) !important;
+}
+
+/* Warm lift behind lower countdown only */
+.bottom-count::before,
+.bottom-clock::before,
+.countdown-bottom::before,
+.bottom-countdown::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-34px -70px -28px -70px !important;
+  pointer-events:none !important;
+  z-index:-1 !important;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(255,119,55,.18) 0%,
+      rgba(255,81,36,.10) 38%,
+      rgba(255,170,76,.055) 58%,
+      rgba(0,0,0,0) 78%) !important;
+  filter:blur(1px) !important;
+}
+
+/* Very gentle cinematic warmth so the scene feels less heavy, not washed out */
+.hero::after{
+  background:
+    radial-gradient(ellipse at center 54%,
+      rgba(255,116,54,.10) 0%,
+      rgba(255,116,54,.045) 34%,
+      rgba(0,0,0,0) 64%),
+    linear-gradient(180deg,
+      rgba(255,107,47,.025) 0%,
+      rgba(255,107,47,.055) 56%,
+      rgba(255,107,47,.075) 100%) !important;
+  mix-blend-mode:screen !important;
+  opacity:.72 !important;
+}
+
+
+/* =========================
+   V120 RED LABEL FIX + GOLD CLEANUP + CAROUSEL RIDE INTRO
+   Built from V119.
+   Fixes:
+   - countdown labels use the actual label selectors, not the clock wrappers
+   - numbers/colons are cleaned back to white/orange with no blue inherited glow
+   - remaining gold text accents inside cards/modals are shifted into the red/orange theme
+   - page-load card intro gets a carousel-ride glide instead of a clunky pop
+   No card layout, card sizing, card spacing, card x/y placement, header layout, clock position, background image, or modal structure changed.
+========================= */
+
+:root{
+  --gold:#ff7a36 !important;
+  --dfo-gold:#ff7a36 !important;
+}
+
+/* Actual countdown label text only */
+.header .clock-lab,
+.header-clock .clock-lab,
+.bottom-count .bottom-row small,
+.bottom-row small{
+  color:#ff7a36 !important;
+  text-shadow:
+    0 0 4px rgba(255,122,54,.72),
+    0 0 10px rgba(255,74,32,.38),
+    0 0 16px rgba(255,174,82,.18) !important;
+}
+
+/* Clean any leftover blue glow off the countdown numbers/wrappers */
+.header .clock-unit,
+.header-clock .clock-unit,
+.header .clock-num,
+.header-clock .clock-num,
+.bottom-count .bottom-row span,
+.bottom-count .bottom-row b,
+.bottom-row span,
+.bottom-row b{
+  text-shadow:
+    0 2px 12px rgba(0,0,0,.86),
+    0 0 10px rgba(255,109,46,.14) !important;
+}
+
+.header .clock-num,
+.header-clock .clock-num,
+.bottom-count .bottom-row b,
+.bottom-row b{
+  color:#ffffff !important;
+}
+
+.bottom-count .bottom-row i,
+.bottom-row i{
+  color:#ff6d2e !important;
+  text-shadow:
+    0 0 5px rgba(255,109,46,.42),
+    0 2px 10px rgba(0,0,0,.86) !important;
+}
+
+/* Remaining gold/yellow card + modal text pulled into the red theme */
+.video-label,
+.video-thumbs .video-thumb-button span,
+.favorite-grid b,
+.video-card p,
+.favorites-modal-grid h3,
+.location-grid a,
+.modal-link,
+.modal-link.big-link{
+  color:#ff7a36 !important;
+  text-shadow:
+    0 0 5px rgba(255,109,46,.42),
+    0 2px 8px rgba(0,0,0,.82) !important;
+}
+
+/* Intro: make the cards ride in on the carousel instead of popping into place */
+@media (min-width:1181px){
+  .carousel.intro-ride .card3d{
+    will-change:left, top, width, height, transform, opacity, filter !important;
+    transition:
+      left 1.22s cubic-bezier(.14,.76,.18,1),
+      top 1.22s cubic-bezier(.14,.76,.18,1),
+      width 1.22s cubic-bezier(.14,.76,.18,1),
+      height 1.22s cubic-bezier(.14,.76,.18,1),
+      transform 1.22s cubic-bezier(.14,.76,.18,1),
+      opacity 1.02s cubic-bezier(.18,.68,.22,1),
+      filter 1.02s cubic-bezier(.18,.68,.22,1),
+      bottom 1.22s cubic-bezier(.14,.76,.18,1) !important;
+  }
+
+  .carousel.intro-ride .card3d .card{
+    transition:
+      transform 1.02s cubic-bezier(.16,.74,.18,1),
+      box-shadow 1.02s ease,
+      border-color 1.02s ease,
+      filter 1.02s ease !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .carousel.intro-ride .card3d,
+  .carousel.intro-ride .card3d .card{
+    transition:none !important;
+  }
 }
 
 </style>
 </head>
-<body data-build="v118-baby-bright-blue-labels-only">
+<body data-build="v120-red-label-fix-gold-cleanup-carousel-ride-intro">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5064,6 +5211,40 @@ function goTo(id){
   }
 }
 
+
+/* V120: carousel ride intro. Starts one carousel position back, then glides into the opening wall. */
+function startIntroRide(){
+  const desktopRide = window.matchMedia("(min-width:1181px)").matches;
+
+  if (!desktopRide){
+    update();
+    return;
+  }
+
+  wheel.classList.add("intro-ride");
+
+  els.forEach((el, i) => {
+    const finalPos = offsetFor(i);
+    const rideStartPos = finalPos + 1;
+    place(el, rideStartPos, false);
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      els.forEach((el, i) => {
+        const pos = offsetFor(i);
+        place(el, pos, true);
+        prevPos[i] = pos;
+      });
+      syncHeaderNav();
+    });
+  });
+
+  setTimeout(() => {
+    wheel.classList.remove("intro-ride");
+  }, 1320);
+}
+
 /* ===== countdown ===== */
 const target = new Date("2026-07-04T09:00:00");
 const pad = v => String(v).padStart(2,"0");
@@ -5171,13 +5352,14 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
   prevPos.fill(99); update();
 }, 120); });
 
-update();
+startIntroRide();
 countdown();
 setInterval(countdown, 1000);
+console.log("DFO V120 loaded: red label fix, gold cleanup, and carousel ride intro.");
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V118 HIDDEN CALIBRATION</b>
+  <b>V120 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

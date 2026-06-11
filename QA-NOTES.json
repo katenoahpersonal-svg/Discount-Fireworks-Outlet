@@ -1,20 +1,27 @@
 {
-  "version": "v118-baby-bright-blue-labels-only",
-  "base": "dfo-v117-american-blue-label-glow-only.zip",
-  "changed_v118": [
-    "only .bottom-row small and .clock-lab label words changed to baby bright blue glow"
+  "version": "v120-red-label-fix-gold-cleanup-carousel-ride-intro",
+  "base": "dfo-v119-warm-red-countdown-lifted-mood.zip",
+  "changed_v120": [
+    "countdown labels target actual selectors .clock-lab and .bottom-row small",
+    "blue glow cleaned from clock numbers/wrappers",
+    "gold/yellow card and modal text accents changed to red/orange theme",
+    "intro animation changed to carousel ride glide from one slot back"
   ],
   "unchanged": [
-    "numbers",
-    "colons",
-    "layout",
-    "spacing",
-    "cards",
-    "carousel",
-    "header placement",
-    "background/images",
-    "modals",
+    "card layout",
+    "card sizing",
+    "card spacing",
+    "card x/y placement",
+    "carousel geometry",
+    "header layout",
+    "clock position",
+    "background image",
+    "modal structure",
     "GitHub Pages workflow"
   ],
-  "node_syntax_check": "passed"
+  "node_syntax_check": {
+    "index_inline_script": "passed",
+    "sync_script": "passed"
+  },
+  "workflow_check": "pages.yml present with pages: write and id-token: write"
 }
