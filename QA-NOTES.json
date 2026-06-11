@@ -1,19 +1,22 @@
 {
-  "version": "v122-no-intro-rise-countdown-10pm",
-  "base": "dfo-v121-horizontal-ring-intro-no-bottom-rise.zip",
+  "version": "v124-cname-dfofireworks-com",
+  "base": "dfo-v123-locations-video-categories-domain-ready.zip",
+  "domain": "dfofireworks.com",
   "changed": [
-    "no-rise opening intro",
-    "countdown target July 4 2026 10:00 PM"
+    "CNAME file added",
+    "DOMAIN-SETUP.txt updated"
   ],
   "unchanged": [
-    "card layout",
-    "card size",
-    "spacing",
-    "final placement",
-    "carousel geometry",
+    "homepage",
+    "locations modal",
+    "video modal",
+    "cards",
+    "carousel",
     "header",
-    "background",
+    "countdown",
+    "background image",
     "modals"
   ],
-  "node_syntax_check": "passed"
+  "node_syntax_check": "passed",
+  "cname_check": "passed"
 }

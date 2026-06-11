@@ -4815,9 +4815,100 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V123 LOCATIONS ALIGNMENT + VIDEO CATEGORIES
+   Built from V122.
+   Changes:
+   - Desktop / 2x2 tablet location cards align Get Directions buttons at the bottom.
+   - Stacked mobile / vertical tablet location layout is untouched.
+   - Video modal gets category-card treatment instead of demo labels.
+   - Demo Video labels are removed from cards.
+========================= */
+
+/* Only 2x2 layouts: desktop and landscape/wide tablet */
+@media (min-width:821px){
+  #locationsModal .location-grid{
+    align-items:stretch !important;
+  }
+
+  #locationsModal .location-grid article{
+    display:flex !important;
+    flex-direction:column !important;
+  }
+
+  #locationsModal .location-grid article .modal-link,
+  #locationsModal .location-grid article a{
+    margin-top:auto !important;
+    align-self:flex-start !important;
+  }
+}
+
+/* Video modal category style */
+#videosModal .video-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:18px !important;
+}
+
+#videosModal .video-card{
+  padding:0 !important;
+  overflow:hidden !important;
+  border:1px solid rgba(255,74,32,.42) !important;
+  border-radius:16px !important;
+  background:linear-gradient(180deg,rgba(255,74,32,.075),rgba(255,255,255,.032)) !important;
+}
+
+#videosModal .video-card iframe{
+  width:100% !important;
+  aspect-ratio:16/9 !important;
+  height:auto !important;
+  display:block !important;
+  border:0 !important;
+}
+
+#videosModal .video-card p{
+  margin:0 !important;
+  padding:16px 18px 18px !important;
+  color:#ff4a28 !important;
+  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  font-size:clamp(16px,1.05vw,23px) !important;
+  line-height:1.08 !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase !important;
+  font-weight:900 !important;
+  text-shadow:0 0 6px rgba(255,74,32,.28) !important;
+}
+
+#videosModal .video-card .video-category{
+  display:block !important;
+  padding:18px 18px 0 !important;
+  color:#ffffff !important;
+  font-family:var(--head) !important;
+  font-size:clamp(28px,2.2vw,48px) !important;
+  line-height:.9 !important;
+  letter-spacing:-.02em !important;
+  text-transform:uppercase !important;
+  text-shadow:0 2px 14px rgba(0,0,0,.82) !important;
+}
+
+#videosModal .category-note{
+  margin:-4px 0 22px !important;
+  max-width:980px !important;
+  color:rgba(255,255,255,.74) !important;
+  font-weight:800 !important;
+  letter-spacing:.055em !important;
+  text-transform:uppercase !important;
+}
+
+@media (max-width:820px){
+  #videosModal .video-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v122-no-intro-rise-countdown-10pm">
+<body data-build="v124-cname-dfofireworks-com">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4876,17 +4967,46 @@ button:focus-visible{
 <div class="modal-layer" id="videosModal">
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
-    <p class="eyebrow">Demo Wall</p><h2>Featured Firework Demos</h2>
-    <div class="video-grid">
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/cZHENq6D12o" title="DFO Demo Video 1" allowfullscreen></iframe><p>Demo Video 1</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/HQKTQe-Efvs" title="DFO Demo Video 2" allowfullscreen></iframe><p>Demo Video 2</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/iujTwXJBfy8" title="DFO Demo Video 3" allowfullscreen></iframe><p>Demo Video 3</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/458UhOBXJLg" title="DFO Demo Video 4" allowfullscreen></iframe><p>Demo Video 4</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/tFteOme5wYc" title="DFO Demo Video 5" allowfullscreen></iframe><p>Demo Video 5</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/-rW3QapRaLQ" title="DFO Demo Video 6" allowfullscreen></iframe><p>Demo Video 6</p></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/NqIRgRR2wP8" title="DFO Demo Video 7" allowfullscreen></iframe><p>Demo Video 7</p></div>
+      <h2>Featured Firework Demos</h2>
+      <p class="category-note">Sorted by category for easier show planning. More videos can be added as we collect them.</p>
+      <div class="video-grid">
+        <article class="video-card" data-category="assortments">
+          <span class="video-category">ASSORTMENTS</span>
+          <iframe src="https://www.youtube.com/embed/HQKTQe-Efvs" title="Heavy Duty Assortment / World-Class Fireworks" allowfullscreen></iframe>
+          <p>Heavy Duty Assortment / World-Class Fireworks</p>
+        </article>
+        <article class="video-card" data-category="cakes">
+          <span class="video-category">CAKES</span>
+          <iframe src="https://www.youtube.com/embed/cZHENq6D12o" title="The Godfather — Firework Fireworks" allowfullscreen></iframe>
+          <p>The Godfather — Firework Fireworks</p>
+        </article>
+        <article class="video-card" data-category="cakes">
+          <span class="video-category">CAKES</span>
+          <iframe src="https://www.youtube.com/embed/iujTwXJBfy8" title="Bone Shaker By Mars Pyrotechnics" allowfullscreen></iframe>
+          <p>Bone Shaker By Mars Pyrotechnics</p>
+        </article>
+        <article class="video-card" data-category="cakes">
+          <span class="video-category">CAKES</span>
+          <iframe src="https://www.youtube.com/embed/458UhOBXJLg" title="Boss Firework Demo By World-Class Fireworks" allowfullscreen></iframe>
+          <p>Boss Firework Demo By World-Class Fireworks</p>
+        </article>
+        <article class="video-card" data-category="cakes">
+          <span class="video-category">CAKES</span>
+          <iframe src="https://www.youtube.com/embed/tFteOme5wYc" title="I’m King of the Block / 500 Gram Cake" allowfullscreen></iframe>
+          <p>I’m King of the Block / 500 Gram Cake</p>
+        </article>
+        <article class="video-card" data-category="fountains">
+          <span class="video-category">FOUNTAINS</span>
+          <iframe src="https://www.youtube.com/embed/-rW3QapRaLQ" title="Eruption FF4033 Flashing Firework Fountain" allowfullscreen></iframe>
+          <p>Eruption FF4033 Flashing Firework Fountain</p>
+        </article>
+        <article class="video-card" data-category="artilleries">
+          <span class="video-category">ARTILLERIES</span>
+          <iframe src="https://www.youtube.com/embed/NqIRgRR2wP8" title="BP-A100 Masterclass Assortment" allowfullscreen></iframe>
+          <p>BP-A100 Masterclass Assortment</p>
+        </article>
+      </div>
     </div>
-  </div>
 </div>
 
 <div class="modal-layer" id="locationsModal">
@@ -5414,11 +5534,11 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V122 loaded: no-rise opening intro and July 4 2026 10PM countdown.");
+console.log("DFO V124 loaded: CNAME added for dfofireworks.com.");
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V122 HIDDEN CALIBRATION</b>
+  <b>V124 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

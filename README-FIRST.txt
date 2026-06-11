@@ -1,22 +1,26 @@
-DFO V122 — No-Rise Opening + July 4 10PM Countdown
+DFO V124 — CNAME Added for dfofireworks.com
 
-Built from V121.
+Built from V123.
 
 Changed:
-- Opening intro no longer comes up from the bottom.
-- Cards are placed at their final ring height immediately.
-- Intro now softly fades/clears into view without vertical movement.
-- Countdown target updated to July 4, 2026 at 10:00 PM.
+- Added a real CNAME file at the repo root.
+- CNAME contains only:
+  dfofireworks.com
+- Updated DOMAIN-SETUP.txt with DNS checklist.
 
 Not changed:
-- Card layout
-- Card size
-- Card spacing
-- Final card placement
-- Carousel geometry
-- Header layout
-- Colors from V120/V121
+- Homepage
+- Locations modal
+- Video modal
+- Cards
+- Carousel
+- Header
+- Countdown
 - Background image
 - Modals
+- GitHub Pages workflow remains included
 
-Upload the full extracted ZIP contents to the repo root, including .github/workflows/pages.yml.
+Upload:
+- Upload the full extracted ZIP contents to the repo root.
+- Make sure CNAME is included at the root, not inside a folder.
+- Keep .github/workflows/pages.yml included.
