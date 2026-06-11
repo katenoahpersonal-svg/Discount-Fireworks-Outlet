@@ -4755,9 +4755,69 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V121 HORIZONTAL RING INTRO — NO BOTTOM RISE
+   Built from V120.
+   Only changes the opening intro path:
+   - cards start slightly offset around the ring
+   - cards keep the same vertical/ring seat
+   - removes the feeling of cards coming up from the bottom
+   No card layout, card sizing, spacing, x/y final placement, carousel geometry, header layout, clock position, background image, colors, or modal structure changed.
+========================= */
+
+@media (min-width:1181px){
+  .carousel.intro-horizontal .card3d{
+    will-change:left, top, width, height, transform, opacity, filter !important;
+    transition:
+      left 1.12s cubic-bezier(.15,.78,.18,1),
+      top 1.12s cubic-bezier(.15,.78,.18,1),
+      width 1.12s cubic-bezier(.15,.78,.18,1),
+      height 1.12s cubic-bezier(.15,.78,.18,1),
+      transform 1.12s cubic-bezier(.15,.78,.18,1),
+      opacity .98s cubic-bezier(.18,.70,.22,1),
+      filter .98s cubic-bezier(.18,.70,.22,1),
+      bottom 1.12s cubic-bezier(.15,.78,.18,1) !important;
+  }
+
+  .carousel.intro-horizontal .card3d .card{
+    transition:
+      transform .98s cubic-bezier(.16,.76,.18,1),
+      box-shadow .98s ease,
+      border-color .98s ease,
+      filter .98s ease !important;
+  }
+}
+
+
+/* =========================
+   V122 NO-RISE OPENING + JULY 4 10PM COUNTDOWN
+   Built from V121.
+   Opening intro no longer animates from bottom or changes vertical position.
+   Cards are placed at final ring height immediately, then softly fade/clear into view.
+   Countdown target is July 4, 2026 at 10:00 PM.
+========================= */
+
+@media (min-width:1181px){
+  .carousel.intro-no-rise .card3d{
+    transition:none !important;
+  }
+
+  .carousel.intro-no-rise .card3d.intro-card{
+    opacity:0 !important;
+    filter:blur(2.5px) brightness(.78) saturate(.92) !important;
+  }
+
+  .carousel.intro-no-rise.intro-no-rise-live .card3d{
+    transition:
+      opacity .92s cubic-bezier(.18,.74,.20,1),
+      filter .92s cubic-bezier(.18,.74,.20,1) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v120-red-label-fix-gold-cleanup-carousel-ride-intro">
+<body data-build="v122-no-intro-rise-countdown-10pm">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5212,7 +5272,7 @@ function goTo(id){
 }
 
 
-/* V120: carousel ride intro. Starts one carousel position back, then glides into the opening wall. */
+/* V122: no-rise intro. Cards are placed at final height immediately, then fade/settle in place. */
 function startIntroRide(){
   const desktopRide = window.matchMedia("(min-width:1181px)").matches;
 
@@ -5221,32 +5281,31 @@ function startIntroRide(){
     return;
   }
 
-  wheel.classList.add("intro-ride");
+  wheel.classList.add("intro-no-rise");
 
   els.forEach((el, i) => {
-    const finalPos = offsetFor(i);
-    const rideStartPos = finalPos + 1;
-    place(el, rideStartPos, false);
+    const pos = offsetFor(i);
+    place(el, pos, false);
+    prevPos[i] = pos;
+    el.classList.add("intro-card");
   });
+
+  syncHeaderNav();
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      els.forEach((el, i) => {
-        const pos = offsetFor(i);
-        place(el, pos, true);
-        prevPos[i] = pos;
-      });
-      syncHeaderNav();
+      wheel.classList.add("intro-no-rise-live");
+      els.forEach(el => el.classList.remove("intro-card"));
     });
   });
 
   setTimeout(() => {
-    wheel.classList.remove("intro-ride");
-  }, 1320);
+    wheel.classList.remove("intro-no-rise","intro-no-rise-live");
+  }, 980);
 }
 
 /* ===== countdown ===== */
-const target = new Date("2026-07-04T09:00:00");
+const target = new Date("2026-07-04T22:00:00");
 const pad = v => String(v).padStart(2,"0");
 function countdown(){
   const d = Math.max(target - new Date(), 0);
@@ -5355,11 +5414,11 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V120 loaded: red label fix, gold cleanup, and carousel ride intro.");
+console.log("DFO V122 loaded: no-rise opening intro and July 4 2026 10PM countdown.");
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V120 HIDDEN CALIBRATION</b>
+  <b>V122 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

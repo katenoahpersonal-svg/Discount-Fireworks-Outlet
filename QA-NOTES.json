@@ -1,27 +1,19 @@
 {
-  "version": "v120-red-label-fix-gold-cleanup-carousel-ride-intro",
-  "base": "dfo-v119-warm-red-countdown-lifted-mood.zip",
-  "changed_v120": [
-    "countdown labels target actual selectors .clock-lab and .bottom-row small",
-    "blue glow cleaned from clock numbers/wrappers",
-    "gold/yellow card and modal text accents changed to red/orange theme",
-    "intro animation changed to carousel ride glide from one slot back"
+  "version": "v122-no-intro-rise-countdown-10pm",
+  "base": "dfo-v121-horizontal-ring-intro-no-bottom-rise.zip",
+  "changed": [
+    "no-rise opening intro",
+    "countdown target July 4 2026 10:00 PM"
   ],
   "unchanged": [
     "card layout",
-    "card sizing",
-    "card spacing",
-    "card x/y placement",
+    "card size",
+    "spacing",
+    "final placement",
     "carousel geometry",
-    "header layout",
-    "clock position",
-    "background image",
-    "modal structure",
-    "GitHub Pages workflow"
+    "header",
+    "background",
+    "modals"
   ],
-  "node_syntax_check": {
-    "index_inline_script": "passed",
-    "sync_script": "passed"
-  },
-  "workflow_check": "pages.yml present with pages: write and id-token: write"
+  "node_syntax_check": "passed"
 }
