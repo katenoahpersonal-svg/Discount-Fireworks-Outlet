@@ -1,0 +1,12 @@
+Domain setup needed
+
+Tell ChatGPT the exact domain to connect, for example:
+discountfireworksoutlet.com
+or
+www.discountfireworksoutlet.com
+
+Once exact domain is confirmed, add a file named CNAME to the repo root containing only that domain.
+
+GitHub Pages DNS reminder:
+- Apex/root domain usually needs A records to GitHub Pages.
+- www usually needs a CNAME record pointing to katenoahpersonal-svg.github.io.
