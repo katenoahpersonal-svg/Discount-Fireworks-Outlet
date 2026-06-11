@@ -4937,9 +4937,43 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V128 HARD VIDEO CATEGORY RESET + CENTER FAN-OUT INTRO
+========================= */
+#videosModal .modal{width:min(1500px,96vw)!important}
+#videosModal .category-note{margin:8px 0 28px!important;max-width:1100px!important;color:rgba(255,255,255,.72)!important;font-weight:900!important;letter-spacing:.075em!important;text-transform:uppercase!important}
+#videosModal .demo-category-view.is-active{display:block!important}
+#videosModal .demo-category-view:not(.is-active){display:none!important}
+#videosModal .demo-category-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important;align-items:stretch!important}
+#videosModal .demo-category-card{appearance:none!important;border:1px solid rgba(255,74,32,.44)!important;border-radius:18px!important;padding:0!important;background:linear-gradient(180deg,rgba(255,74,32,.075),rgba(255,255,255,.035))!important;overflow:hidden!important;cursor:pointer!important;text-align:left!important;min-height:410px!important;display:flex!important;flex-direction:column!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.035),0 0 24px rgba(255,74,32,.08)!important;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,filter .22s ease!important}
+#videosModal .demo-category-card:hover,#videosModal .demo-category-card:focus-visible{transform:translateY(-3px)!important;border-color:rgba(255,122,54,.82)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06),0 0 34px rgba(255,74,32,.20)!important;outline:none!important}
+#videosModal .demo-category-cover{display:block!important;width:100%!important;aspect-ratio:16/8.7!important;background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(2,4,13,.74) 100%),var(--cat-img) center/cover no-repeat!important;border-bottom:1px solid rgba(255,74,32,.32)!important}
+#videosModal .demo-category-body{display:flex!important;flex-direction:column!important;gap:10px!important;padding:22px 26px 24px!important;flex:1 1 auto!important}
+#videosModal .demo-category-name{display:block!important;color:#fff!important;font-family:var(--head)!important;font-size:clamp(38px,3.4vw,66px)!important;line-height:.86!important;text-transform:uppercase!important;letter-spacing:-.02em!important;text-shadow:0 2px 16px rgba(0,0,0,.78)!important}
+#videosModal .demo-category-desc{display:block!important;color:rgba(255,255,255,.72)!important;font-weight:900!important;font-size:clamp(14px,.9vw,18px)!important;line-height:1.28!important;letter-spacing:.045em!important}
+#videosModal .demo-category-cta{display:block!important;margin-top:auto!important;color:#ff4a28!important;font-weight:950!important;text-transform:uppercase!important;letter-spacing:.14em!important;font-size:clamp(13px,.8vw,16px)!important;text-shadow:0 0 8px rgba(255,74,32,.24)!important}
+#videosModal .demo-video-page[hidden]{display:none!important}
+#videosModal .demo-back-button{display:inline-flex!important;align-items:center!important;justify-content:center!important;margin:0 0 18px!important;padding:13px 20px!important;border:1px solid rgba(255,109,46,.72)!important;border-radius:999px!important;color:#ff7a36!important;background:rgba(255,74,32,.055)!important;font-weight:950!important;text-transform:uppercase!important;letter-spacing:.13em!important;cursor:pointer!important}
+#videosModal .demo-back-button:hover,#videosModal .demo-back-button:focus-visible{color:#fff!important;background:linear-gradient(180deg,rgba(255,119,55,.98),rgba(255,101,39,.96))!important;outline:none!important}
+#videosModal .demo-page-hero{display:grid!important;grid-template-columns:minmax(300px,.9fr) minmax(320px,1.1fr)!important;gap:24px!important;align-items:stretch!important;margin-bottom:24px!important;border:1px solid rgba(255,74,32,.38)!important;border-radius:18px!important;overflow:hidden!important;background:linear-gradient(180deg,rgba(255,74,32,.07),rgba(255,255,255,.03))!important}
+#videosModal .demo-page-image{min-height:270px!important;display:block!important;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(2,4,13,.74) 100%),var(--cat-img) center/cover no-repeat!important}
+#videosModal .demo-page-copy{padding:34px 34px 30px!important;align-self:center!important}
+#videosModal .demo-page-copy h3{margin:0 0 14px!important;color:#fff!important;font-family:var(--head)!important;font-size:clamp(48px,4.4vw,86px)!important;line-height:.82!important;text-transform:uppercase!important}
+#videosModal .demo-page-copy p{margin:0!important;color:rgba(255,255,255,.72)!important;font-weight:900!important;font-size:clamp(15px,.95vw,19px)!important;line-height:1.35!important;letter-spacing:.05em!important}
+#videosModal .demo-video-list{max-height:min(58vh,680px)!important;overflow:auto!important;padding:0 12px 12px 0!important;display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px!important;scrollbar-color:#ff6d2e rgba(255,255,255,.12)!important}
+#videosModal .demo-video-item{border:1px solid rgba(255,74,32,.38)!important;border-radius:16px!important;overflow:hidden!important;background:rgba(4,6,18,.78)!important;min-height:280px!important}
+#videosModal .demo-video-item iframe{display:block!important;width:100%!important;aspect-ratio:16/9!important;height:auto!important;border:0!important}
+#videosModal .demo-empty-videos{grid-column:1/-1!important;min-height:360px!important;border:1px dashed rgba(255,122,54,.52)!important;border-radius:18px!important;display:grid!important;place-items:center!important;text-align:center!important;padding:34px!important;background:radial-gradient(circle at center,rgba(255,74,32,.12),rgba(255,74,32,.035) 48%,rgba(0,0,0,0) 70%),rgba(4,6,18,.72)!important}
+#videosModal .demo-empty-videos strong{display:block!important;color:#fff!important;font-family:var(--head)!important;font-size:clamp(42px,4vw,72px)!important;line-height:.86!important;text-transform:uppercase!important;margin-bottom:12px!important}
+#videosModal .demo-empty-videos span{color:rgba(255,255,255,.74)!important;font-weight:900!important;text-transform:uppercase!important;letter-spacing:.08em!important}
+#videosModal .video-grid,#videosModal .video-card{display:none!important}
+@media (max-width:980px){#videosModal .demo-category-grid,#videosModal .demo-video-list,#videosModal .demo-page-hero{grid-template-columns:1fr!important}#videosModal .demo-category-card{min-height:auto!important}#videosModal .demo-page-image{min-height:220px!important}}
+@media (min-width:1181px){.carousel.intro-fanout .card3d{will-change:left,top,width,height,transform,opacity,filter!important;transition:left .92s cubic-bezier(.18,.74,.20,1),transform .92s cubic-bezier(.18,.74,.20,1),opacity .78s cubic-bezier(.22,.68,.22,1),filter .78s cubic-bezier(.22,.68,.22,1)!important}.carousel.intro-fanout .card3d .card{transition:transform .92s cubic-bezier(.18,.74,.20,1),box-shadow .92s ease,border-color .92s ease,filter .92s ease!important}}
+
 </style>
 </head>
-<body data-build="v126-github-pages-domain-no-cname">
+<body data-build="v131-main-live-reset-no-branch">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -4998,45 +5032,145 @@ button:focus-visible{
 <div class="modal-layer" id="videosModal">
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
-      <h2>Featured Firework Demos</h2>
-      <p class="category-note">Sorted by category for easier show planning. More videos can be added as we collect them.</p>
-      <div class="video-grid">
-        <article class="video-card" data-category="assortments">
-          <span class="video-category">ASSORTMENTS</span>
-          <iframe src="https://www.youtube.com/embed/HQKTQe-Efvs" title="Heavy Duty Assortment / World-Class Fireworks" allowfullscreen></iframe>
-          <p>Heavy Duty Assortment / World-Class Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/cZHENq6D12o" title="The Godfather — Firework Fireworks" allowfullscreen></iframe>
-          <p>The Godfather — Firework Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/iujTwXJBfy8" title="Bone Shaker By Mars Pyrotechnics" allowfullscreen></iframe>
-          <p>Bone Shaker By Mars Pyrotechnics</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/458UhOBXJLg" title="Boss Firework Demo By World-Class Fireworks" allowfullscreen></iframe>
-          <p>Boss Firework Demo By World-Class Fireworks</p>
-        </article>
-        <article class="video-card" data-category="cakes">
-          <span class="video-category">CAKES</span>
-          <iframe src="https://www.youtube.com/embed/tFteOme5wYc" title="I’m King of the Block / 500 Gram Cake" allowfullscreen></iframe>
-          <p>I’m King of the Block / 500 Gram Cake</p>
-        </article>
-        <article class="video-card" data-category="fountains">
-          <span class="video-category">FOUNTAINS</span>
-          <iframe src="https://www.youtube.com/embed/-rW3QapRaLQ" title="Eruption FF4033 Flashing Firework Fountain" allowfullscreen></iframe>
-          <p>Eruption FF4033 Flashing Firework Fountain</p>
-        </article>
-        <article class="video-card" data-category="artilleries">
-          <span class="video-category">ARTILLERIES</span>
-          <iframe src="https://www.youtube.com/embed/NqIRgRR2wP8" title="BP-A100 Masterclass Assortment" allowfullscreen></iframe>
-          <p>BP-A100 Masterclass Assortment</p>
-        </article>
-      </div>
+      <h2>Choose Your Firework Demo Category</h2>
+      <p class="category-note">Pick a category first. Each category opens into its own scrollable demo page.</p>
+
+      <section class="demo-category-view is-active" data-demo-view="categories" aria-label="Firework demo categories">
+        <div class="demo-category-grid">
+        <button class="demo-category-card has-videos" type="button" data-demo-category-open="cakes">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-cakes.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Cakes</span>
+            <span class="demo-category-desc">Multi-shot cakes for color, crackle, height, and finale energy.</span>
+            <span class="demo-category-cta">Open 4 videos</span>
+          </span>
+        </button>
+        <button class="demo-category-card is-coming-soon" type="button" data-demo-category-open="artilleries">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-artilleries.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Artilleries</span>
+            <span class="demo-category-desc">Reloadable shells and canisters. Demo videos coming soon.</span>
+            <span class="demo-category-cta">Videos coming soon</span>
+          </span>
+        </button>
+        <button class="demo-category-card has-videos" type="button" data-demo-category-open="assortments">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-assortments.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Assortments</span>
+            <span class="demo-category-desc">Mixed bundles for building a full backyard show.</span>
+            <span class="demo-category-cta">Open 2 videos</span>
+          </span>
+        </button>
+        <button class="demo-category-card has-videos" type="button" data-demo-category-open="fountains">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-fountains.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Fountains</span>
+            <span class="demo-category-desc">Ground effects with gold spray, crackle, color, and sparkle.</span>
+            <span class="demo-category-cta">Open 1 video</span>
+          </span>
+        </button>
+        <button class="demo-category-card is-coming-soon" type="button" data-demo-category-open="missile">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-missile.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Missile</span>
+            <span class="demo-category-desc">Missile and rocket-style effects. Demo videos coming soon.</span>
+            <span class="demo-category-cta">Videos coming soon</span>
+          </span>
+        </button>
+        <button class="demo-category-card is-coming-soon" type="button" data-demo-category-open="misc">
+          <span class="demo-category-cover" style="--cat-img:url('assets/dfo-category-misc.svg')"></span>
+          <span class="demo-category-body">
+            <span class="demo-category-name">Misc.</span>
+            <span class="demo-category-desc">Novelties, romans, smoke, parachutes, rockets, and fun add-ons.</span>
+            <span class="demo-category-cta">Videos coming soon</span>
+          </span>
+        </button>
+        </div>
+      </section>
+
+      <section class="demo-video-page" data-demo-view="videos" hidden aria-label="Category video list">
+        <button class="demo-back-button" type="button" data-demo-back>← Back to categories</button>
+        <div class="demo-page-hero">
+          <span class="demo-page-image" data-demo-page-image></span>
+          <div class="demo-page-copy">
+            <h3 data-demo-page-title></h3>
+            <p data-demo-page-desc></p>
+          </div>
+        </div>
+        <div class="demo-video-list" data-demo-video-list></div>
+      </section>
+
+      <script type="application/json" id="demoCategoryData">
+{
+  "cakes": {
+    "title": "Cakes",
+    "desc": "Multi-shot cakes for color, crackle, height, and finale energy.",
+    "image": "assets/dfo-category-cakes.svg",
+    "videos": [
+      {
+        "title": "The Godfather \u2014 Firework Fireworks",
+        "src": "https://www.youtube.com/embed/cZHENq6D12o"
+      },
+      {
+        "title": "Bone Shaker By Mars Pyrotechnics",
+        "src": "https://www.youtube.com/embed/iujTwXJBfy8"
+      },
+      {
+        "title": "Boss Firework Demo By World-Class Fireworks",
+        "src": "https://www.youtube.com/embed/458UhOBXJLg"
+      },
+      {
+        "title": "I\u2019m King of the Block / 500 Gram Cake",
+        "src": "https://www.youtube.com/embed/tFteOme5wYc"
+      }
+    ]
+  },
+  "artilleries": {
+    "title": "Artilleries",
+    "desc": "Reloadable shells and canisters. Demo videos coming soon.",
+    "image": "assets/dfo-category-artilleries.svg",
+    "videos": []
+  },
+  "assortments": {
+    "title": "Assortments",
+    "desc": "Mixed bundles for building a full backyard show.",
+    "image": "assets/dfo-category-assortments.svg",
+    "videos": [
+      {
+        "title": "Heavy Duty Assortment / World-Class Fireworks",
+        "src": "https://www.youtube.com/embed/HQKTQe-Efvs"
+      },
+      {
+        "title": "BP-A100 Masterclass Assortment",
+        "src": "https://www.youtube.com/embed/NqIRgRR2wP8"
+      }
+    ]
+  },
+  "fountains": {
+    "title": "Fountains",
+    "desc": "Ground effects with gold spray, crackle, color, and sparkle.",
+    "image": "assets/dfo-category-fountains.svg",
+    "videos": [
+      {
+        "title": "Eruption FF4033 Flashing Firework Fountain",
+        "src": "https://www.youtube.com/embed/-rW3QapRaLQ"
+      }
+    ]
+  },
+  "missile": {
+    "title": "Missile",
+    "desc": "Missile and rocket-style effects. Demo videos coming soon.",
+    "image": "assets/dfo-category-missile.svg",
+    "videos": []
+  },
+  "misc": {
+    "title": "Misc.",
+    "desc": "Novelties, romans, smoke, parachutes, rockets, and fun add-ons.",
+    "image": "assets/dfo-category-misc.svg",
+    "videos": []
+  }
+}
+      </script>
     </div>
 </div>
 
@@ -5423,9 +5557,7 @@ function goTo(id){
 }
 
 
-/* V125: forced no-vertical intro.
-   Cards are seated at their final ring position immediately.
-   There is no opening path from below, no top/bottom movement, and no vertical glide. */
+/* V128: center fan-out intro. Cards start seated in the middle, then slide outward to ring positions. */
 function startIntroRide(){
   const desktopRide = window.matchMedia("(min-width:1181px)").matches;
 
@@ -5434,25 +5566,42 @@ function startIntroRide(){
     return;
   }
 
-  wheel.classList.add("intro-final-seat");
+  wheel.classList.add("intro-fanout");
 
   els.forEach((el, i) => {
     const pos = offsetFor(i);
+    const slot = slotFor(pos);
     place(el, pos, false);
     prevPos[i] = pos;
+
+    el.style.left = "calc(50% + 0vw)";
+    el.style.top = `calc(${slot.y}vh)`;
+    el.style.opacity = pos === 0 ? ".96" : ".26";
+    el.style.filter = "blur(1.7px) brightness(.82) saturate(.92)";
+    el.style.transform = `
+      translate(-50%,-50%)
+      perspective(1500px)
+      translateZ(${slot.z - 120}px)
+      rotateY(${pos < 0 ? -8 : pos > 0 ? 8 : 0}deg)
+      scale(${slot.scale * .96})
+    `;
   });
 
   syncHeaderNav();
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      wheel.classList.add("intro-final-seat-live");
+      els.forEach((el, i) => {
+        const pos = offsetFor(i);
+        place(el, pos, true);
+        prevPos[i] = pos;
+      });
     });
   });
 
   setTimeout(() => {
-    wheel.classList.remove("intro-final-seat","intro-final-seat-live");
-  }, 760);
+    wheel.classList.remove("intro-fanout");
+  }, 1020);
 }
 
 /* ===== countdown ===== */
@@ -5565,11 +5714,98 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V126 loaded: GitHub Pages domain version, no CNAME custom domain file.");
+console.log("DFO V131 MAIN LIVE RESET loaded: no branch, no domain, category modal hard reset.");
+
+
+/* V128: hard category-page behavior for video modal */
+(function(){
+  const dataEl = document.getElementById("demoCategoryData");
+  const modal = document.getElementById("videosModal");
+  if (!dataEl || !modal) return;
+
+  let demoData = {};
+  try { demoData = JSON.parse(dataEl.textContent || "{}"); }
+  catch (err) { console.warn("DFO demo category data could not be parsed", err); return; }
+
+  const categoriesView = modal.querySelector('[data-demo-view="categories"]');
+  const videosView = modal.querySelector('[data-demo-view="videos"]');
+  const list = modal.querySelector('[data-demo-video-list]');
+  const title = modal.querySelector('[data-demo-page-title]');
+  const desc = modal.querySelector('[data-demo-page-desc]');
+  const image = modal.querySelector('[data-demo-page-image]');
+  const back = modal.querySelector('[data-demo-back]');
+
+  function resetIframes(){
+    if (!list) return;
+    list.querySelectorAll("iframe").forEach(frame => {
+      const src = frame.getAttribute("src");
+      frame.setAttribute("src", src);
+    });
+  }
+
+  function showCategories(){
+    resetIframes();
+    if (videosView) videosView.hidden = true;
+    if (categoriesView) categoriesView.classList.add("is-active");
+    if (list) list.innerHTML = "";
+  }
+
+  function showCategory(key){
+    const item = demoData[key];
+    if (!item || !categoriesView || !videosView || !list || !title || !desc || !image) return;
+    categoriesView.classList.remove("is-active");
+    videosView.hidden = false;
+    title.textContent = item.title || "";
+    desc.textContent = item.desc || "";
+    image.style.setProperty("--cat-img", `url('${item.image}')`);
+    list.innerHTML = "";
+
+    if (!item.videos || !item.videos.length){
+      list.innerHTML = `<div class="demo-empty-videos"><div><strong>Videos Coming Soon</strong><span>This category page is ready. We can drop videos here later.</span></div></div>`;
+    } else {
+      item.videos.forEach(video => {
+        const article = document.createElement("article");
+        article.className = "demo-video-item";
+        const iframe = document.createElement("iframe");
+        iframe.src = video.src;
+        iframe.title = video.title || item.title || "Firework demo";
+        iframe.loading = "lazy";
+        iframe.allowFullscreen = true;
+        iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+        article.appendChild(iframe);
+        list.appendChild(article);
+      });
+    }
+    videosView.scrollIntoView({block:"start", behavior:"smooth"});
+  }
+
+  modal.querySelectorAll("[data-demo-category-open]").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      showCategory(btn.dataset.demoCategoryOpen);
+    });
+  });
+
+  if (back){
+    back.addEventListener("click", e => {
+      e.preventDefault();
+      e.stopPropagation();
+      showCategories();
+    });
+  }
+
+  document.querySelectorAll('[data-modal="videosModal"], [data-open-modal="videosModal"]').forEach(trigger => {
+    trigger.addEventListener("click", () => requestAnimationFrame(showCategories));
+  });
+
+  showCategories();
+})();
+
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V126 HIDDEN CALIBRATION</b>
+  <b>V131 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

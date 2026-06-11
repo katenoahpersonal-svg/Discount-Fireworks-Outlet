@@ -1,0 +1,20 @@
+{
+  "version": "v131-main-live-reset-no-branch",
+  "base": "dfo-v128-hard-video-category-reset-center-fanout.zip",
+  "for_branch": "main",
+  "do_not_create_branch": true,
+  "do_not_create_pull_request": true,
+  "cname_present": false,
+  "expected_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v131",
+  "expected_modal_heading": "Choose Your Firework Demo Category",
+  "expected_categories": [
+    "Cakes",
+    "Artilleries",
+    "Assortments",
+    "Fountains",
+    "Missile",
+    "Misc."
+  ],
+  "first_modal_screen_has_iframes": false,
+  "node_syntax_check": "passed"
+}

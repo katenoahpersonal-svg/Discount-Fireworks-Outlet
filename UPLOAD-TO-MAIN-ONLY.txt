@@ -1,0 +1,28 @@
+DFO V131 MAIN LIVE RESET — NO BRANCH
+
+Use this package ONLY for the main branch.
+
+Do this:
+1. Go to GitHub repo > Code.
+2. Make sure branch dropdown says main.
+3. Click Add file > Upload files.
+4. Extract this zip first.
+5. Drag the CONTENTS of the extracted folder into GitHub.
+6. Scroll down.
+7. Select: Commit directly to the main branch.
+8. Click Commit changes.
+9. Wait for Actions green check.
+10. Open:
+   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v131
+
+Do NOT:
+- Do not create a new branch.
+- Do not create a pull request.
+- Do not add CNAME.
+- Do not use dfofireworks.com right now.
+
+Expected proof after it works:
+- Video modal should say: Choose Your Firework Demo Category
+- First video modal screen should show six category cards only:
+  Cakes, Artilleries, Assortments, Fountains, Missile, Misc.
+- It should NOT show embedded YouTube cards first.
