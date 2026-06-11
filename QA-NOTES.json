@@ -1,21 +1,18 @@
 {
-  "version": "v128-hard-video-category-reset-center-fanout",
-  "base": "dfo-v126-github-pages-domain-no-cname.zip",
+  "version": "v126-github-pages-domain-no-cname",
+  "base": "dfo-v125-force-no-vertical-intro-cdt-countdown-domain.zip",
+  "temporary_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/",
   "changed": [
-    "hard reset videos modal landing to six category cards",
-    "no first-screen iframes",
-    "category drill-down pages",
-    "generated custom SVG category art",
-    "center fan-out intro"
+    "CNAME file removed",
+    "TEMP-GITHUB-DOMAIN.txt added",
+    "DOMAIN-SETUP.txt updated for temporary GitHub Pages URL"
   ],
-  "categories": {
-    "cakes": 4,
-    "artilleries": 0,
-    "assortments": 2,
-    "fountains": 1,
-    "missile": 0,
-    "misc": 0
-  },
+  "retained": [
+    "V123 locations modal alignment",
+    "V123 video category modal",
+    "V125 no-vertical opening intro",
+    "V125 countdown target July 4 2026 10 PM CDT"
+  ],
   "cname_present": false,
   "node_syntax_check": "passed"
 }

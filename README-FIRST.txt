@@ -1,23 +1,18 @@
-DFO V131 — Main Live Reset, No Branch
+DFO V132 — Emergency Stable Main Rollback
 
-This is the recovery package.
+This is the recovery file.
 
-Built for:
-- main branch only
-- no branch
-- no pull request
-- no custom domain/CNAME
+Built from the last stable no-domain package before the video modal reset attempts.
 
-Retained:
-- no-domain GitHub Pages setup
-- video modal category hard reset
-- center fan-out intro
-- countdown target July 4, 2026 at 10 PM CDT
-- current homepage/card/header/background structure
+Changed:
+- Restores stable homepage/carousel behavior.
+- Removes CNAME/custom domain.
+- Keeps countdown target July 4, 2026 at 10 PM CDT.
+- Adds clear V132 marker.
 
-Live URL:
-https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v131
+Not included:
+- The broken V128/V131 video modal hard reset.
+- Any branch-specific setup.
+- Any custom domain setup.
 
-Expected video modal first screen:
-Choose Your Firework Demo Category
-Six category cards only.
+Upload to main only.
