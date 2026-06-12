@@ -1,26 +1,30 @@
-DFO V134 — Hard No Opening Effect
+DFO V135 — V134 Stable Reupload With Domain
 
-Use on main branch only.
+Purpose:
+Your domain and GitHub Pages are connected, but the live site is showing old files.
+This package puts the correct V134 stable site back on main and includes the CNAME file for dfofireworks.com.
 
-Changed:
-- Removed the remaining opening effect.
-- Page first paint is locked with no transitions/animations.
-- Cards are placed directly into their final slots with animation disabled.
-- Then normal interactions are restored for arrows/card clicks.
+Use:
+- Upload to main only.
+- Commit directly to main.
+- No branch.
+- No pull request.
+- Do not change Cloudflare/DNS.
 
-Retained:
-- V133 video wall-in-wall with breadcrumbs.
-- Corrected video categories.
-- No CNAME/domain.
-- Countdown target July 4, 2026 at 10 PM CDT.
-
-Upload:
+Steps:
 1. Extract this zip.
-2. GitHub Code tab.
-3. Branch must say main.
+2. GitHub repo > Code.
+3. Make sure branch dropdown says main.
 4. Add file > Upload files.
-5. Drag extracted contents.
+5. Drag the extracted contents into GitHub.
 6. Commit directly to main.
-7. Wait for green Actions check.
-8. Open:
-   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v134
+7. Wait for Actions green check.
+8. Test:
+   https://dfofireworks.com/?fresh=v135
+   https://www.dfofireworks.com/?fresh=v135
+
+Expected:
+- The cinematic V134/V135 site loads.
+- No opening effect.
+- Video modal has category wall with breadcrumbs.
+- Custom domain stays connected.
