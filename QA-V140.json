@@ -1,0 +1,9 @@
+{
+  "version": "v140-mobile-locations-sweetspot",
+  "base": "DFO-V139-MOBILE-FIRST-CARD-LOWER.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_fix": "middle position between V138 clipped and V139 too low",
+  "expected_url": "https://dfofireworks.com/?fresh=v140",
+  "created_epoch": 1781294377
+}

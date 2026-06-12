@@ -1,0 +1,11 @@
+{
+  "version": "v141-mobile-locations-actual-move-up",
+  "base": "DFO-V140-MOBILE-LOCATIONS-SWEETSPOT.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_fix": "direct transform on .card3d-locations",
+  "locations_transform": "translateY(-38px), -34px narrow",
+  "videos_margin_compensation": "-38px, -34px narrow",
+  "expected_url": "https://dfofireworks.com/?fresh=v141",
+  "created_epoch": 1781295436
+}
