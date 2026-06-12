@@ -1,31 +1,20 @@
-DFO V136 — Mobile Card Cleanup
+DFO V137 — Mobile Spacing + Footer Directions
 
-Use on main branch only.
+Upload to main only. Do not touch Cloudflare or Squarespace.
 
 Changed:
-- Mobile card order is now:
-  1. Locations
-  2. Videos
-  3. Build Your Show
-  4. Socials
-- Finale Favorites is hidden on mobile only.
-- The calibration/debug script panel at the bottom is removed.
-- The huge mobile gap between header and first card is tightened.
-- Mobile cards have even spacing.
-- Domain CNAME is included: dfofireworks.com
+- Tightens the mobile gap between the header and first card.
+- Keeps mobile card order from V136:
+  Locations, Videos, Build Your Show, Socials.
+- Adds more separation between the Social Feed card and the bottom countdown.
+- Adds Get Directions to the footer.
+- Keeps calibration/debug footer hidden.
+- Keeps CNAME for dfofireworks.com.
 
-Do not change:
-- Cloudflare DNS
-- Squarespace
-- GitHub Pages settings
+Desktop note:
+If desktop still shows the old version while mobile shows V136/V137, DNS is correct.
+That is browser/ISP/GitHub edge cache propagation. Flush DNS/cache or wait.
+Do not change Squarespace/Cloudflare.
 
-Upload:
-1. Extract this zip.
-2. GitHub repo > Code.
-3. Branch must say main.
-4. Add file > Upload files.
-5. Drag extracted contents.
-6. Commit directly to main.
-7. Wait for green Actions check.
-8. Test on mobile:
-   https://dfofireworks.com/?fresh=v136
+Test:
+https://dfofireworks.com/?fresh=v137

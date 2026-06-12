@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
 <!-- DFO V136 MOBILE CARD CLEANUP: locations/videos/build/social, no calibration footer -->
 <!-- DFO V135 DOMAIN REUPLOAD: V134 stable + dfofireworks.com CNAME -->
 <!-- DFO V134 MAIN UPLOAD: hard no opening effect -->
 <!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
 <!-- DFO V132 EMERGENCY STABLE MAIN ROLLBACK: stable no-domain restore -->
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Discount Fireworks Outlet</title>
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico?v=99">
@@ -5397,9 +5401,143 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================
+   V137 MOBILE SPACING + FOOTER DIRECTIONS
+   Built from V136.
+   Mobile:
+   - Pull first card up so header-to-card gap matches the rest.
+   - Add clean separation before bottom countdown.
+   - Add footer Get Directions button.
+   - Keep calibration/debug hidden.
+========================= */
+
+.calibration-panel,
+.calibration-dot,
+.ring-guide,
+#calibrationDots{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+.footer-directions{
+  appearance:none !important;
+  border:1.5px solid #ff6d2e !important;
+  border-radius:999px !important;
+  background:rgba(255,109,46,.06) !important;
+  color:#fff !important;
+  min-height:46px !important;
+  padding:0 24px !important;
+  font-weight:950 !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase !important;
+  cursor:pointer !important;
+  box-shadow:0 0 22px rgba(255,109,46,.18), inset 0 0 18px rgba(255,109,46,.05) !important;
+}
+
+.footer-directions:hover,
+.footer-directions:focus-visible{
+  background:#ff6d2e !important;
+  color:#fff !important;
+  outline:none !important;
+  box-shadow:0 0 28px rgba(255,109,46,.55) !important;
+}
+
+@media (max-width:1180px) and (orientation:portrait){
+  .scene{
+    padding-bottom:82px !important;
+  }
+
+  .carousel{
+    gap:24px !important;
+  }
+
+  .bottom-count{
+    margin-top:52px !important;
+    margin-bottom:26px !important;
+    position:relative !important;
+    z-index:30 !important;
+  }
+
+  .footer{
+    gap:16px !important;
+  }
+}
+
+@media (max-width:700px){
+  .header{
+    margin-bottom:0 !important;
+    padding-bottom:12px !important;
+  }
+
+  /*
+    The original mobile stack still left too much scenic background before the first card.
+    This pulls the whole card stack up while giving extra bottom padding so the countdown
+    does not collide with the Social Feed card.
+  */
+  .scene{
+    margin-top:clamp(-150px, -34vw, -120px) !important;
+    padding-top:18px !important;
+    padding-bottom:96px !important;
+  }
+
+  .carousel{
+    gap:22px !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    margin:0 auto !important;
+  }
+
+  .card3d + .card3d{
+    margin-top:0 !important;
+  }
+
+  .bottom-count{
+    margin:58px auto 26px !important;
+    padding-top:0 !important;
+    position:relative !important;
+    z-index:40 !important;
+  }
+
+  .bottom-count p{
+    margin-bottom:10px !important;
+    opacity:.88 !important;
+  }
+
+  .footer{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+    padding:18px 16px 22px !important;
+    text-align:center !important;
+  }
+
+  .footer .promise,
+  .footer .drag-note{
+    display:none !important;
+  }
+
+  .footer .follow{
+    order:1 !important;
+  }
+
+  .footer-directions{
+    order:2 !important;
+    width:min(92vw,430px) !important;
+    margin:0 auto !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v136-mobile-card-cleanup" class="load-lock">
+<body data-build="v137-mobile-spacing-footer-directions" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5451,6 +5589,7 @@ body.load-lock .topbar{
       <a class="fb" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
       <div class="follow-text">Follow the Finale<small>facebook.com/DiscountFireworksOutlet</small></div>
     </div>
+    <button class="footer-directions directions" type="button" data-modal="locationsModal">Get Directions ▶</button>
   </footer>
 </main>
 
@@ -6130,7 +6269,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V136 loaded: mobile order/spacing cleanup, no calibration footer.");
+console.log("DFO V137 loaded: mobile spacing + footer directions.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
