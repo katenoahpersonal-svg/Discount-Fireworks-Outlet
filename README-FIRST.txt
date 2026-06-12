@@ -11,4 +11,3 @@ This is the next stable main package:
 Expected proof:
 The video modal first screen says “Choose Your Firework Demo Category.”
 No YouTube embeds appear until a category is clicked.
-Deploy trigger V135

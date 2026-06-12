@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V136 MOBILE CARD CLEANUP: locations/videos/build/social, no calibration footer -->
 <!-- DFO V135 DOMAIN REUPLOAD: V134 stable + dfofireworks.com CNAME -->
 <!-- DFO V134 MAIN UPLOAD: hard no opening effect -->
 <!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
@@ -5287,9 +5288,118 @@ body.load-lock .topbar{
   filter:none !important;
 }
 
+
+/* =========================
+   V136 MOBILE CARD CLEANUP
+   Built from V135 domain reupload.
+   Mobile only:
+   - Order cards: Locations, Videos, Build Your Show, Socials.
+   - Hide Finale Favorites on mobile only.
+   - Remove first-card gap and even card spacing.
+   Global:
+   - Calibration/debug footer is removed and helpers are permanently hidden.
+========================= */
+
+.calibration-panel,
+.calibration-dot,
+.ring-guide,
+#calibrationDots{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
+/* Tablet/portrait stacked layout cleanup */
+@media (max-width:1180px) and (orientation:portrait){
+  .scene{
+    padding-top:8px !important;
+    padding-bottom:34px !important;
+    margin-top:0 !important;
+  }
+
+  .carousel{
+    gap:24px !important;
+    padding-top:0 !important;
+    padding-bottom:28px !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    margin:0 auto !important;
+  }
+
+  .card3d-locations{order:1 !important;}
+  .card3d-videos{order:2 !important;}
+  .card3d-build{order:3 !important;}
+  .card3d-social{order:4 !important;}
+  .card3d-favorites{display:none !important;}
+
+  .bottom-count{
+    margin-top:22px !important;
+  }
+}
+
+/* Phone-specific polish */
+@media (max-width:700px){
+  .header{
+    margin-bottom:0 !important;
+  }
+
+  .scene{
+    padding:6px 14px 30px !important;
+    margin:0 !important;
+  }
+
+  .carousel{
+    gap:22px !important;
+    padding:0 0 26px !important;
+    margin:0 !important;
+  }
+
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    margin:0 auto !important;
+    width:100% !important;
+    max-width:430px !important;
+  }
+
+  .card3d-locations{order:1 !important;}
+  .card3d-videos{order:2 !important;}
+  .card3d-build{order:3 !important;}
+  .card3d-social{order:4 !important;}
+  .card3d-favorites{display:none !important;}
+
+  .card{
+    margin:0 !important;
+  }
+
+  .card-locations .location-list{
+    margin-top:16px !important;
+    margin-bottom:8px !important;
+  }
+
+  .card-videos .video-feature,
+  .card-build .build-photo,
+  .favorite-grid,
+  .social-thumbs{
+    margin-top:16px !important;
+    margin-bottom:12px !important;
+  }
+
+  .bottom-count{
+    margin:24px auto 20px !important;
+  }
+
+  .footer{
+    margin-top:0 !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v135-v134-domain-reupload" class="load-lock">
+<body data-build="v136-mobile-card-cleanup" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5709,7 +5819,7 @@ const prevPos = new Array(N).fill(99);
 
 cards.forEach((c, i) => {
   const el = document.createElement("div");
-  el.className = "card3d";
+  el.className = "card3d card3d-" + c.id;
   el.dataset.index = i;
   el.innerHTML = `<article class="card card-${c.id}" data-card-id="${c.id}" data-modal="${c.modal}">
     <p class="card-eyebrow">${c.eyebrow}</p>
@@ -5870,11 +5980,7 @@ function updateCalibrationDot(pos, L){
   dot.style.top = L.anchorY + "px";
 }
 
-document.addEventListener("keydown", (event) => {
-  if (event.key && event.key.toLowerCase() === "d") {
-    document.body.classList.toggle("calibration-on");
-  }
-});
+/* V136: calibration toggle removed for live site. */
 
 function rotate(dir){ active = (active + dir + N) % N; update(); }
 function syncHeaderNav(){
@@ -6024,7 +6130,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V135 loaded: V134 stable re-upload with dfofireworks.com CNAME.");
+console.log("DFO V136 loaded: mobile order/spacing cleanup, no calibration footer.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -6131,17 +6237,6 @@ console.log("DFO V135 loaded: V134 stable re-upload with dfofireworks.com CNAME.
 })();
 
 </script>
-
-<div class="calibration-panel" aria-hidden="true">
-  <b>V135 HIDDEN CALIBRATION</b>
-  <div>Press <strong>D</strong> to hide/show pins.</div>
-  <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
-  <code>-2 far-left
--1 left
- 0 center
- 1 right
- 2 far-right</code>
-</div>
 
 </body>
 </html>

@@ -1,30 +1,31 @@
-DFO V135 — V134 Stable Reupload With Domain
+DFO V136 — Mobile Card Cleanup
 
-Purpose:
-Your domain and GitHub Pages are connected, but the live site is showing old files.
-This package puts the correct V134 stable site back on main and includes the CNAME file for dfofireworks.com.
+Use on main branch only.
 
-Use:
-- Upload to main only.
-- Commit directly to main.
-- No branch.
-- No pull request.
-- Do not change Cloudflare/DNS.
+Changed:
+- Mobile card order is now:
+  1. Locations
+  2. Videos
+  3. Build Your Show
+  4. Socials
+- Finale Favorites is hidden on mobile only.
+- The calibration/debug script panel at the bottom is removed.
+- The huge mobile gap between header and first card is tightened.
+- Mobile cards have even spacing.
+- Domain CNAME is included: dfofireworks.com
 
-Steps:
+Do not change:
+- Cloudflare DNS
+- Squarespace
+- GitHub Pages settings
+
+Upload:
 1. Extract this zip.
 2. GitHub repo > Code.
-3. Make sure branch dropdown says main.
+3. Branch must say main.
 4. Add file > Upload files.
-5. Drag the extracted contents into GitHub.
+5. Drag extracted contents.
 6. Commit directly to main.
-7. Wait for Actions green check.
-8. Test:
-   https://dfofireworks.com/?fresh=v135
-   https://www.dfofireworks.com/?fresh=v135
-
-Expected:
-- The cinematic V134/V135 site loads.
-- No opening effect.
-- Video modal has category wall with breadcrumbs.
-- Custom domain stays connected.
+7. Wait for green Actions check.
+8. Test on mobile:
+   https://dfofireworks.com/?fresh=v136
