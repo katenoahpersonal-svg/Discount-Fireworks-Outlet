@@ -1,21 +1,21 @@
-DFO V141 — Mobile Locations Actual Move Up
+DFO V142 — Even Mobile Stack
 
 Upload to main only. Do not touch Cloudflare or Squarespace.
 
-Why this version exists:
-V140 did not visibly move the live mobile Locations card.
-V141 directly targets the actual Locations card wrapper and moves it upward with transform.
-
 Changed:
-- Moves ONLY the first Locations card up on mobile.
-- Pulls the Videos card up by the same amount so card spacing stays even.
-- Does not move the whole background/scene.
-- Keeps:
-  Locations, Videos, Build Your Show, Socials
-  Footer Get Directions
-  Social Feed/countdown spacing
-  No calibration footer
-  CNAME dfofireworks.com
+- Mobile stack is now simple and evenly spaced.
+- Same spacing above first card and between all cards.
+- No special Locations offset.
+- No transform tricks.
+- Card order:
+  1. Locations
+  2. Videos
+  3. Build Your Show
+  4. Socials
+- Finale Favorites hidden on mobile.
+- Footer Get Directions retained.
+- Calibration/debug footer hidden.
+- CNAME retained for dfofireworks.com.
 
 Test:
-https://dfofireworks.com/?fresh=v141
+https://dfofireworks.com/?fresh=v142

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V141 MOBILE LOCATIONS ACTUAL MOVE UP: direct first-card transform -->
-<!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
+<!-- DFO V142 EVEN MOBILE STACK: all mobile cards spaced evenly -->
 <!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
 <!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
 <!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
@@ -5617,90 +5616,139 @@ body.load-lock .topbar{
 }
 
 
-/* V140 MOBILE LOCATIONS SWEET SPOT */
-@media (max-width:700px){
-  .scene{
-    margin-top:clamp(-42px, -8vw, -28px) !important;
-    padding-top:18px !important;
-    padding-bottom:104px !important;
-  }
-  .carousel{
-    margin-top:0 !important;
-    padding-top:0 !important;
-    gap:22px !important;
-  }
-  .card3d-locations{
-    margin-top:26px !important;
-  }
-  .card3d-locations .card{
-    overflow:visible !important;
-  }
-  .bottom-count{
-    margin-top:58px !important;
-  }
-}
-@media (max-width:420px){
-  .scene{
-    margin-top:-34px !important;
-  }
-  .card3d-locations{
-    margin-top:24px !important;
-  }
-}
-
-
 /* =========================
-   V141 MOBILE LOCATIONS ACTUAL MOVE UP
-   Directly moves the first Locations card upward without changing the rest of the card stack.
-   This is intentionally stronger than V140 because V140 did not affect the real live position.
+   V142 EVEN MOBILE STACK
+   Final mobile reset:
+   - No first-card special offset.
+   - No transform tricks.
+   - Same spacing above first card and between every card.
+   - Locations, Videos, Build Your Show, Socials.
 ========================= */
 
+.calibration-panel,
+.calibration-dot,
+.ring-guide,
+#calibrationDots{
+  display:none !important;
+  visibility:hidden !important;
+  pointer-events:none !important;
+}
+
 @media (max-width:700px){
-  html body .scene{
-    margin-top:0 !important;
-    padding-top:0 !important;
-    padding-bottom:104px !important;
+  .header{
+    margin-bottom:0 !important;
+    padding-bottom:12px !important;
   }
 
-  html body .carousel{
-    margin-top:0 !important;
-    padding-top:0 !important;
-    gap:22px !important;
-  }
-
-  html body .card3d-locations{
-    margin-top:0 !important;
-    transform:translateY(-38px) !important;
+  .scene{
     position:relative !important;
-    z-index:5 !important;
-  }
-
-  html body .card3d-videos{
-    margin-top:-38px !important;
-  }
-
-  html body .card3d-locations .card{
+    top:auto !important;
+    bottom:auto !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:26px 14px 96px !important;
+    perspective:none !important;
     overflow:visible !important;
   }
 
-  html body .bottom-count{
-    margin-top:58px !important;
+  .carousel{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:auto !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:26px !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:none !important;
+    perspective:none !important;
+    overflow:visible !important;
   }
-}
 
-@media (max-width:420px){
-  html body .card3d-locations{
-    transform:translateY(-34px) !important;
+  .card3d,
+  .card3d.is-active,
+  .card3d[data-slot]{
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    max-width:430px !important;
+    height:auto !important;
+    min-height:auto !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    transform:none !important;
+    opacity:1 !important;
+    filter:none !important;
+    pointer-events:auto !important;
+    z-index:auto !important;
+    overflow:visible !important;
   }
 
-  html body .card3d-videos{
-    margin-top:-34px !important;
+  .card3d-locations,
+  .card3d-videos,
+  .card3d-build,
+  .card3d-social{
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+    transform:none !important;
+  }
+
+  .card3d-locations{order:1 !important;}
+  .card3d-videos{order:2 !important;}
+  .card3d-build{order:3 !important;}
+  .card3d-social{order:4 !important;}
+  .card3d-favorites{display:none !important;}
+
+  .card3d + .card3d{
+    margin-top:0 !important;
+  }
+
+  .card{
+    margin:0 !important;
+    overflow:visible !important;
+  }
+
+  .bottom-count{
+    clear:both !important;
+    position:relative !important;
+    z-index:40 !important;
+    width:92vw !important;
+    margin:34px auto 26px !important;
+    padding-top:0 !important;
+  }
+
+  .footer{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+    padding:18px 16px 22px !important;
+    text-align:center !important;
+    margin-top:0 !important;
+  }
+
+  .footer .promise,
+  .footer .drag-note,
+  .footer .drag{
+    display:none !important;
+  }
+
+  .footer .follow{
+    order:1 !important;
+    justify-content:center !important;
+  }
+
+  .footer-directions{
+    order:2 !important;
+    width:min(92vw,430px) !important;
+    margin:0 auto !important;
   }
 }
 
 </style>
 </head>
-<body data-build="v141-mobile-locations-actual-move-up" class="load-lock">
+<body data-build="v142-even-mobile-stack" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6432,7 +6480,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V141 loaded: direct mobile Locations card move up.");
+console.log("DFO V142 loaded: evenly spaced mobile stack.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */

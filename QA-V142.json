@@ -1,0 +1,20 @@
+{
+  "version": "v142-even-mobile-stack",
+  "base": "DFO-V139-MOBILE-FIRST-CARD-LOWER.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_spacing": "single grid gap 26px, scene top padding 26px",
+  "mobile_order": [
+    "locations",
+    "videos",
+    "build",
+    "social"
+  ],
+  "mobile_hidden": [
+    "favorites"
+  ],
+  "no_special_locations_offset": true,
+  "no_transform_tricks": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v142",
+  "created_epoch": 1781296330
+}
