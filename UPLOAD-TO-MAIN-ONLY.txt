@@ -1,20 +1,16 @@
-DFO V137 — Mobile Spacing + Footer Directions
+DFO V139 — Mobile First Card Lower
 
 Upload to main only. Do not touch Cloudflare or Squarespace.
 
 Changed:
-- Tightens the mobile gap between the header and first card.
-- Keeps mobile card order from V136:
-  Locations, Videos, Build Your Show, Socials.
-- Adds more separation between the Social Feed card and the bottom countdown.
-- Adds Get Directions to the footer.
-- Keeps calibration/debug footer hidden.
-- Keeps CNAME for dfofireworks.com.
-
-Desktop note:
-If desktop still shows the old version while mobile shows V136/V137, DNS is correct.
-That is browser/ISP/GitHub edge cache propagation. Flush DNS/cache or wait.
-Do not change Squarespace/Cloudflare.
+- Drops the first mobile Locations card lower so it is not clipped at the top.
+- Stops the mobile scene from being pulled upward too aggressively.
+- Keeps the rest of the V137/V138 mobile polish:
+  Locations, Videos, Build Your Show, Socials
+  Footer Get Directions
+  Social Feed/countdown spacing
+  No calibration footer
+  CNAME dfofireworks.com
 
 Test:
-https://dfofireworks.com/?fresh=v137
+https://dfofireworks.com/?fresh=v139

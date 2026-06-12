@@ -1,0 +1,10 @@
+{
+  "version": "v139-mobile-first-card-lower",
+  "base": "DFO-V138-MOBILE-LOCATIONS-DOWN.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_fix": "Locations first card lowered with margin-top 52px, 46px on narrow phones",
+  "scene_margin_top": "0",
+  "expected_url": "https://dfofireworks.com/?fresh=v139",
+  "created_epoch": 1781291388
+}

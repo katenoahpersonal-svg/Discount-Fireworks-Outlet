@@ -1,0 +1,17 @@
+{
+  "version": "v138-mobile-locations-down",
+  "base": "DFO-V137-MOBILE-SPACING-FOOTER-DIRECTIONS.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_fix": "locations card lowered so it is no longer cut off",
+  "scene_margin_top": "clamp(-76px, -14vw, -52px)",
+  "retained": [
+    "mobile order Locations, Videos, Build, Social",
+    "footer Get Directions",
+    "Social Feed to countdown spacing",
+    "CNAME dfofireworks.com"
+  ],
+  "do_not_change_dns": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v138",
+  "created_epoch": 1781290152
+}

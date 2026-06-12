@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
+<!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
 <!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
 <!-- DFO V136 MOBILE CARD CLEANUP: locations/videos/build/social, no calibration footer -->
 <!-- DFO V135 DOMAIN REUPLOAD: V134 stable + dfofireworks.com CNAME -->
@@ -5477,7 +5479,7 @@ body.load-lock .topbar{
     does not collide with the Social Feed card.
   */
   .scene{
-    margin-top:clamp(-150px, -34vw, -120px) !important;
+    margin-top:0 !important;
     padding-top:18px !important;
     padding-bottom:96px !important;
   }
@@ -5535,9 +5537,86 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================
+   V138 MOBILE LOCATIONS DOWN
+   V137 pulled the first card too high. This keeps the gap tight but prevents the
+   Locations card/title from being cut off on mobile.
+========================= */
+
+@media (max-width:700px){
+  .scene{
+    margin-top:0 !important;
+    padding-top:18px !important;
+    padding-bottom:98px !important;
+  }
+
+  .carousel{
+    gap:22px !important;
+  }
+
+  .card3d-locations{
+    margin-top:0 !important;
+  }
+
+  .card3d-locations .card{
+    overflow:visible !important;
+  }
+
+  .card3d-locations .card-title,
+  .card3d-locations h2{
+    margin-top:0 !important;
+    padding-top:0 !important;
+  }
+
+  .bottom-count{
+    margin-top:58px !important;
+  }
+}
+
+
+/* =========================
+   V139 MOBILE FIRST CARD LOWER
+   V138 still left the Locations card too high on real mobile.
+   This stops pulling the whole scene upward and gives the first card
+   a controlled top gap so it is not clipped.
+========================= */
+
+@media (max-width:700px){
+  .scene{
+    margin-top:0 !important;
+    padding-top:18px !important;
+    padding-bottom:104px !important;
+  }
+
+  .carousel{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    gap:22px !important;
+  }
+
+  .card3d-locations{
+    margin-top:52px !important;
+  }
+
+  .card3d-locations .card{
+    overflow:visible !important;
+  }
+
+  .bottom-count{
+    margin-top:58px !important;
+  }
+}
+
+@media (max-width:420px){
+  .card3d-locations{
+    margin-top:46px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v137-mobile-spacing-footer-directions" class="load-lock">
+<body data-build="v139-mobile-first-card-lower" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6269,7 +6348,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V137 loaded: mobile spacing + footer directions.");
+console.log("DFO V139 loaded: mobile first Locations card lowered.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
