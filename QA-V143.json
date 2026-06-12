@@ -1,0 +1,14 @@
+{
+  "version": "v143-font-button-card-edge-cleanup",
+  "base": "DFO-V142-EVEN-MOBILE-STACK.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "changes": [
+    "small text font/style unified to Locations address style",
+    "button text larger/bolder without changing button dimensions",
+    "card overflow clipped to rounded corners to remove square edge"
+  ],
+  "no_layout_movement": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v143",
+  "created_epoch": 1781297615
+}
