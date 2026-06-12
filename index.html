@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V134 MAIN UPLOAD: hard no opening effect -->
 <!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
 <!-- DFO V132 EMERGENCY STABLE MAIN ROLLBACK: stable no-domain restore -->
 <meta charset="UTF-8">
@@ -5259,9 +5260,35 @@ button:focus-visible{
   }
 }
 
+
+/* =========================
+   V134 HARD NO OPENING EFFECT
+   Built from V133 stable.
+   Removes the remaining load/opening effect by disabling transitions/animations only during first paint.
+   Future arrow/card interactions remain normal after load-lock is removed.
+========================= */
+
+body.load-lock *,
+body.load-lock *::before,
+body.load-lock *::after{
+  animation:none !important;
+  transition:none !important;
+  scroll-behavior:auto !important;
+}
+
+body.load-lock .card3d,
+body.load-lock .card3d .card,
+body.load-lock .carousel,
+body.load-lock .hero,
+body.load-lock .bottom-count,
+body.load-lock .topbar{
+  opacity:1 !important;
+  filter:none !important;
+}
+
 </style>
 </head>
-<body data-build="v133-no-intro-video-wall-breadcrumbs">
+<body data-build="v134-hard-no-opening-effect" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5872,9 +5899,18 @@ function goTo(id){
 }
 
 
-/* V133: no opening transition. Render final carousel state immediately. */
+/* V134: hard no opening effect. First paint places every card directly in final slot with animation off. */
 function startIntroRide(){
-  update();
+  document.body.classList.add("load-lock");
+  els.forEach((el, i) => {
+    const pos = offsetFor(i);
+    place(el, pos, false);
+    prevPos[i] = pos;
+  });
+  syncHeaderNav();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => document.body.classList.remove("load-lock"));
+  });
 }
 
 /* ===== countdown ===== */
@@ -5987,7 +6023,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V133 loaded: no intro, video wall-in-wall with breadcrumbs.");
+console.log("DFO V134 loaded: hard no opening effect, direct final card placement.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -6096,7 +6132,7 @@ console.log("DFO V133 loaded: no intro, video wall-in-wall with breadcrumbs.");
 </script>
 
 <div class="calibration-panel" aria-hidden="true">
-  <b>V133 HIDDEN CALIBRATION</b>
+  <b>V134 HIDDEN CALIBRATION</b>
   <div>Press <strong>D</strong> to hide/show pins.</div>
   <div style="margin-top:8px;">Edit <code>SLOT_CONFIG</code> near the top of the script.</div>
   <code>-2 far-left

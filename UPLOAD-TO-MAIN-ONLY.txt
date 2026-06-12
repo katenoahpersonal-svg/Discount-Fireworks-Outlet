@@ -1,29 +1,18 @@
-DFO V133 — No Intro + Video Wall In Wall
+DFO V134 — Hard No Opening Effect
 
 Use on main branch only.
 
 Changed:
-1. Opening transition removed completely.
-   - The carousel renders directly to its final state.
-   - No intro animation.
+- Removed the remaining opening effect.
+- Page first paint is locked with no transitions/animations.
+- Cards are placed directly into their final slots with animation disabled.
+- Then normal interactions are restored for arrows/card clicks.
 
-2. Video modal rebuilt as wall-in-wall:
-   - First wall: six category cards only.
-   - Categories: Cakes, Artilleries, Assortments, Fountains, Missile, Misc.
-   - Breadcrumbs show Videos / Category.
-   - Back breadcrumb returns to category wall.
-
-3. Corrected video sorting:
-   - Cakes: 4 videos
-   - Assortments: 2 videos
-   - Fountains: 1 video
-   - Artilleries: coming soon
-   - Missile: coming soon
-   - Misc.: coming soon
-
-4. No CNAME/domain file.
-   Use GitHub URL:
-   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v133
+Retained:
+- V133 video wall-in-wall with breadcrumbs.
+- Corrected video categories.
+- No CNAME/domain.
+- Countdown target July 4, 2026 at 10 PM CDT.
 
 Upload:
 1. Extract this zip.
@@ -33,3 +22,5 @@ Upload:
 5. Drag extracted contents.
 6. Commit directly to main.
 7. Wait for green Actions check.
+8. Open:
+   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v134
