@@ -1,24 +1,27 @@
-DFO V146 — Production Lock Cleanup
+DFO V147 — Mobile Only Lock
 
 Base:
-- Built from V140 stable, not from broken V144/V145 chain.
+- Built from V140 stable.
 
-Upload:
-- Upload to main only.
-- Commit directly to main.
-- Do not touch Cloudflare, Squarespace, DNS, or Pages settings.
+Important:
+- Mobile only.
+- No desktop rules.
+- No tablet rules.
+- No generated images.
+- No background asset swap.
+- No DNS/Cloudflare/Squarespace changes.
 
-Fixes:
-- Restores desktop fireworks/lake background.
-- Preserves card positioning/3D structure.
-- Fixes only the main video fit inside the card.
-- Removes Featured Demo / Demo 2 / Demo 3 / Demo 4 / Demo 5 text.
-- Makes mobile/tablet card copy and button text readable/proportionate.
-- Keeps mobile card title sizing consistent.
-- Moves bottom timeline down a few clicks only.
-- Removes public-facing video modal helper/breadcrumb filler.
-- Empty categories say only: Video Coming Soon.
+Fixes on mobile only:
+- Keeps good card positioning.
+- Fits only the main video preview inside the Preview card.
+- Restores rounded video edges.
+- Removes Featured Demo / Demo 2 / Demo 3 labels visually on mobile.
+- Makes mobile copy and button text readable/proportionate.
+- Makes social icons larger.
+- Moves bottom countdown down a few clicks and prevents cutoff.
+- Removes mobile video modal helper/breadcrumb clutter.
+- Empty mobile no-video pages display: Video Coming Soon.
 - Keeps CNAME dfofireworks.com.
 
 Test:
-https://dfofireworks.com/?fresh=v146
+https://dfofireworks.com/?fresh=v147

@@ -1,0 +1,13 @@
+{
+  "version": "v147-mobile-only-lock",
+  "base": "DFO-V140-MOBILE-LOCATIONS-SWEETSPOT.zip",
+  "scope": "mobile only max-width 700px",
+  "desktop_rules_added": false,
+  "tablet_rules_added": false,
+  "generated_images": false,
+  "background_asset_swap": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v147",
+  "created_epoch": 1781381966
+}

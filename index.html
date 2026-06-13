@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V146 PRODUCTION LOCK CLEANUP: V140 stable base, scoped fixes only -->
+<!-- DFO V147 MOBILE ONLY LOCK: all production fixes scoped to max-width 700px only -->
 <!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
 <!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
 <!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
@@ -5650,105 +5650,48 @@ body.load-lock .topbar{
 
 
 /* =========================================================
-   V146 PRODUCTION LOCK CLEANUP
+   V147 MOBILE-ONLY LOCK
    Base: V140 stable.
-   Goal: preserve card positions/3D structure, fix only:
-   - desktop background restored
-   - mobile/tablet font consistency
-   - main video fit inside card
-   - remove demo labels
-   - remove modal filler/breadcrumb clutter
-   - move bottom countdown down a few clicks
+   Desktop/tablet are intentionally untouched.
+   Every production-fix rule below is scoped to max-width:700px.
 ========================================================= */
-
-/* Restore the real fireworks/lake background on desktop/tablet without changing carousel geometry. */
-:root{
-  --bg-d:url("assets/background-live-v93-no-buoy.jpg?v=146") !important;
-  --bg-m:url("assets/background-live-v93-no-buoy.jpg?v=146") !important;
-}
-
-@media (min-width:701px){
-  .page{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.035),rgba(0,0,0,.10)),
-      var(--bg-d) center center / cover no-repeat !important;
-  }
-}
-
-/* Hide video label text only. Do not reposition thumbnails. */
-.card-videos .video-label,
-.card-videos .video-thumb-button span{
-  display:none !important;
-}
-
-/* Main video fit fix only: do not alter other video/card positions. */
-.card-videos .video-preview{
-  border-radius:16px !important;
-  overflow:hidden !important;
-  box-sizing:border-box !important;
-}
-
-.card-videos .video-feature{
-  border-radius:14px !important;
-  overflow:hidden !important;
-  background-size:contain !important;
-  background-repeat:no-repeat !important;
-  background-position:center center !important;
-}
-
-.card-videos .video-thumb-button{
-  border-radius:10px !important;
-  overflow:hidden !important;
-}
-
-/* Tablet readability only. Keep positioning untouched. */
-@media (min-width:701px) and (max-width:1180px){
-  .card-copy p{
-    font-size:clamp(13px,1.55vw,16px) !important;
-    line-height:1.32 !important;
-  }
-  .card-btn{
-    font-size:clamp(12px,1.35vw,15px) !important;
-    min-height:50px !important;
-  }
-}
-
-/* Mobile production patch: typography/readability only, preserve V140 stack position. */
 @media (max-width:700px){
-  .page{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.20)),
-      var(--bg-m) center top / auto 100vh no-repeat,
-      #03050d !important;
-  }
-
   .foreground-ring-occlusion,
   .ring-guide,
   #calibrationDots,
   .front-ring,
-  .firecracker{
+  .firecracker,
+  .outer-ring,
+  .inner-ring,
+  .glow-ring,
+  .stage-ring,
+  .water-ring,
+  .carousel-ring,
+  .hero-ring,
+  .bg-ring,
+  .ring-glow{
     display:none !important;
     opacity:0 !important;
     visibility:hidden !important;
     pointer-events:none !important;
   }
 
-  /* Preserve the V140 mobile placement that was closest. */
   .scene{
     margin-top:clamp(-42px, -8vw, -28px) !important;
     padding-top:18px !important;
-    padding-bottom:84px !important;
+    padding-bottom:88px !important;
   }
+
   .carousel{
     gap:22px !important;
     padding-top:0 !important;
     padding-bottom:0 !important;
   }
+
   .card3d-locations{
     margin-top:26px !important;
   }
 
-  /* Consistent card title system on mobile only. */
   .card-title,
   .card .card-title,
   .card-videos .card-title,
@@ -5756,13 +5699,13 @@ body.load-lock .topbar{
   .card-social .card-title,
   .card-locations .card-title{
     font-family:var(--head) !important;
-    font-size:clamp(32px,8.35vw,42px) !important;
+    font-size:clamp(33px, 8.3vw, 42px) !important;
     line-height:.92 !important;
     letter-spacing:-.01em !important;
     text-align:center !important;
     margin:0 auto 18px !important;
-    padding:0 16px !important;
-    max-width:10.5em !important;
+    padding:0 14px !important;
+    max-width:10.4em !important;
   }
 
   .card-title .title-line{
@@ -5776,17 +5719,16 @@ body.load-lock .topbar{
     max-width:10em !important;
   }
 
-  /* Make tiny copy readable across cards. */
   .card-copy p,
   .card .card-copy p,
   .card-videos .card-copy p,
   .card-build .card-copy p,
   .card-social .card-copy p{
-    font-size:clamp(14px,3.35vw,16px) !important;
+    font-size:clamp(14px, 3.35vw, 16px) !important;
     line-height:1.34 !important;
     letter-spacing:.085em !important;
     font-weight:900 !important;
-    margin-bottom:16px !important;
+    margin:0 0 16px !important;
   }
 
   .card-btn,
@@ -5797,21 +5739,47 @@ body.load-lock .topbar{
   .card-locations .card-btn{
     min-height:58px !important;
     height:58px !important;
-    font-size:clamp(14px,3.3vw,16px) !important;
+    font-size:clamp(14px, 3.3vw, 16px) !important;
     line-height:1.05 !important;
     letter-spacing:.155em !important;
     font-weight:950 !important;
     padding:0 18px !important;
   }
 
-  /* Main preview image fits inside the card. Other video positions stay untouched. */
+  .card-videos .video-preview{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+
   .card-videos .video-feature{
+    width:100% !important;
+    max-width:100% !important;
+    box-sizing:border-box !important;
+    border-radius:16px !important;
+    overflow:hidden !important;
     background-size:contain !important;
     background-repeat:no-repeat !important;
     background-position:center center !important;
   }
 
-  /* Social icons readable without changing card layout. */
+  .card-videos .video-thumb-button{
+    border-radius:10px !important;
+    overflow:hidden !important;
+  }
+
+  .card-videos .video-label,
+  .card-videos .video-thumb-button span{
+    display:none !important;
+  }
+
+  .social-icons-row{
+    gap:18px !important;
+    padding-bottom:18px !important;
+  }
+
   .social-big{
     width:50px !important;
     height:50px !important;
@@ -5820,77 +5788,108 @@ body.load-lock .topbar{
     font-size:24px !important;
     display:inline-grid !important;
     place-items:center !important;
+    line-height:1 !important;
   }
+
   .social-big.ig{
     font-size:26px !important;
   }
 
-  /* Move bottom timeline down only a few clicks and give it bottom breathing room. */
   .bottom-count{
     margin-top:46px !important;
-    margin-bottom:46px !important;
-    padding-bottom:10px !important;
+    margin-bottom:50px !important;
+    padding-bottom:12px !important;
     position:relative !important;
     z-index:40 !important;
+  }
+
+  #videosModal .category-note{
+    display:none !important;
+  }
+
+  #videosModal .demo-wall-view .demo-breadcrumbs{
+    display:none !important;
+  }
+
+  #videosModal .demo-inner-wall .demo-breadcrumbs span,
+  #videosModal .demo-inner-wall .demo-breadcrumbs strong{
+    display:none !important;
+  }
+
+  #videosModal.is-empty-category .demo-inner-hero{
+    display:none !important;
+  }
+
+  #videosModal .demo-video-empty{
+    min-height:260px !important;
+    display:grid !important;
+    place-items:center !important;
+    text-align:center !important;
+  }
+
+  #videosModal .demo-video-empty strong{
+    font-size:0 !important;
+    line-height:0 !important;
+  }
+
+  #videosModal .demo-video-empty strong::after{
+    content:"Video Coming Soon";
+    display:block !important;
+    font-family:var(--head) !important;
+    font-size:clamp(44px, 10vw, 76px) !important;
+    line-height:.9 !important;
+    color:#fff !important;
+    text-transform:uppercase !important;
+  }
+
+  #videosModal .demo-video-empty span,
+  #videosModal.is-empty-category [data-demo-desc]{
+    display:none !important;
+  }
+
+  #videosModal .demo-wall-card.is-empty .demo-wall-content em,
+  #videosModal .demo-wall-card.is-empty .demo-wall-content b{
+    font-size:0 !important;
+    line-height:0 !important;
+  }
+
+  #videosModal .demo-wall-card.is-empty .demo-wall-content b::after{
+    content:"Video Coming Soon";
+    display:block !important;
+    font-size:13px !important;
+    line-height:1.15 !important;
+    letter-spacing:.12em !important;
   }
 }
 
 @media (max-width:420px){
   .scene{
     margin-top:-34px !important;
-    padding-bottom:88px !important;
+    padding-bottom:92px !important;
   }
+
   .card3d-locations{
     margin-top:24px !important;
   }
+
   .card-title,
   .card .card-title,
   .card-videos .card-title,
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
-    font-size:clamp(31px,8.15vw,40px) !important;
+    font-size:clamp(31px, 8.15vw, 40px) !important;
   }
+
   .bottom-count{
     margin-top:44px !important;
-    margin-bottom:50px !important;
+    margin-bottom:54px !important;
   }
-}
-
-/* Video modal cleanup: no public-facing helper text/clutter. */
-#videosModal .category-note{
-  display:none !important;
-}
-#videosModal .demo-wall-view .demo-breadcrumbs{
-  display:none !important;
-}
-#videosModal .demo-inner-wall .demo-breadcrumbs span,
-#videosModal .demo-inner-wall .demo-breadcrumbs strong{
-  display:none !important;
-}
-#videosModal.is-empty-category .demo-inner-hero{
-  display:none !important;
-}
-#videosModal .demo-video-empty{
-  min-height:260px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-}
-#videosModal .demo-video-empty strong{
-  font-family:var(--head) !important;
-  font-size:clamp(44px,10vw,76px) !important;
-  line-height:.9 !important;
-  text-transform:uppercase !important;
-}
-#videosModal .demo-video-empty span,
-#videosModal.is-empty-category [data-demo-desc]{
-  display:none !important;
 }
 
 </style>
 </head>
-<body data-build="v146-production-lock-cleanup" class="load-lock">
+<body data-build="v147-mobile-only-lock" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -5976,7 +5975,7 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Artilleries</strong>
-            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Video Coming Soon.</em>
+            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6009,7 +6008,7 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Missile</strong>
-            <em>Missile and rocket-style effects. Video Coming Soon.</em>
+            <em>Missile and rocket-style effects. Demo videos coming soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6020,7 +6019,7 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Misc.</strong>
-            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Video Coming Soon.</em>
+            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6073,7 +6072,7 @@ body.load-lock .topbar{
   "artilleries": {
     "title": "Artilleries",
     "crumb": "Artilleries",
-    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Video Coming Soon.",
+    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.",
     "videos": []
   },
   "assortments": {
@@ -6105,13 +6104,13 @@ body.load-lock .topbar{
   "missile": {
     "title": "Missile",
     "crumb": "Missile",
-    "desc": "Missile and rocket-style effects. Video Coming Soon.",
+    "desc": "Missile and rocket-style effects. Demo videos coming soon.",
     "videos": []
   },
   "misc": {
     "title": "Misc.",
     "crumb": "Misc.",
-    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Video Coming Soon.",
+    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.",
     "videos": []
   }
 }
@@ -6254,12 +6253,12 @@ const cards = [
   { id:"videos", modal:"videosModal", eyebrow:"Demo Videos", title:"Preview the Boom Before You Buy",
     media:`<div class="card-media video-preview">
       <button class="video-feature video-open" data-modal="videosModal" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),url('${IMG.videoFeature}')">
-        <span class="play">▶</span></button>
+        <span class="play">▶</span><span class="video-label">Featured Demo</span></button>
       <div class="video-thumbs">
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoCake}')"></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoAerial}')"></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoFinale}')"></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoPatriotic}')"></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoCake}')"><span>Demo 2</span></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoAerial}')"><span>Demo 3</span></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoFinale}')"><span>Demo 4</span></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoPatriotic}')"><span>Demo 5</span></button>
       </div></div>`, copy:"Watch real demos, compare effects, and choose your finale.", cta:"▷ Watch Videos" },
   { id:"favorites", modal:"favoritesModal", eyebrow:"Finale Favorites", title:"Top Picks for the Perfect Finale",
     media:`<div class="card-media"><div class="favorite-grid">
@@ -6622,7 +6621,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V146 loaded: production lock cleanup from V140 stable.");
+console.log("DFO V147 loaded: mobile-only scoped production fixes.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -6657,7 +6656,6 @@ console.log("DFO V146 loaded: production lock cleanup from V140 stable.");
   }
 
   function showWall(){
-    modal.classList.remove("is-category-open", "is-empty-category");
     stopVideos();
     if (inner) inner.hidden = true;
     if (wall) wall.classList.add("is-active");
@@ -6667,10 +6665,6 @@ console.log("DFO V146 loaded: production lock cleanup from V140 stable.");
   function showCategory(key){
     const item = data[key];
     if (!item || !wall || !inner || !scroll) return;
-
-    const hasVideos = !!(item.videos && item.videos.length);
-    modal.classList.add("is-category-open");
-    modal.classList.toggle("is-empty-category", !hasVideos);
 
     wall.classList.remove("is-active");
     inner.hidden = false;
@@ -6685,7 +6679,10 @@ console.log("DFO V146 loaded: production lock cleanup from V140 stable.");
     if (!item.videos || !item.videos.length){
       scroll.innerHTML = `
         <div class="demo-video-empty">
-          <strong>Video Coming Soon</strong>
+          <div>
+            <strong>Videos Coming Soon</strong>
+            <span>This category wall is ready. We can add demos here later.</span>
+          </div>
         </div>`;
     } else {
       item.videos.forEach(video => {
