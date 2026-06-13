@@ -1,32 +1,22 @@
-DFO V149 — Mobile Corrective Patch
+DFO V150 — Mobile Title-Line Font Lock Only
 
 Base:
-- Built from V148.
+- Built from V149.
 
-What changed:
-- Applies the mobile-only corrective patch based on the actual root cause:
-  global .scene { top: 10.6vh !important; }
-- Desktop remains untouched from V148.
-- Desktop background restore remains intact.
+Scope:
+- Mobile only.
+- Title/font consistency only.
+- Desktop untouched.
+- Top gap untouched.
+- Card positions untouched.
+- Background untouched.
 - No generated images.
 - No new assets.
-- No DNS/Cloudflare/Squarespace/GitHub Pages setting changes.
+- No DNS/Cloudflare/Squarespace/GitHub Pages changes.
 
-Fixes:
-- reduces mobile header-to-first-card gap
-- hides/darkens mobile glow/ring artifacts
-- makes mobile card fonts consistent
-- fixes main Preview video fit
-- hides Featured Demo / Demo label text
-- enlarges mobile copy/button/social icon sizing
-- moves bottom countdown down without overlap
-- removes video modal helper/breadcrumb filler
-- no-video categories visually show: Video Coming Soon
+Fix:
+- Videos and Favorites titles use nested .title-line spans.
+- This locks .title-line to inherit the same mobile title size and allows mobile wrapping.
 
-Upload:
-1. Extract zip.
-2. Upload contents to GitHub main.
-3. Commit directly to main.
-4. Wait for green check.
-5. Test:
-   https://dfofireworks.com/?fresh=v149
+Test:
+https://dfofireworks.com/?fresh=v150

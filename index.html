@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V150 MOBILE TITLELINE FONT LOCK: mobile title consistency only -->
 <!-- DFO V149 MOBILE CORRECTIVE PATCH: final mobile-only override, desktop untouched -->
 <!-- DFO V148 DESKTOP BG RESTORE MOBILE ONLY PATCH: V140 base, no generated images -->
 <!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
@@ -6091,9 +6092,38 @@ body.load-lock .topbar{
   .bottom-count{ margin-top:62px !important; }
 }
 
+
+/* =========================================================
+   V150 MOBILE TITLE-LINE FONT LOCK ONLY
+   Base: V149.
+   Scope: mobile title typography only.
+========================================================= */
+@media (max-width:700px){
+  .card-title,
+  .card-locations .card-title,
+  .card-videos .card-title,
+  .card-favorites .card-title,
+  .card-build .card-title,
+  .card-social .card-title{
+    font-family:var(--head) !important;
+    font-size:clamp(32px,8.2vw,40px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.01em !important;
+    text-align:center !important;
+  }
+
+  .card-videos .card-title .title-line,
+  .card-favorites .card-title .title-line{
+    font-size:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+    white-space:normal !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v149-mobile-corrective-patch" class="load-lock">
+<body data-build="v150-mobile-titleline-font-lock" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6825,7 +6855,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V149 loaded: Claude mobile corrective patch applied.");
+console.log("DFO V150 loaded: mobile title-line font lock only.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
