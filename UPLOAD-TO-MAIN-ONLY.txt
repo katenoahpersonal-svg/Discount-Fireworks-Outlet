@@ -1,19 +1,15 @@
-DFO V143 — Font, Button Text, and Rounded Card Edge Cleanup
+DFO V142 — Mobile Master Cleanup
 
 Upload to main only. Do not touch Cloudflare or Squarespace.
 
-Changed:
-- All small/supporting text uses the same font style as the Locations address line.
-- Button text is bolder and about two sizes larger.
-- Button dimensions are NOT changed.
-- Card inner overlays are clipped to rounded corners to remove the tiny straight opaque square edge.
-- No card movement, no layout reordering, no DNS changes.
-
-Retained:
-- V142 even mobile stack.
-- Mobile order: Locations, Videos, Build Your Show, Socials.
-- Footer Get Directions.
-- CNAME: dfofireworks.com.
+Fixes:
+- Uses Locations card as mobile typography master.
+- Empty video categories say only "Video Coming Soon."
+- Instagram/social icons are equal size.
+- Mobile glow/ring background elements are removed.
+- Social-to-countdown gap is reduced safely.
+- Mobile video preview mini strip is hidden so it does not look chopped.
+- CNAME dfofireworks.com included.
 
 Test:
-https://dfofireworks.com/?fresh=v143
+https://dfofireworks.com/?fresh=v142

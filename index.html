@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V143 FONT BUTTON CARD EDGE CLEANUP: small text style + button text + rounded card clipping -->
-<!-- DFO V142 EVEN MOBILE STACK: all mobile cards spaced evenly -->
+<!-- DFO V142 MOBILE MASTER CLEANUP -->
+<!-- DFO V141 MOBILE VIDEO COUNTDOWN POLISH -->
+<!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
 <!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
 <!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
 <!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
@@ -5617,313 +5618,352 @@ body.load-lock .topbar{
 }
 
 
-/* =========================
-   V142 EVEN MOBILE STACK
-   Final mobile reset:
-   - No first-card special offset.
-   - No transform tricks.
-   - Same spacing above first card and between every card.
-   - Locations, Videos, Build Your Show, Socials.
-========================= */
-
-.calibration-panel,
-.calibration-dot,
-.ring-guide,
-#calibrationDots{
-  display:none !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
+/* V140 MOBILE LOCATIONS SWEET SPOT */
+@media (max-width:700px){
+  .scene{
+    margin-top:clamp(-42px, -8vw, -28px) !important;
+    padding-top:18px !important;
+    padding-bottom:104px !important;
+  }
+  .carousel{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    gap:22px !important;
+  }
+  .card3d-locations{
+    margin-top:26px !important;
+  }
+  .card3d-locations .card{
+    overflow:visible !important;
+  }
+  .bottom-count{
+    margin-top:58px !important;
+  }
+}
+@media (max-width:420px){
+  .scene{
+    margin-top:-34px !important;
+  }
+  .card3d-locations{
+    margin-top:24px !important;
+  }
 }
 
-@media (max-width:700px){
-  .header{
-    margin-bottom:0 !important;
-    padding-bottom:12px !important;
-  }
 
+/* =========================
+   V141 MOBILE VIDEO + COUNTDOWN POLISH
+   Built from V140 stable mobile spacing.
+   Keeps Locations position locked.
+   Fixes:
+   - Video preview area was too short/cut off on mobile.
+   - Social-to-countdown gap was too large, but still needs no overlap.
+========================= */
+
+@media (max-width:700px){
+  /*
+    Keep V140's first card sweet spot.
+    Do not move Locations again.
+  */
   .scene{
-    position:relative !important;
-    top:auto !important;
-    bottom:auto !important;
-    min-height:0 !important;
-    margin:0 !important;
-    padding:26px 14px 96px !important;
-    perspective:none !important;
-    overflow:visible !important;
+    margin-top:clamp(-42px, -8vw, -28px) !important;
+    padding-top:18px !important;
+    padding-bottom:76px !important;
   }
 
   .carousel{
-    position:relative !important;
-    inset:auto !important;
-    width:100% !important;
+    gap:22px !important;
+    padding-bottom:0 !important;
+  }
+
+  .card3d-locations{
+    margin-top:26px !important;
+  }
+
+  /*
+    Give the video card room so the preview/thumbnail area is not chopped.
+    These selectors cover both the feature panel and any nested preview/thumb rail.
+  */
+  .card-videos .video-feature,
+  .card-videos .video-stage,
+  .card-videos .video-preview,
+  .card-videos .video-frame,
+  .card-videos .featured-video,
+  .card-videos .demo-preview{
+    min-height:clamp(235px, 58vw, 310px) !important;
     height:auto !important;
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:26px !important;
-    margin:0 !important;
-    padding:0 !important;
-    transform:none !important;
-    perspective:none !important;
+    max-height:none !important;
     overflow:visible !important;
   }
 
-  .card3d,
-  .card3d.is-active,
-  .card3d[data-slot]{
-    position:relative !important;
-    left:auto !important;
-    top:auto !important;
-    width:100% !important;
-    max-width:430px !important;
+  .card-videos .video-feature iframe,
+  .card-videos .video-stage iframe,
+  .card-videos .video-preview iframe,
+  .card-videos .video-frame iframe,
+  .card-videos iframe{
+    min-height:clamp(210px, 54vw, 285px) !important;
     height:auto !important;
-    min-height:auto !important;
-    margin:0 auto !important;
-    padding:0 !important;
-    transform:none !important;
-    opacity:1 !important;
-    filter:none !important;
-    pointer-events:auto !important;
-    z-index:auto !important;
+    aspect-ratio:16/9 !important;
+  }
+
+  .card-videos .video-thumbs,
+  .card-videos .video-grid-mini,
+  .card-videos .video-preview-row,
+  .card-videos .video-strip{
+    margin-top:14px !important;
     overflow:visible !important;
   }
 
-  .card3d-locations,
-  .card3d-videos,
-  .card3d-build,
-  .card3d-social{
-    margin-top:0 !important;
-    margin-bottom:0 !important;
-    transform:none !important;
-  }
-
-  .card3d-locations{order:1 !important;}
-  .card3d-videos{order:2 !important;}
-  .card3d-build{order:3 !important;}
-  .card3d-social{order:4 !important;}
-  .card3d-favorites{display:none !important;}
-
-  .card3d + .card3d{
-    margin-top:0 !important;
-  }
-
-  .card{
-    margin:0 !important;
+  .card-videos .card-media,
+  .card-videos .media-box,
+  .card-videos .card-body{
     overflow:visible !important;
   }
 
+  /*
+    Bring countdown closer to Social Feed, but leave enough safe space
+    so it never visually overlaps the final card glow/button.
+  */
   .bottom-count{
-    clear:both !important;
+    margin-top:34px !important;
+    margin-bottom:24px !important;
     position:relative !important;
     z-index:40 !important;
-    width:92vw !important;
-    margin:34px auto 26px !important;
-    padding-top:0 !important;
+  }
+
+  .bottom-count p{
+    margin-bottom:10px !important;
   }
 
   .footer{
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:16px !important;
-    padding:18px 16px 22px !important;
-    text-align:center !important;
     margin-top:0 !important;
   }
+}
 
-  .footer .promise,
-  .footer .drag-note,
-  .footer .drag{
-    display:none !important;
+@media (max-width:420px){
+  .scene{
+    margin-top:-34px !important;
   }
 
-  .footer .follow{
-    order:1 !important;
-    justify-content:center !important;
+  .card3d-locations{
+    margin-top:24px !important;
   }
 
-  .footer-directions{
-    order:2 !important;
-    width:min(92vw,430px) !important;
-    margin:0 auto !important;
+  .card-videos .video-feature,
+  .card-videos .video-stage,
+  .card-videos .video-preview,
+  .card-videos .video-frame,
+  .card-videos .featured-video,
+  .card-videos .demo-preview{
+    min-height:250px !important;
+  }
+
+  .bottom-count{
+    margin-top:32px !important;
   }
 }
 
 
 /* =========================
-   V143 FONT + BUTTON + CARD EDGE CLEANUP
-   Style-only pass.
-   - Small text uses the Locations address font style.
-   - Button text is bolder and about two sizes larger without changing button size.
-   - Card inner overlays are clipped to the rounded corners so no tiny square/straight opaque edge shows.
+   V142 MOBILE MASTER CLEANUP
 ========================= */
-
-:root{
-  --dfo-small-font:"Roboto Condensed","Barlow Condensed",Arial,sans-serif;
-}
-
-/* Small text style pulled from the Locations address line */
-.card-eyebrow,
-.card-copy p,
-.video-label,
-.favorite-grid b,
-.loc span,
-.location-grid p,
-.feed-card p,
-.favorites-modal-grid p,
-.video-card p,
-.clock-lab,
-.bottom-count p,
-.bottom-row small,
-.promise,
-.drag-note,
-.follow-text,
-.follow-text small,
-.eyebrow,
-.category-note,
-.demo-wall-content em,
-.demo-wall-content b,
-.demo-breadcrumbs,
-.demo-art-label,
-.demo-inner-hero p,
-.demo-video-empty span,
-.modal p,
-.modal label,
-.contact-form label{
-  font-family:var(--dfo-small-font) !important;
-  font-weight:900 !important;
-  text-transform:uppercase !important;
-  letter-spacing:.065em !important;
-}
-
-/* Keep the exact address style extra locked */
-.loc span{
-  font-family:var(--dfo-small-font) !important;
-  font-weight:900 !important;
-  letter-spacing:.06em !important;
-  line-height:1.12 !important;
-}
-
-/* Button text: bigger + bolder, button dimensions unchanged */
-button,
-.card-btn,
-.nav button,
-.nav .directions,
-.footer-directions,
-.modal-link,
-.location-grid a,
-.contact-form button,
-.demo-wall-card,
-.demo-breadcrumbs button,
-[data-demo-back]{
-  font-family:var(--dfo-small-font) !important;
-  font-weight:1000 !important;
-}
-
-.card-btn{
-  font-size:clamp(10px,.78vw,15px) !important;
-  font-weight:1000 !important;
-  line-height:1 !important;
-  letter-spacing:.18em !important;
-  padding-top:0 !important;
-  padding-bottom:0 !important;
-}
-
-.nav button{
-  font-size:clamp(12px,.88vw,16px) !important;
-  font-weight:1000 !important;
-  line-height:1 !important;
-}
-
-.nav .directions{
-  font-size:clamp(12px,.88vw,16px) !important;
-  font-weight:1000 !important;
-  line-height:1 !important;
-}
-
-.footer-directions{
-  font-size:clamp(12px,.88vw,16px) !important;
-  font-weight:1000 !important;
-  line-height:1 !important;
-}
-
-.modal-link,
-.location-grid a,
-.contact-form button{
-  font-size:clamp(14px,.98vw,18px) !important;
-  font-weight:1000 !important;
-}
-
-/* Remove the tiny straight/opaque square edge inside rounded cards.
-   This does not resize or reposition cards. It only clips inner overlays to the card radius. */
-.card{
-  overflow:hidden !important;
-  isolation:isolate !important;
-  background-clip:padding-box !important;
-}
-
-.card::before,
-.card::after{
-  border-radius:inherit !important;
-}
-
-.card-media,
-.video-feature,
-.build-photo,
-.favorite-grid,
-.social-thumbs,
-.video-preview{
-  overflow:hidden !important;
-  background-clip:padding-box !important;
-}
-
-.card-media::before,
-.card-media::after,
-.video-feature::before,
-.video-feature::after,
-.build-photo::before,
-.build-photo::after{
-  border-radius:inherit !important;
-}
-
-/* Mobile-specific text sizing only. No card movement. */
 @media (max-width:700px){
-  .card-btn{
-    font-size:13px !important;
-    line-height:1 !important;
-    letter-spacing:.15em !important;
-    padding-top:0 !important;
+  .foreground-ring-occlusion,
+  .ring-guide,
+  .outer-ring,
+  .inner-ring,
+  .glow-ring,
+  .stage-ring,
+  .water-ring,
+  .carousel-ring,
+  .hero-ring,
+  .bg-ring,
+  .ring-glow{
+    display:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+
+  .scene{
+    margin-top:clamp(-42px, -8vw, -28px) !important;
+    padding-top:18px !important;
+    padding-bottom:58px !important;
+  }
+
+  .carousel{
+    gap:22px !important;
     padding-bottom:0 !important;
   }
 
-  .nav button{
-    font-size:12px !important;
-    line-height:1 !important;
+  .card3d-locations{
+    margin-top:26px !important;
   }
 
-  .nav .directions,
-  .footer-directions{
-    font-size:13px !important;
-    line-height:1 !important;
+  .card h2,
+  .card-title,
+  .card .title,
+  .card-videos h2,
+  .card-build h2,
+  .card-social h2,
+  .card-locations h2,
+  .card h3{
+    font-family:var(--head) !important;
+    font-size:clamp(34px, 8.8vw, 46px) !important;
+    line-height:.9 !important;
+    letter-spacing:-.02em !important;
+    text-align:center !important;
+    margin:0 0 22px !important;
+    text-transform:uppercase !important;
   }
 
-  .card-copy p,
-  .video-label,
-  .favorite-grid b,
-  .loc span,
-  .bottom-row small,
-  .follow-text small{
-    font-family:var(--dfo-small-font) !important;
-    font-weight:900 !important;
-    letter-spacing:.06em !important;
+  .card p,
+  .card .eyebrow,
+  .card .caption,
+  .card .card-copy,
+  .card .subcopy,
+  .card .description{
+    font-size:clamp(11px, 2.7vw, 13px) !important;
+    line-height:1.35 !important;
+    letter-spacing:.075em !important;
   }
 
-  .card{
+  .card .btn,
+  .card button,
+  .card a.button,
+  .card a[class*="button"]{
+    min-height:52px !important;
+    border:1.5px solid #ff6d2e !important;
+    background:rgba(255,109,46,.04) !important;
+    color:#ff8a52 !important;
+    box-shadow:none !important;
+  }
+
+  .card-videos .video-thumbs,
+  .card-videos .video-grid-mini,
+  .card-videos .video-preview-row,
+  .card-videos .video-strip,
+  .card-videos .mini-videos,
+  .card-videos .thumb-row{
+    display:none !important;
+  }
+
+  .card-videos .video-feature,
+  .card-videos .video-stage,
+  .card-videos .video-preview,
+  .card-videos .video-frame,
+  .card-videos .featured-video,
+  .card-videos .demo-preview,
+  .card-videos .card-media,
+  .card-videos .media-box{
+    min-height:auto !important;
+    height:auto !important;
+    max-height:none !important;
     overflow:hidden !important;
   }
+
+  .card-videos iframe,
+  .card-videos img,
+  .card-videos video{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:16/9 !important;
+    object-fit:cover !important;
+  }
+
+  .social-icons,
+  .social-links,
+  .social-row{
+    gap:16px !important;
+    align-items:center !important;
+    justify-content:center !important;
+  }
+
+  .social-icons a,
+  .social-links a,
+  .social-row a,
+  .social-icons button,
+  .social-links button,
+  .social-row button{
+    width:44px !important;
+    height:44px !important;
+    min-width:44px !important;
+    min-height:44px !important;
+    display:inline-grid !important;
+    place-items:center !important;
+    font-size:19px !important;
+    line-height:1 !important;
+  }
+
+  .social-icons img,
+  .social-links img,
+  .social-row img,
+  .social-icons svg,
+  .social-links svg,
+  .social-row svg{
+    width:23px !important;
+    height:23px !important;
+    max-width:23px !important;
+    max-height:23px !important;
+    object-fit:contain !important;
+  }
+
+  .bottom-count{
+    margin-top:22px !important;
+    margin-bottom:24px !important;
+    position:relative !important;
+    z-index:40 !important;
+  }
+
+  .footer{ margin-top:0 !important; }
 }
+
+@media (max-width:420px){
+  .scene{
+    margin-top:-34px !important;
+    padding-bottom:56px !important;
+  }
+  .card3d-locations{ margin-top:24px !important; }
+  .card h2,
+  .card-title,
+  .card .title,
+  .card-videos h2,
+  .card-build h2,
+  .card-social h2,
+  .card-locations h2,
+  .card h3{
+    font-size:clamp(32px, 8.5vw, 42px) !important;
+  }
+  .bottom-count{ margin-top:20px !important; }
+}
+
+#videosModal.is-category-open .category-note{ display:none !important; }
+#videosModal.is-empty-category .demo-inner-hero{ display:none !important; }
+#videosModal.is-empty-category .demo-video-scroll{
+  display:block !important;
+  max-height:none !important;
+  overflow:visible !important;
+  padding:0 !important;
+}
+#videosModal .demo-video-empty{
+  min-height:260px !important;
+  display:grid !important;
+  place-items:center !important;
+  text-align:center !important;
+}
+#videosModal .demo-video-empty strong{
+  font-family:var(--head) !important;
+  font-size:clamp(46px, 12vw, 82px) !important;
+  line-height:.85 !important;
+  color:#fff !important;
+  text-transform:uppercase !important;
+}
+#videosModal .demo-video-empty span,
+#videosModal.is-empty-category [data-demo-desc]{ display:none !important; }
 
 </style>
 </head>
-<body data-build="v143-font-button-card-edge-cleanup" class="load-lock">
+<body data-build="v142-mobile-master-cleanup" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6009,7 +6049,7 @@ button,
           </span>
           <span class="demo-wall-content">
             <strong>Artilleries</strong>
-            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.</em>
+            <em>Video Coming Soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6042,7 +6082,7 @@ button,
           </span>
           <span class="demo-wall-content">
             <strong>Missile</strong>
-            <em>Missile and rocket-style effects. Demo videos coming soon.</em>
+            <em>Video Coming Soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6053,7 +6093,7 @@ button,
           </span>
           <span class="demo-wall-content">
             <strong>Misc.</strong>
-            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.</em>
+            <em>Video Coming Soon.</em>
             <b>Videos coming soon</b>
           </span>
         </button>
@@ -6106,7 +6146,7 @@ button,
   "artilleries": {
     "title": "Artilleries",
     "crumb": "Artilleries",
-    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.",
+    "desc": "Video Coming Soon.",
     "videos": []
   },
   "assortments": {
@@ -6138,13 +6178,13 @@ button,
   "missile": {
     "title": "Missile",
     "crumb": "Missile",
-    "desc": "Missile and rocket-style effects. Demo videos coming soon.",
+    "desc": "Video Coming Soon.",
     "videos": []
   },
   "misc": {
     "title": "Misc.",
     "crumb": "Misc.",
-    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.",
+    "desc": "Video Coming Soon.",
     "videos": []
   }
 }
@@ -6655,7 +6695,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V143 loaded: small fonts, button text, rounded card edge cleanup.");
+console.log("DFO V142 loaded: mobile master cleanup.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -6690,6 +6730,7 @@ console.log("DFO V143 loaded: small fonts, button text, rounded card edge cleanu
   }
 
   function showWall(){
+    modal.classList.remove("is-category-open", "is-empty-category");
     stopVideos();
     if (inner) inner.hidden = true;
     if (wall) wall.classList.add("is-active");
@@ -6699,6 +6740,10 @@ console.log("DFO V143 loaded: small fonts, button text, rounded card edge cleanu
   function showCategory(key){
     const item = data[key];
     if (!item || !wall || !inner || !scroll) return;
+
+    const hasVideos = !!(item.videos && item.videos.length);
+    modal.classList.add("is-category-open");
+    modal.classList.toggle("is-empty-category", !hasVideos);
 
     wall.classList.remove("is-active");
     inner.hidden = false;
@@ -6713,10 +6758,7 @@ console.log("DFO V143 loaded: small fonts, button text, rounded card edge cleanu
     if (!item.videos || !item.videos.length){
       scroll.innerHTML = `
         <div class="demo-video-empty">
-          <div>
-            <strong>Videos Coming Soon</strong>
-            <span>This category wall is ready. We can add demos here later.</span>
-          </div>
+          <strong>Video Coming Soon</strong>
         </div>`;
     } else {
       item.videos.forEach(video => {
