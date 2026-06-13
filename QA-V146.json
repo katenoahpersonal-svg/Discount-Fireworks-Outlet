@@ -1,0 +1,10 @@
+{
+  "version": "v146-surgical-video-type-timeline",
+  "base": "DFO-V145-EMERGENCY-ROLLBACK-PRE-V144.zip",
+  "surgical_only": true,
+  "positioning_changed": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v146",
+  "created_epoch": 1781374999
+}

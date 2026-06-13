@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V146 SURGICAL VIDEO TYPE TIMELINE: no positioning reset -->
 <!-- DFO V145 EMERGENCY ROLLBACK PRE V144: restores V143 before global CSS damage -->
 <!-- DFO V143 PRODUCTION MOBILE CLEANUP: V140 stable base + mobile production fixes -->
 <!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
@@ -5853,9 +5854,105 @@ body.load-lock .topbar{
 #videosModal .demo-video-empty span,
 #videosModal.is-empty-category [data-demo-desc]{display:none !important;}
 
+
+/* =========================================================
+   V146 SURGICAL FIX
+   Base: V145 rollback.
+   DO NOT change carousel/card positioning.
+========================================================= */
+
+.card-videos .video-label,
+.card-videos .video-thumb-button span{
+  display:none !important;
+  visibility:hidden !important;
+}
+
+/* Main featured video only: fit the image inside the card properly. */
+.card-videos .video-preview{
+  overflow:hidden !important;
+  border-radius:18px !important;
+}
+
+.card-videos .video-feature{
+  border-radius:14px !important;
+  overflow:hidden !important;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+  background-color:#02040b !important;
+}
+
+/* Keep thumb positions. Only remove square edge/text label remnants. */
+.card-videos .video-thumb-button{
+  border-radius:12px !important;
+  overflow:hidden !important;
+  background-position:center center !important;
+}
+
+/* Readability only. No structure changes. */
+.card-copy p{
+  font-size:clamp(13px, 1.05vw, 16px) !important;
+  line-height:1.35 !important;
+}
+
+.card-btn{
+  font-size:clamp(12px, .9vw, 15px) !important;
+  letter-spacing:.16em !important;
+}
+
+/* Move bottom timeline down a few clicks without altering cards. */
+.bottom-count{
+  margin-top:clamp(30px, 3.4vh, 46px) !important;
+}
+
+@media (max-width:700px){
+  .card-copy p{
+    font-size:clamp(14px, 3.35vw, 16px) !important;
+    line-height:1.35 !important;
+    letter-spacing:.085em !important;
+    font-weight:850 !important;
+  }
+
+  .card-btn{
+    font-size:clamp(14px, 3.35vw, 16px) !important;
+    letter-spacing:.15em !important;
+    min-height:58px !important;
+    height:58px !important;
+  }
+
+  .card-videos .video-preview{
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+
+  .card-videos .video-feature{
+    background-size:contain !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+    background-color:#02040b !important;
+    border-radius:14px !important;
+  }
+
+  .card-videos .video-thumb-button{
+    border-radius:12px !important;
+  }
+
+  .bottom-count{
+    margin-top:46px !important;
+    margin-bottom:42px !important;
+  }
+}
+
+@media (max-width:420px){
+  .bottom-count{
+    margin-top:44px !important;
+    margin-bottom:46px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v145-emergency-rollback-pre-v144" class="load-lock">
+<body data-build="v146-surgical-video-type-timeline" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6587,7 +6684,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V145 loaded: emergency rollback to pre-V144 layout.");
+console.log("DFO V146 loaded: surgical video fit, label removal, type/readability, timeline drop.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */

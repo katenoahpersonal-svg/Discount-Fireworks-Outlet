@@ -1,23 +1,16 @@
-DFO V145 — Emergency Rollback Before V144
+DFO V146 — Surgical Video / Text / Timeline Fix
 
-Purpose:
-V144 introduced global typography/layout rules that damaged the desktop 3D carousel.
-This package restores the pre-V144 layout from V143.
+Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-Upload:
-1. Extract this zip.
-2. GitHub repo > Code.
-3. Branch must be main.
-4. Add file > Upload files.
-5. Drag extracted contents.
-6. Commit directly to main.
-7. Wait for green Actions check.
-8. Test:
-   https://dfofireworks.com/?fresh=v145
+Base:
+- V145 rollback, so desktop/card positioning stays restored.
 
-Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
+Changed only:
+- Main featured video image fits inside its card.
+- Removed "Featured Demo" and "Demo 2/3/4/5" text labels.
+- Restored rounded video media corners.
+- Increased small card copy and button text readability.
+- Moved bottom countdown down a few clicks.
 
-Expected:
-- Desktop 3D carousel returns to pre-V144 layout.
-- Domain stays connected.
-- CNAME remains dfofireworks.com.
+Test:
+https://dfofireworks.com/?fresh=v146
