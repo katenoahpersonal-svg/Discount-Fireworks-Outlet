@@ -1,14 +1,18 @@
 {
-  "version": "v143-font-button-card-edge-cleanup",
-  "base": "DFO-V142-EVEN-MOBILE-STACK.zip",
+  "version": "v143-production-mobile-cleanup",
+  "base": "DFO-V140-MOBILE-LOCATIONS-SWEETSPOT.zip",
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "changes": [
-    "small text font/style unified to Locations address style",
-    "button text larger/bolder without changing button dimensions",
-    "card overflow clipped to rounded corners to remove square edge"
+  "new_mobile_background": "assets/background-mobile-no-ring-v143.jpg",
+  "fixes": [
+    "header gap",
+    "mobile ring-muted background",
+    "unified mobile card typography",
+    "video preview restored",
+    "larger equal social icons",
+    "modal category note hidden",
+    "empty videos say only Video Coming Soon"
   ],
-  "no_layout_movement": true,
   "expected_url": "https://dfofireworks.com/?fresh=v143",
-  "created_epoch": 1781297615
+  "created_epoch": 1781363524
 }
