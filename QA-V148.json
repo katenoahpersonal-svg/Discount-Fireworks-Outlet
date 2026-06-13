@@ -1,0 +1,12 @@
+{
+  "version": "v148-desktop-bg-restore-mobile-only-patch",
+  "base": "DFO-V140-MOBILE-LOCATIONS-SWEETSPOT.zip",
+  "desktop_change": "background restore only",
+  "mobile_patch_scope": "max-width 700px",
+  "generated_images": false,
+  "new_image_assets": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v148",
+  "created_epoch": 1781388134
+}

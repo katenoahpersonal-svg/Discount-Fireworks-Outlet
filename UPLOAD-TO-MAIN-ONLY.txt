@@ -1,27 +1,26 @@
-DFO V147 — Mobile Only Lock
+DFO V148 — Desktop Background Restore + Mobile-Only Patch
 
 Base:
 - Built from V140 stable.
 
-Important:
-- Mobile only.
-- No desktop rules.
-- No tablet rules.
+Scope:
+- Desktop change: restore existing fireworks/lake background only.
+- All UI/layout/readability fixes are mobile-only.
 - No generated images.
-- No background asset swap.
-- No DNS/Cloudflare/Squarespace changes.
+- No new image assets.
+- No DNS, Cloudflare, Squarespace, or GitHub Pages setting changes.
 
-Fixes on mobile only:
-- Keeps good card positioning.
-- Fits only the main video preview inside the Preview card.
-- Restores rounded video edges.
-- Removes Featured Demo / Demo 2 / Demo 3 labels visually on mobile.
-- Makes mobile copy and button text readable/proportionate.
-- Makes social icons larger.
-- Moves bottom countdown down a few clicks and prevents cutoff.
-- Removes mobile video modal helper/breadcrumb clutter.
-- Empty mobile no-video pages display: Video Coming Soon.
+Fixes:
+- Restores desktop cinematic fireworks/lake background using existing asset.
+- Reduces mobile header-to-first-card gap.
+- Uses Locations card as the mobile title/copy/button master.
+- Fixes only the Preview card main video fit.
+- Removes visible mobile demo label/helper clutter.
+- Enlarges mobile copy/buttons/social icons.
+- Moves bottom countdown down slightly and protects from cutoff.
+- Hides/darkens mobile-only glow/ring artifacts.
+- Empty video categories display: Video Coming Soon.
 - Keeps CNAME dfofireworks.com.
 
 Test:
-https://dfofireworks.com/?fresh=v147
+https://dfofireworks.com/?fresh=v148
