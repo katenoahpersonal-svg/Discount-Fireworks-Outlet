@@ -1,16 +1,24 @@
-DFO V146 — Surgical Video / Text / Timeline Fix
-
-Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
+DFO V146 — Production Lock Cleanup
 
 Base:
-- V145 rollback, so desktop/card positioning stays restored.
+- Built from V140 stable, not from broken V144/V145 chain.
 
-Changed only:
-- Main featured video image fits inside its card.
-- Removed "Featured Demo" and "Demo 2/3/4/5" text labels.
-- Restored rounded video media corners.
-- Increased small card copy and button text readability.
-- Moved bottom countdown down a few clicks.
+Upload:
+- Upload to main only.
+- Commit directly to main.
+- Do not touch Cloudflare, Squarespace, DNS, or Pages settings.
+
+Fixes:
+- Restores desktop fireworks/lake background.
+- Preserves card positioning/3D structure.
+- Fixes only the main video fit inside the card.
+- Removes Featured Demo / Demo 2 / Demo 3 / Demo 4 / Demo 5 text.
+- Makes mobile/tablet card copy and button text readable/proportionate.
+- Keeps mobile card title sizing consistent.
+- Moves bottom timeline down a few clicks only.
+- Removes public-facing video modal helper/breadcrumb filler.
+- Empty categories say only: Video Coming Soon.
+- Keeps CNAME dfofireworks.com.
 
 Test:
 https://dfofireworks.com/?fresh=v146

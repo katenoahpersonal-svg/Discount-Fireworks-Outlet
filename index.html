@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V146 SURGICAL VIDEO TYPE TIMELINE: no positioning reset -->
-<!-- DFO V145 EMERGENCY ROLLBACK PRE V144: restores V143 before global CSS damage -->
-<!-- DFO V143 PRODUCTION MOBILE CLEANUP: V140 stable base + mobile production fixes -->
+<!-- DFO V146 PRODUCTION LOCK CLEANUP: V140 stable base, scoped fixes only -->
 <!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
 <!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
 <!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
@@ -5651,20 +5649,79 @@ body.load-lock .topbar{
 }
 
 
-/* =========================
-   V143 PRODUCTION MOBILE CLEANUP
-   Built from V140 stable mobile base, not V142.
-   Fixes the live mobile production issues without touching DNS/domain.
-========================= */
+/* =========================================================
+   V146 PRODUCTION LOCK CLEANUP
+   Base: V140 stable.
+   Goal: preserve card positions/3D structure, fix only:
+   - desktop background restored
+   - mobile/tablet font consistency
+   - main video fit inside card
+   - remove demo labels
+   - remove modal filler/breadcrumb clutter
+   - move bottom countdown down a few clicks
+========================================================= */
 
-@media (max-width:700px){
-  /* Mobile-only background: use ring-muted asset and remove overlay/ring glow layers */
+/* Restore the real fireworks/lake background on desktop/tablet without changing carousel geometry. */
+:root{
+  --bg-d:url("assets/background-live-v93-no-buoy.jpg?v=146") !important;
+  --bg-m:url("assets/background-live-v93-no-buoy.jpg?v=146") !important;
+}
+
+@media (min-width:701px){
   .page{
     background:
-      linear-gradient(180deg,rgba(0,0,0,.03) 0%,rgba(0,0,0,.20) 46%,rgba(3,5,13,.96) 78%,#03050d 100%),
-      url("assets/background-mobile-no-ring-v143.jpg?v=143") center top / auto 100vh no-repeat,
+      linear-gradient(180deg,rgba(0,0,0,.035),rgba(0,0,0,.10)),
+      var(--bg-d) center center / cover no-repeat !important;
+  }
+}
+
+/* Hide video label text only. Do not reposition thumbnails. */
+.card-videos .video-label,
+.card-videos .video-thumb-button span{
+  display:none !important;
+}
+
+/* Main video fit fix only: do not alter other video/card positions. */
+.card-videos .video-preview{
+  border-radius:16px !important;
+  overflow:hidden !important;
+  box-sizing:border-box !important;
+}
+
+.card-videos .video-feature{
+  border-radius:14px !important;
+  overflow:hidden !important;
+  background-size:contain !important;
+  background-repeat:no-repeat !important;
+  background-position:center center !important;
+}
+
+.card-videos .video-thumb-button{
+  border-radius:10px !important;
+  overflow:hidden !important;
+}
+
+/* Tablet readability only. Keep positioning untouched. */
+@media (min-width:701px) and (max-width:1180px){
+  .card-copy p{
+    font-size:clamp(13px,1.55vw,16px) !important;
+    line-height:1.32 !important;
+  }
+  .card-btn{
+    font-size:clamp(12px,1.35vw,15px) !important;
+    min-height:50px !important;
+  }
+}
+
+/* Mobile production patch: typography/readability only, preserve V140 stack position. */
+@media (max-width:700px){
+  .page{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.20)),
+      var(--bg-m) center top / auto 100vh no-repeat,
       #03050d !important;
   }
+
   .foreground-ring-occlusion,
   .ring-guide,
   #calibrationDots,
@@ -5676,283 +5733,164 @@ body.load-lock .topbar{
     pointer-events:none !important;
   }
 
-  /* Header-to-first-card gap: match normal card spacing, do not float in sky */
-  .header{margin-bottom:0 !important;padding-bottom:10px !important;}
+  /* Preserve the V140 mobile placement that was closest. */
   .scene{
-    margin-top:-86px !important;
-    padding-top:12px !important;
-    padding-bottom:52px !important;
+    margin-top:clamp(-42px, -8vw, -28px) !important;
+    padding-top:18px !important;
+    padding-bottom:84px !important;
   }
-  .carousel{gap:22px !important;padding-top:0 !important;padding-bottom:0 !important;}
-  .card3d-locations{margin-top:0 !important;}
+  .carousel{
+    gap:22px !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+  }
+  .card3d-locations{
+    margin-top:26px !important;
+  }
 
-  /* Location card is the master: consistent mobile headline and body sizes */
-  .card-title{
-    font-family:var(--head) !important;
-    font-size:clamp(36px,9.2vw,48px) !important;
-    line-height:.90 !important;
-    letter-spacing:-.01em !important;
-    text-align:center !important;
-    padding:0 18px !important;
-    margin:0 0 20px !important;
-  }
+  /* Consistent card title system on mobile only. */
+  .card-title,
+  .card .card-title,
   .card-videos .card-title,
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
-    font-size:clamp(36px,9.2vw,48px) !important;
-  }
-  .card-copy p{
-    font-size:clamp(12px,3.05vw,14px) !important;
-    line-height:1.28 !important;
-    letter-spacing:.105em !important;
-    margin-bottom:14px !important;
-  }
-  .card-btn{
-    min-height:56px !important;
-    height:56px !important;
-    font-size:clamp(12px,3vw,14px) !important;
-    letter-spacing:.18em !important;
-    border-radius:9px !important;
-    background:rgba(5,4,12,.28) !important;
-    color:#ff7a36 !important;
-    box-shadow:none !important;
+    font-family:var(--head) !important;
+    font-size:clamp(32px,8.35vw,42px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.01em !important;
+    text-align:center !important;
+    margin:0 auto 18px !important;
+    padding:0 16px !important;
+    max-width:10.5em !important;
   }
 
-  /* Video card: keep main preview visible; no blank bars; no global button styling */
-  .card-videos .video-preview{
-    display:grid !important;
-    grid-template-rows:minmax(190px,58vw) auto !important;
-    gap:10px !important;
-    padding:9px !important;
-    overflow:hidden !important;
+  .card-title .title-line{
+    display:block !important;
+    font-size:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
   }
+
+  .card-videos .card-title{
+    max-width:10em !important;
+  }
+
+  /* Make tiny copy readable across cards. */
+  .card-copy p,
+  .card .card-copy p,
+  .card-videos .card-copy p,
+  .card-build .card-copy p,
+  .card-social .card-copy p{
+    font-size:clamp(14px,3.35vw,16px) !important;
+    line-height:1.34 !important;
+    letter-spacing:.085em !important;
+    font-weight:900 !important;
+    margin-bottom:16px !important;
+  }
+
+  .card-btn,
+  .card .card-btn,
+  .card-videos .card-btn,
+  .card-build .card-btn,
+  .card-social .card-btn,
+  .card-locations .card-btn{
+    min-height:58px !important;
+    height:58px !important;
+    font-size:clamp(14px,3.3vw,16px) !important;
+    line-height:1.05 !important;
+    letter-spacing:.155em !important;
+    font-weight:950 !important;
+    padding:0 18px !important;
+  }
+
+  /* Main preview image fits inside the card. Other video positions stay untouched. */
   .card-videos .video-feature{
-    min-height:190px !important;
-    height:100% !important;
-    background-size:cover !important;
-    background-position:center !important;
-    border-radius:12px !important;
-    overflow:hidden !important;
-  }
-  .card-videos .video-thumbs{
-    display:grid !important;
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:8px !important;
-    min-height:78px !important;
-    overflow:hidden !important;
-  }
-  .card-videos .video-thumb-button{
-    min-height:74px !important;
-    border-radius:10px !important;
-    background-size:cover !important;
-    background-position:center !important;
+    background-size:contain !important;
+    background-repeat:no-repeat !important;
+    background-position:center center !important;
   }
 
-  /* Social icons larger/equal. Instagram matches Facebook/YouTube size. */
-  .social-icons-row{
-    gap:18px !important;
-    padding-bottom:18px !important;
-  }
+  /* Social icons readable without changing card layout. */
   .social-big{
-    width:48px !important;
-    height:48px !important;
-    min-width:48px !important;
-    min-height:48px !important;
-    font-size:23px !important;
+    width:50px !important;
+    height:50px !important;
+    min-width:50px !important;
+    min-height:50px !important;
+    font-size:24px !important;
     display:inline-grid !important;
     place-items:center !important;
-    line-height:1 !important;
   }
-  .social-big.ig{font-size:25px !important;}
-  .social-thumbs{gap:8px !important;margin:0 14px 0 !important;}
+  .social-big.ig{
+    font-size:26px !important;
+  }
 
-  /* Countdown: reduce gap, but keep clear of Social card/button */
+  /* Move bottom timeline down only a few clicks and give it bottom breathing room. */
   .bottom-count{
-    margin-top:34px !important;
-    margin-bottom:24px !important;
+    margin-top:46px !important;
+    margin-bottom:46px !important;
+    padding-bottom:10px !important;
     position:relative !important;
     z-index:40 !important;
   }
 }
 
 @media (max-width:420px){
-  .scene{margin-top:-78px !important;}
+  .scene{
+    margin-top:-34px !important;
+    padding-bottom:88px !important;
+  }
+  .card3d-locations{
+    margin-top:24px !important;
+  }
   .card-title,
+  .card .card-title,
   .card-videos .card-title,
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
-    font-size:clamp(34px,8.9vw,44px) !important;
+    font-size:clamp(31px,8.15vw,40px) !important;
   }
-  .card-videos .video-preview{grid-template-rows:minmax(178px,56vw) auto !important;}
-  .card-videos .video-thumbs{min-height:72px !important;}
-  .bottom-count{margin-top:30px !important;}
+  .bottom-count{
+    margin-top:44px !important;
+    margin-bottom:50px !important;
+  }
 }
 
-/* Video modal production cleanup */
-#videosModal .category-note{display:none !important;}
-#videosModal .demo-wall-view .demo-breadcrumbs{display:none !important;}
-#videosModal .demo-inner-wall .demo-breadcrumbs{
-  display:flex !important;
-  margin:0 0 18px !important;
+/* Video modal cleanup: no public-facing helper text/clutter. */
+#videosModal .category-note{
+  display:none !important;
+}
+#videosModal .demo-wall-view .demo-breadcrumbs{
+  display:none !important;
 }
 #videosModal .demo-inner-wall .demo-breadcrumbs span,
 #videosModal .demo-inner-wall .demo-breadcrumbs strong{
   display:none !important;
 }
-#videosModal .demo-inner-wall .demo-breadcrumbs button{
-  font-size:clamp(14px,3.4vw,18px) !important;
-  color:#ff7a36 !important;
-  letter-spacing:.14em !important;
-}
-#videosModal.is-empty-category .demo-inner-hero{display:none !important;}
-#videosModal.is-empty-category .demo-video-scroll{
-  display:block !important;
-  max-height:none !important;
-  overflow:visible !important;
-  padding:0 !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-art,
-#videosModal .demo-wall-card.is-empty .demo-art-label,
-#videosModal .demo-wall-card.is-empty em{
+#videosModal.is-empty-category .demo-inner-hero{
   display:none !important;
 }
-#videosModal .demo-wall-card.is-empty{
-  min-height:220px !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-content{
-  min-height:220px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-content strong{display:none !important;}
-#videosModal .demo-wall-card.is-empty .demo-wall-content b{
-  margin:0 !important;
-  color:#fff !important;
-  font-family:var(--head) !important;
-  font-size:clamp(42px,10vw,70px) !important;
-  line-height:.88 !important;
-  letter-spacing:0 !important;
-}
 #videosModal .demo-video-empty{
-  min-height:280px !important;
+  min-height:260px !important;
   display:grid !important;
   place-items:center !important;
   text-align:center !important;
-  border:1px dashed rgba(255,122,54,.55) !important;
-  border-radius:18px !important;
 }
 #videosModal .demo-video-empty strong{
-  color:#fff !important;
   font-family:var(--head) !important;
-  font-size:clamp(48px,13vw,88px) !important;
-  line-height:.86 !important;
+  font-size:clamp(44px,10vw,76px) !important;
+  line-height:.9 !important;
   text-transform:uppercase !important;
 }
 #videosModal .demo-video-empty span,
-#videosModal.is-empty-category [data-demo-desc]{display:none !important;}
-
-
-/* =========================================================
-   V146 SURGICAL FIX
-   Base: V145 rollback.
-   DO NOT change carousel/card positioning.
-========================================================= */
-
-.card-videos .video-label,
-.card-videos .video-thumb-button span{
+#videosModal.is-empty-category [data-demo-desc]{
   display:none !important;
-  visibility:hidden !important;
-}
-
-/* Main featured video only: fit the image inside the card properly. */
-.card-videos .video-preview{
-  overflow:hidden !important;
-  border-radius:18px !important;
-}
-
-.card-videos .video-feature{
-  border-radius:14px !important;
-  overflow:hidden !important;
-  background-size:contain !important;
-  background-repeat:no-repeat !important;
-  background-position:center center !important;
-  background-color:#02040b !important;
-}
-
-/* Keep thumb positions. Only remove square edge/text label remnants. */
-.card-videos .video-thumb-button{
-  border-radius:12px !important;
-  overflow:hidden !important;
-  background-position:center center !important;
-}
-
-/* Readability only. No structure changes. */
-.card-copy p{
-  font-size:clamp(13px, 1.05vw, 16px) !important;
-  line-height:1.35 !important;
-}
-
-.card-btn{
-  font-size:clamp(12px, .9vw, 15px) !important;
-  letter-spacing:.16em !important;
-}
-
-/* Move bottom timeline down a few clicks without altering cards. */
-.bottom-count{
-  margin-top:clamp(30px, 3.4vh, 46px) !important;
-}
-
-@media (max-width:700px){
-  .card-copy p{
-    font-size:clamp(14px, 3.35vw, 16px) !important;
-    line-height:1.35 !important;
-    letter-spacing:.085em !important;
-    font-weight:850 !important;
-  }
-
-  .card-btn{
-    font-size:clamp(14px, 3.35vw, 16px) !important;
-    letter-spacing:.15em !important;
-    min-height:58px !important;
-    height:58px !important;
-  }
-
-  .card-videos .video-preview{
-    border-radius:18px !important;
-    overflow:hidden !important;
-  }
-
-  .card-videos .video-feature{
-    background-size:contain !important;
-    background-position:center center !important;
-    background-repeat:no-repeat !important;
-    background-color:#02040b !important;
-    border-radius:14px !important;
-  }
-
-  .card-videos .video-thumb-button{
-    border-radius:12px !important;
-  }
-
-  .bottom-count{
-    margin-top:46px !important;
-    margin-bottom:42px !important;
-  }
-}
-
-@media (max-width:420px){
-  .bottom-count{
-    margin-top:44px !important;
-    margin-bottom:46px !important;
-  }
 }
 
 </style>
 </head>
-<body data-build="v146-surgical-video-type-timeline" class="load-lock">
+<body data-build="v146-production-lock-cleanup" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6013,7 +5951,7 @@ body.load-lock .topbar{
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
       <h2>Choose Your Firework Demo Category</h2>
-      <p class="category-note"></p>
+      <p class="category-note">Pick a category first. Each category opens into its own video wall with breadcrumbs.</p>
 
       <section class="demo-wall-view is-active" data-demo-view="wall" aria-label="Firework demo category wall">
         <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
@@ -6038,8 +5976,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Artilleries</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Video Coming Soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         <button class="demo-wall-card has-videos" type="button" data-demo-open="assortments">
@@ -6071,8 +6009,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Missile</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Missile and rocket-style effects. Video Coming Soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         <button class="demo-wall-card is-empty" type="button" data-demo-open="misc">
@@ -6082,8 +6020,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Misc.</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Video Coming Soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         </div>
@@ -6091,7 +6029,7 @@ body.load-lock .topbar{
 
       <section class="demo-inner-wall" data-demo-view="category" hidden aria-label="Category video wall">
         <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
-          <button type="button" data-demo-back>← Back</button>
+          <button type="button" data-demo-back>Videos</button>
           <span>/</span>
           <strong data-demo-crumb></strong>
         </nav>
@@ -6135,7 +6073,7 @@ body.load-lock .topbar{
   "artilleries": {
     "title": "Artilleries",
     "crumb": "Artilleries",
-    "desc": "Video Coming Soon.",
+    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Video Coming Soon.",
     "videos": []
   },
   "assortments": {
@@ -6167,13 +6105,13 @@ body.load-lock .topbar{
   "missile": {
     "title": "Missile",
     "crumb": "Missile",
-    "desc": "Video Coming Soon.",
+    "desc": "Missile and rocket-style effects. Video Coming Soon.",
     "videos": []
   },
   "misc": {
     "title": "Misc.",
     "crumb": "Misc.",
-    "desc": "Video Coming Soon.",
+    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Video Coming Soon.",
     "videos": []
   }
 }
@@ -6316,12 +6254,12 @@ const cards = [
   { id:"videos", modal:"videosModal", eyebrow:"Demo Videos", title:"Preview the Boom Before You Buy",
     media:`<div class="card-media video-preview">
       <button class="video-feature video-open" data-modal="videosModal" style="background-image:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.45)),url('${IMG.videoFeature}')">
-        <span class="play">▶</span><span class="video-label">Featured Demo</span></button>
+        <span class="play">▶</span></button>
       <div class="video-thumbs">
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoCake}')"><span>Demo 2</span></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoAerial}')"><span>Demo 3</span></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoFinale}')"><span>Demo 4</span></button>
-        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoPatriotic}')"><span>Demo 5</span></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoCake}')"></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoAerial}')"></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoFinale}')"></button>
+        <button class="video-thumb-button" data-modal="videosModal" style="background-image:url('${IMG.videoPatriotic}')"></button>
       </div></div>`, copy:"Watch real demos, compare effects, and choose your finale.", cta:"▷ Watch Videos" },
   { id:"favorites", modal:"favoritesModal", eyebrow:"Finale Favorites", title:"Top Picks for the Perfect Finale",
     media:`<div class="card-media"><div class="favorite-grid">
@@ -6684,7 +6622,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V146 loaded: surgical video fit, label removal, type/readability, timeline drop.");
+console.log("DFO V146 loaded: production lock cleanup from V140 stable.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
