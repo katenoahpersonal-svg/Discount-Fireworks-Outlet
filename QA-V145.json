@@ -1,0 +1,10 @@
+{
+  "version": "v145-emergency-rollback-pre-v144",
+  "base": "DFO-V143-PRODUCTION-MOBILE-CLEANUP.zip",
+  "purpose": "restore V143 layout after V144 global CSS broke desktop",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "no_dns_changes": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v145",
+  "created_epoch": 1781367625
+}

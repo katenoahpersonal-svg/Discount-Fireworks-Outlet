@@ -1,19 +1,23 @@
-DFO V144 — Code-Only Production Type Fix
+DFO V145 — Emergency Rollback Before V144
 
-Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
+Purpose:
+V144 introduced global typography/layout rules that damaged the desktop 3D carousel.
+This package restores the pre-V144 layout from V143.
 
-This is code-only. No generated images.
+Upload:
+1. Extract this zip.
+2. GitHub repo > Code.
+3. Branch must be main.
+4. Add file > Upload files.
+5. Drag extracted contents.
+6. Commit directly to main.
+7. Wait for green Actions check.
+8. Test:
+   https://dfofireworks.com/?fresh=v145
 
-Fixes:
-- Uses one consistent card typography system across desktop/tablet/mobile.
-- Preview the Boom title is no longer giant compared with other cards.
-- Preview small copy is larger/readable.
-- Button text is larger/readable.
-- Video preview stops cutting off on the right.
-- Bottom timeline moves down a few clicks so it is not cut off.
-- Keeps current mobile card positioning.
-- Removes video modal breadcrumb clutter/category filler.
-- Keeps CNAME dfofireworks.com.
+Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-Test:
-https://dfofireworks.com/?fresh=v144
+Expected:
+- Desktop 3D carousel returns to pre-V144 layout.
+- Domain stays connected.
+- CNAME remains dfofireworks.com.
