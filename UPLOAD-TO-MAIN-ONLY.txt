@@ -1,20 +1,19 @@
-DFO V143 — Production Mobile Cleanup
+DFO V144 — Code-Only Production Type Fix
 
-Upload to main only. Do not touch Cloudflare, Squarespace, or DNS.
+Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-Built from V140 stable mobile base, not V142.
+This is code-only. No generated images.
 
 Fixes:
-- Header-to-first-card gap tightened.
-- Mobile background uses a ring-muted asset to remove the orange glow circle.
-- Card headings and button/copy sizes are unified from the Locations card style.
-- Video preview card restored so it is not blank/jacked.
-- Social icons are larger and equal size.
-- Social-to-countdown gap reduced safely.
-- Video modal category note removed.
-- Breadcrumb clutter removed; category pages keep only a small Back control.
-- Empty/no-video categories say only: Video Coming Soon.
-- CNAME dfofireworks.com included.
+- Uses one consistent card typography system across desktop/tablet/mobile.
+- Preview the Boom title is no longer giant compared with other cards.
+- Preview small copy is larger/readable.
+- Button text is larger/readable.
+- Video preview stops cutting off on the right.
+- Bottom timeline moves down a few clicks so it is not cut off.
+- Keeps current mobile card positioning.
+- Removes video modal breadcrumb clutter/category filler.
+- Keeps CNAME dfofireworks.com.
 
 Test:
-https://dfofireworks.com/?fresh=v143
+https://dfofireworks.com/?fresh=v144

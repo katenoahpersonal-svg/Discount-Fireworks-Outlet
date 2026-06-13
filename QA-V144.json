@@ -1,0 +1,18 @@
+{
+  "version": "v144-code-only-production-type-fix",
+  "base": "DFO-V143-PRODUCTION-MOBILE-CLEANUP.zip",
+  "code_only": true,
+  "generated_images": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "fixes": [
+    "consistent card typography desktop/tablet/mobile",
+    "preview title normalized",
+    "copy/button text enlarged",
+    "video preview right crop fixed",
+    "bottom timeline moved down slightly",
+    "modal breadcrumb/filler hidden"
+  ],
+  "expected_url": "https://dfofireworks.com/?fresh=v144",
+  "created_epoch": 1781365424
+}
