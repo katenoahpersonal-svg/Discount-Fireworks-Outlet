@@ -1,26 +1,32 @@
-DFO V148 — Desktop Background Restore + Mobile-Only Patch
+DFO V149 — Mobile Corrective Patch
 
 Base:
-- Built from V140 stable.
+- Built from V148.
 
-Scope:
-- Desktop change: restore existing fireworks/lake background only.
-- All UI/layout/readability fixes are mobile-only.
+What changed:
+- Applies the mobile-only corrective patch based on the actual root cause:
+  global .scene { top: 10.6vh !important; }
+- Desktop remains untouched from V148.
+- Desktop background restore remains intact.
 - No generated images.
-- No new image assets.
-- No DNS, Cloudflare, Squarespace, or GitHub Pages setting changes.
+- No new assets.
+- No DNS/Cloudflare/Squarespace/GitHub Pages setting changes.
 
 Fixes:
-- Restores desktop cinematic fireworks/lake background using existing asset.
-- Reduces mobile header-to-first-card gap.
-- Uses Locations card as the mobile title/copy/button master.
-- Fixes only the Preview card main video fit.
-- Removes visible mobile demo label/helper clutter.
-- Enlarges mobile copy/buttons/social icons.
-- Moves bottom countdown down slightly and protects from cutoff.
-- Hides/darkens mobile-only glow/ring artifacts.
-- Empty video categories display: Video Coming Soon.
-- Keeps CNAME dfofireworks.com.
+- reduces mobile header-to-first-card gap
+- hides/darkens mobile glow/ring artifacts
+- makes mobile card fonts consistent
+- fixes main Preview video fit
+- hides Featured Demo / Demo label text
+- enlarges mobile copy/button/social icon sizing
+- moves bottom countdown down without overlap
+- removes video modal helper/breadcrumb filler
+- no-video categories visually show: Video Coming Soon
 
-Test:
-https://dfofireworks.com/?fresh=v148
+Upload:
+1. Extract zip.
+2. Upload contents to GitHub main.
+3. Commit directly to main.
+4. Wait for green check.
+5. Test:
+   https://dfofireworks.com/?fresh=v149
