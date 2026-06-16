@@ -1,17 +1,22 @@
-DFO V154 — Force Desktop Background Only
+DFO V155 — Desktop Layout Restore + Keep Background
 
 Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-Built from V153.
+Built from V154.
 
 This is desktop/tablet-width only:
-- forces the fireworks/lake background onto .page::before
-- keeps cards/header/countdown above it
-- hides desktop .page::after overlays
-- keeps scene/carousel transparent
+- keeps the restored fireworks/lake background
+- restores original desktop absolute layout:
+  header absolute
+  scene absolute
+  carousel absolute
+  cards absolute
+  bottom countdown absolute under carousel
+  footer absolute
+- fixes the V154 mistake where the active card/countdown got pulled into the wrong layer
 - does not touch mobile
-- does not touch card sizing
+- does not touch card content sizing
 - CNAME dfofireworks.com included
 
 Test:
-https://dfofireworks.com/?fresh=v154
+https://dfofireworks.com/?fresh=v155

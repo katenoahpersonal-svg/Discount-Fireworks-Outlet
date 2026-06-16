@@ -1,0 +1,15 @@
+{
+  "version": "v155-desktop-layout-restore-keep-bg",
+  "base": "DFO-V154-FORCE-DESKTOP-BACKGROUND.zip",
+  "scope": "desktop/tablet layout restore only, min-width 701px",
+  "keeps_background": true,
+  "restores_scene_absolute": true,
+  "restores_bottom_count_absolute": true,
+  "mobile_changes": false,
+  "card_content_sizing_changes": false,
+  "dns_changes": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v155",
+  "created_epoch": 1781621548
+}

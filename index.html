@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- DFO V155 DESKTOP LAYOUT RESTORE KEEP BACKGROUND -->
 <!-- DFO V154 FORCE DESKTOP BACKGROUND -->
 <!-- DFO V153 DESKTOP BACKGROUND RESTORE -->
 <!-- DFO V152 DESKTOP REPAIR MOBILE PRODUCTION -->
@@ -6200,10 +6201,128 @@ body.load-lock .topbar{
   }
 }
 
+
+/* ==========================================================
+   DFO V155 — DESKTOP LAYOUT RESTORE, KEEP BACKGROUND
+   Scope: desktop/tablet width only, min-width 701px.
+
+   Fixes the V154 mistake:
+   - V154 forced .scene/.bottom-count/footer into relative flow.
+   - This restores the original absolute desktop layout.
+   - Background remains visible.
+   - Mobile untouched.
+========================================================== */
+@media (min-width:701px){
+
+  html,
+  body{
+    width:100% !important;
+    height:100% !important;
+    overflow:hidden !important;
+    background:#02040c !important;
+  }
+
+  .page{
+    position:fixed !important;
+    inset:0 !important;
+    overflow:hidden !important;
+    background:#02040c !important;
+  }
+
+  .page::before{
+    content:"" !important;
+    position:fixed !important;
+    inset:0 !important;
+    z-index:0 !important;
+    pointer-events:none !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    display:block !important;
+    background:
+      linear-gradient(180deg,
+        rgba(0,0,0,.18) 0%,
+        rgba(0,0,0,.02) 28%,
+        rgba(0,0,0,.04) 60%,
+        rgba(0,0,0,.45) 100%),
+      url("assets/background-live-v93-no-buoy.jpg?v=155") center center / cover no-repeat !important;
+  }
+
+  .page::after{
+    display:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    background:none !important;
+  }
+
+  .header{
+    position:absolute !important;
+    top:0 !important;
+    left:0 !important;
+    right:0 !important;
+    z-index:50 !important;
+  }
+
+  .scene{
+    position:absolute !important;
+    z-index:10 !important;
+    left:0 !important;
+    right:0 !important;
+    top:10.6vh !important;
+    bottom:9.2vh !important;
+    overflow:visible !important;
+    perspective:2600px !important;
+    perspective-origin:50% 36% !important;
+    background:transparent !important;
+    background-image:none !important;
+  }
+
+  .carousel{
+    position:absolute !important;
+    inset:0 !important;
+    transform-style:preserve-3d !important;
+    background:transparent !important;
+    background-image:none !important;
+  }
+
+  .card3d{
+    position:absolute !important;
+    left:50% !important;
+    top:auto !important;
+    bottom:0 !important;
+    transform-origin:bottom center !important;
+    transform-style:preserve-3d !important;
+    backface-visibility:hidden !important;
+  }
+
+  .bottom-count{
+    position:absolute !important;
+    z-index:45 !important;
+    left:50% !important;
+    bottom:4.3vh !important;
+    transform:translateX(-50%) !important;
+    text-align:center !important;
+    pointer-events:none !important;
+    margin:0 !important;
+  }
+
+  .footer{
+    position:absolute !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    z-index:55 !important;
+  }
+
+  .modal{
+    z-index:200 !important;
+  }
+}
+
 </style>
 
 </head>
-<body data-build="v154-force-desktop-background" class="load-lock">
+<body data-build="v155-desktop-layout-restore-keep-bg" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6935,7 +7054,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V154 loaded: desktop background forced.");
+console.log("DFO V155 loaded: desktop layout restored, background kept.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
