@@ -6279,9 +6279,59 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================================================
+   V153 MOBILE-ONLY: UNIFORM CARD GLOW + REMOVE FAINT INNER
+   BORDER + LARGER BOTTOM TIMELINE
+   Base: V152. Scope: phones only (max-width:700px).
+   Desktop layout, background, carousel, and card positions are NOT touched.
+   (1) Give every card the bright Videos (active-card) glow + full-orange
+       edge instead of the dim non-active glow with the black inner vignette.
+   (2) Remove the faint rgba(255,109,46,.35) rectangle outline around each
+       card's media (photo/video) area. The main glowing card edge stays.
+   (3) Bottom countdown/timeline font ~2 sizes bigger.
+========================================================= */
+@media (max-width:700px){
+
+  /* (1) Give the non-active cards the Videos card's bright OUTER edge glow
+     and full-orange border, but keep their dark inner vignette so the card
+     interiors stay dark/readable (only the glow around the card changes).
+     The active Videos card is left exactly as-is. */
+  .card3d:not(.is-active) .card{
+    border-color:#ff6d2e !important;
+    box-shadow:
+      0 0 26px rgba(255,109,46,.85),
+      0 0 70px rgba(255,76,29,.4),
+      inset 0 0 38px rgba(0,0,0,.55) !important;
+  }
+
+  /* (2) Remove the faint inner border around each card's media area. */
+  .card .card-media,
+  .card-videos .card-media.video-preview,
+  .card-build .card-media,
+  .card-social .card-media,
+  .card-favorites .card-media{
+    border:0 !important;
+  }
+
+  /* (3) Bottom timeline ~2 sizes bigger. */
+  .bottom-count p{
+    font-size:14px !important;
+  }
+  .bottom-count .bottom-row b{
+    font-size:40px !important;
+  }
+  .bottom-count .bottom-row i{
+    font-size:26px !important;
+  }
+  .bottom-count .bottom-row small{
+    font-size:11px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v152-mobile-titles-countdown-tune" class="load-lock">
+<body data-build="v153-mobile-glow-border-timeline" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -7012,7 +7062,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V152 loaded: mobile uniform card titles + tighter bottom countdown spacing.");
+console.log("DFO V153 loaded: mobile uniform card glow + removed faint media border + larger bottom timeline.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */

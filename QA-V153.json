@@ -1,12 +1,34 @@
 {
-  "version": "v153-desktop-background-restore",
-  "base": "DFO-V152-DESKTOP-REPAIR-MOBILE-PRODUCTION.zip",
-  "scope": "desktop/tablet background restore only, min-width 701px",
-  "desktop_background": "assets/background-live-v93-no-buoy.jpg?v=153",
-  "mobile_changes": false,
-  "dns_changes": false,
+  "version": "v153-mobile-glow-border-timeline",
+  "base": "DFO-V152 (live)",
+  "scope": "mobile only (max-width:700px)",
+  "desktop_touched": false,
+  "desktop_background_touched": false,
+  "desktop_carousel_touched": false,
+  "card_positions_touched": false,
+  "card_order_touched": false,
+  "dns_cname_touched": false,
+  "generated_images": false,
+  "new_assets": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "expected_url": "https://dfofireworks.com/?fresh=v153",
-  "created_epoch": 1781618784
+  "fixes": [
+    "(1) All mobile cards now have the bright Videos (active-card) outer edge glow and full-orange border instead of the dim non-active glow + 45% border. Applied to .card3d:not(.is-active) .card only; the dark inner vignette is kept so card interiors stay dark/readable, and the active Videos card is left untouched.",
+    "(2) Removed the faint rgba(255,109,46,0.35) inner border around each card's media (photo/video) area (.card-media) on mobile. The main glowing card edge is unchanged.",
+    "(3) Bottom countdown/timeline font enlarged ~2 sizes on mobile: numbers 32->40px, colons 20->26px, day/hour labels 8->11px, 'The Show Starts In' 11->14px. No horizontal overflow down to 360px."
+  ],
+  "verification": {
+    "method": "headless browser computed-style at 360/390/1280px + screenshot",
+    "mobile_390_glow_all_cards_match": true,
+    "mobile_390_card_borders": "rgb(255,109,46) full orange",
+    "mobile_390_media_border": "0px (removed)",
+    "mobile_390_timeline": {"numbers":40,"colons":26,"labels":11,"intro":14},
+    "mobile_360_no_horizontal_overflow": true,
+    "desktop_1280_locations_glow": "dim non-active retained",
+    "desktop_1280_media_border": "0.909px restored",
+    "desktop_1280_timeline_numbers": "45px unchanged",
+    "js_syntax_check": "pass"
+  },
+  "note": "The fireworks visible inside some cards is the existing page background showing through the cards' translucent panels (pre-existing since before V150); V153 did not change card backgrounds.",
+  "expected_url": "https://dfofireworks.com/?fresh=v153"
 }
