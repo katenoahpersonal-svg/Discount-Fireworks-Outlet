@@ -1,15 +1,36 @@
 {
-  "version": "v151-mobile-video-font-bottom-tune",
+  "version": "v151-mobile-only-production-fix",
   "base": "DFO-V150-MOBILE-TITLELINE-FONT-LOCK.zip",
-  "scope": "mobile only",
+  "scope": "mobile only (max-width:700px) + video-modal content",
   "desktop_touched": false,
-  "top_gap_touched": false,
+  "desktop_background_touched": false,
+  "desktop_carousel_touched": false,
   "card_positions_touched": false,
-  "background_touched": false,
+  "card_order_touched": false,
+  "dns_cname_touched": false,
   "generated_images": false,
   "new_assets": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "expected_url": "https://dfofireworks.com/?fresh=v151",
-  "created_epoch": 1781607545
+  "fixes": [
+    "(1+2) Preview-the-Boom video preview, large feature video, and thumbnails now stay centered and fully inside the card on mobile. Root cause: earlier mobile rules forced width:100% on the preview while it kept .card-media side margins, pushing the right edge past the card and clipping it. Set to width:auto with symmetric margins; feature/thumbs constrained to box-sizing:border-box, width:100%, max-width:100%, min-width:0, overflow:hidden.",
+    "(3) Mobile button text enlarged from ~7.5-10px to ~16-18px (clamp(16px,4.3vw,18px)). Override ties/beats the high-specificity :not(.is-active) desktop rules and is scoped to max-width:700px only.",
+    "(4) Small copy line directly above each button enlarged from ~8-10px to ~15-17px (clamp(15px,4vw,17px)), mobile only.",
+    "(5) Bottom countdown spacing made even and clean on mobile (gap from Social Feed card reduced ~86px to ~64px) so it clears the card glow without a dead gap or overlap.",
+    "(7) Removed the video-modal note: 'Pick a category first. Each category opens into its own video wall with breadcrumbs.'",
+    "(8) Empty video categories now show only 'Video Coming Soon' on mobile (JS toggles is-empty-category so existing mobile rules hide the category hero/desc/labels)."
+  ],
+  "verification": {
+    "method": "headless browser computed-style + getBoundingClientRect at 375px and 1280px",
+    "mobile_375_video_preview_contained": true,
+    "mobile_375_button_font_px": 16.1,
+    "mobile_375_copy_font_px": 15.0,
+    "mobile_375_social_to_countdown_gap_px": 64,
+    "desktop_1280_unchanged": true,
+    "desktop_1280_button_font_px": "7.5-10 (unchanged)",
+    "desktop_1280_thumbnail_columns": 4,
+    "js_syntax_check": "pass (2 inline scripts: JSON data block + main script both compile)",
+    "console_errors": "none"
+  },
+  "expected_url": "https://dfofireworks.com/?fresh=v151"
 }

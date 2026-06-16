@@ -1,11 +1,30 @@
 {
-  "version": "v152-desktop-repair-mobile-production",
-  "base_repaired": "DFO-V144-PRODUCTION-CONSISTENCY-PASS.zip",
-  "v144_desktop_override_removed": true,
-  "new_mobile_scope": "max-width:700px",
-  "desktop_tablet_broad_typography_override_added": false,
+  "version": "v152-mobile-titles-countdown-tune",
+  "base": "DFO-V151-MOBILE-ONLY-PRODUCTION-FIX (live)",
+  "scope": "mobile only (max-width:700px)",
+  "desktop_touched": false,
+  "desktop_background_touched": false,
+  "desktop_carousel_touched": false,
+  "card_positions_touched": false,
+  "card_order_touched": false,
+  "dns_cname_touched": false,
+  "generated_images": false,
+  "new_assets": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "expected_url": "https://dfofireworks.com/?fresh=v152",
-  "created_epoch": 1781617497
+  "fixes": [
+    "(A) All mobile card titles are now the same size as the Videos ('Preview the Boom') title. Cause: the active card kept clamp(34px,11vw,50px) via .card3d.is-active .card-title (0,2,0) while non-active titles fell back to 32px; the Locations title is an <h2 class='card-title'> pinned to 32px by .card3d[data-wall-pos] .card-locations h2 (0,3,1). New phone-only selectors tie/beat both, unifying every title at ~42.9px (390px viewport).",
+    "(B) Tightened the empty space above and below the bottom countdown on mobile: gap above the Social Feed card 64px -> 34px (still clears the card glow, no overlap), gap below before the footer 34px -> 14px, so the timeclock no longer floats in dead space."
+  ],
+  "verification": {
+    "method": "headless browser computed-style + getBoundingClientRect",
+    "mobile_390_all_titles_px": 42.9,
+    "mobile_390_titles_uniform": true,
+    "mobile_390_gap_above_countdown_px": 34,
+    "mobile_390_gap_below_countdown_px": 14,
+    "desktop_1280_titles_differ": true,
+    "desktop_1280_bottom_count_marginTop": "0px (unchanged)",
+    "js_syntax_check": "pass (2 inline scripts compile)"
+  },
+  "expected_url": "https://dfofireworks.com/?fresh=v152"
 }

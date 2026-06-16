@@ -6230,9 +6230,58 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================================================
+   V152 MOBILE-ONLY: UNIFORM CARD TITLES + TIGHTER COUNTDOWN
+   Base: V151. Scope: phones only (max-width:700px).
+   Desktop layout, background, carousel, and card positions are NOT touched.
+   (A) Make EVERY mobile card title the same size as the Videos
+       ("Preview the Boom") title. Cause: the active card kept
+       clamp(34px,11vw,50px) via .card3d.is-active .card-title (0,2,0),
+       while non-active titles fell back to 32px because later rules
+       only used .card-title (0,1,0). These selectors tie/beat that
+       and unify every title at the Videos size.
+   (B) Tighten the dead space above and below the bottom countdown
+       without overlapping the Social Feed card.
+========================================================= */
+@media (max-width:700px){
+
+  /* (A) Uniform card-title size on phones (matches the Videos title).
+     The Locations title is an <h2 class="card-title"> pinned to 32px by
+     .card3d[data-wall-pos] .card-locations h2 (0,3,1), so it needs a
+     higher-specificity selector to match the rest. */
+  .card3d .card-title,
+  .card3d.is-active .card-title,
+  .card-locations .card-title,
+  .card-videos .card-title,
+  .card-build .card-title,
+  .card-social .card-title,
+  .card-favorites .card-title,
+  .card3d .card-locations h2.card-title,
+  .card3d[data-wall-pos] .card-locations h2.card-title{
+    font-size:clamp(34px,11vw,50px) !important;
+    line-height:.92 !important;
+  }
+
+  .card-title .title-line{
+    font-size:inherit !important;
+    line-height:inherit !important;
+  }
+
+  /* (B) Cleaner, tighter spacing around the bottom countdown.
+     ~34px above clears the Social Feed card glow without overlap;
+     below is trimmed so the timeclock no longer floats in dead space. */
+  .bottom-count{
+    margin-top:10px !important;
+    margin-bottom:14px !important;
+    padding-top:2px !important;
+    padding-bottom:6px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v151-mobile-only-production-fix" class="load-lock">
+<body data-build="v152-mobile-titles-countdown-tune" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6963,7 +7012,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V151 loaded: mobile-only production fix (video card containment, mobile fonts, countdown spacing, video modal cleanup).");
+console.log("DFO V152 loaded: mobile uniform card titles + tighter bottom countdown spacing.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
