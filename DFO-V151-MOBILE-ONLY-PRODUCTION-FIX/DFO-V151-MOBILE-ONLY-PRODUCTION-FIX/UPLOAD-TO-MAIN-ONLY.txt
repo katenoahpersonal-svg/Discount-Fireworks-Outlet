@@ -1,0 +1,22 @@
+DFO V150 — Mobile Title-Line Font Lock Only
+
+Base:
+- Built from V149.
+
+Scope:
+- Mobile only.
+- Title/font consistency only.
+- Desktop untouched.
+- Top gap untouched.
+- Card positions untouched.
+- Background untouched.
+- No generated images.
+- No new assets.
+- No DNS/Cloudflare/Squarespace/GitHub Pages changes.
+
+Fix:
+- Videos and Favorites titles use nested .title-line spans.
+- This locks .title-line to inherit the same mobile title size and allows mobile wrapping.
+
+Test:
+https://dfofireworks.com/?fresh=v150

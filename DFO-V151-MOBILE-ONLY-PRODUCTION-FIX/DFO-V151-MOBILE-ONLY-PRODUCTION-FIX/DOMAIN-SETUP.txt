@@ -1,0 +1,14 @@
+Domain status for this version
+
+This V126 package intentionally does NOT include a CNAME file.
+
+Temporary live URL:
+https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/
+
+Use that GitHub Pages URL until dfofireworks.com is disconnected from Squarespace and DNS is pointed to GitHub Pages.
+
+To move dfofireworks.com to GitHub Pages later:
+- In the domain/DNS provider, remove old Squarespace DNS records.
+- Add GitHub Pages DNS records.
+- In GitHub repo Settings > Pages, add dfofireworks.com as the custom domain.
+- Add CNAME back only when ready.

@@ -1,0 +1,18 @@
+{
+  "version": "v126-github-pages-domain-no-cname",
+  "base": "dfo-v125-force-no-vertical-intro-cdt-countdown-domain.zip",
+  "temporary_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/",
+  "changed": [
+    "CNAME file removed",
+    "TEMP-GITHUB-DOMAIN.txt added",
+    "DOMAIN-SETUP.txt updated for temporary GitHub Pages URL"
+  ],
+  "retained": [
+    "V123 locations modal alignment",
+    "V123 video category modal",
+    "V125 no-vertical opening intro",
+    "V125 countdown target July 4 2026 10 PM CDT"
+  ],
+  "cname_present": false,
+  "node_syntax_check": "passed"
+}

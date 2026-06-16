@@ -1,0 +1,16 @@
+{
+  "version": "v150-mobile-titleline-font-lock",
+  "base": "DFO-V149-MOBILE-CORRECTIVE-PATCH.zip",
+  "scope": "mobile only max-width 700px",
+  "desktop_touched": false,
+  "top_gap_touched": false,
+  "card_positions_touched": false,
+  "background_touched": false,
+  "generated_images": false,
+  "new_assets": false,
+  "fix": "explicit mobile sizing/inheritance for .card-videos/.card-favorites .title-line",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v150",
+  "created_epoch": 1781393375
+}

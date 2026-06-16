@@ -1,0 +1,18 @@
+{
+  "version": "v134-hard-no-opening-effect",
+  "base": "DFO-V133-NO-INTRO-VIDEO-WALL-BREADCRUMBS.zip",
+  "changed": [
+    "startIntroRide no longer calls update",
+    "cards are placed with place(el,pos,false) on initial load",
+    "load-lock disables all transitions/animations during first paint"
+  ],
+  "retained": [
+    "V133 video wall breadcrumbs",
+    "corrected categories",
+    "no CNAME",
+    "countdown July 4 2026 10 PM CDT"
+  ],
+  "cname_present": false,
+  "node_syntax_check": "passed",
+  "expected_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?fresh=v134"
+}

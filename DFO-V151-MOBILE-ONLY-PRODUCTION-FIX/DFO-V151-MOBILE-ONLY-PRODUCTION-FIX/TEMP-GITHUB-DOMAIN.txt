@@ -1,0 +1,17 @@
+Temporary GitHub Pages URL
+
+Use this URL for now so you do not see the old Squarespace site:
+
+https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/
+
+This package intentionally does NOT include a CNAME file.
+
+Why:
+- dfofireworks.com is still resolving/connected to the old Squarespace site right now.
+- Removing CNAME lets this repo publish on the default GitHub Pages URL while DNS is cleaned up.
+
+When ready to move dfofireworks.com:
+1. Remove/disconnect dfofireworks.com from Squarespace.
+2. Update DNS records at the domain registrar to point to GitHub Pages.
+3. Add the GitHub Pages custom domain in repo Settings > Pages.
+4. Re-add CNAME only when DNS is ready.

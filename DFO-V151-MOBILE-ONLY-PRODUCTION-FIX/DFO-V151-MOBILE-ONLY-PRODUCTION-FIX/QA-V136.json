@@ -1,0 +1,19 @@
+{
+  "version": "v136-mobile-card-cleanup",
+  "base": "DFO-V135-V134-STABLE-DOMAIN-REUPLOAD.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_order": [
+    "locations",
+    "videos",
+    "build",
+    "social"
+  ],
+  "mobile_hidden": [
+    "favorites"
+  ],
+  "calibration_footer_removed": true,
+  "calibration_helpers_hidden": true,
+  "do_not_change_dns": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v136"
+}

@@ -1,0 +1,13 @@
+{
+  "version": "v149-mobile-corrective-patch",
+  "base": "DFO-V148-DESKTOP-BG-RESTORE-MOBILE-ONLY-PATCH.zip",
+  "root_cause_fixed": "global .scene top:10.6vh neutralized on mobile with top:auto",
+  "scope": "mobile max-width 700px plus max-width 420px",
+  "desktop_touched": "only inherited V148 desktop background restore; no new desktop rules",
+  "generated_images": false,
+  "new_assets": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v149",
+  "created_epoch": 1781389983
+}

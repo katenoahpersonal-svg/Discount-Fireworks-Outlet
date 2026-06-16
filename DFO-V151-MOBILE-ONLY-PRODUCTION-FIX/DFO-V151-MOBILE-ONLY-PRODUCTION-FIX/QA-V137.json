@@ -1,0 +1,20 @@
+{
+  "version": "v137-mobile-spacing-footer-directions",
+  "base": "DFO-V136-MOBILE-CARD-CLEANUP.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "mobile_card_order_retained": [
+    "locations",
+    "videos",
+    "build",
+    "social"
+  ],
+  "mobile_favorites_hidden": true,
+  "first_card_gap_tightened": true,
+  "social_to_bottom_count_spacing_added": true,
+  "footer_get_directions_added": true,
+  "calibration_footer_hidden": true,
+  "do_not_change_dns": true,
+  "expected_url": "https://dfofireworks.com/?fresh=v137",
+  "created_epoch": 1781287029
+}

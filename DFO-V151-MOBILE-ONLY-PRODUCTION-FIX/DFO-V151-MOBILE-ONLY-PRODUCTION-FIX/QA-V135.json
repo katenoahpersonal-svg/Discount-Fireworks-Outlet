@@ -1,0 +1,12 @@
+{
+  "version": "v135-v134-domain-reupload",
+  "base": "DFO-V134-HARD-NO-OPENING-EFFECT.zip",
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "purpose": "restore correct V134 files to main after domain setup showed old site",
+  "expected_urls": [
+    "https://dfofireworks.com/?fresh=v135",
+    "https://www.dfofireworks.com/?fresh=v135"
+  ],
+  "do_not_change_dns": true
+}

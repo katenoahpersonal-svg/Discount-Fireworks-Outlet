@@ -1,0 +1,24 @@
+DFO V132 Emergency Stable Rollback
+
+Purpose:
+Get the live site stable again on main.
+
+Use:
+- Commit directly to main.
+- No branch.
+- No pull request.
+- No CNAME/domain.
+
+Steps:
+1. Extract this zip.
+2. Go to GitHub repo > Code.
+3. Make sure branch dropdown says main.
+4. Add file > Upload files.
+5. Drag the extracted contents into GitHub.
+6. Select Commit directly to main.
+7. Commit changes.
+8. Wait for green Actions check.
+9. Open:
+   https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?stable=v132
+
+This restores the stable no-domain build and keeps the July 4, 2026 10 PM CDT countdown target.

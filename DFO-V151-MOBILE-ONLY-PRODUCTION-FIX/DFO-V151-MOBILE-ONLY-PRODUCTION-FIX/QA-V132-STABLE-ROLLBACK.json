@@ -1,0 +1,11 @@
+{
+  "version": "v132-emergency-stable-main-rollback",
+  "base": "dfo-v126-github-pages-domain-no-cname.zip",
+  "use_branch": "main",
+  "no_branch": true,
+  "no_pull_request": true,
+  "cname_present": false,
+  "countdown_target": "2026-07-04T22:00:00-05:00",
+  "expected_url": "https://katenoahpersonal-svg.github.io/Discount-Fireworks-Outlet/?stable=v132",
+  "inline_js_syntax_check": "passed"
+}
