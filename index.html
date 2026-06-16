@@ -6121,9 +6121,118 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================================================
+   V151 MOBILE-ONLY PRODUCTION FIX
+   Base: V150. Scope: phones only (max-width:700px) + video-modal content.
+   Desktop layout, desktop background, carousel positioning, and card
+   positions/order are intentionally NOT touched.
+   Fixes:
+   (1)+(2) Contain the "Preview the Boom" video preview, the large feature
+           video, and the thumbnails fully inside the card (no right-side
+           cutoff / no escaping). Root cause: earlier mobile rules forced
+           width:100% on the preview while it kept .card-media side margins,
+           pushing its right edge past the card and clipping it.
+   (3) Button text enlarged on mobile only.
+   (4) Small copy line directly above each button enlarged on mobile only.
+   (5) Even, clean spacing before the bottom countdown (clears the Social
+       Feed card glow without a huge dead gap or overlap).
+   Video modal: empty categories show only "Video Coming Soon"
+   (the is-empty-category class is now toggled in JS so the existing
+   mobile rules actually apply).
+========================================================= */
+@media (max-width:700px){
+
+  /* (1)+(2) Center + contain the whole video media block inside the card. */
+  .card-videos .card-media.video-preview,
+  .card-videos .video-preview{
+    box-sizing:border-box !important;
+    width:auto !important;
+    max-width:100% !important;
+    margin-left:clamp(10px,3.4vw,14px) !important;
+    margin-right:clamp(10px,3.4vw,14px) !important;
+    padding:10px !important;
+    overflow:hidden !important;
+  }
+
+  .card-videos .video-preview .video-feature,
+  .card-videos .video-feature{
+    box-sizing:border-box !important;
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 auto 10px !important;
+    aspect-ratio:16/9 !important;
+    height:auto !important;
+    min-height:0 !important;
+    border-radius:14px !important;
+    overflow:hidden !important;
+    background-size:cover !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
+  }
+
+  .card-videos .video-preview .video-thumbs,
+  .card-videos .video-thumbs{
+    box-sizing:border-box !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    overflow:hidden !important;
+  }
+
+  .card-videos .video-thumbs .video-thumb-button{
+    box-sizing:border-box !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    background-size:cover !important;
+    background-position:center center !important;
+  }
+
+  /* (3) Button text enlarged on mobile (ties/beats the high-specificity
+     :not(.is-active) desktop rules; phones only). */
+  .card3d:not(.is-active) .card:not(.card-locations) .card-btn,
+  .card3d.is-active .card:not(.card-locations) .card-btn,
+  .card3d:not(.is-active) .card-locations .card-btn,
+  .card3d.is-active .card-locations .card-btn{
+    font-size:clamp(16px,4.3vw,18px) !important;
+    letter-spacing:.12em !important;
+    font-weight:900 !important;
+    line-height:1.05 !important;
+  }
+
+  /* (4) Small copy line directly above each button enlarged on mobile. */
+  .card3d:not(.is-active) .card:not(.card-locations) .card-copy p,
+  .card3d.is-active .card:not(.card-locations) .card-copy p,
+  .card:not(.card-locations) .card-copy p{
+    font-size:clamp(15px,4vw,17px) !important;
+    line-height:1.32 !important;
+    letter-spacing:.05em !important;
+  }
+
+  /* (5) Even spacing before the bottom countdown — enough to clear the
+     Social Feed card glow without a large dead gap or overlap. */
+  .bottom-count{
+    margin-top:44px !important;
+    margin-bottom:36px !important;
+    padding-top:4px !important;
+  }
+}
+
+@media (max-width:420px){
+  .bottom-count{
+    margin-top:40px !important;
+    margin-bottom:34px !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v150-mobile-titleline-font-lock" class="load-lock">
+<body data-build="v151-mobile-only-production-fix" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6184,7 +6293,6 @@ body.load-lock .topbar{
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
       <h2>Choose Your Firework Demo Category</h2>
-      <p class="category-note">Pick a category first. Each category opens into its own video wall with breadcrumbs.</p>
 
       <section class="demo-wall-view is-active" data-demo-view="wall" aria-label="Firework demo category wall">
         <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
@@ -6855,7 +6963,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V150 loaded: mobile title-line font lock only.");
+console.log("DFO V151 loaded: mobile-only production fix (video card containment, mobile fonts, countdown spacing, video modal cleanup).");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -6891,6 +6999,7 @@ console.log("DFO V150 loaded: mobile title-line font lock only.");
 
   function showWall(){
     stopVideos();
+    modal.classList.remove("is-empty-category");
     if (inner) inner.hidden = true;
     if (wall) wall.classList.add("is-active");
     if (scroll) scroll.innerHTML = "";
@@ -6911,6 +7020,7 @@ console.log("DFO V150 loaded: mobile title-line font lock only.");
     scroll.innerHTML = "";
 
     if (!item.videos || !item.videos.length){
+      modal.classList.add("is-empty-category");
       scroll.innerHTML = `
         <div class="demo-video-empty">
           <div>
@@ -6919,6 +7029,7 @@ console.log("DFO V150 loaded: mobile title-line font lock only.");
           </div>
         </div>`;
     } else {
+      modal.classList.remove("is-empty-category");
       item.videos.forEach(video => {
         const card = document.createElement("article");
         card.className = "demo-video-item";
