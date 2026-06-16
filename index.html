@@ -6329,9 +6329,32 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================================================
+   V154 MOBILE-ONLY: KILL THE SQUARE EDGES AROUND CARDS
+   Base: V153. Scope: phones only (max-width:700px). Desktop untouched.
+   Cause: the mobile page-darkening overlay (.page::before) only darkened
+   the top/bottom of the page (its middle was just 6% dark), so the bright
+   fireworks page background bled around the cards in hard-edged rectangles
+   (made more obvious by the brighter V153 card glow). This darkens the
+   overlay uniformly so every card sits on a clean dark backdrop and its
+   rounded glow reads correctly with no straight/square edges.
+   Desktop background is NOT affected (this is inside the phone media query).
+========================================================= */
+@media (max-width:700px){
+  .page::before{
+    background:linear-gradient(180deg,
+      rgba(2,4,12,.92) 0,
+      rgba(2,4,12,.78) 22%,
+      rgba(2,4,12,.74) 50%,
+      rgba(2,4,12,.78) 78%,
+      rgba(2,4,12,.94) 100%) !important;
+  }
+}
+
 </style>
 </head>
-<body data-build="v153-mobile-glow-border-timeline" class="load-lock">
+<body data-build="v154-mobile-card-square-edge-fix" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -7062,7 +7085,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V153 loaded: mobile uniform card glow + removed faint media border + larger bottom timeline.");
+console.log("DFO V154 loaded: mobile background darkened uniformly to remove square-edge artifact around cards.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
