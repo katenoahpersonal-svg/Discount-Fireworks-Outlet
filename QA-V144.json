@@ -1,18 +1,18 @@
 {
-  "version": "v144-code-only-production-type-fix",
+  "version": "v144-production-consistency-pass",
   "base": "DFO-V143-PRODUCTION-MOBILE-CLEANUP.zip",
-  "code_only": true,
-  "generated_images": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
+  "does_not_move_card_positions": true,
   "fixes": [
-    "consistent card typography desktop/tablet/mobile",
-    "preview title normalized",
-    "copy/button text enlarged",
-    "video preview right crop fixed",
-    "bottom timeline moved down slightly",
-    "modal breadcrumb/filler hidden"
+    "unified typography mobile/tablet/desktop",
+    "readable caption and button text",
+    "video feature background contain, no right cutoff",
+    "countdown moved down safely",
+    "mobile glow/ring suppressed",
+    "video modal cleaned",
+    "no-video says Video Coming Soon"
   ],
   "expected_url": "https://dfofireworks.com/?fresh=v144",
-  "created_epoch": 1781365424
+  "created_epoch": 1781613039
 }

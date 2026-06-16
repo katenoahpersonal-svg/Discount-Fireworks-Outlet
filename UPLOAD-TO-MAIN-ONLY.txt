@@ -1,22 +1,24 @@
-DFO V151 — Mobile Video / Font / Bottom Tune
+DFO V144 — Production Consistency Pass
 
-Base:
-- Built from V150.
+Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-Scope:
-- Mobile only.
-- Desktop untouched.
-- Top gap fix untouched.
-- Card order/positions untouched.
-- No generated images.
-- No new assets.
-- No DNS/Cloudflare/Squarespace/GitHub Pages changes.
+This version does NOT move card positions.
 
 Fixes:
-1. Forces the YouTube/video preview area to stay inside the Preview card.
-2. Keeps thumbnail row contained.
-3. Bumps mobile card titles, small copy, buttons, and social icons larger.
-4. Reduces the bottom dead gap while preserving non-overlap spacing.
+- One consistent card title scale across mobile, tablet, and desktop.
+- Readable mobile caption text above buttons.
+- Readable mobile button text.
+- Preview the Boom video card internal layout fixed so the big video does not cut off right.
+- Thumbnail grid kept, but contained inside the card cleanly.
+- Social icons larger and equal.
+- Social third image forced to reload.
+- Countdown moved down a few clicks so it does not cut into the Social card.
+- Mobile glow/ring suppressed with a dark veil behind content.
+- Video modal text cleaned:
+  no "Pick a category first..."
+  no wall breadcrumb clutter
+  no-video categories say only "Video Coming Soon."
+- CNAME dfofireworks.com included.
 
 Test:
-https://dfofireworks.com/?fresh=v151
+https://dfofireworks.com/?fresh=v144
