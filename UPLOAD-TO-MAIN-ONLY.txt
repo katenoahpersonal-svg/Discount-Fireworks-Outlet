@@ -1,22 +1,22 @@
-DFO V150 — Mobile Title-Line Font Lock Only
+DFO V151 — Mobile Video / Font / Bottom Tune
 
 Base:
-- Built from V149.
+- Built from V150.
 
 Scope:
 - Mobile only.
-- Title/font consistency only.
 - Desktop untouched.
-- Top gap untouched.
-- Card positions untouched.
-- Background untouched.
+- Top gap fix untouched.
+- Card order/positions untouched.
 - No generated images.
 - No new assets.
 - No DNS/Cloudflare/Squarespace/GitHub Pages changes.
 
-Fix:
-- Videos and Favorites titles use nested .title-line spans.
-- This locks .title-line to inherit the same mobile title size and allows mobile wrapping.
+Fixes:
+1. Forces the YouTube/video preview area to stay inside the Preview card.
+2. Keeps thumbnail row contained.
+3. Bumps mobile card titles, small copy, buttons, and social icons larger.
+4. Reduces the bottom dead gap while preserving non-overlap spacing.
 
 Test:
-https://dfofireworks.com/?fresh=v150
+https://dfofireworks.com/?fresh=v151

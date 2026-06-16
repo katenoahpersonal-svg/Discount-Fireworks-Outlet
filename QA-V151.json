@@ -1,0 +1,15 @@
+{
+  "version": "v151-mobile-video-font-bottom-tune",
+  "base": "DFO-V150-MOBILE-TITLELINE-FONT-LOCK.zip",
+  "scope": "mobile only",
+  "desktop_touched": false,
+  "top_gap_touched": false,
+  "card_positions_touched": false,
+  "background_touched": false,
+  "generated_images": false,
+  "new_assets": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v151",
+  "created_epoch": 1781607545
+}
