@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V155 DESKTOP LAYOUT RESTORE KEEP BACKGROUND -->
-<!-- DFO V154 FORCE DESKTOP BACKGROUND -->
-<!-- DFO V153 DESKTOP BACKGROUND RESTORE -->
-<!-- DFO V152 DESKTOP REPAIR MOBILE PRODUCTION -->
+<!-- DFO V150 MOBILE TITLELINE FONT LOCK: mobile title consistency only -->
+<!-- DFO V149 MOBILE CORRECTIVE PATCH: final mobile-only override, desktop untouched -->
+<!-- DFO V148 DESKTOP BG RESTORE MOBILE ONLY PATCH: V140 base, no generated images -->
+<!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
+<!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
+<!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
+<!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
+<!-- DFO V136 MOBILE CARD CLEANUP: locations/videos/build/social, no calibration footer -->
+<!-- DFO V135 DOMAIN REUPLOAD: V134 stable + dfofireworks.com CNAME -->
+<!-- DFO V134 MAIN UPLOAD: hard no opening effect -->
+<!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
+<!-- DFO V132 EMERGENCY STABLE MAIN ROLLBACK: stable no-domain restore -->
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -5643,271 +5651,27 @@ body.load-lock .topbar{
 }
 
 
-/* =========================
-   V143 PRODUCTION MOBILE CLEANUP
-   Built from V140 stable mobile base, not V142.
-   Fixes the live mobile production issues without touching DNS/domain.
-========================= */
+/* =========================================================
+   V148 DESKTOP BG RESTORE + MOBILE-ONLY PATCH
+   Base: V140 stable.
+   No generated images. No new assets. No DNS changes.
+   Desktop change is ONLY the existing fireworks/lake background restore.
+   All layout/readability fixes are mobile-only.
+========================================================= */
 
-@media (max-width:700px){
-  /* Mobile-only background: use ring-muted asset and remove overlay/ring glow layers */
+/* Desktop background restore only: uses existing asset already in the package. */
+@media (min-width:701px){
   .page{
     background:
-      linear-gradient(180deg,rgba(0,0,0,.03) 0%,rgba(0,0,0,.20) 46%,rgba(3,5,13,.96) 78%,#03050d 100%),
-      url("assets/background-mobile-no-ring-v143.jpg?v=143") center top / auto 100vh no-repeat,
-      #03050d !important;
-  }
-  .foreground-ring-occlusion,
-  .ring-guide,
-  #calibrationDots,
-  .front-ring,
-  .firecracker{
-    display:none !important;
-    opacity:0 !important;
-    visibility:hidden !important;
-    pointer-events:none !important;
-  }
-
-  /* Header-to-first-card gap: match normal card spacing, do not float in sky */
-  .header{margin-bottom:0 !important;padding-bottom:10px !important;}
-  .scene{
-    margin-top:-86px !important;
-    padding-top:12px !important;
-    padding-bottom:52px !important;
-  }
-  .carousel{gap:22px !important;padding-top:0 !important;padding-bottom:0 !important;}
-  .card3d-locations{margin-top:0 !important;}
-
-  /* Location card is the master: consistent mobile headline and body sizes */
-  .card-title{
-    font-family:var(--head) !important;
-    font-size:clamp(36px,9.2vw,48px) !important;
-    line-height:.90 !important;
-    letter-spacing:-.01em !important;
-    text-align:center !important;
-    padding:0 18px !important;
-    margin:0 0 20px !important;
-  }
-  .card-videos .card-title,
-  .card-build .card-title,
-  .card-social .card-title,
-  .card-locations .card-title{
-    font-size:clamp(36px,9.2vw,48px) !important;
-  }
-  .card-copy p{
-    font-size:clamp(12px,3.05vw,14px) !important;
-    line-height:1.28 !important;
-    letter-spacing:.105em !important;
-    margin-bottom:14px !important;
-  }
-  .card-btn{
-    min-height:56px !important;
-    height:56px !important;
-    font-size:clamp(12px,3vw,14px) !important;
-    letter-spacing:.18em !important;
-    border-radius:9px !important;
-    background:rgba(5,4,12,.28) !important;
-    color:#ff7a36 !important;
-    box-shadow:none !important;
-  }
-
-  /* Video card: keep main preview visible; no blank bars; no global button styling */
-  .card-videos .video-preview{
-    display:grid !important;
-    grid-template-rows:minmax(190px,58vw) auto !important;
-    gap:10px !important;
-    padding:9px !important;
-    overflow:hidden !important;
-  }
-  .card-videos .video-feature{
-    min-height:190px !important;
-    height:100% !important;
-    background-size:cover !important;
-    background-position:center !important;
-    border-radius:12px !important;
-    overflow:hidden !important;
-  }
-  .card-videos .video-thumbs{
-    display:grid !important;
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:8px !important;
-    min-height:78px !important;
-    overflow:hidden !important;
-  }
-  .card-videos .video-thumb-button{
-    min-height:74px !important;
-    border-radius:10px !important;
-    background-size:cover !important;
-    background-position:center !important;
-  }
-
-  /* Social icons larger/equal. Instagram matches Facebook/YouTube size. */
-  .social-icons-row{
-    gap:18px !important;
-    padding-bottom:18px !important;
-  }
-  .social-big{
-    width:48px !important;
-    height:48px !important;
-    min-width:48px !important;
-    min-height:48px !important;
-    font-size:23px !important;
-    display:inline-grid !important;
-    place-items:center !important;
-    line-height:1 !important;
-  }
-  .social-big.ig{font-size:25px !important;}
-  .social-thumbs{gap:8px !important;margin:0 14px 0 !important;}
-
-  /* Countdown: reduce gap, but keep clear of Social card/button */
-  .bottom-count{
-    margin-top:34px !important;
-    margin-bottom:24px !important;
-    position:relative !important;
-    z-index:40 !important;
+      linear-gradient(180deg,rgba(0,0,0,.035),rgba(0,0,0,.10)),
+      url("assets/background-live-v93-no-buoy.jpg?v=148") center center / cover no-repeat !important;
   }
 }
 
-@media (max-width:420px){
-  .scene{margin-top:-78px !important;}
-  .card-title,
-  .card-videos .card-title,
-  .card-build .card-title,
-  .card-social .card-title,
-  .card-locations .card-title{
-    font-size:clamp(34px,8.9vw,44px) !important;
-  }
-  .card-videos .video-preview{grid-template-rows:minmax(178px,56vw) auto !important;}
-  .card-videos .video-thumbs{min-height:72px !important;}
-  .bottom-count{margin-top:30px !important;}
-}
-
-/* Video modal production cleanup */
-#videosModal .category-note{display:none !important;}
-#videosModal .demo-wall-view .demo-breadcrumbs{display:none !important;}
-#videosModal .demo-inner-wall .demo-breadcrumbs{
-  display:flex !important;
-  margin:0 0 18px !important;
-}
-#videosModal .demo-inner-wall .demo-breadcrumbs span,
-#videosModal .demo-inner-wall .demo-breadcrumbs strong{
-  display:none !important;
-}
-#videosModal .demo-inner-wall .demo-breadcrumbs button{
-  font-size:clamp(14px,3.4vw,18px) !important;
-  color:#ff7a36 !important;
-  letter-spacing:.14em !important;
-}
-#videosModal.is-empty-category .demo-inner-hero{display:none !important;}
-#videosModal.is-empty-category .demo-video-scroll{
-  display:block !important;
-  max-height:none !important;
-  overflow:visible !important;
-  padding:0 !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-art,
-#videosModal .demo-wall-card.is-empty .demo-art-label,
-#videosModal .demo-wall-card.is-empty em{
-  display:none !important;
-}
-#videosModal .demo-wall-card.is-empty{
-  min-height:220px !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-content{
-  min-height:220px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-}
-#videosModal .demo-wall-card.is-empty .demo-wall-content strong{display:none !important;}
-#videosModal .demo-wall-card.is-empty .demo-wall-content b{
-  margin:0 !important;
-  color:#fff !important;
-  font-family:var(--head) !important;
-  font-size:clamp(42px,10vw,70px) !important;
-  line-height:.88 !important;
-  letter-spacing:0 !important;
-}
-#videosModal .demo-video-empty{
-  min-height:280px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-  border:1px dashed rgba(255,122,54,.55) !important;
-  border-radius:18px !important;
-}
-#videosModal .demo-video-empty strong{
-  color:#fff !important;
-  font-family:var(--head) !important;
-  font-size:clamp(48px,13vw,88px) !important;
-  line-height:.86 !important;
-  text-transform:uppercase !important;
-}
-#videosModal .demo-video-empty span,
-#videosModal.is-empty-category [data-demo-desc]{display:none !important;}
-
-
-
-/* ==========================================================
-   DFO V152 — DESKTOP REPAIR + MOBILE PRODUCTION FIXES
-   Desktop repair:
-   - The V144 desktop/tablet typography override layer was removed.
-   - No broad desktop/tablet card-position or font override is added here.
-========================================================== */
-
-/* Modal copy cleanup */
-#videosModal .category-note{display:none !important;}
-#videosModal .demo-wall-view .demo-breadcrumbs{display:none !important;}
-#videosModal .demo-inner-wall .demo-breadcrumbs{display:flex !important;margin:0 0 18px !important;}
-#videosModal .demo-inner-wall .demo-breadcrumbs span,
-#videosModal .demo-inner-wall .demo-breadcrumbs strong{display:none !important;}
-#videosModal .demo-inner-wall .demo-breadcrumbs button{
-  color:#ff7a36 !important;
-  letter-spacing:.14em !important;
-  font-weight:950 !important;
-  text-transform:uppercase !important;
-}
-#videosModal.is-empty-category .demo-inner-hero{display:none !important;}
-#videosModal.is-empty-category .demo-video-scroll{
-  display:block !important;
-  max-height:none !important;
-  overflow:visible !important;
-  padding:0 !important;
-}
-#videosModal .demo-video-empty{
-  min-height:280px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-  border:1px dashed rgba(255,122,54,.55) !important;
-  border-radius:18px !important;
-}
-#videosModal .demo-video-empty strong{
-  color:#fff !important;
-  font-family:var(--head) !important;
-  font-size:clamp(48px,13vw,88px) !important;
-  line-height:.86 !important;
-  text-transform:uppercase !important;
-}
-#videosModal .demo-video-empty span,
-#videosModal.is-empty-category [data-demo-desc]{display:none !important;}
-
-/* PHONE ONLY. Do not affect desktop/tablet. */
+/* Everything below is mobile-only. */
 @media (max-width:700px){
-  .page::after{
-    content:"" !important;
-    position:absolute !important;
-    inset:0 !important;
-    z-index:2 !important;
-    pointer-events:none !important;
-    background:linear-gradient(180deg,
-      rgba(3,5,13,0) 0%,
-      rgba(3,5,13,.08) 26%,
-      rgba(3,5,13,.26) 47%,
-      rgba(3,5,13,.44) 72%,
-      rgba(3,5,13,.58) 100%) !important;
-  }
 
+  /* Hide mobile-only visual glow/ring layers without changing desktop. */
   .foreground-ring-occlusion,
   .ring-guide,
   #calibrationDots,
@@ -5928,401 +5692,438 @@ body.load-lock .topbar{
     pointer-events:none !important;
   }
 
+  /* Darken the mobile background ring/glow artifact only.
+     This is CSS-only. It does not swap or generate a background image. */
+  .page::before{
+    background:
+      linear-gradient(180deg,rgba(0,0,0,.80) 0,rgba(0,0,0,.42) 12%,rgba(0,0,0,.05) 30%,rgba(0,0,0,.05) 68%,rgba(0,0,0,.88) 100%),
+      radial-gradient(ellipse at 50% 57%,rgba(3,5,13,.70) 0%,rgba(3,5,13,.42) 28%,rgba(3,5,13,.12) 47%,transparent 66%) !important;
+  }
+
+  /* Reduce the header-to-first-card gap without changing the rest of the stack. */
+  .scene{
+    margin-top:clamp(-54px, -10vw, -40px) !important;
+    padding-top:18px !important;
+    padding-bottom:116px !important;
+  }
+
+  .carousel{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+    gap:22px !important;
+  }
+
+  .card3d-locations{
+    margin-top:12px !important;
+  }
+
+  /* Mobile typography master: use the Locations card rhythm everywhere. */
   .card-title,
-  .card-title .title-line,
+  .card .card-title,
   .card-videos .card-title,
-  .card-videos .card-title .title-line,
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
     font-family:var(--head) !important;
-    font-size:clamp(32px,8vw,41px) !important;
-    line-height:.90 !important;
+    font-size:clamp(32px, 8.15vw, 40px) !important;
+    line-height:.92 !important;
     letter-spacing:-.01em !important;
     text-align:center !important;
-    margin:0 auto 20px !important;
-    padding:0 10px !important;
-    max-width:96% !important;
+    margin:0 auto 18px !important;
+    padding:0 14px !important;
+    max-width:10.5em !important;
     white-space:normal !important;
-    text-transform:uppercase !important;
   }
 
-  .card-videos .card-title .title-line{
+  .card-title .title-line{
     display:block !important;
-    white-space:nowrap !important;
+    font-size:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+    white-space:normal !important;
   }
 
-  .card-copy{margin-top:16px !important;}
+  .card-videos .card-title{
+    max-width:10em !important;
+  }
 
+  /* Make the small card copy readable on mobile. */
   .card-copy p,
-  .card .small,
-  .card .subcopy,
-  .card .caption{
-    font-size:15.5px !important;
-    line-height:1.36 !important;
-    letter-spacing:.075em !important;
+  .card .card-copy p,
+  .card-videos .card-copy p,
+  .card-build .card-copy p,
+  .card-social .card-copy p,
+  .card-locations .card-copy p{
+    font-size:clamp(14px, 3.35vw, 16px) !important;
+    line-height:1.34 !important;
+    letter-spacing:.085em !important;
     font-weight:900 !important;
-    color:rgba(255,255,255,.88) !important;
-    text-align:center !important;
+    margin:0 0 16px !important;
   }
 
-  .card-copy p{margin:0 0 16px !important;}
-
-  .card-btn{
+  /* Make mobile button text readable and proportionate. */
+  .card-btn,
+  .card .card-btn,
+  .card-videos .card-btn,
+  .card-build .card-btn,
+  .card-social .card-btn,
+  .card-locations .card-btn{
     min-height:58px !important;
     height:58px !important;
-    font-size:15px !important;
-    line-height:1 !important;
-    letter-spacing:.13em !important;
+    font-size:clamp(14px, 3.3vw, 16px) !important;
+    line-height:1.05 !important;
+    letter-spacing:.155em !important;
     font-weight:950 !important;
-    color:#ff8a52 !important;
-    border:1.5px solid #ff6d2e !important;
-    background:rgba(5,4,12,.30) !important;
-    box-shadow:none !important;
+    padding:0 18px !important;
   }
 
-  .card-videos .card-media.video-preview,
+  /* Preview card only:
+     Fix the main video fit and rounded edge without changing card position.
+  */
   .card-videos .video-preview{
+    display:grid !important;
+    grid-template-rows:auto auto !important;
+    gap:10px !important;
     width:100% !important;
     max-width:100% !important;
     box-sizing:border-box !important;
-    padding:12px !important;
-    margin:0 auto !important;
-    display:grid !important;
-    grid-template-rows:auto auto !important;
-    gap:12px !important;
+    padding:10px !important;
+    border-radius:18px !important;
     overflow:hidden !important;
   }
 
   .card-videos .video-feature{
+    display:block !important;
     width:100% !important;
     max-width:100% !important;
-    min-width:0 !important;
-    box-sizing:border-box !important;
-    aspect-ratio:16/9 !important;
     min-height:0 !important;
     height:auto !important;
-    border-radius:13px !important;
+    aspect-ratio:16/9 !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    border-radius:16px !important;
     overflow:hidden !important;
-    background-size:contain !important;
+    background-size:cover !important;
     background-repeat:no-repeat !important;
     background-position:center center !important;
-    background-color:#02040c !important;
   }
 
   .card-videos .video-thumbs{
     width:100% !important;
     max-width:100% !important;
-    display:grid !important;
-    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-    gap:10px !important;
+    min-height:0 !important;
+    height:auto !important;
     overflow:visible !important;
+    margin:0 !important;
   }
 
   .card-videos .video-thumb-button{
-    min-width:0 !important;
-    width:100% !important;
-    aspect-ratio:16/9 !important;
+    min-height:76px !important;
     border-radius:10px !important;
-    background-size:contain !important;
-    background-repeat:no-repeat !important;
+    overflow:hidden !important;
+    background-size:cover !important;
     background-position:center center !important;
-    background-color:#02040c !important;
   }
 
-  .card-videos .video-thumb-button span,
-  .video-label{
-    font-size:12.5px !important;
-    letter-spacing:.10em !important;
-    font-weight:950 !important;
+  /* Remove visible demo label clutter on mobile. */
+  .card-videos .video-label,
+  .card-videos .video-thumb-button span{
+    display:none !important;
   }
 
-  .social-icons-row{gap:18px !important;padding-bottom:18px !important;}
+  /* Social icons: larger and balanced on mobile. */
+  .social-icons-row{
+    gap:18px !important;
+    padding-bottom:18px !important;
+  }
+
   .social-big{
-    width:58px !important;
-    height:58px !important;
-    min-width:58px !important;
-    min-height:58px !important;
-    font-size:27px !important;
+    width:50px !important;
+    height:50px !important;
+    min-width:50px !important;
+    min-height:50px !important;
     display:inline-grid !important;
     place-items:center !important;
+    font-size:24px !important;
     line-height:1 !important;
   }
-  .social-big.ig{font-size:29px !important;}
-  .social-thumbs span:nth-child(3){
-    background-image:url("assets/social-card-v86-03.jpg?v=152") !important;
+
+  .social-big.ig{
+    font-size:26px !important;
+  }
+
+  /* Bottom countdown: move down a few clicks and protect from card overlap/cutoff. */
+  .bottom-count{
+    margin-top:72px !important;
+    margin-bottom:56px !important;
+    padding-top:8px !important;
+    padding-bottom:12px !important;
+    position:relative !important;
+    z-index:40 !important;
+  }
+
+  /* Mobile video modal cleanup only. */
+  #videosModal .category-note{
+    display:none !important;
+  }
+
+  #videosModal .demo-wall-view .demo-breadcrumbs{
+    display:none !important;
+  }
+
+  #videosModal .demo-inner-wall .demo-breadcrumbs span,
+  #videosModal .demo-inner-wall .demo-breadcrumbs strong{
+    display:none !important;
+  }
+
+  #videosModal.is-empty-category .demo-inner-hero{
+    display:none !important;
+  }
+
+  #videosModal .demo-video-empty{
+    min-height:260px !important;
+    display:grid !important;
+    place-items:center !important;
+    text-align:center !important;
+  }
+
+  #videosModal .demo-video-empty strong{
+    font-size:0 !important;
+    line-height:0 !important;
+  }
+
+  #videosModal .demo-video-empty strong::after{
+    content:"Video Coming Soon";
+    display:block !important;
+    font-family:var(--head) !important;
+    font-size:clamp(44px, 10vw, 76px) !important;
+    line-height:.9 !important;
+    color:#fff !important;
+    text-transform:uppercase !important;
+  }
+
+  #videosModal .demo-video-empty span,
+  #videosModal.is-empty-category [data-demo-desc]{
+    display:none !important;
+  }
+}
+
+@media (max-width:420px){
+  .scene{
+    margin-top:-44px !important;
+    padding-bottom:120px !important;
+  }
+
+  .card3d-locations{
+    margin-top:10px !important;
+  }
+
+  .card-title,
+  .card .card-title,
+  .card-videos .card-title,
+  .card-build .card-title,
+  .card-social .card-title,
+  .card-locations .card-title{
+    font-size:clamp(31px, 8vw, 39px) !important;
+  }
+
+  .bottom-count{
+    margin-top:70px !important;
+    margin-bottom:58px !important;
+  }
+}
+
+
+/* =========================================================
+   V149 MOBILE-ONLY CORRECTIVE PATCH
+   Supersedes overlapping V148 mobile rules. Desktop untouched.
+   Key fix: neutralizes global .scene{top:10.6vh!important}.
+========================================================= */
+@media (max-width:700px){
+
+  /* (1) Kill the real gap cause: global .scene{top:10.6vh!important} */
+  .scene{
+    position:relative !important;
+    top:auto !important;
+    margin-top:0 !important;
+    padding-top:10px !important;
+    padding-bottom:24px !important;
+  }
+  .carousel{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    gap:22px !important;
+  }
+  .card3d-locations{ margin-top:0 !important; }
+  .card3d-locations .card{ overflow:visible !important; }
+
+  /* (2) Hide/darken mobile glow + ring artifacts */
+  .ring-guide,
+  #calibrationDots,
+  .rear-atmosphere-layer,
+  .foreground-ring-occlusion,
+  .front-ring,
+  .firecracker{
+    display:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+  }
+  .page::before{
+    background:
+      linear-gradient(180deg,
+        rgba(0,0,0,.82) 0,
+        rgba(0,0,0,.42) 12%,
+        rgba(0,0,0,.06) 32%,
+        rgba(0,0,0,.06) 66%,
+        rgba(0,0,0,.90) 100%) !important;
+  }
+
+  /* (3) Card fonts consistent — Locations card is the master */
+  .card-title,
+  .card-locations .card-title,
+  .card-videos .card-title,
+  .card-build .card-title,
+  .card-social .card-title{
+    font-family:var(--head) !important;
+    font-size:clamp(32px,8.2vw,40px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.01em !important;
+    text-align:center !important;
+    margin:0 auto 16px !important;
+    padding:0 14px !important;
+    white-space:normal !important;
+  }
+  .card-copy p,
+  .card-locations .card-copy p,
+  .card-videos .card-copy p,
+  .card-build .card-copy p,
+  .card-social .card-copy p{
+    font-size:clamp(14px,3.4vw,16px) !important;
+    line-height:1.34 !important;
+    letter-spacing:.05em !important;
+    font-weight:700 !important;
+    margin:0 0 14px !important;
+  }
+
+  /* (4) Preview card — main feature video fit only */
+  .card-videos .video-feature{
+    width:100% !important;
+    max-width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:16/9 !important;
+    margin:0 0 10px !important;
+    border-radius:14px !important;
+    overflow:hidden !important;
     background-size:cover !important;
     background-position:center center !important;
     background-repeat:no-repeat !important;
   }
 
-  .bottom-count{
-    margin-top:54px !important;
-    margin-bottom:32px !important;
-    position:relative !important;
-    z-index:40 !important;
+  /* (5) Hide Featured Demo / Demo 2 / Demo 3 labels */
+  .card-videos .video-label,
+  .card-videos .video-thumb-button span{
+    display:none !important;
   }
 
-  .bottom-count p{
-    font-size:13.5px !important;
-    letter-spacing:.16em !important;
-    font-weight:950 !important;
-    margin-bottom:10px !important;
+  /* (6) Enlarge small copy / buttons / social icons */
+  .card-btn{
+    min-height:54px !important;
+    height:auto !important;
+    font-size:clamp(14px,3.4vw,16px) !important;
+    letter-spacing:.14em !important;
+    font-weight:900 !important;
+    padding:0 18px !important;
   }
+  .social-icons-row{ gap:18px !important; padding-bottom:14px !important; }
+  .social-big{
+    width:50px !important;
+    height:50px !important;
+    min-width:50px !important;
+    min-height:50px !important;
+    font-size:24px !important;
+    line-height:1 !important;
+  }
+  .social-big.ig{ font-size:26px !important; }
+
+  /* (7) Bottom countdown down a touch, no overlap */
+  .bottom-count{
+    position:relative !important;
+    z-index:40 !important;
+    margin-top:68px !important;
+    margin-bottom:40px !important;
+    padding-top:6px !important;
+  }
+
+  /* (8) Remove video modal helper note + breadcrumb filler */
+  #videosModal .category-note{ display:none !important; }
+  #videosModal .demo-breadcrumbs{ display:none !important; }
+
+  /* (9) No-video categories: show only "Video Coming Soon" */
+  #videosModal .demo-video-empty{
+    min-height:240px !important;
+    display:grid !important;
+    place-items:center !important;
+    text-align:center !important;
+  }
+  #videosModal .demo-video-empty strong{ font-size:0 !important; line-height:0 !important; }
+  #videosModal .demo-video-empty strong::after{
+    content:"Video Coming Soon";
+    display:block !important;
+    font-family:var(--head) !important;
+    font-size:clamp(40px,9vw,68px) !important;
+    line-height:.9 !important;
+    color:#fff !important;
+    text-transform:uppercase !important;
+  }
+  #videosModal .demo-video-empty span,
+  #videosModal.is-empty-category [data-demo-desc]{ display:none !important; }
 }
 
 @media (max-width:420px){
+  .scene{ padding-top:8px !important; }
   .card-title,
-  .card-title .title-line,
+  .card-locations .card-title,
   .card-videos .card-title,
-  .card-videos .card-title .title-line,
   .card-build .card-title,
-  .card-social .card-title,
-  .card-locations .card-title{
-    font-size:clamp(31px,7.9vw,39px) !important;
-  }
-
-  .card-copy p,
-  .card .small,
-  .card .subcopy,
-  .card .caption{
-    font-size:14.75px !important;
-  }
-
-  .card-btn{font-size:14.5px !important;}
-  .bottom-count{margin-top:50px !important;}
-}
-
-/* ==========================================================
-   DFO V153 — DESKTOP BACKGROUND RESTORE ONLY
-   Desktop/tablet width only. Mobile is untouched.
-========================================================== */
-@media (min-width:701px){
-  :root{
-    --bg-d:url("assets/background-live-v93-no-buoy.jpg?v=153") !important;
-  }
-
-  html,
-  body{
-    background:#02040c !important;
-  }
-
-  .page{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.00) 28%,rgba(0,0,0,.10) 68%,rgba(0,0,0,.44) 100%),
-      url("assets/background-live-v93-no-buoy.jpg?v=153") center center / cover no-repeat !important;
-  }
-
-  .page::before{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.00) 34%,rgba(0,0,0,.20) 100%),
-      radial-gradient(circle at 50% 58%,rgba(255,90,38,.035),transparent 52%) !important;
-    opacity:1 !important;
-  }
-
-  .page::after{
-    display:none !important;
-    opacity:0 !important;
-    visibility:hidden !important;
-    pointer-events:none !important;
-  }
-
-  .scene,
-  .carousel{
-    background:transparent !important;
-    background-image:none !important;
-  }
+  .card-social .card-title{ font-size:clamp(31px,8vw,39px) !important; }
+  .bottom-count{ margin-top:62px !important; }
 }
 
 
-/* ==========================================================
-   DFO V154 — FORCE DESKTOP BACKGROUND ONLY
-   This forces the fireworks/lake image onto the visible desktop layer.
-   Scope: min-width 701px only.
-   No mobile changes. No card sizing changes. No DNS changes.
-========================================================== */
-@media (min-width:701px){
-
-  html,
-  body{
-    background:#02040c !important;
-  }
-
-  .page{
-    background:#02040c !important;
-  }
-
-  .page::before{
-    content:"" !important;
-    position:fixed !important;
-    inset:0 !important;
-    z-index:0 !important;
-    pointer-events:none !important;
-    opacity:1 !important;
-    visibility:visible !important;
-    display:block !important;
-    background:
-      linear-gradient(180deg,
-        rgba(0,0,0,.18) 0%,
-        rgba(0,0,0,.02) 28%,
-        rgba(0,0,0,.04) 60%,
-        rgba(0,0,0,.45) 100%),
-      url("assets/background-live-v93-no-buoy.jpg?v=154") center center / cover no-repeat !important;
-  }
-
-  .page::after{
-    display:none !important;
-    opacity:0 !important;
-    visibility:hidden !important;
-    pointer-events:none !important;
-    background:none !important;
-  }
-
-  .header,
-  .scene,
-  .bottom-count,
-  .footer,
-  .modal{
-    position:relative;
-  }
-
-  .header{ z-index:50 !important; }
-  .scene{ z-index:10 !important; background:transparent !important; background-image:none !important; }
-  .carousel{ background:transparent !important; background-image:none !important; }
-  .bottom-count{ z-index:20 !important; }
-  .footer{ z-index:20 !important; }
-
-  .hero,
-  .stage,
-  .main-stage,
-  #stage{
-    background:transparent !important;
-    background-image:none !important;
-  }
-}
-
-
-/* ==========================================================
-   DFO V155 — DESKTOP LAYOUT RESTORE, KEEP BACKGROUND
-   Scope: desktop/tablet width only, min-width 701px.
-
-   Fixes the V154 mistake:
-   - V154 forced .scene/.bottom-count/footer into relative flow.
-   - This restores the original absolute desktop layout.
-   - Background remains visible.
-   - Mobile untouched.
-========================================================== */
-@media (min-width:701px){
-
-  html,
-  body{
-    width:100% !important;
-    height:100% !important;
-    overflow:hidden !important;
-    background:#02040c !important;
-  }
-
-  .page{
-    position:fixed !important;
-    inset:0 !important;
-    overflow:hidden !important;
-    background:#02040c !important;
-  }
-
-  .page::before{
-    content:"" !important;
-    position:fixed !important;
-    inset:0 !important;
-    z-index:0 !important;
-    pointer-events:none !important;
-    opacity:1 !important;
-    visibility:visible !important;
-    display:block !important;
-    background:
-      linear-gradient(180deg,
-        rgba(0,0,0,.18) 0%,
-        rgba(0,0,0,.02) 28%,
-        rgba(0,0,0,.04) 60%,
-        rgba(0,0,0,.45) 100%),
-      url("assets/background-live-v93-no-buoy.jpg?v=155") center center / cover no-repeat !important;
-  }
-
-  .page::after{
-    display:none !important;
-    opacity:0 !important;
-    visibility:hidden !important;
-    pointer-events:none !important;
-    background:none !important;
-  }
-
-  .header{
-    position:absolute !important;
-    top:0 !important;
-    left:0 !important;
-    right:0 !important;
-    z-index:50 !important;
-  }
-
-  .scene{
-    position:absolute !important;
-    z-index:10 !important;
-    left:0 !important;
-    right:0 !important;
-    top:10.6vh !important;
-    bottom:9.2vh !important;
-    overflow:visible !important;
-    perspective:2600px !important;
-    perspective-origin:50% 36% !important;
-    background:transparent !important;
-    background-image:none !important;
-  }
-
-  .carousel{
-    position:absolute !important;
-    inset:0 !important;
-    transform-style:preserve-3d !important;
-    background:transparent !important;
-    background-image:none !important;
-  }
-
-  .card3d{
-    position:absolute !important;
-    left:50% !important;
-    top:auto !important;
-    bottom:0 !important;
-    transform-origin:bottom center !important;
-    transform-style:preserve-3d !important;
-    backface-visibility:hidden !important;
-  }
-
-  .bottom-count{
-    position:absolute !important;
-    z-index:45 !important;
-    left:50% !important;
-    bottom:4.3vh !important;
-    transform:translateX(-50%) !important;
+/* =========================================================
+   V150 MOBILE TITLE-LINE FONT LOCK ONLY
+   Base: V149.
+   Scope: mobile title typography only.
+========================================================= */
+@media (max-width:700px){
+  .card-title,
+  .card-locations .card-title,
+  .card-videos .card-title,
+  .card-favorites .card-title,
+  .card-build .card-title,
+  .card-social .card-title{
+    font-family:var(--head) !important;
+    font-size:clamp(32px,8.2vw,40px) !important;
+    line-height:.92 !important;
+    letter-spacing:-.01em !important;
     text-align:center !important;
-    pointer-events:none !important;
-    margin:0 !important;
   }
 
-  .footer{
-    position:absolute !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:0 !important;
-    z-index:55 !important;
-  }
-
-  .modal{
-    z-index:200 !important;
+  .card-videos .card-title .title-line,
+  .card-favorites .card-title .title-line{
+    font-size:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+    white-space:normal !important;
   }
 }
 
 </style>
-
 </head>
-<body data-build="v155-desktop-layout-restore-keep-bg" class="load-lock">
+<body data-build="v150-mobile-titleline-font-lock" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6383,7 +6184,7 @@ body.load-lock .topbar{
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
       <h2>Choose Your Firework Demo Category</h2>
-      <p class="category-note"></p>
+      <p class="category-note">Pick a category first. Each category opens into its own video wall with breadcrumbs.</p>
 
       <section class="demo-wall-view is-active" data-demo-view="wall" aria-label="Firework demo category wall">
         <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
@@ -6408,8 +6209,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Artilleries</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         <button class="demo-wall-card has-videos" type="button" data-demo-open="assortments">
@@ -6441,8 +6242,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Missile</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Missile and rocket-style effects. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         <button class="demo-wall-card is-empty" type="button" data-demo-open="misc">
@@ -6452,8 +6253,8 @@ body.load-lock .topbar{
           </span>
           <span class="demo-wall-content">
             <strong>Misc.</strong>
-            <em>Video Coming Soon.</em>
-            <b>Video Coming Soon</b>
+            <em>Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.</em>
+            <b>Videos coming soon</b>
           </span>
         </button>
         </div>
@@ -6461,7 +6262,7 @@ body.load-lock .topbar{
 
       <section class="demo-inner-wall" data-demo-view="category" hidden aria-label="Category video wall">
         <nav class="demo-breadcrumbs" aria-label="Video breadcrumbs">
-          <button type="button" data-demo-back>← Back</button>
+          <button type="button" data-demo-back>Videos</button>
           <span>/</span>
           <strong data-demo-crumb></strong>
         </nav>
@@ -6505,7 +6306,7 @@ body.load-lock .topbar{
   "artilleries": {
     "title": "Artilleries",
     "crumb": "Artilleries",
-    "desc": "Video Coming Soon.",
+    "desc": "Reloadable shells, canisters, and artillery-style aerial breaks. Demo videos coming soon.",
     "videos": []
   },
   "assortments": {
@@ -6537,13 +6338,13 @@ body.load-lock .topbar{
   "missile": {
     "title": "Missile",
     "crumb": "Missile",
-    "desc": "Video Coming Soon.",
+    "desc": "Missile and rocket-style effects. Demo videos coming soon.",
     "videos": []
   },
   "misc": {
     "title": "Misc.",
     "crumb": "Misc.",
-    "desc": "Video Coming Soon.",
+    "desc": "Novelties, roman candles, smoke, parachutes, rockets, and fun add-ons. Demo videos coming soon.",
     "videos": []
   }
 }
@@ -7054,7 +6855,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V155 loaded: desktop layout restored, background kept.");
+console.log("DFO V150 loaded: mobile title-line font lock only.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -7089,7 +6890,6 @@ console.log("DFO V155 loaded: desktop layout restored, background kept.");
   }
 
   function showWall(){
-    modal.classList.remove("is-category-open", "is-empty-category");
     stopVideos();
     if (inner) inner.hidden = true;
     if (wall) wall.classList.add("is-active");
@@ -7099,10 +6899,6 @@ console.log("DFO V155 loaded: desktop layout restored, background kept.");
   function showCategory(key){
     const item = data[key];
     if (!item || !wall || !inner || !scroll) return;
-
-    const hasVideos = !!(item.videos && item.videos.length);
-    modal.classList.add("is-category-open");
-    modal.classList.toggle("is-empty-category", !hasVideos);
 
     wall.classList.remove("is-active");
     inner.hidden = false;
@@ -7117,7 +6913,10 @@ console.log("DFO V155 loaded: desktop layout restored, background kept.");
     if (!item.videos || !item.videos.length){
       scroll.innerHTML = `
         <div class="demo-video-empty">
-          <strong>Video Coming Soon</strong>
+          <div>
+            <strong>Videos Coming Soon</strong>
+            <span>This category wall is ready. We can add demos here later.</span>
+          </div>
         </div>`;
     } else {
       item.videos.forEach(video => {

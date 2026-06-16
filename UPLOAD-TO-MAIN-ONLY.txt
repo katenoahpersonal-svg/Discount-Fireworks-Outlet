@@ -1,22 +1,22 @@
-DFO V155 — Desktop Layout Restore + Keep Background
+DFO V150 — Mobile Title-Line Font Lock Only
 
-Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
+Base:
+- Built from V149.
 
-Built from V154.
+Scope:
+- Mobile only.
+- Title/font consistency only.
+- Desktop untouched.
+- Top gap untouched.
+- Card positions untouched.
+- Background untouched.
+- No generated images.
+- No new assets.
+- No DNS/Cloudflare/Squarespace/GitHub Pages changes.
 
-This is desktop/tablet-width only:
-- keeps the restored fireworks/lake background
-- restores original desktop absolute layout:
-  header absolute
-  scene absolute
-  carousel absolute
-  cards absolute
-  bottom countdown absolute under carousel
-  footer absolute
-- fixes the V154 mistake where the active card/countdown got pulled into the wrong layer
-- does not touch mobile
-- does not touch card content sizing
-- CNAME dfofireworks.com included
+Fix:
+- Videos and Favorites titles use nested .title-line spans.
+- This locks .title-line to inherit the same mobile title size and allows mobile wrapping.
 
 Test:
-https://dfofireworks.com/?fresh=v155
+https://dfofireworks.com/?fresh=v150
