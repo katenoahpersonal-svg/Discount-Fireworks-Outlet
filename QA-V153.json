@@ -1,0 +1,12 @@
+{
+  "version": "v153-desktop-background-restore",
+  "base": "DFO-V152-DESKTOP-REPAIR-MOBILE-PRODUCTION.zip",
+  "scope": "desktop/tablet background restore only, min-width 701px",
+  "desktop_background": "assets/background-live-v93-no-buoy.jpg?v=153",
+  "mobile_changes": false,
+  "dns_changes": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v153",
+  "created_epoch": 1781618784
+}

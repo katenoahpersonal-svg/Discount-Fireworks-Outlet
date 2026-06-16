@@ -1,24 +1,17 @@
-DFO V152 — Desktop Repair + Mobile Production Fixes
+DFO V154 — Force Desktop Background Only
 
 Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-What this does:
-- Repairs the V144 desktop issue by removing the V144 desktop/tablet typography override layer.
-- Does not add broad desktop/tablet card overrides.
-- Applies phone-specific production fixes only.
+Built from V153.
 
-Phone fixes:
-- Card title sizes made consistent.
-- Text above buttons increased several sizes.
-- Button text increased several sizes.
-- Preview the Boom video right-side cutoff fixed.
-- Social icons larger/equal.
-- Bottom timeline moved down a few clicks safely.
-- Video modal cleaned:
-  no "Pick a category first..."
-  no breadcrumb clutter
-  no-video categories say only "Video Coming Soon"
-- CNAME dfofireworks.com included.
+This is desktop/tablet-width only:
+- forces the fireworks/lake background onto .page::before
+- keeps cards/header/countdown above it
+- hides desktop .page::after overlays
+- keeps scene/carousel transparent
+- does not touch mobile
+- does not touch card sizing
+- CNAME dfofireworks.com included
 
 Test:
-https://dfofireworks.com/?fresh=v152
+https://dfofireworks.com/?fresh=v154

@@ -1,0 +1,14 @@
+{
+  "version": "v154-force-desktop-background",
+  "base": "DFO-V153-DESKTOP-BACKGROUND-RESTORE.zip",
+  "scope": "desktop only min-width 701px",
+  "desktop_background_forced_on": ".page::before",
+  "desktop_background_asset": "assets/background-live-v93-no-buoy.jpg?v=154",
+  "mobile_changes": false,
+  "card_sizing_changes": false,
+  "dns_changes": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v154",
+  "created_epoch": 1781620565
+}
