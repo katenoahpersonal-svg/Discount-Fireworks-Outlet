@@ -1,24 +1,24 @@
-DFO V144 — Production Consistency Pass
+DFO V152 — Desktop Repair + Mobile Production Fixes
 
 Upload to main only. Do not touch Cloudflare, Squarespace, DNS, or GitHub Pages settings.
 
-This version does NOT move card positions.
+What this does:
+- Repairs the V144 desktop issue by removing the V144 desktop/tablet typography override layer.
+- Does not add broad desktop/tablet card overrides.
+- Applies phone-specific production fixes only.
 
-Fixes:
-- One consistent card title scale across mobile, tablet, and desktop.
-- Readable mobile caption text above buttons.
-- Readable mobile button text.
-- Preview the Boom video card internal layout fixed so the big video does not cut off right.
-- Thumbnail grid kept, but contained inside the card cleanly.
-- Social icons larger and equal.
-- Social third image forced to reload.
-- Countdown moved down a few clicks so it does not cut into the Social card.
-- Mobile glow/ring suppressed with a dark veil behind content.
-- Video modal text cleaned:
+Phone fixes:
+- Card title sizes made consistent.
+- Text above buttons increased several sizes.
+- Button text increased several sizes.
+- Preview the Boom video right-side cutoff fixed.
+- Social icons larger/equal.
+- Bottom timeline moved down a few clicks safely.
+- Video modal cleaned:
   no "Pick a category first..."
-  no wall breadcrumb clutter
-  no-video categories say only "Video Coming Soon."
+  no breadcrumb clutter
+  no-video categories say only "Video Coming Soon"
 - CNAME dfofireworks.com included.
 
 Test:
-https://dfofireworks.com/?fresh=v144
+https://dfofireworks.com/?fresh=v152

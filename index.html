@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- DFO V144 PRODUCTION CONSISTENCY PASS -->
-<!-- DFO V143 PRODUCTION MOBILE CLEANUP: V140 stable base + mobile production fixes -->
-<!-- DFO V140 MOBILE LOCATIONS SWEETSPOT: balanced top card spacing -->
-<!-- DFO V139 MOBILE FIRST CARD LOWER: Locations card breathing room -->
-<!-- DFO V138 MOBILE LOCATIONS DOWN: balanced first-card spacing -->
-<!-- DFO V137 MOBILE SPACING FOOTER DIRECTIONS -->
-<!-- DFO V136 MOBILE CARD CLEANUP: locations/videos/build/social, no calibration footer -->
-<!-- DFO V135 DOMAIN REUPLOAD: V134 stable + dfofireworks.com CNAME -->
-<!-- DFO V134 MAIN UPLOAD: hard no opening effect -->
-<!-- DFO V133 MAIN UPLOAD: no intro + video wall in wall -->
-<!-- DFO V132 EMERGENCY STABLE MAIN ROLLBACK: stable no-domain restore -->
+<!-- DFO V152 DESKTOP REPAIR MOBILE PRODUCTION -->
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -5854,92 +5844,65 @@ body.load-lock .topbar{
 #videosModal.is-empty-category [data-demo-desc]{display:none !important;}
 
 
+
 /* ==========================================================
-   DFO V144 PRODUCTION CONSISTENCY PASS
-   DO NOT move card positions.
-   This layer fixes typography, video-card internals, countdown spacing,
-   no-video modal states, and mobile background glow suppression.
+   DFO V152 — DESKTOP REPAIR + MOBILE PRODUCTION FIXES
+   Desktop repair:
+   - The V144 desktop/tablet typography override layer was removed.
+   - No broad desktop/tablet card-position or font override is added here.
 ========================================================== */
 
-/* ---------- shared card type system ---------- */
-.card-title,
-.card-title .title-line{
+/* Modal copy cleanup */
+#videosModal .category-note{display:none !important;}
+#videosModal .demo-wall-view .demo-breadcrumbs{display:none !important;}
+#videosModal .demo-inner-wall .demo-breadcrumbs{display:flex !important;margin:0 0 18px !important;}
+#videosModal .demo-inner-wall .demo-breadcrumbs span,
+#videosModal .demo-inner-wall .demo-breadcrumbs strong{display:none !important;}
+#videosModal .demo-inner-wall .demo-breadcrumbs button{
+  color:#ff7a36 !important;
+  letter-spacing:.14em !important;
+  font-weight:950 !important;
+  text-transform:uppercase !important;
+}
+#videosModal.is-empty-category .demo-inner-hero{display:none !important;}
+#videosModal.is-empty-category .demo-video-scroll{
+  display:block !important;
+  max-height:none !important;
+  overflow:visible !important;
+  padding:0 !important;
+}
+#videosModal .demo-video-empty{
+  min-height:280px !important;
+  display:grid !important;
+  place-items:center !important;
+  text-align:center !important;
+  border:1px dashed rgba(255,122,54,.55) !important;
+  border-radius:18px !important;
+}
+#videosModal .demo-video-empty strong{
+  color:#fff !important;
   font-family:var(--head) !important;
-  text-transform:uppercase !important;
-  letter-spacing:-.012em !important;
-}
-
-.card-copy p,
-.card-btn{
-  font-family:"Roboto Condensed","Barlow Condensed",Arial,sans-serif !important;
+  font-size:clamp(48px,13vw,88px) !important;
+  line-height:.86 !important;
   text-transform:uppercase !important;
 }
+#videosModal .demo-video-empty span,
+#videosModal.is-empty-category [data-demo-desc]{display:none !important;}
 
-/* ---------- desktop/tablet consistency without changing positions ---------- */
-@media (min-width:701px){
-  .card-title,
-  .card-title .title-line{
-    font-size:clamp(44px,4.05vw,68px) !important;
-    line-height:.88 !important;
-  }
-
-  .card-copy p{
-    font-size:clamp(13px,.92vw,17px) !important;
-    line-height:1.32 !important;
-    letter-spacing:.11em !important;
-    font-weight:900 !important;
-  }
-
-  .card-btn{
-    font-size:clamp(13px,.88vw,16px) !important;
-    letter-spacing:.16em !important;
-    font-weight:950 !important;
-  }
-}
-
-@media (max-width:1180px) and (orientation:portrait){
-  .card-title,
-  .card-title .title-line{
-    font-size:clamp(34px,6.7vw,52px) !important;
-    line-height:.90 !important;
-  }
-
-  .card-copy p{
-    font-size:clamp(13px,2.15vw,16px) !important;
-    line-height:1.36 !important;
-    letter-spacing:.105em !important;
-    font-weight:900 !important;
-  }
-
-  .card-btn{
-    font-size:clamp(13px,2.05vw,16px) !important;
-    letter-spacing:.16em !important;
-    font-weight:950 !important;
-  }
-}
-
-/* ---------- mobile production lock ---------- */
+/* PHONE ONLY. Do not affect desktop/tablet. */
 @media (max-width:700px){
-
-  /*
-    DO NOT CHANGE CARD POSITIONS.
-    Keep the V143 placement, only normalize the inner content.
-  */
-
-  /* suppress baked-looking glow/ring bands with a mobile-only dark veil behind content */
   .page::after{
     content:"" !important;
     position:absolute !important;
     inset:0 !important;
     z-index:2 !important;
     pointer-events:none !important;
-    background:
-      linear-gradient(180deg,
-        rgba(3,5,13,.00) 0%,
-        rgba(3,5,13,.08) 22%,
-        rgba(3,5,13,.32) 42%,
-        rgba(3,5,13,.54) 68%,
-        rgba(3,5,13,.74) 100%) !important;
+    background:linear-gradient(180deg,
+      rgba(3,5,13,0) 0%,
+      rgba(3,5,13,.08) 26%,
+      rgba(3,5,13,.26) 47%,
+      rgba(3,5,13,.44) 72%,
+      rgba(3,5,13,.58) 100%) !important;
   }
 
   .foreground-ring-occlusion,
@@ -5962,7 +5925,6 @@ body.load-lock .topbar{
     pointer-events:none !important;
   }
 
-  /* one mobile title scale for every card */
   .card-title,
   .card-title .title-line,
   .card-videos .card-title,
@@ -5970,14 +5932,16 @@ body.load-lock .topbar{
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
-    font-size:clamp(33px,8.15vw,42px) !important;
+    font-family:var(--head) !important;
+    font-size:clamp(32px,8vw,41px) !important;
     line-height:.90 !important;
     letter-spacing:-.01em !important;
     text-align:center !important;
     margin:0 auto 20px !important;
-    padding:0 12px !important;
+    padding:0 10px !important;
     max-width:96% !important;
     white-space:normal !important;
+    text-transform:uppercase !important;
   }
 
   .card-videos .card-title .title-line{
@@ -5985,28 +5949,28 @@ body.load-lock .topbar{
     white-space:nowrap !important;
   }
 
-  /* readable captions above buttons */
-  .card-copy{
-    margin-top:16px !important;
-  }
+  .card-copy{margin-top:16px !important;}
 
-  .card-copy p{
-    font-size:15px !important;
+  .card-copy p,
+  .card .small,
+  .card .subcopy,
+  .card .caption{
+    font-size:15.5px !important;
     line-height:1.36 !important;
     letter-spacing:.075em !important;
     font-weight:900 !important;
-    margin:0 0 16px !important;
-    color:rgba(255,255,255,.86) !important;
+    color:rgba(255,255,255,.88) !important;
     text-align:center !important;
   }
 
-  /* readable button text */
+  .card-copy p{margin:0 0 16px !important;}
+
   .card-btn{
     min-height:58px !important;
     height:58px !important;
-    font-size:14px !important;
+    font-size:15px !important;
     line-height:1 !important;
-    letter-spacing:.145em !important;
+    letter-spacing:.13em !important;
     font-weight:950 !important;
     color:#ff8a52 !important;
     border:1.5px solid #ff6d2e !important;
@@ -6014,7 +5978,6 @@ body.load-lock .topbar{
     box-shadow:none !important;
   }
 
-  /* video card internal layout only */
   .card-videos .card-media.video-preview,
   .card-videos .video-preview{
     width:100% !important;
@@ -6031,10 +5994,11 @@ body.load-lock .topbar{
   .card-videos .video-feature{
     width:100% !important;
     max-width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    aspect-ratio:16/9 !important;
     min-height:0 !important;
     height:auto !important;
-    aspect-ratio:16/9 !important;
-    box-sizing:border-box !important;
     border-radius:13px !important;
     overflow:hidden !important;
     background-size:contain !important;
@@ -6049,15 +6013,12 @@ body.load-lock .topbar{
     display:grid !important;
     grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     gap:10px !important;
-    min-height:0 !important;
     overflow:visible !important;
   }
 
   .card-videos .video-thumb-button{
     min-width:0 !important;
     width:100% !important;
-    min-height:0 !important;
-    height:auto !important;
     aspect-ratio:16/9 !important;
     border-radius:10px !important;
     background-size:contain !important;
@@ -6068,65 +6029,42 @@ body.load-lock .topbar{
 
   .card-videos .video-thumb-button span,
   .video-label{
-    font-size:13px !important;
-    letter-spacing:.11em !important;
+    font-size:12.5px !important;
+    letter-spacing:.10em !important;
     font-weight:950 !important;
   }
 
-  /* social section */
-  .social-icons-row{
-    gap:18px !important;
-    padding-bottom:18px !important;
-  }
-
+  .social-icons-row{gap:18px !important;padding-bottom:18px !important;}
   .social-big{
-    width:56px !important;
-    height:56px !important;
-    min-width:56px !important;
-    min-height:56px !important;
-    font-size:26px !important;
+    width:58px !important;
+    height:58px !important;
+    min-width:58px !important;
+    min-height:58px !important;
+    font-size:27px !important;
     display:inline-grid !important;
     place-items:center !important;
     line-height:1 !important;
   }
-
-  .social-big.ig{
-    font-size:28px !important;
-  }
-
-  .social-thumbs{
-    gap:8px !important;
-    margin:0 14px 0 !important;
-  }
-
-  .social-thumbs span{
+  .social-big.ig{font-size:29px !important;}
+  .social-thumbs span:nth-child(3){
+    background-image:url("assets/social-card-v86-03.jpg?v=152") !important;
     background-size:cover !important;
     background-position:center center !important;
     background-repeat:no-repeat !important;
   }
 
-  .social-thumbs span:nth-child(3){
-    background-image:url("assets/social-card-v86-03.jpg?v=144") !important;
-  }
-
-  /* move countdown down a few clicks so it never cuts into the Social card */
   .bottom-count{
-    margin-top:52px !important;
-    margin-bottom:26px !important;
+    margin-top:54px !important;
+    margin-bottom:32px !important;
     position:relative !important;
     z-index:40 !important;
   }
 
   .bottom-count p{
-    font-size:13px !important;
+    font-size:13.5px !important;
     letter-spacing:.16em !important;
     font-weight:950 !important;
     margin-bottom:10px !important;
-  }
-
-  .bottom-count .bottom-row b,
-  .bottom-count span{
-    font-size:clamp(27px,7.8vw,39px) !important;
   }
 }
 
@@ -6138,83 +6076,23 @@ body.load-lock .topbar{
   .card-build .card-title,
   .card-social .card-title,
   .card-locations .card-title{
-    font-size:clamp(32px,8.05vw,40px) !important;
+    font-size:clamp(31px,7.9vw,39px) !important;
   }
 
-  .card-copy p{
-    font-size:14px !important;
+  .card-copy p,
+  .card .small,
+  .card .subcopy,
+  .card .caption{
+    font-size:14.75px !important;
   }
 
-  .card-btn{
-    font-size:13.5px !important;
-  }
-
-  .bottom-count{
-    margin-top:48px !important;
-  }
+  .card-btn{font-size:14.5px !important;}
+  .bottom-count{margin-top:50px !important;}
 }
-
-/* ---------- video modal production cleanup ---------- */
-#videosModal .category-note{
-  display:none !important;
-}
-
-#videosModal .demo-wall-view .demo-breadcrumbs{
-  display:none !important;
-}
-
-#videosModal .demo-inner-wall .demo-breadcrumbs{
-  display:flex !important;
-  margin:0 0 18px !important;
-}
-
-#videosModal .demo-inner-wall .demo-breadcrumbs span,
-#videosModal .demo-inner-wall .demo-breadcrumbs strong{
-  display:none !important;
-}
-
-#videosModal .demo-inner-wall .demo-breadcrumbs button{
-  font-size:clamp(14px,3.4vw,18px) !important;
-  color:#ff7a36 !important;
-  letter-spacing:.14em !important;
-}
-
-#videosModal.is-empty-category .demo-inner-hero{
-  display:none !important;
-}
-
-#videosModal.is-empty-category .demo-video-scroll{
-  display:block !important;
-  max-height:none !important;
-  overflow:visible !important;
-  padding:0 !important;
-}
-
-#videosModal .demo-video-empty{
-  min-height:280px !important;
-  display:grid !important;
-  place-items:center !important;
-  text-align:center !important;
-  border:1px dashed rgba(255,122,54,.55) !important;
-  border-radius:18px !important;
-}
-
-#videosModal .demo-video-empty strong{
-  color:#fff !important;
-  font-family:var(--head) !important;
-  font-size:clamp(48px,13vw,88px) !important;
-  line-height:.86 !important;
-  text-transform:uppercase !important;
-}
-
-#videosModal .demo-video-empty span,
-#videosModal.is-empty-category [data-demo-desc]{
-  display:none !important;
-}
-
 </style>
+
 </head>
-<body data-build="v144-production-consistency-pass" class="load-lock">
+<body data-build="v152-desktop-repair-mobile-production" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6946,7 +6824,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V144 loaded: production consistency pass.");
+console.log("DFO V152 loaded: desktop repaired, mobile production fixes applied.");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */

@@ -1,0 +1,11 @@
+{
+  "version": "v152-desktop-repair-mobile-production",
+  "base_repaired": "DFO-V144-PRODUCTION-CONSISTENCY-PASS.zip",
+  "v144_desktop_override_removed": true,
+  "new_mobile_scope": "max-width:700px",
+  "desktop_tablet_broad_typography_override_added": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v152",
+  "created_epoch": 1781617497
+}
