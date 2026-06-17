@@ -6374,28 +6374,9 @@ body.load-lock .topbar{
   grid-template-columns:1fr !important;
 }
 
-
-/* =========================================================
-   V158 DESKTOP RING BACKGROUND
-   Desktop only (min-width:1181px): swap to the fireworks / glow-ring
-   stage image so the carousel cards stand around the ring.
-   Mobile/tablet background unchanged.
-========================================================= */
-@media (min-width:1181px){
-  .page{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.04) 26%,rgba(0,0,0,.04) 64%,rgba(0,0,0,.30)),
-      url("assets/dfo-ring-bg.png?v=158") center center / cover no-repeat !important;
-  }
-  /* Drop the countdown below the glow ring now that the cards stand on it. */
-  .bottom-count{
-    bottom:0.6vh !important;
-  }
-}
-
 </style>
 </head>
-<body data-build="v158-desktop-ring-bg-carousel" class="load-lock">
+<body data-build="v157-carousel-gentle-3d-ride" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6875,13 +6856,13 @@ const SLOT_CONFIG = {
   /* V157 mockup-match pass: gentle even arc like the concept render.
      Soft, evenly-stepped angles (rotateY 0/9/18, faceRotate 0/10/19), mild
      recession, large/readable side cards. Symmetric; feet on a smooth arc. */
-  "-2": { name:"far-left",  x:-37.6, y:80.0, z:-120, scale:.87, rotateY:-18, faceRotate:-19, faceSkew: .70, width:.68, height:.91 },
-  "-1": { name:"left",      x:-22.4, y:83.5, z:-55,  scale:.95, rotateY:-9,  faceRotate:-10, faceSkew: .30, width:.78, height:.96 },
+  "-2": { name:"far-left",  x:-37.6, y:77.4, z:-120, scale:.87, rotateY:-18, faceRotate:-19, faceSkew: .70, width:.68, height:.91 },
+  "-1": { name:"left",      x:-22.4, y:77.1, z:-55,  scale:.95, rotateY:-9,  faceRotate:-10, faceSkew: .30, width:.78, height:.96 },
 
-  "0":  { name:"center",    x:  0.0, y:86.5, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:.98, height:1.00 },
+  "0":  { name:"center",    x:  0.0, y:76.8, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:.98, height:1.00 },
 
-  "1":  { name:"right",     x: 22.4, y:83.5, z:-55,  scale:.95, rotateY: 9,  faceRotate: 10, faceSkew:-.30, width:.78, height:.96 },
-  "2":  { name:"far-right", x: 37.6, y:80.0, z:-120, scale:.87, rotateY: 18, faceRotate: 19, faceSkew:-.70, width:.68, height:.91 }
+  "1":  { name:"right",     x: 22.4, y:77.1, z:-55,  scale:.95, rotateY: 9,  faceRotate: 10, faceSkew:-.30, width:.78, height:.96 },
+  "2":  { name:"far-right", x: 37.6, y:77.4, z:-120, scale:.87, rotateY: 18, faceRotate: 19, faceSkew:-.70, width:.68, height:.91 }
 };
 
 function metrics(){
@@ -7139,7 +7120,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V158 loaded: desktop glow-ring background; carousel cards stand around the ring (mobile/tablet unchanged).");
+console.log("DFO V157 loaded: desktop carousel tuned to a gentle, even, all-readable 3D ride arc (mockup match).");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
