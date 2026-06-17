@@ -1,15 +1,33 @@
 {
-  "version": "v155-desktop-layout-restore-keep-bg",
-  "base": "DFO-V154-FORCE-DESKTOP-BACKGROUND.zip",
-  "scope": "desktop/tablet layout restore only, min-width 701px",
-  "keeps_background": true,
-  "restores_scene_absolute": true,
-  "restores_bottom_count_absolute": true,
-  "mobile_changes": false,
-  "card_content_sizing_changes": false,
-  "dns_changes": false,
+  "version": "v155-content-social-email-video-headers",
+  "base": "DFO-V154",
+  "scope": "all viewports (desktop + tablet + mobile)",
+  "desktop_homepage_layout_touched": false,
+  "desktop_background_touched": false,
+  "carousel_touched": false,
+  "card_positions_touched": false,
+  "dns_cname_touched": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "expected_url": "https://dfofireworks.com/?fresh=v155",
-  "created_epoch": 1781621548
+  "changes": [
+    "Social links wired on both the Social Feed card and the Social modal: Instagram -> https://www.instagram.com/dfo_okoboji (@dfo_okoboji), YouTube -> https://www.youtube.com/@DiscountFireworksOutlet. Removed the 'is-placeholder' state so the links are active. Facebook unchanged.",
+    "Build Your Show form now submits real email via Web3Forms (AJAX, visitor stays on page). Live access key 6fb46895-8d92-4625-83cb-304f0d68621f is installed; the account is katenoah.personal@gmail.com, so every submission is emailed there. Per the owner's decision, katenoah.personal@gmail.com is the sole recipient (Web3Forms ccemail/second-recipient is a Pro-only feature, not used).",
+    "Video category image headers removed on ALL viewports: the ripple-art header is hidden on the category wall cards (text-only cards) and on the inner category view when a category opens (title + description text kept, videos kept)."
+  ],
+  "verification": {
+    "method": "headless browser computed-style + screenshots at desktop/mobile",
+    "card_instagram_href": "https://www.instagram.com/dfo_okoboji",
+    "card_youtube_href": "https://www.youtube.com/@DiscountFireworksOutlet",
+    "modal_links_active": true,
+    "wall_art_display": "none",
+    "inner_art_display": "none",
+    "inner_hero_collapsed_to_one_column": true,
+    "form_action": "https://api.web3forms.com/submit",
+    "form_access_key_installed": true,
+    "form_recipient": "katenoah.personal@gmail.com",
+    "form_renders_only_name_email_message_send": true,
+    "js_syntax_check": "pass"
+  },
+  "action_required": "None for email - access key is installed and the form delivers to katenoah.personal@gmail.com. Recommend one real test submission after deploy to confirm the lead lands in the inbox (check spam the first time).",
+  "expected_url": "https://dfofireworks.com/?fresh=v155"
 }

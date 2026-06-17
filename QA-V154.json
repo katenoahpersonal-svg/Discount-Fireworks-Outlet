@@ -1,14 +1,26 @@
 {
-  "version": "v154-force-desktop-background",
-  "base": "DFO-V153-DESKTOP-BACKGROUND-RESTORE.zip",
-  "scope": "desktop only min-width 701px",
-  "desktop_background_forced_on": ".page::before",
-  "desktop_background_asset": "assets/background-live-v93-no-buoy.jpg?v=154",
-  "mobile_changes": false,
-  "card_sizing_changes": false,
-  "dns_changes": false,
+  "version": "v154-mobile-card-square-edge-fix",
+  "base": "DFO-V153",
+  "scope": "mobile only (max-width:700px)",
+  "desktop_touched": false,
+  "desktop_background_touched": false,
+  "desktop_carousel_touched": false,
+  "card_positions_touched": false,
+  "card_order_touched": false,
+  "dns_cname_touched": false,
+  "generated_images": false,
+  "new_assets": false,
   "includes_cname": true,
   "cname_value": "dfofireworks.com",
-  "expected_url": "https://dfofireworks.com/?fresh=v154",
-  "created_epoch": 1781620565
+  "fix": "Removed the straight/square edges that appeared around the cards on mobile. Root cause: the mobile page-darkening overlay (.page::before) only darkened the top and bottom of the page (its middle was just 6% opaque), so the bright fireworks page background bled around the cards in hard-edged rectangles - made more obvious by the brighter V153 card glow. V154 darkens that overlay uniformly (74-94% across the full height) so every card sits on a clean dark backdrop and its rounded glow reads correctly with no square edges. The fireworks background is kept but subdued, matching the earlier dark mobile look.",
+  "verification": {
+    "method": "headless browser screenshots + computed-style at 390/1280px",
+    "mobile_390_square_edges": "gone (cards on clean dark backdrop, rounded glows intact)",
+    "mobile_390_page_before": "uniform dark veil applied",
+    "desktop_1280_page_background_image": "present (unchanged)",
+    "desktop_1280_page_before_veil_applied": false,
+    "js_syntax_check": "pass"
+  },
+  "note": "Card glow, border, titles, timeline, and all V151-V153 mobile fixes are unchanged. Only the mobile background overlay was darkened.",
+  "expected_url": "https://dfofireworks.com/?fresh=v154"
 }

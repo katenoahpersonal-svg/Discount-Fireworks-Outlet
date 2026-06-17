@@ -6352,9 +6352,31 @@ body.load-lock .topbar{
   }
 }
 
+
+/* =========================================================
+   V155 GLOBAL: VIDEO CATEGORY IMAGE HEADERS REMOVED
+   Applies to ALL viewports (desktop / tablet / mobile).
+   - Category wall cards: drop the ripple-art image header so each card is
+     text-only (title + description + status), like the requested look.
+   - Inner category view (when a category opens): drop the ripple-art image
+     header too; the category title + description text are kept.
+========================================================= */
+#videosModal .demo-wall-art{
+  display:none !important;
+}
+#videosModal .demo-wall-card{
+  min-height:auto !important;
+}
+#videosModal .demo-inner-art{
+  display:none !important;
+}
+#videosModal .demo-inner-hero{
+  grid-template-columns:1fr !important;
+}
+
 </style>
 </head>
-<body data-build="v154-mobile-card-square-edge-fix" class="load-lock">
+<body data-build="v155-content-social-email-video-headers" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6599,10 +6621,20 @@ body.load-lock .topbar{
   <button class="modal-close" aria-label="Close">×</button>
   <div class="modal">
     <p class="eyebrow">Plan Like a Pro</p><h2>Build Your Show</h2>
-    <form class="contact-form" onsubmit="event.preventDefault();this.reset();alert('Thanks! We will be in touch soon.');">
-      <label>Name<input type="text" placeholder="Your name"></label>
-      <label>Email<input type="email" placeholder="you@email.com"></label>
-      <label>Message<textarea placeholder="Tell us your budget, crowd size, location, and what kind of finale you want."></textarea></label>
+    <!--
+      BUILD YOUR SHOW submissions are emailed via Web3Forms (works on static GitHub Pages).
+      The access key belongs to the katenoah.personal@gmail.com account, so every submission is
+      emailed to katenoah.personal@gmail.com. To add a second recipient later, upgrade to Web3Forms
+      Pro and add: <input type="hidden" name="ccemail" value="other@email.com"> (Pro-only feature).
+    -->
+    <form class="contact-form" id="buildShowForm" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="6fb46895-8d92-4625-83cb-304f0d68621f">
+      <input type="hidden" name="subject" value="New Build Your Show request — Discount Fireworks Outlet">
+      <input type="hidden" name="from_name" value="DFO — Build Your Show">
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
+      <label>Name<input type="text" name="name" placeholder="Your name" required></label>
+      <label>Email<input type="email" name="email" placeholder="you@email.com" required></label>
+      <label>Message<textarea name="message" placeholder="Tell us your budget, crowd size, location, and what kind of finale you want." required></textarea></label>
       <button type="submit">Send Message</button>
     </form>
   </div>
@@ -6647,16 +6679,16 @@ body.load-lock .topbar{
         <small>facebook.com/DFOBoji</small>
       </a>
 
-      <a class="social-modal-link ig is-placeholder" href="#" aria-label="Instagram link placeholder">
+      <a class="social-modal-link ig" href="https://www.instagram.com/dfo_okoboji" target="_blank" rel="noopener" aria-label="Instagram @dfo_okoboji">
         <span class="social-modal-icon">◎</span>
         <strong>Instagram</strong>
-        <small>Add Instagram URL</small>
+        <small>@dfo_okoboji</small>
       </a>
 
-      <a class="social-modal-link yt is-placeholder" href="#" aria-label="YouTube link placeholder">
+      <a class="social-modal-link yt" href="https://www.youtube.com/@DiscountFireworksOutlet" target="_blank" rel="noopener" aria-label="YouTube Discount Fireworks Outlet">
         <span class="social-modal-icon">▶</span>
         <strong>YouTube</strong>
-        <small>Add YouTube URL</small>
+        <small>@DiscountFireworksOutlet</small>
       </a>
     </div>
   </div>
@@ -6735,8 +6767,8 @@ const cards = [
     media:`<div class="card-media" style="display:flex;flex-direction:column;justify-content:center;border:none;box-shadow:none;background:transparent">
       <div class="social-icons-row">
         <a class="social-big fb" href="https://www.facebook.com/DFOBoji/" target="_blank" rel="noopener">f</a>
-        <a class="social-big ig" href="#" aria-label="Instagram">◎</a>
-        <a class="social-big yt" href="#" aria-label="YouTube">▶</a>
+        <a class="social-big ig" href="https://www.instagram.com/dfo_okoboji" target="_blank" rel="noopener" aria-label="Instagram @dfo_okoboji">◎</a>
+        <a class="social-big yt" href="https://www.youtube.com/@DiscountFireworksOutlet" target="_blank" rel="noopener" aria-label="YouTube Discount Fireworks Outlet">▶</a>
       </div>
       <div class="social-thumbs">
         <span style="background-image:url('${IMG.s1}')"></span>
@@ -7085,7 +7117,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V154 loaded: mobile background darkened uniformly to remove square-edge artifact around cards.");
+console.log("DFO V155 loaded: social links wired, build-your-show email recipients, video category image headers removed (all viewports).");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
@@ -7192,6 +7224,45 @@ console.log("DFO V154 loaded: mobile background darkened uniformly to remove squ
   });
 
   showWall();
+})();
+
+
+/* Build Your Show: submit via Web3Forms (AJAX) so the visitor stays on the page.
+   Emails go to the access_key account (tmsafetysystems@gmail.com) + ccemail (katenoah.personal@gmail.com). */
+(function(){
+  var form = document.getElementById("buildShowForm");
+  if (!form) return;
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var key = (form.querySelector('[name="access_key"]') || {}).value || "";
+    if (!key || key.indexOf("REPLACE_WITH_") === 0){
+      alert("This form isn't connected yet. Add your free Web3Forms access key to enable email delivery.");
+      return;
+    }
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn ? btn.textContent : "";
+    if (btn){ btn.disabled = true; btn.textContent = "Sending…"; }
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(form)
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      if (json && json.success){
+        form.reset();
+        alert("Thanks! We will be in touch soon.");
+      } else {
+        alert("Sorry, that didn't send. Please email us at tmsafetysystems@gmail.com.");
+      }
+    })
+    .catch(function(){
+      alert("Sorry, that didn't send. Please email us at tmsafetysystems@gmail.com.");
+    })
+    .finally(function(){
+      if (btn){ btn.disabled = false; btn.textContent = label; }
+    });
+  });
 })();
 
 </script>
