@@ -6376,7 +6376,7 @@ body.load-lock .topbar{
 
 </style>
 </head>
-<body data-build="v156-carousel-even-circumference" class="load-lock">
+<body data-build="v157-carousel-gentle-3d-ride" class="load-lock">
 <main class="page">
   <header class="header">
     <a class="logo logo-image-link" href="#" data-go="videos" aria-label="Discount Fireworks Outlet home">
@@ -6853,16 +6853,16 @@ const SLOT_CONFIG = {
     This fixes the V58 mistake where the right side was moved independently.
   */
 
-  /* V156 even-circumference pass: evenly-stepped angles (rotateY 0/13/26,
-     faceRotate 0/14/28), gentler recession, larger/more-readable side cards.
-     x and y are unchanged so the card feet stay aligned to the painted ring. */
-  "-2": { name:"far-left",  x:-33.0, y:77.6, z:-175, scale:.84, rotateY:-26, faceRotate:-28, faceSkew: 1.05, width:.66, height:.88 },
-  "-1": { name:"left",      x:-19.2, y:77.3, z:-80,  scale:.94, rotateY:-13, faceRotate:-14, faceSkew: .45, width:.81, height:.96 },
+  /* V157 mockup-match pass: gentle even arc like the concept render.
+     Soft, evenly-stepped angles (rotateY 0/9/18, faceRotate 0/10/19), mild
+     recession, large/readable side cards. Symmetric; feet on a smooth arc. */
+  "-2": { name:"far-left",  x:-37.6, y:77.4, z:-120, scale:.87, rotateY:-18, faceRotate:-19, faceSkew: .70, width:.68, height:.91 },
+  "-1": { name:"left",      x:-22.4, y:77.1, z:-55,  scale:.95, rotateY:-9,  faceRotate:-10, faceSkew: .30, width:.78, height:.96 },
 
-  "0":  { name:"center",    x:  0.0, y:76.8, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:1.00, height:1.00 },
+  "0":  { name:"center",    x:  0.0, y:76.8, z:   0, scale:1.04, rotateY:  0, faceRotate:  0, faceSkew:   0, width:.98, height:1.00 },
 
-  "1":  { name:"right",     x: 19.2, y:77.3, z:-80,  scale:.94, rotateY: 13, faceRotate: 14, faceSkew:-.45, width:.81, height:.96 },
-  "2":  { name:"far-right", x: 33.0, y:77.6, z:-175, scale:.84, rotateY: 26, faceRotate: 28, faceSkew:-1.05, width:.66, height:.88 }
+  "1":  { name:"right",     x: 22.4, y:77.1, z:-55,  scale:.95, rotateY: 9,  faceRotate: 10, faceSkew:-.30, width:.78, height:.96 },
+  "2":  { name:"far-right", x: 37.6, y:77.4, z:-120, scale:.87, rotateY: 18, faceRotate: 19, faceSkew:-.70, width:.68, height:.91 }
 };
 
 function metrics(){
@@ -7120,7 +7120,7 @@ let rt; window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeou
 startIntroRide();
 countdown();
 setInterval(countdown, 1000);
-console.log("DFO V156 loaded: desktop carousel cards spaced evenly along the circumference (even angles + smooth foot arc).");
+console.log("DFO V157 loaded: desktop carousel tuned to a gentle, even, all-readable 3D ride arc (mockup match).");
 
 
 /* V133: video wall-in-wall navigation with breadcrumbs */
