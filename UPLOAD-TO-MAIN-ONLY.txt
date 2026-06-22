@@ -1,22 +1,22 @@
-DFO V150 — Mobile Title-Line Font Lock Only
+DFO V156 — Content Update Only
 
-Base:
-- Built from V149.
+Upload the contents of this ZIP to main the same way as the current perfect build.
 
-Scope:
-- Mobile only.
-- Title/font consistency only.
-- Desktop untouched.
-- Top gap untouched.
-- Card positions untouched.
-- Background untouched.
-- No generated images.
-- No new assets.
-- No DNS/Cloudflare/Squarespace/GitHub Pages changes.
+This version uses the uploaded current perfect build as the base.
 
-Fix:
-- Videos and Favorites titles use nested .title-line spans.
-- This locks .title-line to inherit the same mobile title size and allows mobile wrapping.
+Changes:
+- Added the 5 supplied YouTube links to the Cakes video category.
+- Updated the visible Preview the Boom card thumbnails to the 5 supplied YouTube videos.
+- Replaced the Social Feed third/top-right tile with the uploaded giveaway graphic.
+- Kept CNAME/domain file.
+
+Not changed:
+- Desktop layout
+- Desktop background
+- Desktop carousel positioning
+- Mobile spacing
+- Mobile card sizing
+- DNS, Cloudflare, Squarespace, GitHub Pages settings
 
 Test:
-https://dfofireworks.com/?fresh=v150
+https://dfofireworks.com/?fresh=v156

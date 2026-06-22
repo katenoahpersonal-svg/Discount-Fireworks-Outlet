@@ -1,0 +1,21 @@
+{
+  "version": "v156-content-video-social-only",
+  "base": "DFO-WEBSITE-FINAL-BUILD.zip",
+  "youtube_video_ids_added": [
+    "NVA1w9swI7E",
+    "KB0FjItkyRs",
+    "KlN3cqT-vug",
+    "OgLI0rF3NWM",
+    "_mZ3rYQgs1g"
+  ],
+  "videos_added_to_category": "cakes",
+  "cakes_video_count_after_update": 9,
+  "social_feed_tile_replaced": "third/top-right",
+  "social_image_asset": "assets/social-giveaway-250-v156.jpg",
+  "layout_changes": false,
+  "dns_changes": false,
+  "includes_cname": true,
+  "cname_value": "dfofireworks.com",
+  "expected_url": "https://dfofireworks.com/?fresh=v156",
+  "created_epoch": 1782133569
+}
