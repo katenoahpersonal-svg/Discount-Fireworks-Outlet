@@ -2,7 +2,7 @@
 
 America's 250th · 1776–2026
 
-## 🚀 Deploy to GitHub Pages in 3 Steps
+## Deploy to GitHub Pages in 3 Steps
 
 ### Step 1 — Create the repository
 1. Go to [github.com](https://github.com) and sign in
@@ -25,13 +25,13 @@ America's 250th · 1776–2026
 
 Your site will be live at:
 ```
-https://YOUR-USERNAME.github.io/discount-fireworks-outlet/
+https://www.dfofireworks.com
 ```
 (takes about 1–2 minutes to go live)
 
 ---
 
-## ✏️ Customizing the Site
+## Customizing the Site
 
 Open `index.html` in any text editor. At the very top of the `<script>` section you'll find the config block — everything you need to update is there:
 
@@ -54,7 +54,7 @@ Search for `Spirit Lake`, `Milford`, `Spencer`, `Armstrong` and update as needed
 
 ---
 
-## 📁 File Structure
+## File Structure
 
 ```
 dfo-site/
@@ -68,7 +68,7 @@ dfo-site/
 
 ---
 
-## 🔄 Auto-Deploy (Optional)
+## Auto-Deploy (Optional)
 
 The included `deploy.yml` workflow automatically re-deploys your site every time you push a change to `main`. To enable it:
 
